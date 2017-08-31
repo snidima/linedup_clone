@@ -2,5 +2,5 @@
 @section('title','Главная')
 
 @section('content')
-    123321
+    @include('index/section-1')
 @endsection

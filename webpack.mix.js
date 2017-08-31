@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,8 +11,28 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('src/app.js', 'dist/')
-   .sass('src/app.scss', 'dist/');
+mix.js('resources/assets/js/app.js', 'public/js/').version()
+   .sass('resources/assets/sass/app.sass', 'public/css',{
+       indentedSyntax: true
+   }).sourceMaps().version()
+
+    .browserSync({
+        proxy: 'http://video.local/'
+    });
+
+mix.disableNotifications();
+
+mix.webpackConfig( {
+    plugins: [
+        new ImageminPlugin( {
+//            disable: process.env.NODE_ENV !== 'production', // Disable during development
+            pngquant: {
+                quality: '95-100',
+            },
+            test: /\.(jpe?g|png|gif|svg)$/i,
+        } ),
+    ],
+} )
 
 // Full API
 // mix.js(src, output);
