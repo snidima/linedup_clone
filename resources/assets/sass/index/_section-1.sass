@@ -9,6 +9,7 @@
   justify-content: center
   align-items: center
   flex-direction: column
+  position: relative
 
 .section-1__texts
   text-align: right
@@ -27,9 +28,44 @@
   color: $white-1
   padding: 3px 5px
   margin-top: 5px
+  +br()
 
 .section-1-btns__btn-1
   margin-right: 15px
 
 .section-1__btns
   margin-top: 80px
+
+.section-1__menu #menu
+  width:  40px
+  height: 40px
+
+#menu g
+  fill: $white-1
+.section-1__menu
+  margin-bottom: 100px
+
+
+.section-1__scroll
+  position: absolute
+  bottom: 20px
+
+.section-1__scroll #scroll
+  width:  100px
+  height: 100px
+
+
+
+#scroll .st0
+  fill: none
+  stroke: $white-1
+  stroke-width: 12
+  stroke-linecap: round
+  stroke-linejoin: round
+  stroke-miterlimit: 10
+
+#scroll .st1
+  fill: none
+  stroke: $white-1
+  stroke-width: 12
+  stroke-miterlimit: 10
