@@ -1,0 +1,277 @@
+$radius: 20px
+$radius-in: $radius / 2
+$text-padding: 20px
+$text-padding-top: 15px
+
+.steps
+  margin: auto
+
+
+
+//.step__point
+//  position: absolute
+//  width: $radius
+//  height: 100%
+//  top: 0
+//  right: calc( 50% - #{$radius / 2} )
+//  z-index: 1
+//
+//  &:before
+//    display: block
+//    content: ''
+//    width:  $radius
+//    height: $radius
+//    background: $color-1
+//    border-radius: 50%
+//    position: absolute
+//  &:after
+//    display: block
+//    content: ''
+//    width:  $radius-in
+//    height: $radius-in
+//    border-radius: 50%
+//    position: absolute
+//    left: calc( 50% - #{$radius-in / 2} )
+//    top: $radius-in / 2
+//
+//.step__line
+//  $radius-line: $radius / 2.5
+//  width: $radius-line
+//  background: $color-1
+//  height: calc( 100% - #{$radius/2} )
+//  position: absolute
+//  right: calc( 50% - #{$radius-line / 2} )
+//  top: $radius/2
+//  z-index: 0
+//
+//.step__text
+//  left: 50%
+//  position: relative
+//  width: 50%
+//  padding: 0 $radius
+//
+//
+//.steps__wrapper
+//  position: relative
+//
+//.steps__wrapper:not(:first-of-type)
+//  .step__line
+//    height: 100%
+//    top: 0
+//  .step__point
+//    &:before
+//      display: block
+//      content: ''
+//      width:  $radius
+//      height: $radius
+//      background: $color-1
+//      border-radius: 50%
+//      position: absolute
+//      top: calc( 50% - #{$radius / 2} )
+//    &:after
+//      display: block
+//      content: ''
+//      width:  $radius-in
+//      height: $radius-in
+//      border-radius: 50%
+//      position: absolute
+//      left: calc( 50% - #{$radius-in / 2} )
+//      top: calc( 50% - #{$radius-in / 2} )
+//
+//.steps__wrapper:nth-last-of-type(odd)
+//  .step__text
+//    left: 0
+//    text-align: right
+//
+//  .step__point
+//    &:after
+
+
+
+
+.steps__wrapper
+  display: flex
+  width: 100%
+
+.step__helper
+  width: $radius
+  height: 100%
+  position: relative
+  min-width: $radius
+.steps__step
+  display: flex
+  width: calc( 50% + #{$radius / 2} )
+
+.steps__wrapper:nth-of-type(odd) .steps__step
+  margin-left: auto
+  justify-content: flex-end
+  flex-direction: row-reverse
+  .step__text:not(.step__text_bold)
+    padding-left: $text-padding
+    text-align: left
+
+.steps__wrapper:nth-of-type(even) .steps__step
+  margin-right: auto
+  justify-content: flex-end
+  flex-direction: row
+  .step__text:not(.step__text_bold)
+    padding-right: $text-padding
+    text-align: right
+
+.step__line
+  $width: $radius / 1.5
+  background: $color-1
+  width: calc( 100% - #{$width} )
+  height: 100%
+  position: absolute
+  left: $width / 2
+
+.steps__wrapper:first-of-type .step__line
+  height: 50%
+  bottom: 0
+.steps__wrapper:last-of-type .step__line
+  height: 50%
+  top: 0
+
+.step__point
+  position: absolute
+  width: $radius
+  height: 100%
+  top: calc( 50% - #{$radius / 2} )
+  right: calc( 50% - #{$radius / 2} )
+  z-index: 1
+
+  &:before
+    display: block
+    content: ''
+    width:  $radius
+    height: $radius
+    background: $color-1
+    border-radius: 50%
+    position: absolute
+    z-index: 4
+  &:after
+    display: block
+    content: ''
+    width:  $radius-in
+    height: $radius-in
+    border-radius: 50%
+    position: absolute
+    left: calc( 50% - #{$radius-in / 2} )
+    top: $radius-in / 2
+    z-index: 5
+    background: $white-1
+
+
+
+
+.step__text:not(.step__text_bold)
+  padding-top: $text-padding-top
+  padding-bottom: $text-padding-top
+
+
+.steps__wrapper:first-of-type
+  .step__point
+    &:after
+      background: #632d8e
+  .step__text:not(.step__text_bold)
+    padding-top: 0
+.steps__wrapper:last-of-type
+  .step__text:not(.step__text_bold)
+    padding-bottom: 0
+
+
+
+
+.step-text__num
+  font-size: 0.7rem
+  color: $white-1
+  margin-bottom: 8px
+  background: $black-1
+  padding: 5px 10px
+  display: inline-block
+  +br()
+.step-text__title
+  font-size: 1.25rem
+  font-weight: bold
+  color: $color-1
+  &:after
+    content: ''
+    display: block
+    width: 100%
+    height: 1px
+    border-bottom: 1px dashed lighten($black-1, 65%)
+    margin: 8px 0
+
+.step-text__desc
+  color: $black-1
+  font-size: 0.9rem
+  line-height: 1.2
+
+
+.steps__wrapper:nth-of-type(odd) .step__text_bold
+  $size: 10px
+  background: $black-1
+  position: relative
+  z-index: 10
+  left: $text-padding + $size
+  color: $white-1
+  padding: 25px
+  font-size: 1rem
+  +br()
+  &:before
+    position: absolute
+    content: ''
+    display: block
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: $size $size*1.5 $size 0
+    border-color: transparent $black-1 transparent transparent
+    top: calc( 50% - #{$size} )
+    left: -$size*1.5
+
+.step__text_bold
+  .step-text__title
+    text-align: center
+    line-height: 1.2
+    &:after
+      display: none
+    &:not(:last-child)
+      margin-bottom: 20px
+  .step-text__text
+    color: $white-1
+    font-size: 1rem
+    text-align: center
+    line-height: 1.2
+  .step-text__btn
+    margin-top: 20px
+    text-align: center
+
+
+.steps__wrapper:nth-of-type(even) .step__text_bold
+  $size: 10px
+  background: $black-1
+  position: relative
+  z-index: 10
+  right: $text-padding + $size
+  color: $white-1
+  padding: 25px
+  font-size: 1rem
+  +br()
+  &:before
+    position: absolute
+    content: ''
+    display: block
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: $size 0 $size $size*1.5
+    border-color: transparent  transparent transparent $black-1
+    top: calc( 50% - #{$size} )
+    right: -$size*1.5
+
+
+.steps__wrapper:hover .step__point:after
+  background: #632d8e
+  transition: all 0.1s linear
