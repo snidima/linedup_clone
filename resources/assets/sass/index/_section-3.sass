@@ -4,6 +4,7 @@ $text-padding: 20px
 $text-padding-top: 15px
 
 .steps
+  width: 800px
   margin: auto
 
 
@@ -272,6 +273,10 @@ $text-padding-top: 15px
     right: -$size*1.5
 
 
-.steps__wrapper:hover .step__point:after
-  background: #632d8e
-  transition: all 0.1s linear
+.steps__step
+
+
+  &:hover
+    .step__point:after
+      background: #632d8e
+      transition: all 0.1s linear

@@ -1,5 +1,4 @@
 /node_modules
-public/
 /storage/*.key
 /vendor
 /.idea
@@ -10,3 +9,5 @@ npm-debug.log
 yarn-error.log
 .env
 
+/.gitignore
+/public/*
