@@ -1,12 +1,20 @@
 @import "reset"
+@import "../../../node_modules/gridle/css/grid.min.css"
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&amp;subset=cyrillic")
 
 $color-1: #c681fc
 $black-1: #070707
 $white-1: #fff
 
+
+
+
 =br( $br:3px )
   border-radius: $br
+=nlt
+  &:not(:last-of-type)
+    @content
 
 @import "index/section-1"
 
@@ -14,9 +22,11 @@ $white-1: #fff
 *
   box-sizing: border-box
 
+
 body
   font-size: 16px
   font-family: 'Open Sans', sans-serif
+
 
 
 .btn
@@ -36,3 +46,27 @@ body
   border: 2px solid $color-1
   color: $color-1
   box-sizing: border-box
+
+.section
+  padding-top: 40px
+  padding-bottom: 40px
+
+.section_black
+  background: $black-1
+  color: $white-1
+  .h3
+    color: $white-1
+.h3
+  font-size: 2.5rem
+  text-transform: uppercase
+  text-align: center
+  padding-bottom: 60px
+.p
+  font-size: 1.125rem
+  line-height: 1.5
+  +nlt
+    margin-bottom: 20px
+
+
+  
+  
