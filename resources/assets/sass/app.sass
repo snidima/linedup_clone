@@ -59,8 +59,8 @@ body
   box-sizing: border-box
 
 .section
-  padding-top: 40px
-  padding-bottom: 40px
+  padding-top:    70px
+  padding-bottom: 70px
 
 .section_black
   background: $black-1
@@ -87,3 +87,49 @@ body
   
 .color-1
   color: $color-1
+
+
+.menu-container
+  &.tingle-modal--overflow
+    padding-top: 0
+    overflow: hidden
+    background: none
+  .tingle-modal-box
+    width: 100vw
+    height: 100vh
+    border-radius: 0
+  .tingle-modal__close
+    outline: none
+    font-size: 4rem
+    color: $white-1
+    &:hover
+      color: $color-1
+  .tingle-modal-box
+    background: rgba(0,0,0,.93)
+  .tingle-modal-box__content
+    height: 100%
+    width: 100%
+
+.menu-wrapper
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  color: #fff
+
+.menu
+  display: flex
+.menu__item
+  width: 100px
+  height: 100px
+  background: $white-1
+  color: $black-1
+  cursor: pointer
+  +br()
+  display: flex
+  align-items: center
+  justify-content: center
+  text-align: center
+  +nlt
+    margin-right: 20px
