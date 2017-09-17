@@ -10,6 +10,8 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
  | file for your application, as well as bundling up your JS files.
  |
  */
+mix.setPublicPath('public_html');
+
 
 mix.js('resources/assets/js/app.js', 'public_html/js/').version()
    .sass('resources/assets/sass/app.sass', 'public_html/css',{
