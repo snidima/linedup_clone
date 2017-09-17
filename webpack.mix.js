@@ -11,8 +11,8 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js/').version()
-   .sass('resources/assets/sass/app.sass', 'public/css',{
+mix.js('resources/assets/js/app.js', 'public_html/js/').version()
+   .sass('resources/assets/sass/app.sass', 'public_html/css',{
        indentedSyntax: true
    }).sourceMaps().version()
 
