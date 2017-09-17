@@ -23,6 +23,8 @@ $white-1: #fff
 
 @import "index/section-1"
 @import "index/section-3"
+@import "index/section-price"
+@import "index/section-subscribe"
 
 
 
@@ -50,7 +52,7 @@ body
   +br()
 .btn-normal
   +br()
-  font-size: 1rem
+  font-size: 1.1rem
   padding: 8px 15px
 .btn-type-1
   background: $color-1
@@ -60,10 +62,17 @@ body
   border: 2px solid $color-1
   color: $color-1
   box-sizing: border-box
+  background: transparent
 
+
+
+.btn-type-1_black
+  background: $black-1
+  
 .section
   padding-top:    70px
   padding-bottom: 70px
+
 
 .section_black
   background: $black-1
@@ -138,14 +147,6 @@ body
     margin-right: 20px
 
 
-//.menu2
-//  position: absolute
-//  top: 0
-//  left: 0
-//  right: 0
-//  bottom: 0
-//  background: rgba(#000, .9)
-//  display: none
-//
-//body
-//  overflow: hidden
+.container-mini
+  width: 600px
+  margin: auto
