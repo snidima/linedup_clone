@@ -1,13 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+
+use App\Models\Observers\UserObserver;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, ObserverTrait;
+
+    protected static $observer = UserObserver::class;
+
 
     /**
      * The attributes that are mass assignable.

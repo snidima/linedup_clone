@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('index');
 });
+
+
+Route::get('/register', 'Auth\RegisterController@register');
+
+Route::post('/register', 'Auth\RegisterController@registerPost');
+
+
+
+
+
+Route::get('/testmail', function(){
+
+    $user = new \App\Models\User();
+    $user = $user->create(array(
+        'name' => 'test',
+        'email' => rand(0,5000),
+        'password' => '456654',
+    ));
+
+});

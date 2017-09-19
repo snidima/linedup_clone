@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "axios": "^0.16.2",
     "tingle.js": "^0.11.0"
   }
 }
