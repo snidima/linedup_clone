@@ -3,8 +3,8 @@ namespace App\Models\Observers;
 
 class UserObserver
 {
-    public function created( $model )
+    public function creating( $model )
     {
-        dd( $model );
+
     }
 }
