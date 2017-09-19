@@ -1,5 +1,5 @@
 import axios from 'axios';
-import $ from 'jQuery'
+import $ from 'jquery';
 
 
 
