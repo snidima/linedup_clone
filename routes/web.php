@@ -31,3 +31,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
     Route::get('/', 'UserController@index')->name('user.index');
 });
 
+
+
+
+
+
+
+
+
+Route::get('test-view', function(){
+    return view('test-view');
+});

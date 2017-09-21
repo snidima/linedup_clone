@@ -43,11 +43,7 @@ class ConfirmRegister extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-//                    ->line('The introduction to the notification.')
-//                    ->action('Notification Action', url('/'.$this->text))
-//                    ->line('Thank you for using our application!');
-                    ->view('email.confirm', [ 'url' => $this->url ]);
+        return (new MailMessage)->view('email.confirm', [ 'url' => $this->url, 'user' => $notifiable ]);
     }
 
     /**
