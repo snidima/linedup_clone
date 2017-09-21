@@ -59,7 +59,7 @@ class RegisterController extends Controller
         $user->activated = true;
         $user->save();
 
-        Auth::login($user);
+        Auth::login($user, true);
 
         return redirect( route('user.index') );
 

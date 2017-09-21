@@ -16,19 +16,31 @@ Route::get('/', function () {
 })->name('main');
 
 
-Route::get('/register', 'Auth\RegisterController@register');
-
-Route::get('/login', 'Auth\LoginController@index')->name('login');
 
 
 
-Route::post('/register', 'Auth\RegisterController@registerPost');
+Route::group(['middleware' => 'guest'], function(){
 
-Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
+
+    Route::get('/register', 'Auth\RegisterController@register');
+    Route::post('/register', 'Auth\RegisterController@registerPost')->name('register');
+
+    Route::get('/login', 'Auth\LoginController@index')->name('login');
+
+    Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
+
+});
+
+
+
+
+
 
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
+
     Route::get('/', 'UserController@index')->name('user.index');
+
 });
 
 
