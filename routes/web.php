@@ -13,24 +13,21 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('main');
 
 
 Route::get('/register', 'Auth\RegisterController@register');
 
+Route::get('/login', 'Auth\LoginController@index')->name('login');
+
+
+
 Route::post('/register', 'Auth\RegisterController@registerPost');
 
+Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
 
 
-
-
-Route::get('/testmail', function(){
-
-    $user = new \App\Models\User();
-    $user = $user->create(array(
-        'name' => 'test',
-        'email' => rand(0,5000),
-        'password' => '456654',
-    ));
-
+Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
+    Route::get('/', 'UserController@index')->name('user.index');
 });
+

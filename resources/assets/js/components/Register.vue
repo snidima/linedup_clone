@@ -1,9 +1,9 @@
 <template>
     <form @submit.prevent="submit">
-        <input placeholder="name"  v-model="inputs.name">
-        <input placeholder="email"  v-model="inputs.email">
-        <input type="password" placeholder="pass" v-model="inputs.password">
-        <input type="password" placeholder="pass" v-model="inputs.password_confirm">
+        <input placeholder="name"  v-model="inputs.name" value="name">
+        <input placeholder="email"  v-model="inputs.email" value="snidima@mail.ru">
+        <input type="password" placeholder="pass" v-model="inputs.password" value="123">
+        <input type="password" placeholder="pass" v-model="inputs.password_confirm" value="123">
         <input type="submit" value="save">
     </form>
 </template>
@@ -18,10 +18,10 @@
         data(){
             return{
                 inputs: {
-                    email: '',
-                    password: '',
-                    password_confirm: '',
-                    name: '',
+                    email: 'snidima@mail.ru',
+                    password: '123',
+                    password_confirm: '123',
+                    name: 'snidima',
                 }
             }
         },
@@ -37,9 +37,7 @@
             }
         },
 
-        mounted() {
-            console.log('Component mounted.')
-        },
+
 
         methods: {
             submit(){
