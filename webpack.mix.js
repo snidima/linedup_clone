@@ -10,24 +10,31 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
  | file for your application, as well as bundling up your JS files.
  |
  */
-mix.setPublicPath('public_html');
 
 
-mix.js('resources/assets/js/app.js', 'public_html/js/').version()
+
+mix
+
+    .setPublicPath('public_html')
+    .js('resources/assets/js/app.js', 'public_html/js/').sourceMaps()
    .sass('resources/assets/sass/app.sass', 'public_html/css',{
        indentedSyntax: true
-   }).sourceMaps().version()
-
+   }).sourceMaps()
     .browserSync({
-        proxy: 'http://video.local/'
-    });
+        proxy: 'video.local',
+        notify: false,
+        open: false,
+        files: [
+            '!node_modules', '!vendor', 'public_html/{*,**/*}', 'resources/views{*,**/*}.blade.php'
+        ]
+    })
+    .disableNotifications();
 
-mix.disableNotifications();
 
 mix.webpackConfig( {
     plugins: [
         new ImageminPlugin( {
-//            disable: process.env.NODE_ENV !== 'production', // Disable during development
+           disable: process.env.NODE_ENV !== 'production', // Disable during development
             pngquant: {
                 quality: '95-100',
             },

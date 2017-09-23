@@ -1,0 +1,109 @@
+.top
+  background: $black-1
+  padding: 5px 0
+  font-size: 12px
+  color: #fff
+  border-bottom: 1px $color-1 dashed
+  display: none
+.top-wrapper
+  +flex-center-space-between
+
+#main-logo
+  height: 45px
+  display: block
+  path:nth-last-of-type(1)
+    fill: $color-1
+  path:nth-last-of-type(2)
+    fill: $color-1
+
+
+.menu
+  background: $black-1
+  padding: 10px 0
+  color: white
+  overflow: hidden
+
+.menu-wrapper
+  +flex-stretch-space-between
+
+.menus-wrapper
+  display: flex
+  align-items: center
+
+.menus-items
+  padding-right: 35px
+.menu-user
+  padding-left: 10px
+
+
+.menus-items__item, .menu-user__item, .menus-items, .menu-user
+  display: inline-block
+
+.menu-user
+  height: 100%
+  display: flex
+  align-items: center
+  position: relative
+
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    width: 100vw
+    height: 100vh
+    top: -50vh
+    bottom: 0
+    background: $color-1
+    transform: skewX(-25deg)
+
+.menu-user-wrapper
+  z-index: 1
+  position: relative
+
+
+.menus-items__item
+  +nlt
+    margin-right: 15px
+  a
+    color: $color-1
+    text-decoration: none
+    &:hover
+      color: darken($color-1, 8%)
+
+
+.top-full-screen
+  display: flex
+  flex-direction: column
+  height: 100%
+
+.main-center
+  background-image: url('../../img/main-bg.jpg')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: cover
+  flex-grow: 1
+  display: flex
+  align-items: center
+  justify-content: center
+
+
+.menu-user__item
+  color: $white-1
+  text-decoration: none
+  transition: all 0.1s ease
+  .fa
+    margin-right: 7px
+  +nlt
+    margin-right: 15px
+  &:nth-of-type(2)
+    border: 2px solid $white-1
+    padding: 5px 20px
+    +br()
+    &:hover
+      background: $black-1
+      color: $white-1
+      border-color: $black-1
+  &:nth-of-type(1)
+    &:hover
+      color: $black-1

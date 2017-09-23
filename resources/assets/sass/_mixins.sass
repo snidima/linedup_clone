@@ -1,0 +1,17 @@
+=br( $br:3px )
+  border-radius: $br
+=nlt
+  &:not(:last-of-type)
+    @content
+=d( $color: red )
+  border: 1px solid $color
+
+=flex-center-space-between()
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+=flex-stretch-space-between()
+  display: flex
+  align-items: stretch
+  justify-content: space-between

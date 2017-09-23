@@ -1,31 +1,15 @@
-//@import "../../../node_modules/gridle/sass/grid"
-
-@import "../../../node_modules/animate.css/animate.min.css"
-
-.container
-  width: 1200px
-  margin: auto
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&amp;subset=cyrillic")
 
-@import "reset"
+@import "../../../node_modules/font-awesome/scss/font-awesome"
 
-$color-1: #c681fc
-$black-1: #131313
-$white-1: #fff
-
-=br( $br:3px )
-  border-radius: $br
-=nlt
-  &:not(:last-of-type)
-    @content
-=d( $color: red )
-  border: 1px solid $color
+@import "variables"
+@import "mixins"
 
 @import "index/section-1"
 @import "index/section-3"
 @import "index/section-price"
 @import "index/section-subscribe"
-
+@import "header"
 
 
 
@@ -34,12 +18,25 @@ $white-1: #fff
 
 *
   box-sizing: border-box
-  line-height: inherit
+  padding: 0
+  margin: 0
+
+html, body
+  width: 100%
+  height: 100%
 
 body
   font-size: 16px
   font-family: 'Open Sans', sans-serif
 
+
+
+.app
+  position: relative
+  height: 100%
+.container
+  width: 1200px
+  margin: auto
 
 
 .btn
@@ -55,14 +52,23 @@ body
   font-size: 1.1rem
   padding: 8px 15px
 .btn-type-1
+  transition: all 0.1s ease
   background: $color-1
   color: $white-1
+  &:hover
+    background: darken($color-1, 8%)
+    color: $white-1
 
 .btn-type-2
-  border: 2px solid $color-1
+  transition: all 0.1s ease
   color: $color-1
   box-sizing: border-box
   background: transparent
+  box-shadow: inset 0 0 0 2px $color-1
+  &:hover
+    background: $color-1
+    color: $white-1
+    box-shadow: inset 0 0 0 2px $color-1
 
 
 
@@ -99,52 +105,6 @@ body
   
 .color-1
   color: $color-1
-
-
-.menu-container
-  &.tingle-modal--overflow
-    padding-top: 0
-    overflow: hidden
-    background: none
-  .tingle-modal-box
-    width: 100vw
-    height: 100vh
-    border-radius: 0
-  .tingle-modal__close
-    outline: none
-    font-size: 4rem
-    color: $white-1
-    &:hover
-      color: $color-1
-  .tingle-modal-box
-    background: rgba(0,0,0,.98)
-  .tingle-modal-box__content
-    height: 100%
-    width: 100%
-
-.menu-wrapper
-  width: 100%
-  height: 100%
-  display: flex
-  align-items: center
-  justify-content: center
-  color: #fff
-
-.menu
-  display: flex
-.menu__item
-  width: 100px
-  height: 100px
-  background: $white-1
-  color: $black-1
-  cursor: pointer
-  +br()
-  display: flex
-  align-items: center
-  justify-content: center
-  text-align: center
-  +nlt
-    margin-right: 20px
 
 
 .container-mini

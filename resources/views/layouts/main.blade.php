@@ -10,9 +10,20 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-    <div id="app">
-        @yield('content')
+
+    <div id="app" class="app">
+        <div class="top-full-screen">
+            @include('partials/header')
+            <section class="main-center">
+                @include('index/section-1')
+            </section>
+        </div>
+
+
+        {{--@yield('content')--}}
+        @include('partials/footer')
     </div>
+
     <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
