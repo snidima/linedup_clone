@@ -1,0 +1,104 @@
+.form_login
+  width: 500px
+  background: rgba($black-1, .8)
+  padding: 30px
+  +br()
+
+.form__title
+  text-align: center
+  text-transform: uppercase
+  color: $white-1
+  font-size: 2rem
+  margin-bottom: 30px
+
+.form-table__row
+  display: flex
+  align-items: center
+  +nlt
+    margin-bottom: 25px
+
+.form-table__col_label
+  margin-right: 20px
+  width: 70px
+  label
+    font-size: 1.1rem
+    color: $white-1
+    cursor: pointer
+.form-table__col_input
+  flex-grow: 1
+
+
+
+input[type="text"],
+input[type="password"]
+  padding: 10px
+  background: #fff
+  font-size: 1rem
+  +br()
+  display: block
+  width: 100%
+  border: 2px solid transparent
+  outline: none
+  color: $color-1
+  &:focus
+    border: 2px solid $color-1
+    color: $black-1
+
+.input-error
+  position: relative
+  input[type="text"]
+    border: 2px solid red
+
+.error-text
+  position: absolute
+  right: 0
+  font-size: 10px
+  color: red
+
+.form-table__col_input:not(.input-error) .error-text
+  display: none
+
+.form-submit-block
+  +flex-center-space-between
+  
+
+input[type="checkbox"] + label
+  display: flex
+  align-items: center
+  position: relative
+  color: $white-1
+  font-size: .9rem
+  cursor: pointer
+input[type="checkbox"]:not(:checked) + label:before
+  content: "\f10c"
+  display: block
+  width:  15px
+  height: 15px
+  +br()
+  margin-right: 10px
+  font: normal normal normal 14px/1 FontAwesome
+input[type="checkbox"]
+  display: none
+  &:checked + label:before
+    content: "\f111"
+    display: block
+    width:  15px
+    height: 15px
+    +br()
+    margin-right: 10px
+    font: normal normal normal 14px/1 FontAwesome
+    color: $color-1
+  &:checked + label
+    color: $color-1
+.form-under-submit-block
+  display: flex
+  justify-content: center
+.form-under-submit-block__item
+  margin-top: 15px
+  a
+    color: $color-1
+    font-size: .9rem
+    &:hover
+      text-decoration: none
+  +nlt
+    margin-right: 30px

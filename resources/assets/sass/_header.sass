@@ -11,10 +11,18 @@
 #main-logo
   height: 45px
   display: block
+  transition: all 5s ease
   path:nth-last-of-type(1)
     fill: $color-1
+    transition: all 3s ease
   path:nth-last-of-type(2)
     fill: $color-1
+    transition: all 3s ease
+  &:hover
+    path:nth-last-of-type(1)
+      fill: #fff
+    path:nth-last-of-type(2)
+      fill: #fff
 
 
 .menu

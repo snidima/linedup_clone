@@ -1,35 +1,14 @@
 @extends('layouts/main')
 @section('title','Главная')
 
-@section('content')
+@section('full-screen-block')
     @include('index/section-1')
+@endsection
+
+@section('content')
     @include('index/section-2')
     @include('index/section-3')
     @include('index/section-4')
     @include('index/section-5')
     @include('index/section-6')
-
-
-    <div id="menu-content" style="display: none;">
-        <div class="menu-wrapper">
-            <div class="menu">
-                <a href="#section-3" class="menu__item">Главная</a>
-                <a href="#" class="menu__item">Для кого этот курс</a>
-                <a href="#" class="menu__item">Цены</a>
-                <a href="#" class="menu__item menu__item_user">Цены</a>
-            </div>
-        </div>
-    </div>
-
-    {{--<div class="menu2" style="display: none;">--}}
-        {{--<div class="menu-wrapper">--}}
-            {{--<div class="menu">--}}
-                {{--<a href="#section-3" class="menu__item">Главная</a>--}}
-                {{--<a href="#" class="menu__item">Для кого этот курс</a>--}}
-                {{--<a href="#" class="menu__item">Цены</a>--}}
-                {{--<a href="#" class="menu__item menu__item_user">Цены</a>--}}
-            {{--</div>--}}
-            {{--<div id="rjnownge">qwqwgf</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 @endsection

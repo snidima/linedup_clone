@@ -13,7 +13,7 @@
         <div class="container">
             <div class="menu-wrapper">
                 <div class="menu__logo">
-                    <svg viewBox="0 0 336.2 204.5" id="main-logo">
+                    <a href="{{route('main')}}"><svg viewBox="0 0 336.2 204.5" id="main-logo">
                         <path d="M253,204.5c1-5.2,2.1-10.3,3.1-15.5c3.2-16.2,6.4-32.5,9.7-48.7c0-0.1,0.1-0.1,0.2-0.3c3.9,0,7.9,0,12,0
 	c-0.1,0.7-0.2,1.4-0.3,2.1c1.5-0.7,3-1.5,4.4-2c4.6-1.6,8.9-0.3,12,3.5c2.9,3.6,4.1,7.9,4.4,12.5c0.4,6.7-1,13-4.4,18.9
 	c-2.5,4.4-6.1,7.4-11.2,8.2c-4.3,0.7-8.3-0.5-12-2.8c-0.3-0.2-0.6-0.4-1-0.7c-1.6,8.3-3.2,16.6-4.8,24.8
@@ -64,7 +64,7 @@
 	C309.7,187.5,309.8,186,309.9,184.4z M75.4,128.5c0-3.8-3-6.8-6.7-6.8c-3.9,0-6.9,2.9-7,6.8c0,3.9,2.7,6.7,6.6,6.7
 	C72.3,135.2,75.4,132.3,75.4,128.5z M123.5,108.3c0.2,0.5,0.3,0.8,0.4,1.2c22.5-5.3,44.8-10.5,67.3-15.8c-1.7,8.3-3.4,16.3-5,24.4
 	c0.5,0.1,0.9,0.2,1.5,0.3c1.8-8.8,3.7-17.5,5.5-26.5C169.9,97.4,146.8,102.8,123.5,108.3z"/>
-                    </svg>
+                    </svg></a>
                 </div>
                 <div class="menu__menus menus-wrapper">
                     <div class="menus-wrapper__items menus-items">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="menus-wrapper__user menu-user">
                         <div class="menu-user-wrapper">
-                            <a href="#" class="menu-user__item"><i class="fa fa-sign-in"></i>Войти</a>
+                            <a href="{{route('login')}}" class="menu-user__item"><i class="fa fa-sign-in"></i>Войти</a>
                             <a href="#" class="menu-user__item"><i class="fa fa-unlock" ></i>Регистрация</a>
                         </div>
                     </div>

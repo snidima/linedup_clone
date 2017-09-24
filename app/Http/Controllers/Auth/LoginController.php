@@ -9,6 +9,6 @@ class LoginController extends Controller
 
     public function index()
     {
-        dd('need to login');
+        return view('auth.login');
     }
 }

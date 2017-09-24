@@ -15,12 +15,10 @@
         <div class="top-full-screen">
             @include('partials/header')
             <section class="main-center">
-                @include('index/section-1')
+                @yield('full-screen-block')
             </section>
         </div>
-
-
-        {{--@yield('content')--}}
+        @yield('content')
         @include('partials/footer')
     </div>
 
