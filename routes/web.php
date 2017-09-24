@@ -26,6 +26,7 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/register', 'Auth\RegisterController@registerPost')->name('register');
 
     Route::get('/login', 'Auth\LoginController@index')->name('login');
+    Route::post('/login', 'Auth\LoginController@loginPost');
 
     Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
 
