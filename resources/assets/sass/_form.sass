@@ -2,6 +2,7 @@
   width: 500px
   background: rgba($black-1, .8)
   padding: 30px
+  position: relative
   +br()
 
 .form__title
@@ -46,8 +47,8 @@ input[type="password"]
 
 .input-error
   position: relative
-  input[type="text"]
-    border: 2px solid red
+  input
+    border: 2px solid red !important
 
 .error-text
   position: absolute
@@ -102,3 +103,8 @@ input[type="checkbox"]
       text-decoration: none
   +nlt
     margin-right: 30px
+
+.commonError
+  position: absolute
+  top: 0
+  color: red

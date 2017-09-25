@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -18,10 +19,16 @@ class LoginController extends Controller
     {
 
         $validator = Validator::make($request->all(),[
-            'email' => 'required|max:255',
-            'password' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required|max:100|min:3',
         ])->validate();
 
-        dd( $request->all() );
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'activated' => true], $request->input('remember'))) {
+            return redirect()->intended('user.main');
+        } else{
+            return response()->json([
+                'commonError' => 'Не верные данные'
+            ], 401);
+        }
     }
 }

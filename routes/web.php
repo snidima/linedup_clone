@@ -40,7 +40,7 @@ Route::group(['middleware' => 'guest'], function(){
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
-    Route::get('/', 'UserController@index')->name('user.index');
+    Route::get('/', 'UserController@index')->name('user.main');
 
 });
 
