@@ -76,8 +76,13 @@
                     </div>
                     <div class="menus-wrapper__user menu-user">
                         <div class="menu-user-wrapper">
-                            <a href="{{route('login')}}" class="menu-user__item"><i class="fa fa-sign-in"></i>Войти</a>
-                            <a href="#" class="menu-user__item"><i class="fa fa-unlock" ></i>Регистрация</a>
+                            @if( !\Illuminate\Support\Facades\Auth::check() )
+                                <a href="{{route('login')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-in"></i>Войти</a>
+                                <a href="{{route('register')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-unlock" ></i>Регистрация</a>
+                            @else
+                                <a href="{{route('user.main')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-user"></i>Личный кабинет</a>
+                                <a href="{{route('user.quit')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-out" ></i>Выйти</a>
+                            @endif
                         </div>
                     </div>
                 </div>

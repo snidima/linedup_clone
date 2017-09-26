@@ -15,23 +15,20 @@ Route::get('/', function () {
     return view('index');
 })->name('main');
 
-
-
-
-
 Route::group(['middleware' => 'guest'], function(){
-
-
+    //USER REGISTER
     Route::get('/register', 'Auth\RegisterController@register');
     Route::post('/register', 'Auth\RegisterController@registerPost')->name('register');
 
+    //USER LOGIN
     Route::get('/login', 'Auth\LoginController@index')->name('login');
     Route::post('/login', 'Auth\LoginController@loginPost');
 
+    //USER CONFIRM
     Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
-
 });
-
+//USER LOGOUT
+Route::get('/user-quit', 'Auth\LoginController@quit')->name('user.quit');
 
 
 

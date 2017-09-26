@@ -98,8 +98,8 @@
                     url: '/login',
                     data: this.inputs
                 })
-                    .then(( r )=>{
-                       alert('ok');
+                    .then(( res )=>{
+                        window.location.replace(res.data.redirect);
                     })
                     .catch((res) => {
                         let self = this;

@@ -12,6 +12,7 @@ class LoginController extends Controller
 
     public function index()
     {
+
         return view('auth.login');
     }
 
@@ -24,11 +25,19 @@ class LoginController extends Controller
         ])->validate();
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'activated' => true], $request->input('remember'))) {
-            return redirect()->intended('user.main');
+            return response()->json([
+                'redirect' => route('user.main')
+            ]);
         } else{
             return response()->json([
                 'commonError' => 'Не верные данные'
             ], 401);
         }
+    }
+
+    public function quit()
+    {
+        Auth::logout();
+        return redirect(route('main'));
     }
 }

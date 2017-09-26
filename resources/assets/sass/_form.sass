@@ -20,11 +20,19 @@
 
 .form-table__col_label
   margin-right: 20px
-  width: 70px
+  width:     80px
+  min-width: 80px
   label
-    font-size: 1.1rem
+    font-size: 1rem
     color: $white-1
     cursor: pointer
+    &.required
+      &:after
+        content: ' *'
+        display: inline
+        font-size: .7rem
+        vertical-align: top
+        color: $color-1
 .form-table__col_input
   flex-grow: 1
 
@@ -61,7 +69,8 @@ input[type="password"]
 
 .form-submit-block
   +flex-center-space-between
-  
+.form-submit-block_right
+  justify-content: flex-end
 
 input[type="checkbox"] + label
   display: flex
@@ -70,27 +79,22 @@ input[type="checkbox"] + label
   color: $white-1
   font-size: .9rem
   cursor: pointer
+
 input[type="checkbox"]:not(:checked) + label:before
   content: "\f10c"
-  display: block
-  width:  15px
-  height: 15px
-  +br()
   margin-right: 10px
+  color: $color-1
   font: normal normal normal 14px/1 FontAwesome
 input[type="checkbox"]
   display: none
   &:checked + label:before
-    content: "\f111"
-    display: block
-    width:  15px
-    height: 15px
-    +br()
     margin-right: 10px
+    content: "\f111"
     font: normal normal normal 14px/1 FontAwesome
     color: $color-1
-  &:checked + label
-    color: $color-1
+  //&:checked + label
+  //  color: $color-1
+
 .form-under-submit-block
   display: flex
   justify-content: center
@@ -108,3 +112,13 @@ input[type="checkbox"]
   position: absolute
   top: 0
   color: red
+
+.agree-text
+  margin-top: 15px
+  font-size: .75rem
+  color: lighten($black-1, 40%)
+  display: block
+  text-align: right
+  a
+    color: lighten($black-1, 40%)
+    opacity: .6

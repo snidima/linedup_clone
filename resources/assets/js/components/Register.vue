@@ -1,38 +1,93 @@
 <template>
-    <form @submit.prevent="submit">
-        <input placeholder="name"  v-model="inputs.name" value="name">
-        <input placeholder="email"  v-model="inputs.email" value="snidima@mail.ru">
-        <input type="password" placeholder="pass" v-model="inputs.password" value="123">
-        <input type="password" placeholder="pass" v-model="inputs.password_confirm" value="123">
-        <input type="submit" value="save">
+    <form @submit.prevent="submit" class="form form_login">
+        <div class="form__title">Регистрация</div>
+        <div class="commonError" v-if="commonError">{{commonError}}</div>
+        <div class="form__table form-table">
+            <div class="form-table__row">
+                <div class="form-table__col form-table__col_label">
+                    <label for="name" class="required">Имя:</label>
+                </div>
+                <div class="form-table__col form-table__col_input" v-bind:class="{ 'input-error': showErrorClass.name }">
+                    <input type="text" id="name" placeholder="Имя.." v-model="rawInputs.name.value">
+                    <div class="error-text" v-if="showErrorClass">{{rawInputs.name.error}}</div>
+                </div>
+            </div>
+            <div class="form-table__row">
+                <div class="form-table__col form-table__col_label">
+                    <label for="email" class="required">Email:</label>
+                </div>
+                <div class="form-table__col form-table__col_input" v-bind:class="{ 'input-error': showErrorClass.email }">
+                    <input type="text" id="email" placeholder="Email.." v-model="rawInputs.email.value">
+                    <div class="error-text" v-if="showErrorClass">{{rawInputs.email.error}}</div>
+                </div>
+            </div>
+            <div class="form-table__row">
+                <div class="form-table__col form-table__col_label">
+                    <label for="password" class="required">Пароль:</label>
+                </div>
+                <div class="form-table__col form-table__col_input" v-bind:class="{ 'input-error': showErrorClass.password }">
+                    <input type="password" id="password" placeholder="Пароль.." v-model="rawInputs.password.value">
+                    <div class="error-text" v-if="showErrorClass.password">{{rawInputs.password.error}}</div>
+                </div>
+            </div>
+            <div class="form-table__row">
+                <div class="form-table__col_label"></div>
+                <div class="form-table__col_input">
+                    <div class="form-submit-block form-submit-block_right">
+                        <div class="form-submit-block__item">
+                            <button class="btn btn-normal btn-type-1"><i class="fa fa-sign-in"></i>Зарегистрироваться</button>
+                        </div>
+                    </div>
+                    <div class="form-under-submit-block agree-text">
+                        Нажимая кнопку «Зарегистрироваться», вы принимаете условия <a href="#">Пользовательского соглашения</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </template>
 
 <script>
     import api from '../api';
-
-
+    import _ from 'lodash';
 
     export default {
 
         data(){
             return{
-                inputs: {
-                    email: 'snidima@mail.ru',
-                    password: '123',
-                    password_confirm: '123',
-                    name: 'snidima',
-                }
+                rawInputs:{
+                    email: {
+                        error: false,
+                        value: ''
+                    },
+                    password: {
+                        error: false,
+                        value: ''
+                    },
+                    name: {
+                        error: false,
+                        value: ''
+                    },
+                },
+                lastErrorValues: {
+                    email:    [],
+                    password: [],
+                    name: [],
+                },
+                commonError: false
             }
         },
 
         computed:{
             inputs(){
+                return _.mapValues(this.rawInputs, (o) => o.value);
+            },
+
+            showErrorClass(){
                 return {
-                    email: this.inputs.email,
-                    password: this.inputs.password,
-                    password_confirm: this.inputs.password_confirm,
-                    name: this.inputs.name,
+                    email: _.includes(this.lastErrorValues.email, this.rawInputs.email.value) && this.rawInputs.email.error,
+                    password: _.includes(this.lastErrorValues.password, this.rawInputs.password.value) && this.rawInputs.password.error,
+                    name: _.includes(this.lastErrorValues.name, this.rawInputs.name.value) && this.rawInputs.name.error,
                 }
             }
         },
@@ -40,19 +95,37 @@
 
 
         methods: {
-            submit(){
 
+            submit(){
                 api({
                     method: 'post',
                     url: '/register',
                     data: this.inputs
                 })
                     .then(( r )=>{
-                        console.log( r.data );
+                        alert('ok');
+                    })
+                    .catch((res) => {
+                        let self = this;
+
+                        if( res.response.data.commonError ){
+                            this.commonError = res.response.data.commonError;
+                            return;
+                        }
+                        this.commonError = false;
+                        _.forEach(this.rawInputs, function(el, key){
+                            console.log(key);
+                            if( res.response.data.errors[key] ){
+                                el.error = res.response.data.errors[key][0];
+                                if( !_.includes(self.lastErrorValues[key], self.rawInputs[key].value) ) self.lastErrorValues[key].push(self.rawInputs[key].value);
+//
+                            } else {
+                                el.error = false;
+                            }
+                        });
+
                     });
-
-            }
-
+            },
         }
     }
 </script>

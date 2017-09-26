@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Providers\JWT\JWTInterface;
+use Illuminate\Support\Facades\Validator;
 
 
 class RegisterController extends Controller
@@ -15,11 +16,19 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        return view('register');
+        return view('auth.register');
     }
 
     public function registerPost( Request $request )
     {
+
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email|unique:users',
+            'password' => 'required|max:100|min:3',
+            'name' => 'required|max:100|min:3'
+        ])->validate();
+        
+        
         $user = new User();
         $user = $user->create(array(
             'name' => $request->input('name'),
@@ -27,7 +36,7 @@ class RegisterController extends Controller
             'password' => $request->input('password'),
         ));
 
-        return $request->all();
+        return response()->json('success');
     }
 
     public function confirm( $token, JWTInterface $jwt )
