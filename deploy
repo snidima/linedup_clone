@@ -1,5 +1,5 @@
 #!/bin/bash
-
+php7.0 artisan up
 php7.0 vendor/bin/phpunit > /dev/null
 if [ $? -ne 0 ]; 
 then
