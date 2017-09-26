@@ -12,6 +12,11 @@ else
 			echo "Не могу перейти на ветку master_tmp"
 			exit
 		else
-			echo "Мы в ветке master_tmp"
+			php7.0 artisan down
+			git pull atlas master
+			php7.0 ../.local/bin/composer install
+			npm install
+			npm run prod
+			php7.0 artisan up
 		fi
 fi
