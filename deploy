@@ -1,0 +1,17 @@
+#!/bin/bash
+
+php7.0 vendor/bin/phpunit > /dev/null
+if [ $? -ne 0 ]; 
+then
+	echo "failed test"
+	exit
+else
+		git checkout master_tmp
+		if [ $? -ne 0 ]; 
+		then
+			echo "Не могу перейти на ветку master_tmp"
+			exit
+		else
+			echo "Мы в ветке master_tmp"
+		fi
+fi
