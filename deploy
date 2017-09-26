@@ -17,6 +17,20 @@ else
 			php7.0 ../.local/bin/composer install
 			npm install
 			npm run prod
-			php7.0 artisan up
+
+			if [ $? -ne 0 ];
+			then
+				git checkout master
+				php7.0 ../.local/bin/composer install
+				npm install
+				npm run prod
+				php7.0 artisan up
+				echo "НЕ УДАЛОСЬ ЗАПУСТИТЬ!!!"
+			else
+				git checkout master
+				git merge master_tmp
+				php7.0 artisan up
+				echo "УСПЕШНЫЙ DEPLOY"
+			fi
 		fi
 fi
