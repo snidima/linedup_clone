@@ -66,9 +66,7 @@ class RegisterController extends Controller
 
         Auth::login($user, true);
 
-        return redirect( route('user.index') );
-
-//        dd( $r );
+        return redirect( route('user.main') );
 
     }
 
