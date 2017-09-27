@@ -1,4 +1,4 @@
-import $ from 'jqueryfff';
+import $ from 'jquery';
 
 
 import Register from './components/Register.vue';
