@@ -1,4 +1,4 @@
-import $ from 'jquery';
+import $ from 'jqueryfff';
 
 
 import Register from './components/Register.vue';
@@ -6,7 +6,7 @@ import Login from './components/Login.vue';
 import Vue from 'vue';
 
 
-Vue.component( 'registerr', Register );
+Vue.component( 'register', Register );
 Vue.component( 'login', Login );
 
 if( $('#app').length ){
