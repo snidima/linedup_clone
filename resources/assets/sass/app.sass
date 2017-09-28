@@ -20,6 +20,7 @@
   box-sizing: border-box
   padding: 0
   margin: 0
+  outline: none
 
 html, body
   width: 100%
@@ -117,3 +118,22 @@ a
 .container-mini
   width: 600px
   margin: auto
+
+
+.alertify
+  background-color: rgba(0,0,0,.6)
+.alertify button
+  outline: none
+  border: none
+
+.alertify .dialog > *
+  +br()
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):active, .alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):hover, .alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):active, .alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button):hover
+  background: $color-1
+  color: $white-1
+.alertify .alert nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button), .alertify .dialog nav button:not(.btn):not(.pure-button):not(.md-button):not(.mdl-button)
+  padding: 0 15px
+  +br()
+  background: lighten($black-1, 85%)
+  transition: all 0.1s ease
+  border: none

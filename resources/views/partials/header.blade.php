@@ -13,7 +13,8 @@
         <div class="container">
             <div class="menu-wrapper">
                 <div class="menu__logo">
-                    <a href="{{route('main')}}"><svg viewBox="0 0 336.2 204.5" id="main-logo">
+                    <a href="{{route('main')}}">
+                        <svg viewBox="0 0 336.2 204.5" id="main-logo">
                         <path d="M253,204.5c1-5.2,2.1-10.3,3.1-15.5c3.2-16.2,6.4-32.5,9.7-48.7c0-0.1,0.1-0.1,0.2-0.3c3.9,0,7.9,0,12,0
 	c-0.1,0.7-0.2,1.4-0.3,2.1c1.5-0.7,3-1.5,4.4-2c4.6-1.6,8.9-0.3,12,3.5c2.9,3.6,4.1,7.9,4.4,12.5c0.4,6.7-1,13-4.4,18.9
 	c-2.5,4.4-6.1,7.4-11.2,8.2c-4.3,0.7-8.3-0.5-12-2.8c-0.3-0.2-0.6-0.4-1-0.7c-1.6,8.3-3.2,16.6-4.8,24.8
@@ -77,8 +78,8 @@
                     <div class="menus-wrapper__user menu-user">
                         <div class="menu-user-wrapper">
                             @if( !\Illuminate\Support\Facades\Auth::check() )
-                                <a href="{{route('login')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-in"></i>Войти</a>
-                                <a href="{{route('register')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-unlock" ></i>Регистрация</a>
+                                <a href="{{route('user.login')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-in"></i>Войти</a>
+                                <a href="{{route('user.register')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-unlock" ></i>Регистрация</a>
                             @else
                                 <a href="{{route('user.main')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-user"></i>Личный кабинет</a>
                                 <a href="{{route('user.quit')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-out" ></i>Выйти</a>

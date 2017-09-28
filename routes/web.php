@@ -18,10 +18,10 @@ Route::get('/', function () {
 Route::group(['middleware' => 'guest'], function(){
     //USER REGISTER
     Route::get('/register', 'Auth\RegisterController@register');
-    Route::post('/register', 'Auth\RegisterController@registerPost')->name('register');
+    Route::post('/register', 'Auth\RegisterController@registerPost')->name('user.register');
 
     //USER LOGIN
-    Route::get('/login', 'Auth\LoginController@index')->name('login');
+    Route::get('/login', 'Auth\LoginController@index')->name('user.login');
     Route::post('/login', 'Auth\LoginController@loginPost');
 
     //USER CONFIRM

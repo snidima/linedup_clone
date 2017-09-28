@@ -56,13 +56,14 @@ input[type="password"]
 .input-error
   position: relative
   input
-    border: 2px solid red !important
+    border: 2px solid $color-error
+    color: $color-error
 
 .error-text
   position: absolute
   right: 0
-  font-size: 10px
-  color: red
+  font-size: .65rem
+  color: $color-error
 
 .form-table__col_input:not(.input-error) .error-text
   display: none
@@ -108,10 +109,14 @@ input[type="checkbox"]
   +nlt
     margin-right: 30px
 
-.commonError
-  position: absolute
-  top: 0
-  color: red
+.form__common-error
+  position: relative
+  top: -30px
+  color: $color-error
+  text-align: center
+  height: 0
+  font-size: .75rem
+
 
 .agree-text
   margin-top: 15px
@@ -122,3 +127,67 @@ input[type="checkbox"]
   a
     color: lighten($black-1, 40%)
     opacity: .6
+
+
+
+
+
+
+
+
+
+
+.form.pending
+  position: relative
+  transition: all 0.1s ease
+  & > *:not(.pending-block)
+    opacity: 0.1
+.pending-block
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 5
+
+    
+.cssload-speeding-wheel
+  width: 49px
+  height: 49px
+  margin: 0 auto
+  border: 3px solid $color-1
+  border-radius: 50%
+  border-left-color: transparent
+  border-right-color: transparent
+  animation: cssload-spin 575ms infinite linear
+
+@keyframes cssload-spin
+  100%
+    transform: rotate(360deg)
+
+
+@-o-keyframes cssload-spin
+  100%
+    -o-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+
+@-ms-keyframes cssload-spin
+  100%
+    -ms-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+
+@-webkit-keyframes cssload-spin
+  100%
+    -webkit-transform: rotate(360deg)
+    transform: rotate(360deg)
+
+
+@-moz-keyframes cssload-spin
+  100%
+    -moz-transform: rotate(360deg)
+    transform: rotate(360deg)

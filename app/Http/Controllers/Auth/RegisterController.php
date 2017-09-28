@@ -36,7 +36,9 @@ class RegisterController extends Controller
             'password' => $request->input('password'),
         ));
 
-        return response()->json('success');
+        return response()->json([
+            'redirect' => route('user.login')
+        ]);
     }
 
     public function confirm( $token, JWTInterface $jwt )

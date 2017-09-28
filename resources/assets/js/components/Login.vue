@@ -1,7 +1,7 @@
 <template>
-    <form @submit.prevent="submit" class="form form_login">
+    <form @submit.prevent="submit" class="form form_login" v-bind:class="{ 'pending': pending }">
         <div class="form__title">Войти</div>
-        <div class="commonError" v-if="commonError">{{commonError}}</div>
+        <div class="form__common-error" v-if="commonError">{{commonError}}</div>
         <div class="form__table form-table">
             <div class="form-table__row">
                 <div class="form-table__col form-table__col_label">
@@ -40,6 +40,9 @@
                 </div>
             </div>
         </div>
+        <div class="pending-block" v-if="pending">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
     </form>
 </template>
 
@@ -70,7 +73,8 @@
                     password: [],
                     remember: [],
                 },
-                commonError: false
+                commonError: false,
+                pending: false
             }
         },
 
@@ -93,17 +97,19 @@
         methods: {
 
             submit(){
+                this.pending = true;
                 api({
                     method: 'post',
                     url: '/login',
                     data: this.inputs
                 })
                     .then(( res )=>{
+                        this.pending = false;
                         window.location.replace(res.data.redirect);
                     })
                     .catch((res) => {
+                        this.pending = false;
                         let self = this;
-
                         if( res.response.data.commonError ){
                             this.commonError = res.response.data.commonError;
                             return;
