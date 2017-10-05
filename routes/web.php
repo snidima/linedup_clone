@@ -49,6 +49,4 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-Route::get('test-view', function(){
-    return view('test-view');
-});
+Route::get('test', 'TestController@index');

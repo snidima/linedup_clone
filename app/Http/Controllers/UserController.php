@@ -9,6 +9,6 @@ class UserController extends Controller
 
     public function index()
     {
-        dd('hello', Auth::user()->name);
+        return view('user.main');
     }
 }
