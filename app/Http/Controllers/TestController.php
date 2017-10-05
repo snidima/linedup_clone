@@ -2,6 +2,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Course;
+use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Faker;
@@ -11,8 +14,12 @@ class TestController extends Controller
 
     public function index()
     {
-        $faker = Faker\Factory::create();
 
-        dd(App::environment());
+        $course = Course::find(1);
+
+        dd( $course->lessons->first()->info );
+
+//        dd( $course, $lessons );
+
     }
 }

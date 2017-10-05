@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'password' => '555666',
         ]);
 
-        for ($i = 1; $i <= 500; $i++){
+        for ($i = 1; $i <= 10; $i++){
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
