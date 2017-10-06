@@ -17,7 +17,7 @@ class TestController extends Controller
 
         $course = Course::find(1);
 
-        dd( $course->lessons->first()->info );
+        dd( $course );
 
 //        dd( $course, $lessons );
 

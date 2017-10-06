@@ -16,7 +16,7 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 mix
 
     .setPublicPath('public_html')
-    .js('resources/assets/js/app.js', 'public_html/js/').version().sourceMaps()
+    .js(['resources/assets/js/app.js', 'resources/assets/js/admin.js'], 'public_html/js/').version().sourceMaps()
    .sass('resources/assets/sass/app.sass', 'public_html/css',{
        indentedSyntax: true
    }).version().sourceMaps()
