@@ -52,4 +52,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 Route::get('test', 'TestController@index');
 Route::get('admin', 'Admin\MainController@index');
 Route::post('admin/lessons', 'Admin\LessonController@index');
-Route::get('admin/lessons', 'Admin\LessonController@index');
+Route::get('admin/lesson/{id}', 'Admin\LessonController@lesson');
+Route::post('admin/lesson/{id}', 'Admin\LessonController@lessonSave');

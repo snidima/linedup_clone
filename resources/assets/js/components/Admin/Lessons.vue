@@ -1,99 +1,85 @@
 <template>
-    <md-tabs>
-        <md-tab id="movies" md-label="Уроки">
 
+   <div>
 
-            <div class="container">
+       <md-table-card>
+           <md-toolbar>
+               <h1 class="md-title">Уроки</h1>
+               <md-button class="md-icon-button">
+                   <md-icon>filter_list</md-icon>
+               </md-button>
 
+               <md-button class="md-icon-button">
+                   <md-icon>search</md-icon>
+               </md-button>
+           </md-toolbar>
 
-                <md-table-card>
-                    <md-toolbar>
-                        <h1 class="md-title">Уроки</h1>
-                        <md-button class="md-icon-button">
-                            <md-icon>filter_list</md-icon>
-                        </md-button>
+           <md-table  @select="onSelect" @sort="onSort">
+               <md-table-header>
+                   <md-table-row>
+                       <md-table-head >Активность</md-table-head>
+                       <md-table-head >Позиция</md-table-head>
+                       <md-table-head>Название урока</md-table-head>
+                       <md-table-head>Описание урока</md-table-head>
+                       <md-table-head ></md-table-head>
+                   </md-table-row>
+               </md-table-header>
 
-                        <md-button class="md-icon-button">
-                            <md-icon>search</md-icon>
-                        </md-button>
-                    </md-toolbar>
+               <md-table-body>
+                   <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row"  md-selection>
+                       <md-table-cell>
+                           <md-switch v-model="row.active" value="false"></md-switch>
+                       </md-table-cell>
+                       <md-table-cell>
+                           {{ row.sort }}
+                       </md-table-cell>
+                       <md-table-cell>
+                           {{ row.title }}
+                       </md-table-cell>
+                       <md-table-cell>
+                           {{ row.description }}
+                       </md-table-cell>
+                       <md-table-cell>
+                           <md-button class="md-icon-button" @click="$router.push({name: 'lesson', params: {id: row.id}})">
+                               <md-icon>edit</md-icon>
+                           </md-button>
+                       </md-table-cell>
 
-                    <md-table md-sort="dessert" md-sort-type="desc" @select="onSelect" @sort="onSort">
-                        <md-table-header>
-                            <md-table-row>
-                                <md-table-head md-sort-by="dessert">Активность</md-table-head>
-                                <md-table-head md-sort-by="dessert">Позиция</md-table-head>
-                                <md-table-head md-sort-by="calories" md-numeric>Название урока</md-table-head>
-                                <md-table-head md-sort-by="fat" >Описание урока</md-table-head>
-                            </md-table-row>
-                        </md-table-header>
+                   </md-table-row>
+               </md-table-body>
+           </md-table>
 
-                        <md-table-body>
-                            <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row"  md-selection>
-                                <!--<md-table-cell v-for="(column, columnIndex) in row" :key="columnIndex" :md-numeric="columnIndex !== 'dessert' && columnIndex !== 'comment'" v-if="columnIndex !== 'type'">-->
-                                    <!--{{ column }}-->
-                                <!--</md-table-cell>-->
-                                <md-table-cell>
-                                    <md-switch v-model="row.active" id="my-test0" name="my-test0"></md-switch>
-                                </md-table-cell>
-                                <md-table-cell>
-                                    {{ row.sort }}
-                                </md-table-cell>
-                                <md-table-cell>
-                                    {{ row.title }}
-                                </md-table-cell>
-                                <md-table-cell>
-                                    {{ row.description }}
-                                </md-table-cell>
+           <md-table-pagination
+                   :md-size="pagination.onPage"
+                   :md-total="pagination.total"
+                   :md-page="pagination.current"
+                   md-label="Всего"
+                   md-separator="из"
+                   :md-page-options="[3, 10, 25, 50]"
+                   @pagination="onPagination"></md-table-pagination>
 
-                            </md-table-row>
-                        </md-table-body>
-                    </md-table>
+       </md-table-card>
+   </div>
 
-                    <md-table-pagination
-                            :md-size="pagination.onPage"
-                            :md-total="pagination.total"
-                            :md-page="pagination.current"
-                            md-label="Всего"
-                            md-separator="из"
-                            :md-page-options="[3, 10, 25, 50]"
-                            @pagination="onPagination"></md-table-pagination>
-
-                </md-table-card>
-
-            </div>
-
-
-
-
-
-        </md-tab>
-    </md-tabs>
 </template>
 
 <script>
     import api from '../../api';
     import _ from 'lodash';
 
+
     export default {
 
         data(){
             return{
-                lessons: [
-                    {
-                        dessert: 'Frozen yogurt',
-                        type: 'ice_cream',
-                        calories: '159',
-                        fat: '6.0',
-                        comment: 'Icy'
-                    },
-                ],
-
+                lessons: [],
                 pagination:{
-                    onPage: 3,
+                    onPage: 10,
                     current: 1,
                     total: '?'
-                }
+                },
+                editing: {},
+                qwe: false
             }
         },
 
@@ -120,10 +106,10 @@
                         this.lessons = res.data.data;
                     })
                     .catch((res) => {});
-            }
+            },
 
         },
-        mounted(){
+        created(){
             api({
                 method: 'post',
                 url: '/admin/lessons',

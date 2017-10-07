@@ -13,7 +13,6 @@ class LessonController extends AdminController
 {
     public function index(Request $request)
     {
-
         $currentPage = $request->input('current');
         $totalPerPage = $request->input('onPage');
 
@@ -21,7 +20,19 @@ class LessonController extends AdminController
             return $currentPage;
         });
 
-        return Lesson::where('active', true)->paginate($totalPerPage);
+        return Lesson::paginate($totalPerPage);
+    }
+
+    public function lesson( $id )
+    {
+        return Lesson::find( $id )->toJson();
+    }
+
+    public function lessonSave( Request $request )
+    {
+        $lesson = Lesson::find( $request->input('id') );
+        $r = $lesson->update( $request->all() );
+
     }
 
 }
