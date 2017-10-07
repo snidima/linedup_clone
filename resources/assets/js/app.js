@@ -6,9 +6,13 @@ import Login from './components/Login.vue';
 // import Personal from './components/User/Personal.vue';
 
 // import {Tabs, Tab} from 'vue-tabs-component';
-import 'vue-tabs-component/src/components/'
+// import 'vue-tabs-component/src/components/'
 
 import Vue from 'vue';
+
+
+
+
 
 
 Vue.component( 'register', Register );

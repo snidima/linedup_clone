@@ -16,10 +16,14 @@ let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 mix
 
     .setPublicPath('public_html')
-    .js(['resources/assets/js/app.js', 'resources/assets/js/admin.js'], 'public_html/js/').version().sourceMaps()
+    .js('resources/assets/js/app.js', 'public_html/js/').version().sourceMaps()
+    .js('resources/assets/js/admin.js', 'public_html/js/').version().sourceMaps()
    .sass('resources/assets/sass/app.sass', 'public_html/css',{
        indentedSyntax: true
    }).version().sourceMaps()
+    .sass('resources/assets/sass/admin.sass', 'public_html/css',{
+        indentedSyntax: true
+    }).version().sourceMaps()
     .browserSync({
         proxy: 'video.local',
         notify: false,
@@ -32,6 +36,14 @@ mix
 
 
 mix.webpackConfig( {
+    // entry: {
+    //     front: "./resources/assets/js/app.js",
+    //     admin: "./resources/assets/js/admin.js",
+    // },
+    // output: {
+    //     path: path.join(__dirname, "public_html"),
+    //     filename: "[name].entry.js"
+    // },
     plugins: [
         new ImageminPlugin( {
            disable: process.env.NODE_ENV !== 'production', // Disable during development
