@@ -35,4 +35,9 @@ class LessonController extends AdminController
 
     }
 
+    public function lessonInsert( Request $request )
+    {
+        Lesson::create( $request->all() );
+    }
+
 }

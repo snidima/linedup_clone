@@ -45,12 +45,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
 
+    Route::get('{vue_capture?}', 'Admin\MainController@index')->where('vue_capture', '[\/\w\.-]*');
+
+    Route::group(['prefix' => 'ajax'], function(){
+
+
+        Route::post('lessons', 'Admin\LessonController@index');
+        Route::get('lesson/{id}', 'Admin\LessonController@lesson');
+        Route::post('lesson/{id}', 'Admin\LessonController@lessonSave');
+        Route::put('lessoninsert', 'Admin\LessonController@lessonInsert');
+
+
+    });
+
+
+
+});
 
 
 
 Route::get('test', 'TestController@index');
-Route::get('admin', 'Admin\MainController@index');
-Route::post('admin/lessons', 'Admin\LessonController@index');
-Route::get('admin/lesson/{id}', 'Admin\LessonController@lesson');
-Route::post('admin/lesson/{id}', 'Admin\LessonController@lessonSave');
+
+

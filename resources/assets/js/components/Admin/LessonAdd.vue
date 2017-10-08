@@ -56,27 +56,16 @@
         methods: {
             submit(){
                 api({
-                    method: adminAPI.lessonUpdate.type,
-                    url: adminAPI.lessonUpdate.link + this.$route.params.id,
+                    method: 'put',
+                    url: adminAPI.lessonInsert.link,
                     data: this.lesson
                 })
                     .then(( res )=>{
-                        this.$router.go(-1)
+                        this.$router.go(-1);
                     })
                     .catch((res) => {});
             }
 
         },
-        created(){
-            api({
-                method: adminAPI.lessonShow.type,
-                url: adminAPI.lessonShow.link + this.$route.params.id
-            })
-                .then(( res )=>{
-                    this.lesson = res.data;
-                    this.vm.$forceUpdate();
-                })
-                .catch((res) => {});
-        }
     }
 </script>

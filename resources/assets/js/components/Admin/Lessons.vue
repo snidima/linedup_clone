@@ -1,16 +1,11 @@
 <template>
 
    <div>
-
        <md-table-card>
            <md-toolbar>
                <h1 class="md-title">Уроки</h1>
-               <md-button class="md-icon-button">
-                   <md-icon>filter_list</md-icon>
-               </md-button>
-
-               <md-button class="md-icon-button">
-                   <md-icon>search</md-icon>
+               <md-button class="md-icon-button md-raised md-primary" @click="$router.push({name: 'lesson.add'})">
+                   <md-icon>add</md-icon>
                </md-button>
            </md-toolbar>
 
@@ -21,12 +16,12 @@
                        <md-table-head >Позиция</md-table-head>
                        <md-table-head>Название урока</md-table-head>
                        <md-table-head>Описание урока</md-table-head>
-                       <md-table-head ></md-table-head>
+                       <md-table-head></md-table-head>
                    </md-table-row>
                </md-table-header>
 
                <md-table-body>
-                   <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row"  md-selection>
+                   <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row">
                        <md-table-cell>
                            <md-switch v-model="row.active" value="false"></md-switch>
                        </md-table-cell>
@@ -34,14 +29,14 @@
                            {{ row.sort }}
                        </md-table-cell>
                        <md-table-cell>
-                           {{ row.title }}
+                           <span  @click="$router.push({name: 'lesson', params: {id: row.id}})">{{ row.title }}</span>
                        </md-table-cell>
                        <md-table-cell>
                            {{ row.description }}
                        </md-table-cell>
                        <md-table-cell>
-                           <md-button class="md-icon-button" @click="$router.push({name: 'lesson', params: {id: row.id}})">
-                               <md-icon>edit</md-icon>
+                           <md-button class="md-icon-button " @click="openDialog('delete')">
+                               <md-icon>delete</md-icon>
                            </md-button>
                        </md-table-cell>
 
@@ -49,16 +44,27 @@
                </md-table-body>
            </md-table>
 
+
+
            <md-table-pagination
                    :md-size="pagination.onPage"
                    :md-total="pagination.total"
                    :md-page="pagination.current"
                    md-label="Всего"
                    md-separator="из"
-                   :md-page-options="[3, 10, 25, 50]"
+
                    @pagination="onPagination"></md-table-pagination>
 
        </md-table-card>
+
+       <md-dialog-confirm
+               md-title="Удалить?"
+               md-ok-text="Удалить"
+               md-cancel-text="Отменить"
+               @open="onOpen"
+               @close="onClose"
+               ref="delete">
+       </md-dialog-confirm>
    </div>
 
 </template>
@@ -66,6 +72,9 @@
 <script>
     import api from '../../api';
     import _ from 'lodash';
+    import adminAPI from '../../admin-api';
+
+    import { mapState } from 'vuex'
 
 
     export default {
@@ -74,7 +83,7 @@
             return{
                 lessons: [],
                 pagination:{
-                    onPage: 10,
+                    onPage: 20,
                     current: 1,
                     total: '?'
                 },
@@ -83,7 +92,8 @@
             }
         },
 
-        computed:{
+        computed: {
+
         },
 
         methods: {
@@ -95,8 +105,8 @@
             },
             onPagination(e){
                 api({
-                    method: 'post',
-                    url: '/admin/lessons',
+                    method: adminAPI.lessons.type,
+                    url: adminAPI.lessons.link,
                     data: {
                         onPage: e.size,
                         current: e.page,
@@ -107,19 +117,21 @@
                     })
                     .catch((res) => {});
             },
+            openDialog(ref)
+            {
+                this.$refs[ref].open();
+            }
 
         },
-        created(){
+        mounted(){
             api({
-                method: 'post',
-                url: '/admin/lessons',
+                method: adminAPI.lessons.type,
+                url: adminAPI.lessons.link,
                 data: this.pagination
             })
             .then(( res )=>{
                 this.lessons = res.data.data;
                 this.pagination.total = res.data.total;
-
-                console.log();
             })
             .catch((res) => {});
         }
