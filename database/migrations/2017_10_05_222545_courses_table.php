@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CoursesTable extends Migration
 {
     /**
@@ -17,8 +18,8 @@ class CoursesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('description');
-            $table->timestamp('date_start')->nullable();
-            $table->timestamp('date_end')->nullable();
+            $table->timestamp('date_start')->useCurrent();
+            $table->timestamp('date_end')->useCurrent();
             $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();

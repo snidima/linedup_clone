@@ -17,8 +17,8 @@ class LessonCourseTable extends Migration
             $table->increments('id');
             $table->string('lesson_id');
             $table->string('course_id');
-            $table->timestamp('date_start');
-            $table->timestamp('date_end');
+            $table->timestamp('date_start')->useCurrent();;
+            $table->timestamp('date_end')->useCurrent();;
             $table->unique(['lesson_id', 'course_id']);
         });
     }
