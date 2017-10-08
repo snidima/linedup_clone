@@ -12,7 +12,6 @@
            <md-table  @select="onSelect" @sort="onSort">
                <md-table-header>
                    <md-table-row>
-                       <md-table-head >Активность</md-table-head>
                        <md-table-head >Позиция</md-table-head>
                        <md-table-head>Название урока</md-table-head>
                        <md-table-head>Описание урока</md-table-head>
@@ -21,10 +20,7 @@
                </md-table-header>
 
                <md-table-body>
-                   <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row">
-                       <md-table-cell>
-                           <md-switch v-model="row.active" value="false"></md-switch>
-                       </md-table-cell>
+                   <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row" class="card-panel teal lighten-2">
                        <md-table-cell>
                            {{ row.sort }}
                        </md-table-cell>
@@ -35,7 +31,7 @@
                            {{ row.description }}
                        </md-table-cell>
                        <md-table-cell>
-                           <md-button class="md-icon-button " @click="openDialog('delete')">
+                           <md-button class="md-icon-button " @click="openDialog('delete', row.id)">
                                <md-icon>delete</md-icon>
                            </md-button>
                        </md-table-cell>
@@ -60,8 +56,9 @@
        <md-dialog-confirm
                md-title="Удалить?"
                md-ok-text="Удалить"
+               md-content=""
+               md-content-html=""
                md-cancel-text="Отменить"
-               @open="onOpen"
                @close="onClose"
                ref="delete">
        </md-dialog-confirm>
@@ -83,12 +80,12 @@
             return{
                 lessons: [],
                 pagination:{
-                    onPage: 20,
+                    onPage: 10,
                     current: 1,
                     total: '?'
                 },
                 editing: {},
-                qwe: false
+                deleteId: null
             }
         },
 
@@ -117,23 +114,42 @@
                     })
                     .catch((res) => {});
             },
-            openDialog(ref)
+            openDialog(ref, id)
             {
                 this.$refs[ref].open();
+                this.deleteId = id;
+            },
+            onClose(type) {
+
+                if( type !== 'ok' ) return;
+                api({
+                    method: adminAPI.lessonDelete.type,
+                    url: adminAPI.lessonDelete.link + this.deleteId
+                })
+                    .then(( res )=>{
+                        this.loadData();
+                    })
+                    .catch((res) => {});
+
+            },
+
+            loadData(){
+                api({
+                    method: adminAPI.lessons.type,
+                    url: adminAPI.lessons.link,
+                    data: this.pagination
+                })
+                    .then(( res )=>{
+                        this.lessons = res.data.data;
+                        this.pagination.total = res.data.total;
+                    })
+                    .catch((res) => {});
             }
+
 
         },
         mounted(){
-            api({
-                method: adminAPI.lessons.type,
-                url: adminAPI.lessons.link,
-                data: this.pagination
-            })
-            .then(( res )=>{
-                this.lessons = res.data.data;
-                this.pagination.total = res.data.total;
-            })
-            .catch((res) => {});
+            this.loadData();
         }
     }
 </script>

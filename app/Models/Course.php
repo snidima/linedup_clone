@@ -10,6 +10,8 @@ class Course extends Model
 {
     protected $table = "courses";
 
+    protected $fillable = ['title', 'description', 'date_start' ,'date_end', 'active'];
+
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class, 'lesson_course', 'course_id', 'lesson_id')

@@ -13,22 +13,16 @@
                 <label>Описание</label>
                 <md-textarea v-model="lesson.description"></md-textarea>
             </md-input-container>
-            <md-input-container>
-                <label>Ссылка на youtube</label>
-                <md-input v-model="lesson.online_player"></md-input>
-            </md-input-container>
-            <md-input-container>
-                <label>Ссылка на скачивание</label>
-                <md-input v-model="lesson.download_link"></md-input>
-            </md-input-container>
+
+            <div>
+                <datepicker placeholder="Период" :options="calendarOption" v-if="lesson"></datepicker>
+            </div>
+
             <md-input-container>
                 <label>Активность</label>
                 <md-input v-model="lesson.active"></md-input>
             </md-input-container>
-            <md-input-container>
-                <label>Сортировка</label>
-                <md-input type="number" v-model="lesson.sort"></md-input>
-            </md-input-container>
+
 
             <md-button @click="$router.go(-1)">Назад</md-button>
             <md-button @click="submit" class="md-raised md-primary">Сохранить</md-button>
@@ -42,22 +36,36 @@
     import _ from 'lodash';
     import adminAPI from '../../admin-api';
 
+    import { ru } from 'flatpickr/dist/l10n/ru';
+
     export default {
 
         data(){
             return {
-                lesson: {}
+                lesson: false,
+                calendarOption: {
+                    locale: ru,
+                    altInput: true,
+                    altFormat: 'F j, Y',
+                    mode: "range",
+                    onClose: this.onChangeDate,
+                },
             }
         },
 
         computed:{
+
         },
 
         methods: {
+            onChangeDate(e,q,w){
+                this.lesson.date_start = e[0].toDateString();
+                this.lesson.date_end = e[1].toDateString();
+            },
             submit(){
                 api({
-                    method: adminAPI.lessonUpdate.type,
-                    url: adminAPI.lessonUpdate.link + this.$route.params.id,
+                    method: adminAPI.courseUpdate.type,
+                    url: adminAPI.courseUpdate.link + this.$route.params.id,
                     data: this.lesson
                 })
                     .then(( res )=>{
@@ -67,13 +75,17 @@
             }
 
         },
-        created(){
+        mounted(){
             api({
-                method: adminAPI.lessonShow.type,
-                url: adminAPI.lessonShow.link + this.$route.params.id
+                method: adminAPI.courseShow.type,
+                url: adminAPI.courseShow.link + this.$route.params.id
             })
                 .then(( res )=>{
                     this.lesson = res.data;
+                    this.calendarOption.defaultDate=[
+                        res.data.date_start,
+                        res.data.date_end
+                    ];
                 })
                 .catch((res) => {});
         }
