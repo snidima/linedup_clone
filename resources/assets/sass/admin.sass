@@ -1,3 +1,5 @@
+@import "mixins"
+
 .admin-card
   display: inline-block
   width: 300px
@@ -9,3 +11,54 @@
 .container-mini
   width: 500px
   margin: auto
+
+
+.course-composition
+  margin-top: 100px
+  display: flex
+
+
+.course-composition__left
+  margin-right: 100px
+  width: 50%
+
+.course-composition__right
+  width: 50%
+
+
+
+.course-composition-course
+  background: #f5f5f5
+  +nlt
+    margin-bottom: 30px
+  padding: 20px
+  +br()
+.course-composition-course-el
+  padding-bottom: 15px
+
+.course-composition-course-el__title
+  font-size: 1.5rem
+
+.course-composition-course-el__desc
+  color: #858585
+  font-size: .8rem
+
+
+
+.course-composition-course-list
+  min-height: 20px
+  display: flex
+  .dragArea
+    flex-basis: 100%
+.course-composition-course-list-el
+  padding: 10px
+  border: 1px dashed #aeaeae
+  background: #fff
+  cursor: all-scroll
+  +nlt
+    margin-bottom: 10px
+.course-composition-course-list-el__title
+  font-weight: bold
+.course-composition-course-list-el__desc
+  font-size: .8rem
+  color: #8f8f8f

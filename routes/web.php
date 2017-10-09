@@ -69,6 +69,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
         Route::delete('course-delete/{id}', 'Admin\CourseController@lessonDelete');
 
 
+
+        Route::get('course-composition', 'Admin\CourseCompositionController@index');
+
+
     });
 
 

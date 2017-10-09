@@ -44,4 +44,10 @@ export default {
         link: '/admin/ajax/course-delete/'
     },
 
+
+    courseComposition:{
+        type: 'get',
+        link: '/admin/ajax/course-composition',
+    }
+
 }
