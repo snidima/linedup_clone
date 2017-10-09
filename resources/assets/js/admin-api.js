@@ -13,11 +13,11 @@ export default {
     },
     lessonInsert: {
         type: 'post',
-        link: '/admin/ajax/lessoninsert/'
+        link: '/admin/ajax/lesson-insert'
     },
     lessonDelete: {
         type: 'delete',
-        link: '/admin/ajax/lessondelete/'
+        link: '/admin/ajax/lesson-delete/'
     },
 
 
@@ -35,13 +35,13 @@ export default {
     },
 
     courseInsert: {
-        type: 'put',
-        link: '/admin/ajax/courseinsert/'
+        type: 'post',
+        link: '/admin/ajax/course-insert'
     },
 
     courseDelete: {
         type: 'delete',
-        link: '/admin/ajax/coursedelete/'
+        link: '/admin/ajax/course-delete/'
     },
 
 }

@@ -18,10 +18,7 @@
                 <datepicker placeholder="Период" :options="calendarOption"></datepicker>
             </div>
 
-            <md-input-container>
-                <label>Активность</label>
-                <md-input v-model="lesson.active"></md-input>
-            </md-input-container>
+            <md-switch v-model="lesson.active" id="active">Активность</md-switch>
 
 
 

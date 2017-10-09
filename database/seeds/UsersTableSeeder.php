@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-
+        //todo проверить активность перед отсылкой, исправить уловие по среде
         $user = User::create([
             'name' => 'Снигур Дмитрий Александрович',
             'email' => 'snidima@mail.ru',

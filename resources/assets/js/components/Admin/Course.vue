@@ -18,10 +18,7 @@
                 <datepicker placeholder="Период" :options="calendarOption" v-if="lesson"></datepicker>
             </div>
 
-            <md-input-container>
-                <label>Активность</label>
-                <md-input v-model="lesson.active"></md-input>
-            </md-input-container>
+            <md-switch v-model="lesson.active" id="active">Активность</md-switch>
 
 
             <md-button @click="$router.go(-1)">Назад</md-button>

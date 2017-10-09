@@ -21,10 +21,11 @@
                 <label>Ссылка на скачивание</label>
                 <md-input v-model="lesson.download_link"></md-input>
             </md-input-container>
-            <md-input-container>
-                <label>Активность</label>
-                <md-input v-model="lesson.active"></md-input>
-            </md-input-container>
+
+
+            <md-switch v-model="lesson.active" id="active">Активность</md-switch>
+
+
             <md-input-container>
                 <label>Сортировка</label>
                 <md-input type="number" v-model="lesson.sort"></md-input>
@@ -56,7 +57,7 @@
         methods: {
             submit(){
                 api({
-                    method: 'put',
+                    method: adminAPI.lessonInsert.type,
                     url: adminAPI.lessonInsert.link,
                     data: this.lesson
                 })

@@ -11,6 +11,11 @@
 |
 */
 
+
+
+
+
+
 Route::get('/', function () {
     return view('index');
 })->name('main');
@@ -44,7 +49,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
 
     Route::get('/', 'Admin\MainController@index');
@@ -55,14 +59,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
         Route::post('lessons', 'Admin\LessonController@index');
         Route::get('lesson/{id}', 'Admin\LessonController@lesson');
         Route::post('lesson/{id}', 'Admin\LessonController@lessonSave');
-        Route::put('lessoninsert', 'Admin\LessonController@lessonInsert');
-        Route::delete('lessondelete/{id}', 'Admin\LessonController@lessonDelete');
+        Route::post('lesson-insert', 'Admin\LessonController@lessonInsert');
+        Route::delete('lesson-delete/{id}', 'Admin\LessonController@lessonDelete');
 
         Route::post('courses', 'Admin\CourseController@index');
         Route::get('course/{id}', 'Admin\CourseController@lesson');
         Route::post('course/{id}', 'Admin\CourseController@lessonSave');
-        Route::put('courseinsert', 'Admin\CourseController@lessonInsert');
-        Route::delete('coursedelete/{id}', 'Admin\CourseController@lessonDelete');
+        Route::post('course-insert', 'Admin\CourseController@lessonInsert');
+        Route::delete('course-delete/{id}', 'Admin\CourseController@lessonDelete');
 
 
     });
