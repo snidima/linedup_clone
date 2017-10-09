@@ -17,7 +17,7 @@ class UserObserver
 
     public function created( $model )
     {
-        if( App::environment() == 'production' ){
+        if( !$model->activated ){
             $credentials = [
                 'created_at' => (string) Carbon::now(),
                 'name' =>  $model->name,
@@ -25,12 +25,12 @@ class UserObserver
                 'password' =>  $model->password,
             ];
 
+
             $token = $this->jwt->encode( $credentials );
             $model->notify(new ConfirmRegister( route('user.confirm', $token) ));
-        } else {
-            $model->activated = true;
-            $model->save();
-        }
+
+        } 
+
 
         $this->relateRole( $model );
 

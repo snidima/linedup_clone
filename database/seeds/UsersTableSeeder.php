@@ -14,11 +14,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        //todo проверить активность перед отсылкой, исправить уловие по среде
         $user = User::create([
             'name' => 'Снигур Дмитрий Александрович',
             'email' => 'snidima@mail.ru',
             'password' => '555666',
+            'activated' => true
         ]);
 
         for ($i = 1; $i <= 10; $i++){
@@ -26,6 +26,7 @@ class UsersTableSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'password' => 555,
+                'activated' => true
             ]);
         }
 
