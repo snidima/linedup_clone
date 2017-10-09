@@ -21,14 +21,25 @@
                     </div>
 
                     <div class="course-composition-course-list">
-                        <draggable v-model="courses[courseKey].lessons" class="dragArea" :options="{group:'people',pull:'clone', put: clone}">
-                            <div class="course-composition-course-list__el course-composition-course-list-el"  v-for="lesson in courses[courseKey].lessons">
+                        <draggable :list="courses[courseKey].lessons" v-model="courses[courseKey].lessons" class="dragArea" :move="checkMove2" :options="{
+                            sort: true,
+                            group: {
+                                name: 'courses',
+                                put: 'srcLessons',
+                                pull: 'true'
+                            },
+                        }">
+                            <div @add="add" class="course-composition-course-list__el course-composition-course-list-el"  v-for="(lesson , lessonKey) in course.lessons">
                                 <div class="course-composition-course-list-el__title">
-                                    {{lesson.title}}
+                                    {{lessonKey+1}}. {{lesson.title}}
                                 </div>
                                 <div class="course-composition-course-list-el__desc">
                                     {{lesson.description}}
                                 </div>
+                                <div class="course-composition-course-list-el__date">
+                                    <datepicker placeholder="Период" ></datepicker>
+                                </div>
+                                <div class="course-composition-course-list-el__remove"></div>
                             </div>
                         </draggable>
                     </div>
@@ -40,8 +51,15 @@
             </div>
             <div class="course-composition__right">
                 <div class="course-composition-course-list">
-                    <draggable v-model="lessons" class="dragArea" :options="{group:'people'}" >
-                        <div class="course-composition-course-list__el course-composition-course-list-el"  v-for="lesson in lessons" :key="lesson.id">
+                    <draggable v-model="lessons" class="dragArea" :move="checkMove" :options="{
+                        sort: false,
+                        group: {
+                            name: 'srcLessons',
+                            pull: 'clone',
+                            put: false,
+                        }
+                    }" >
+                        <div class="course-composition-course-list__el course-composition-course-list-el"  v-for="lesson in lessons">
                             <div class="course-composition-course-list-el__title">
                                 {{lesson.title}}
                             </div>
@@ -70,7 +88,7 @@
         data(){
             return {
                 lessons: [],
-                courses: []
+                courses: [],
             }
         },
 
@@ -80,15 +98,35 @@
 
         methods: {
 
-            add: function() {
-                this.list.push({
-                    name: 'Juan'
+            checkMove: function(evt){
+                let current = evt.relatedContext.list;
+                let id = evt.draggedContext.element.id;
+
+//                console.log( current );
+//                console.log( newv );
+
+
+                let res = true;
+                current.forEach(function( item, key ){
+                    if( id === item.id ) res = false;
                 });
+
+//
+                return res;
             },
-            replace: function() {
-                this.list = [{
-                    name: 'Edgard'
-                }]
+
+            checkMove2(){
+                console.log('!');
+            },
+
+
+            add( evt, e ){
+                if( !evt.added ) return;
+
+                console.log( evt.added );
+                console.log( e );
+//                _.uniqWith(objects, _.isEqual);
+                return null;
             },
 
             submit(){
@@ -105,8 +143,10 @@
             })
                 .then(( res )=>{
                     console.log(res.data);
-                    this.lessons = res.data.lessons;
+                    this.lessons = res.data.lessons || [];
                     this.courses = res.data.courses;
+
+                    this.courses.lessons = [];
                 })
                 .catch((res) => {});
 

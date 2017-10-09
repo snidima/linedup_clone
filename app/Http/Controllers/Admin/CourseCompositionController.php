@@ -17,12 +17,16 @@ class CourseCompositionController extends AdminController
     public function index()
     {
         $lessons = Lesson::all();
-        $courses = Course::all();
+        $courses = Course::with('lessons')->get();
 
-        return response()->json([
+        $res = [
             'lessons' => $lessons,
             'courses' => $courses,
-        ]);
+        ];
+
+
+
+        return response()->json( $res );
     }
 
 }

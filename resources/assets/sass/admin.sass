@@ -14,7 +14,6 @@
 
 
 .course-composition
-  margin-top: 100px
   display: flex
 
 
@@ -57,8 +56,45 @@
   cursor: all-scroll
   +nlt
     margin-bottom: 10px
+  position: relative
+
+
+//.course-composition-course-list-el:hover .course-composition-course-list-el__remove
+//  position: absolute
+//  top: 0
+//  right: 0
+//  cursor: pointer
+//  z-index: 99999999999999
+//  &:before
+//    content: 'удалить'
+//    font-size: .7rem
+//    color: red
+//    line-height: 0
+
 .course-composition-course-list-el__title
   font-weight: bold
 .course-composition-course-list-el__desc
   font-size: .8rem
   color: #8f8f8f
+
+.course-composition-course-list-el.sortable-ghost
+  border-color: black
+
+.course-composition-course-list-el__date
+  margin-top: 10px
+
+.admin-menu
+  padding: 5px 0px
+  background: #3f51b5
+  margin-bottom: 10px
+
+
+.course-composition
+  display: flex
+  align-items: stretch
+.course-composition__right
+  position: relative
+  flex-grow: 1
+  overflow: auto
+.course-composition__right .course-composition-course-list
+  position: absolute
