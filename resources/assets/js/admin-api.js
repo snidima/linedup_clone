@@ -48,6 +48,10 @@ export default {
     courseComposition:{
         type: 'get',
         link: '/admin/ajax/course-composition',
+    },
+    courseCompositionSave:{
+        type: 'post',
+        link: '/admin/ajax/course-composition-save',
     }
 
 }

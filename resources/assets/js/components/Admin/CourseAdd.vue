@@ -15,7 +15,8 @@
             </md-input-container>
 
             <div>
-                <datepicker placeholder="Период" :options="calendarOption"></datepicker>
+                <input type="date" v-model="lesson.date_start">
+                <input type="date" v-model="lesson.date_end">
             </div>
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
@@ -43,13 +44,6 @@
         data(){
             return {
                 lesson: {},
-                calendarOption: {
-                    locale: ru,
-                    altInput: true,
-                    altFormat: 'F j, Y',
-                    mode: "range",
-                    onClose: this.onChangeDate
-                },
             }
         },
 
@@ -57,10 +51,7 @@
         },
 
         methods: {
-            onChangeDate(e){
-                this.lesson.date_start = e[0].toDateString();
-                this.lesson.date_end = e[1].toDateString();
-            },
+
 
             submit(){
                 api({

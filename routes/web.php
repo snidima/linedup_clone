@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
 
 
         Route::get('course-composition', 'Admin\CourseCompositionController@index');
+        Route::post('course-composition-save', 'Admin\CourseCompositionController@save');
 
 
     });

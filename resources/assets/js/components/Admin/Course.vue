@@ -15,7 +15,8 @@
             </md-input-container>
 
             <div>
-                <datepicker placeholder="Период" :options="calendarOption" v-if="lesson"></datepicker>
+                <input type="date" v-model="lesson.date_start">
+                <input type="date" v-model="lesson.date_end">
             </div>
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
@@ -32,21 +33,14 @@
     import api from '../../api';
     import _ from 'lodash';
     import adminAPI from '../../admin-api';
+    import moment from 'moment'
 
-    import { ru } from 'flatpickr/dist/l10n/ru';
 
     export default {
 
         data(){
             return {
                 lesson: false,
-                calendarOption: {
-                    locale: ru,
-                    altInput: true,
-                    altFormat: 'F j, Y',
-                    mode: "range",
-                    onClose: this.onChangeDate,
-                },
             }
         },
 
@@ -55,10 +49,7 @@
         },
 
         methods: {
-            onChangeDate(e,q,w){
-                this.lesson.date_start = e[0].toDateString();
-                this.lesson.date_end = e[1].toDateString();
-            },
+
             submit(){
                 api({
                     method: adminAPI.courseUpdate.type,
@@ -79,10 +70,8 @@
             })
                 .then(( res )=>{
                     this.lesson = res.data;
-                    this.calendarOption.defaultDate=[
-                        res.data.date_start,
-                        res.data.date_end
-                    ];
+                    this.lesson.date_start = moment(this.lesson.date_start).format('YYYY-MM-DD');
+                    this.lesson.date_end = moment(this.lesson.date_end).format('YYYY-MM-DD');
                 })
                 .catch((res) => {});
         }

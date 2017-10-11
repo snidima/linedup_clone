@@ -1,7 +1,5 @@
-import $ from 'jquery';
-global.jQuery = $;
-// import 'daterangepicker';
-// import 'daterangepicker/daterangepicker.scss';
+// import $ from 'jquery';
+// global.jQuery = $;
 
 
 import Vue from 'vue'
@@ -14,14 +12,19 @@ Vue.use(VueMaterial);
 
 
 
-import VueBlu from 'vue-blu'
-import 'vue-blu/dist/css/vue-blu.min.css'
+// import VueBlu from 'vue-blu'
+// import 'vue-blu/dist/css/vue-blu.min.css'
+//
+// Vue.use(VueBlu)
 
-Vue.use(VueBlu)
-// Vue.component( 'datepicker', Datapicker );
+
 
 import Draggable from 'vuedraggable';
+import Datepicker from 'vuejs-datepicker';
+
 Vue.component( 'draggable', Draggable );
+Vue.component( 'datepicker', Datepicker );
+
 
 const app = new Vue({
     el: '#app',
