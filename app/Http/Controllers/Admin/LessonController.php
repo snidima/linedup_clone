@@ -20,7 +20,7 @@ class LessonController extends AdminController
             return $currentPage;
         });
 
-        return Lesson::orderBy('sort', 'asc')->paginate($totalPerPage);
+        return Lesson::orderBy('title', 'asc')->paginate($totalPerPage);
     }
 
     public function lesson( $id )

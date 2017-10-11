@@ -12,7 +12,7 @@
            <md-table  @select="onSelect" @sort="onSort">
                <md-table-header>
                    <md-table-row>
-                       <md-table-head >Позиция</md-table-head>
+
                        <md-table-head>Название урока</md-table-head>
                        <md-table-head>Описание урока</md-table-head>
                        <md-table-head></md-table-head>
@@ -21,9 +21,7 @@
 
                <md-table-body>
                    <md-table-row v-for="(row, rowIndex) in lessons" :key="rowIndex" :md-item="row" class="card-panel teal lighten-2">
-                       <md-table-cell>
-                           {{ row.sort }}
-                       </md-table-cell>
+
                        <md-table-cell>
                            <span  @click="$router.push({name: 'lesson', params: {id: row.id}})">{{ row.title }}</span>
                        </md-table-cell>

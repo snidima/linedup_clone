@@ -15,7 +15,6 @@ class LessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sort');
             $table->string('title');
             $table->longText('description');
             $table->string('online_player');

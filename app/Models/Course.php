@@ -15,7 +15,7 @@ class Course extends Model
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class, 'lesson_course', 'course_id', 'lesson_id')
-            ->as('info')
+//            ->as('info')
             ->withPivot('date_start', 'date_end');
     }
 

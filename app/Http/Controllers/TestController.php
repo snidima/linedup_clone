@@ -15,7 +15,7 @@ class TestController extends Controller
     public function index()
     {
 
-        $course = Course::find(1);
+        $course = Course::with('lessons')->get();
 
         dd( $course );
 
