@@ -3,3 +3,48 @@
   font-weight: lighter
   text-align: right
   padding: 20px 0
+
+
+.course-info
+  background: $gray
+  padding: 30px
+  border: 1px solid $gray
+  +br()
+
+.course-info__field
+  +nlt
+    margin-bottom: 15px
+
+.course-info-field
+  display: flex
+  align-items: center
+
+.course-info-field__title
+  white-space: pre
+  margin-right: 15px
+  min-width: 250px
+
+.course-info-field__value
+  flex-grow: 1
+  width: 100%
+
+.course-info-graph
+  width: 100%
+  height: 2px
+  background: lighten($black-1, 80%)
+  +br()
+.course-info-graph__complete
+  background: $color-1
+  height: 100%
+  +br()
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+.course-info-graph-complete__text
+  position: absolute
+  margin-top: -10px
+  font-size: .7rem
+
+.course-info-graph-complete__text_right0
+  right: 0

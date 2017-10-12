@@ -14,7 +14,7 @@
                             {{course.description}}
                         </div>
                         <div class="course-composition-course-el__date">
-                            {{course.date_start}} - {{course.date_end}}
+                            {{moment(course.date_start).format('LL')}} - {{moment(course.date_end).format('LL')}}
                         </div>
                     </div>
 
@@ -87,8 +87,9 @@
     import adminAPI from '../../admin-api';
 
     import moment from 'moment'
-    moment.locale('ru');
 
+    import ru from 'moment/src/locale/ru';
+    moment.locale('ru');
 
     export default {
 
@@ -196,6 +197,7 @@
 
         },
         mounted(){
+
             this.fetchAll();
         }
     }

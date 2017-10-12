@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+//todo add deleted observer
 class Course extends Model
 {
     protected $table = "courses";

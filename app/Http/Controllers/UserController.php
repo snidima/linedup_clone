@@ -11,4 +11,10 @@ class UserController extends Controller
     {
         return view('user.main');
     }
+
+    public function courseInfo()
+    {
+        $courses = Course::with('lessons')->get();
+        return $courses;
+    }
 }

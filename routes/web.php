@@ -44,6 +44,15 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
     Route::get('/', 'UserController@index')->name('user.main');
 
+
+
+    Route::group(['prefix' => 'ajax'], function() {
+
+        Route::get('course-info', 'UserController@courseInfo');
+
+    });
+
+
 });
 
 

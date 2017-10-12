@@ -21,7 +21,9 @@ Vue.component( 'login', Login );
 
 // Vue.component('tabs', Tabs);
 // Vue.component('tab', Tab);
-// Vue.component( 'personal', Personal );
+
+import Personal from './components/User/Personal.vue';
+Vue.component( 'personal', Personal );
 
 
 
