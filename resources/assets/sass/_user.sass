@@ -13,20 +13,21 @@
 
 .course-info__field
   +nlt
-    margin-bottom: 15px
+    margin-bottom: 10px
 
 .course-info-field
   display: flex
   align-items: center
-
 .course-info-field__title
   white-space: pre
   margin-right: 15px
-  min-width: 250px
+  min-width: 270px
+  font-size: .9rem
 
 .course-info-field__value
   flex-grow: 1
   width: 100%
+  font-size: .9rem
 
 .course-info-graph
   width: 100%
@@ -40,11 +41,45 @@
   position: relative
   display: flex
   align-items: center
-  justify-content: center
+  justify-content: flex-end
 .course-info-graph-complete__text
   position: absolute
   margin-top: -10px
   font-size: .7rem
 
-.course-info-graph-complete__text_right0
-  right: 0
+
+
+
+
+
+
+
+
+
+.lessons
+  margin-top: 30px
+.lessons__item
+  +nlt
+    margin-bottom: 20px
+  &:nth-child(even)
+    background: #f7f7f7
+.lesson
+  padding: 20px
+  +br()
+
+
+
+.lesson__title-num
+  padding: 5px 10px
+  +br()
+  background: $black-1
+  color: $white-1
+  display: inline-block
+.lesson__date
+  display: inline-block
+  font-size: 0.7rem
+  color: #aeaeae
+
+.lesson__title
+  margin-top: 5px
+  font-size: 1.2rem

@@ -81,7 +81,7 @@
                                 <a href="{{route('user.login')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-in"></i>Войти</a>
                                 <a href="{{route('user.register')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-unlock" ></i>Регистрация</a>
                             @else
-                                <a href="{{route('user.main')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-user"></i>Личный кабинет</a>
+                                <a href="{{route('user.main')}}" class="menu-user__item menu-user__item_border"><i class="fa fa-user-o"></i>Личный кабинет</a>
                                 <a href="{{route('user.quit')}}" class="menu-user__item menu-user__item_unborder"><i class="fa fa-sign-out" ></i>Выйти</a>
                             @endif
                         </div>

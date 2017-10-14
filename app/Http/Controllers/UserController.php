@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -14,7 +16,13 @@ class UserController extends Controller
 
     public function courseInfo()
     {
-        $courses = Course::with('lessons')->get();
+        $now = Carbon::now();
+
+        $courses = Course::
+            where('date_start', '<=', $now)
+            ->where('date_end', '>=', $now)
+            ->where('active', true)
+            ->with('lessons')->first();
         return $courses;
     }
 }
