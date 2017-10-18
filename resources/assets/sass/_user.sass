@@ -57,7 +57,21 @@
 
 
 .lessons
-  margin-top: 30px
+  margin-top: 60px
+.lesson_disabled
+  position: relative
+  &:after
+    content: ''
+    display: block
+    width: 100%
+    height: 100%
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    background: rgba(#fff, .85)
+    position: absolute
+    z-index: 10
 .lessons__item
   +nlt
     margin-bottom: 20px
@@ -83,3 +97,32 @@
 .lesson__title
   margin-top: 5px
   font-size: 1.2rem
+
+
+
+
+.lesson__homework
+  margin-top: 15px
+
+.lesson-homework
+
+
+input[type="file"]
+  display: none
+
+.file-upload label
+  position: relative
+  overflow: hidden
+.file-upload label span
+  position: relative
+  z-index: 10
+.file-progress
+  position: absolute
+  content: ''
+  display: block
+  height: 100%
+  left: 0
+  top: 0
+  background: rgba(#000, 0.2)
+  z-index: 0
+    

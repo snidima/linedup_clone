@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -24,5 +25,10 @@ class UserController extends Controller
             ->where('active', true)
             ->with('lessons')->first();
         return $courses;
+    }
+
+    public function fileUpload( Request $request )
+    {
+        dd( $request->allFiles() );
     }
 }

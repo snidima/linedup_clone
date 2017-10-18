@@ -47,10 +47,15 @@
         </div>
 
         <div class="lessons">
-            <div class="lessons__item lesson" v-for="(lesson, key) in course.lessons">
+            <div class="lessons__item lesson" v-for="(lesson, key) in course.lessons" v-bind:class="{'lesson_disabled': !active( lesson )}">
                 <div class="lesson__title-num">Урок №{{ key+1 }}</div>
                 <div class="lesson__date">{{moment(lesson.pivot.date_start).format('LL')}} - {{moment(lesson.pivot.date_end).format('LL')}}</div>
                 <div class="lesson__title">{{lesson.title}}</div>
+                <div class="lesson__homework lesson-homework">
+
+                        <FileBtn  v-bind:name="'file-'+lesson.id"></FileBtn>
+
+                </div>
             </div>
         </div>
 
@@ -60,15 +65,22 @@
 <script>
     import api from '../../api';
     import _ from 'lodash';
+
     import moment from 'moment'
     import ru from 'moment/src/locale/ru';
+
+    import FileBtn from '../FileUploadBtn.vue'
+
     moment.locale('ru');
 
     export default {
 
+        components: {
+            FileBtn
+        },
+
         data(){
             return{
-                qwe: 10,
                 course: {}
             }
         },
@@ -79,13 +91,19 @@
                 let start = moment(this.course.date_start).valueOf();
                 let end = moment(this.course.date_end).valueOf();
                 return Math.round(((now - start) / (end - start)) * 100);
-
             }
         },
 
         methods: {
 
             moment: moment,
+
+            active( lesson ){
+                let start = lesson.pivot.date_start;
+                let end = lesson.pivot.date_end;
+                return true;
+                return moment().isBetween(start, end, 'days', '[]') ;
+            },
 
             fetchAll(){
 
@@ -95,10 +113,7 @@
                     url: '/user/ajax/course-info',
                 })
                     .then(( res )=>{
-
-                        console.log( res.data );
                         this.course = res.data;
-
                     })
                     .catch((res) => {
 
