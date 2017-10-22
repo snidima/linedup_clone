@@ -11,13 +11,17 @@ class Course extends Model
 {
     protected $table = "courses";
 
-    protected $fillable = ['title', 'description', 'date_start' ,'date_end', 'active'];
+    protected $fillable = ['title', 'description', 'active'];
 
     public function lessons()
     {
-        return $this->belongsToMany(Lesson::class, 'lesson_course', 'course_id', 'lesson_id')
-//            ->as('info')
-            ->withPivot('date_start', 'date_end');
+        return $this->belongsToMany(Lesson::class, 'course_lesson', 'course_id', 'lesson_id');
+
+    }
+
+    public function regularCourses()
+    {
+        return $this->hasMany(RegularCourse::class, 'course_id');
     }
 
 }

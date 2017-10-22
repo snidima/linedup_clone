@@ -15,6 +15,7 @@
 
                        <md-table-head>Название урока</md-table-head>
                        <md-table-head>Описание урока</md-table-head>
+                       <md-table-head>Продолжительность</md-table-head>
                        <md-table-head></md-table-head>
                    </md-table-row>
                </md-table-header>
@@ -27,6 +28,9 @@
                        </md-table-cell>
                        <md-table-cell>
                            {{ row.description }}
+                       </md-table-cell>
+                       <md-table-cell>
+                           {{ row.duration }}
                        </md-table-cell>
                        <md-table-cell>
                            <md-button class="md-icon-button " @click="openDialog('delete', row.id)">

@@ -17,7 +17,9 @@ class CourseCompositionController extends AdminController
     public function index()
     {
         $lessons = Lesson::all();
-        $courses = Course::with('lessons')->get();
+        $courses = Course::with(['lessons'=>function($q){
+            $q->orderBy('course_lesson.id', 'asc');
+        }])->get();
 
         $res = [
             'lessons' => $lessons,
@@ -38,10 +40,7 @@ class CourseCompositionController extends AdminController
             $_course->lessons()->detach();
             foreach ($course['lessons'] as $lesson){
                 $_lesson = Lesson::find($lesson['id']);
-                $_course->lessons()->save( $_lesson, [
-                    'date_start' => Carbon::parse($lesson['pivot']['date_start']),
-                    'date_end' => Carbon::parse($lesson['pivot']['date_end']),
-                ]);
+                $_course->lessons()->save( $_lesson );
 
             }
         }

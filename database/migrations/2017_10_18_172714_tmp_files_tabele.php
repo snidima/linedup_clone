@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class LessonsTable extends Migration
+class TmpFilesTabele extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class LessonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('tmp_files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('duration');
             $table->string('title');
-            $table->longText('description');
-            $table->string('online_player');
-            $table->string('download_link');
-            $table->boolean('active')->default(false);
-            $table->softDeletes();
+            $table->integer('user_id')->nullable();
+            $table->string('path');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class LessonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('tmp_files');
     }
 }

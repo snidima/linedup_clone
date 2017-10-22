@@ -53,7 +53,7 @@
                 <div class="lesson__title">{{lesson.title}}</div>
                 <div class="lesson__homework lesson-homework">
 
-                        <FileBtn  v-bind:name="'file-'+lesson.id"></FileBtn>
+                        <FileBtn @uploaded="fileUploaded" v-bind:lesson="lesson"  v-bind:name="'file-'+lesson.id"></FileBtn>
 
                 </div>
             </div>
@@ -70,6 +70,8 @@
     import ru from 'moment/src/locale/ru';
 
     import FileBtn from '../FileUploadBtn.vue'
+
+
 
     moment.locale('ru');
 
@@ -101,8 +103,11 @@
             active( lesson ){
                 let start = lesson.pivot.date_start;
                 let end = lesson.pivot.date_end;
-                return true;
                 return moment().isBetween(start, end, 'days', '[]') ;
+            },
+
+            fileUploaded( id, lesson ){
+                console.log( id, lesson );
             },
 
             fetchAll(){

@@ -23,8 +23,8 @@
             </md-input-container>
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
             <md-input-container>
-                <label>Сортировка</label>
-                <md-input type="number" v-model="lesson.sort"></md-input>
+                <label>Продолжительость</label>
+                <md-input type="number" v-model="lesson.duration"></md-input>
             </md-input-container>
 
             <md-button @click="$router.go(-1)">Назад</md-button>

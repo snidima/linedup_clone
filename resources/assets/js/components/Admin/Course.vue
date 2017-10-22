@@ -14,10 +14,7 @@
                 <md-textarea v-model="lesson.description"></md-textarea>
             </md-input-container>
 
-            <div>
-                <input type="date" v-model="lesson.date_start">
-                <input type="date" v-model="lesson.date_end">
-            </div>
+
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
 
@@ -70,8 +67,6 @@
             })
                 .then(( res )=>{
                     this.lesson = res.data;
-                    this.lesson.date_start = moment(this.lesson.date_start).format('YYYY-MM-DD');
-                    this.lesson.date_end = moment(this.lesson.date_end).format('YYYY-MM-DD');
                 })
                 .catch((res) => {});
         }

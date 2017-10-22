@@ -14,10 +14,6 @@
                 <md-textarea v-model="lesson.description"></md-textarea>
             </md-input-container>
 
-            <div>
-                <input type="date" v-model="lesson.date_start">
-                <input type="date" v-model="lesson.date_end">
-            </div>
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
 

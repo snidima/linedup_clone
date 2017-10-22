@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class NoteMessagesTable extends Migration
+class RegularCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class NoteMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lesson_course', function (Blueprint $table) {
+        Schema::create('regular_courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('lesson_id');
-            $table->string('course_id');
+            $table->integer('course_id');
             $table->timestamp('date_start')->useCurrent();
-            $table->timestamp('date_end')->useCurrent();
-            $table->unique(['lesson_id', 'course_id']);
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class NoteMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesson_course');
+        Schema::dropIfExists('regular_courses');
     }
 }

@@ -14,8 +14,6 @@
                     <md-table-row>
                         <md-table-head>Название курса</md-table-head>
                         <md-table-head>Описание курса</md-table-head>
-                        <md-table-head>Начало</md-table-head>
-                        <md-table-head>Конец</md-table-head>
                         <md-table-head></md-table-head>
                     </md-table-row>
                 </md-table-header>
@@ -27,12 +25,6 @@
                         </md-table-cell>
                         <md-table-cell>
                             {{ row.description }}
-                        </md-table-cell>
-                        <md-table-cell>
-                            {{ row.date_start }}
-                        </md-table-cell>
-                        <md-table-cell>
-                            {{ row.date_end }}
                         </md-table-cell>
                         <md-table-cell>
                             <md-button class="md-icon-button " @click="openDialog('delete', row.id)">

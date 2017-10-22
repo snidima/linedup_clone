@@ -12,16 +12,15 @@
 </template>
 
 <script>
-
-
     import api from '../api';
-
+    import alertify from 'alertify.js'
 
     export default {
-        props:['name'],
+        props:['name', 'lesson'],
         data(){
             return{
-                uploadProgress: false
+                uploadProgress: false,
+                fileID: false
             }
         },
 
@@ -36,28 +35,6 @@
         },
 
         mounted(){
-
-//            let inputs = document.querySelectorAll( '.vue-file-upload' );
-//            Array.prototype.forEach.call( inputs, function( input )
-//            {
-//                let label	 = input.nextElementSibling;
-//                let labelVal = label.innerHTML;
-//
-//                input.addEventListener( 'change', function( e )
-//                {
-//                    let fileName = '';
-//                    if( this.files && this.files.length > 1 )
-//                        fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-//                    else
-//                        fileName = e.target.value.split( '\\' ).pop();
-//
-//                    if( fileName )
-//                        label.querySelector( 'span' ).innerHTML = fileName;
-//                    else
-//                        label.innerHTML = labelVal;
-//                });
-//            });
-
             let input = document.getElementById( this.name );
             let label	 = input.nextElementSibling;
             let self = this;
@@ -76,7 +53,7 @@
 
 
                 let data = new FormData();
-                data.append('files', this.files[0]);
+                data.append('file', this.files[0]);
 
                 let config = {
                     onUploadProgress: function(progressEvent) {
@@ -84,11 +61,12 @@
                     }
                 };
 
-
                 this.uploadProgress = 0;
                 api.post('/user/ajax/file-upload', data, config)
                     .then( res => {
-
+                        self.uploadProgress = 0;
+                        self.fileID = res.data;
+                        self.$emit('uploaded', self.fileID, self.lesson)
                     });
 
             });

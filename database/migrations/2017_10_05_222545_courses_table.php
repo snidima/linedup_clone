@@ -18,8 +18,6 @@ class CoursesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('description');
-            $table->timestamp('date_start')->useCurrent();
-            $table->timestamp('date_end')->useCurrent();
             $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();

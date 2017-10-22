@@ -33,13 +33,7 @@ class CourseController extends AdminController
     public function lessonSave( Request $request )
     {
         $lesson = Course::find( $request->input('id') );
-
         $data = $request->all();
-        $data['date_start'] = Carbon::parse($request->input('date_start'));
-        $data['date_end'] = Carbon::parse($request->input('date_end'));
-
-//        dd( $data['date_start'] );
-
         $r = $lesson->update( $data );
 
     }
@@ -47,9 +41,6 @@ class CourseController extends AdminController
     public function lessonInsert( Request $request )
     {
         $data = $request->all();
-        $data['date_start'] = Carbon::parse($request->input('date_start'));
-        $data['date_end'] = Carbon::parse($request->input('date_end'));
-//        dd($data['date_start']);
         Course::create( $data );
     }
 

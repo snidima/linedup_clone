@@ -11,5 +11,5 @@ class Lesson extends Model
 {
     use SoftDeletes;
     protected $table = "lessons";
-    protected $fillable = ['sort', 'title', 'description', 'online_player' ,'download_link', 'active'];
+    protected $fillable = ['sort', 'title', 'description', 'online_player' ,'download_link', 'active', 'duration'];
 }

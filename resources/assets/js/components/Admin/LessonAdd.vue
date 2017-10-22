@@ -21,6 +21,10 @@
                 <label>Ссылка на скачивание</label>
                 <md-input v-model="lesson.download_link"></md-input>
             </md-input-container>
+            <md-input-container>
+                <label>Ссылка на скачивание</label>
+                <md-input v-model="lesson.duration"></md-input>
+            </md-input-container>
 
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>

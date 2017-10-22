@@ -14,21 +14,13 @@ class CoursesSeeder extends Seeder
      */
     public function run()
     {
-        $start = Carbon::now();
-        $end = Carbon::now()->addDays(5);
-
         $course = Course::create([
             'title' => 'Первый тестовй курс',
             'description' => 'Описание первого тестового курса',
-            'date_start' => $start,
-            'date_end' => $end,
             'active' => true,
         ]);
 
-        $lessons = Lesson::find(1);
-        $course->lessons()->save( $lessons, [
-            'date_start' => $start,
-            'date_end' => $end,
-        ]);
+        $lessons = Lesson::findMany([1,2,3,4,5,6,7,8,9,10]);
+        $course->lessons()->saveMany( $lessons );
     }
 }

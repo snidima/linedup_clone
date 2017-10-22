@@ -14,7 +14,7 @@
                             {{course.description}}
                         </div>
                         <div class="course-composition-course-el__date">
-                            {{moment(course.date_start).format('LL')}} - {{moment(course.date_end).format('LL')}}
+                            {{courseDuration(course.lessons)}} дней
                         </div>
                     </div>
 
@@ -32,18 +32,13 @@
                             <div class="course-composition-course-list__el course-composition-course-list-el"  v-for="(lesson , lessonKey) in course.lessons">
                                 <div class="course-composition-course-list-el__title">
                                     {{lessonKey+1}}. {{lesson.title}}
-                                    <span v-if="diffdays( lesson.pivot.date_start, lesson.pivot.date_end )">, {{ diffdays( lesson.pivot.date_start, lesson.pivot.date_end ) }} дней</span>
+                                    <span>{{lesson.duration}} дней</span>
                                 </div>
                                 <div class="course-composition-course-list-el__desc">
                                     {{lesson.description}}
                                 </div>
                                 <div class="course-composition-course-list-el__date">
-                                    <input type="date" v-model="lesson.pivot.date_start">
-                                    <input type="date" v-model="lesson.pivot.date_end">
                                     <div @click="remove(course, lessonKey)" class="course-composition-course-list-el__remove">Удалить</div>
-                                    <div>
-
-                                    </div>
                                 </div>
                             </div>
                         </draggable>
@@ -103,14 +98,14 @@
 
         computed:{
 
+
+
         },
 
         methods: {
 
-            diffdays(b,a){
-               let aa = moment(a);
-               let bb = moment(b);
-               return aa.diff(bb, 'days');
+            courseDuration( lessons ){
+                return _.sumBy( lessons, l => l.duration  );
             },
 
             moment: moment,
@@ -166,27 +161,8 @@
                 })
                     .then(( res )=>{
 
-                        this.lessons = res.data.lessons.map(lesson => {
-                            return Object.assign( lesson, {
-                                pivot: {
-                                    date_start: moment(new Date()).format('YYYY-MM-DD'),
-                                    date_end:   moment(new Date()).format('YYYY-MM-DD'),
-                                }
-                            });
-                        }) || [];
-
-
-
+                        this.lessons = res.data.lessons || [];
                         this.courses = res.data.courses || [];
-
-                        this.courses.map(course => {
-                            return course.lessons.map(lesson => {
-                                lesson.pivot.date_start = moment(lesson.pivot.date_start).format('YYYY-MM-DD');
-                                lesson.pivot.date_end = moment(lesson.pivot.date_end).format('YYYY-MM-DD');
-                                return lesson;
-                            });
-                        });
-
                         this.pending = false;
 
                     })
