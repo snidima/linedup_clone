@@ -1,4 +1,4 @@
-<section class="section-2 section_white section" id="section-3">
+<section class="section-2 section_gray section" id="section-3">
     <div class="container">
         <h3 class="h3">Краткое содержание видеокурса</h3>
 

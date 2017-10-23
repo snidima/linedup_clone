@@ -1,15 +1,19 @@
-import $ from 'jquery';
+import '../img/photo.jpg'
 
+
+
+import 'flipclock/compiled/flipclock';
+import 'flipclock/compiled/flipclock.css';
 
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
-// import Personal from './components/User/Personal.vue';
 
-// import {Tabs, Tab} from 'vue-tabs-component';
-// import 'vue-tabs-component/src/components/'
 
 import Vue from 'vue';
 
+
+import 'izimodal/js/iziModal.min';
+import 'izimodal/css/iziModal.min.css'
 
 
 
@@ -33,3 +37,19 @@ if( $('#app').length ){
     });
 }
 
+
+let clockEL = $('#course-clock');
+let clock = clockEL.FlipClock(clockEL.attr('data-seconds'), {
+    clockFace: 'DailyCounter',
+    countdown: true,
+    showSeconds: true,
+    language: 'ru'
+
+});
+
+
+$("#modal").iziModal();
+$(document).on('click', '.trigger', function (event) {
+    event.preventDefault();
+    $('#modal').iziModal('open');
+});

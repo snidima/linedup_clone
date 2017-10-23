@@ -66,77 +66,45 @@
 .course-thumbs__item:nth-child(2)
   margin-left: 25px
 
-//.section_price
-//  position: relative
-//  padding: 0
-//  overflow: hidden
-//.section_price-bg
-//  position: absolute
-//  top: 0
-//  left: -10%
-//  right: -10%
-//  bottom: 0
-//  display: block
-//  transform: skewX(-20deg)
-//  z-index: -1
-//  &:before
-//    background: #e6cff8
-//    content: ''
-//    display: block
-//    position: absolute
-//    left: 0
-//    top: 0
-//    width: 50%
-//    height: 100%
-//  &:after
-//    background: #f4f4f4
-//    content: ''
-//    display: block
-//    position: absolute
-//    left: 50%
-//    top: 0
-//    width: 50%
-//    height: 100%
-//
-//
-//
-//.price__item
-//  width: 300px
-//.price-item__wrapper
-//  background: #fff
-//  padding: 35px
-//  +br()
-//
-//.price-item__title
-//  font-size: 1.6rem
-//  font-weight: bold
-//  text-align: center
-//.price-item__items-wrapper
-//  padding: 30px 0
-//
-//.price-item__items-item
-//  font-size: 1rem
-//  text-align: center
-//  font-weight: lighter
-//  line-height: 1.5
-//  +nlt
-//    margin-bottom: 15px
-//
-//.price-item__price
-//  font-size: 2rem
-//  font-weight: bold
-//  text-align: center
-//.price-item__buy
-//  margin-top: 20px
-//  text-align: center
-//
-//.price
-//  display: flex
-//  justify-content: center
-//.price__item
-//  +nlt
-//    margin-right: 200px
-//
-//.price-item_2 .price-item__wrapper
-//  background: $color-1
-//  color: #fff
+
+
+
+
+
+.course-clock-wrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+#course-clock
+  width: auto
+
+.course-clock-wrapper__title
+  font-size: 1.35rem
+  margin-bottom: 20px
+  color: $black-1
+
+
+.course-clock-wrapper
+
+  .flip-clock-divider .flip-clock-label
+    +font1
+    color: $color-1
+    font-size: .8rem
+    font-weight: bold
+  .flip-clock-wrapper .flip
+    box-shadow: none
+  .flip-clock-wrapper ul li a div div.inn
+    text-shadow: none
+    background-color: $black-1
+    color: $color-1
+    font-size: 3rem
+    +font2
+
+.course-thumb-block__price_sale
+  font-size: 0.65rem
+  font-weight: normal
+  text-align: left
+  text-decoration: line-through
+  color: darken($color-1, 30%)

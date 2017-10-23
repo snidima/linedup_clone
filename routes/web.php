@@ -15,10 +15,8 @@
 
 
 
+Route::get('/', 'IndexController@index')->name('main');
 
-Route::get('/', function () {
-    return view('index');
-})->name('main');
 
 Route::group(['middleware' => 'guest'], function(){
     //USER REGISTER
