@@ -108,6 +108,10 @@
 
         methods: {
 
+            fromPaymentSubmit( data ){
+                this.$emit( 'onLoginSuccess', data )
+            },
+
             submit(){
                 this.pending = true;
                 api({
@@ -117,6 +121,12 @@
                 })
                     .then(( res )=>{
                         this.pending = false;
+
+                        if( this.theme === 'white' ){
+                            this.fromPaymentSubmit( res.data );
+                            return;
+                        }
+
                         alertify
                             .okBtn("Проверить email и войти")
                             .alert('<b>Регистрация завершена.</b> На ваш email отправлено письмо с инструкциями для активации аккаунта.',()=>window.location.replace(res.data.redirect));
@@ -130,7 +140,6 @@
                         }
                         this.commonError = false;
                         _.forEach(this.rawInputs, function(el, key){
-                            console.log(key);
                             if( res.response.data.errors[key] ){
                                 el.error = res.response.data.errors[key][0];
                                 if( !_.includes(self.lastErrorValues[key], self.rawInputs[key].value) ) self.lastErrorValues[key].push(self.rawInputs[key].value);

@@ -17,19 +17,17 @@ class UserObserver
 
     public function created( $model )
     {
-        if( !$model->activated ){
-            $credentials = [
-                'created_at' => (string) Carbon::now(),
-                'name' =>  $model->name,
-                'email' =>  $model->email,
-                'password' =>  $model->password,
-            ];
-
-
-            $token = $this->jwt->encode( $credentials );
-            $model->notify(new ConfirmRegister( route('user.confirm', $token) ));
-
-        } 
+//        if( !$model->activated ){
+//            $credentials = [
+//                'created_at' => (string) Carbon::now(),
+//                'name' =>  $model->name,
+//                'email' =>  $model->email,
+//                'password' =>  $model->password,
+//            ];
+//            $token = $this->jwt->encode( $credentials );
+//            $model->notify(new ConfirmRegister( route('user.confirm', $token) ));
+//
+//        }
 
 
         $this->relateRole( $model );

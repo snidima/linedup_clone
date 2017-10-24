@@ -1,6 +1,6 @@
 <template>
-    <form @submit.prevent="submit" class="form form_login" v-bind:class="{ 'pending': pending }">
-        <div class="form__title">Войти</div>
+    <form @submit.prevent="submit" class="form form_login" v-bind:class="{ 'pending': pending, 'form_login_white': theme == 'white' }">
+        <div class="form__title" v-if="theme != 'white'">Войти</div>
         <div class="form__common-error" v-if="commonError">{{commonError}}</div>
         <div class="form__table form-table">
             <div class="form-table__row">
@@ -33,7 +33,7 @@
                             <button class="btn btn-normal btn-type-1"><i class="fa fa-sign-in"></i>Войти</button>
                         </div>
                     </div>
-                    <div class="form-under-submit-block">
+                    <div class="form-under-submit-block"  v-if="theme != 'white'">
                         <div class="form-under-submit-block__item"><a href="#">Регистрация</a></div>
                         <div class="form-under-submit-block__item"><a href="#">Забыли пароль?</a></div>
                     </div>
@@ -51,7 +51,7 @@
     import _ from 'lodash';
 
     export default {
-
+        props: ['theme'],
         data(){
             return{
                 rawInputs:{
@@ -96,6 +96,10 @@
 
         methods: {
 
+            fromPaymentSubmit( data ){
+                this.$emit( 'onLoginSuccess', data )
+            },
+
             submit(){
                 this.pending = true;
                 api({
@@ -105,6 +109,12 @@
                 })
                     .then(( res )=>{
                         this.pending = false;
+
+                        if( this.theme === 'white' ){
+                            this.fromPaymentSubmit( res.data );
+                            return;
+                        }
+
                         window.location.replace(res.data.redirect);
                     })
                     .catch((res) => {

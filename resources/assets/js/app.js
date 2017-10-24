@@ -11,6 +11,8 @@ import 'flipclock/compiled/flipclock.css';
 
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
+import BuySwitcher from './components/Payment/BuySwitcher.vue';
+import Payment from './components/Payment/Payment.vue';
 
 
 import Vue from 'vue';
@@ -24,13 +26,14 @@ import Vue from 'vue';
 
 Vue.component( 'register', Register );
 Vue.component( 'login', Login );
+Vue.component( 'buyswitcher', BuySwitcher );
+Vue.component( 'payment', Payment );
 
 
-// Vue.component('tabs', Tabs);
-// Vue.component('tab', Tab);
 
-import Personal from './components/User/Personal.vue';
-Vue.component( 'personal', Personal );
+
+// import Personal from './components/User/Personal.vue';
+// Vue.component( 'personal', Personal );
 
 
 

@@ -52,4 +52,13 @@ class UserController extends Controller
             return response()->json( $tmp_file->id );
 
     }
+
+    public function userCheck()
+    {   $user = Auth::user();
+
+        if( $user )
+            return response()->json( Auth::user()->id );
+        else
+            return response()->json( false );
+    }
 }

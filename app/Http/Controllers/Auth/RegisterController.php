@@ -29,12 +29,15 @@ class RegisterController extends Controller
         ])->validate();
         
         
-        $user = new User();
-        $user = $user->create(array(
+        $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ));
+            'password' => $request->input('password')
+        ]);
+        $user->activated = true;
+        $user ->save();
+
+        Auth::login($user, true);
 
         return response()->json([
             'redirect' => route('user.login')

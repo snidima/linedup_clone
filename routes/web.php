@@ -19,6 +19,15 @@ Route::get('/', 'IndexController@index')->name('main');
 Route::get('/buy', 'BuyCourseController@index')->name('buy');
 
 
+
+
+Route::group(['prefix' => 'ajax'], function() {
+    Route::get('user-check', 'UserController@userCheck');
+});
+
+
+
+
 Route::group(['middleware' => 'guest'], function(){
     //USER REGISTER
     Route::get('/register', 'Auth\RegisterController@register');

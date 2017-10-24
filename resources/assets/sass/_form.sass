@@ -46,17 +46,17 @@ input[type="password"]
   +br()
   display: block
   width: 100%
-  border: 2px solid transparent
+  border: 1px solid transparent
   outline: none
   color: $color-1
   &:focus
-    border: 2px solid $color-1
+    border: 1px solid $color-1
     color: $black-1
 
 .input-error
   position: relative
   input
-    border: 2px solid $color-error
+    border: 1px solid $color-error
     color: $color-error
 
 .error-text
@@ -202,6 +202,7 @@ input[type="checkbox"]
     color: $black-1
   .form-table__col_label label
     color: $black-1
-
   input[type="text"], input[type="password"]
     background: $gray
+  input[type="checkbox"] + label
+    color: $black-1
