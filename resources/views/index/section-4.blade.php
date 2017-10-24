@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="course-thumb__btn">
-                    <div class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</div>
+                    <a href="{{route('buy')}}" class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</a>
                 </div>
             </div>
 
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="course-thumb__btn">
-                    <div class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</div>
+                    <a href="{{route('buy')}}" class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</a>
                 </div>
             </div>
 

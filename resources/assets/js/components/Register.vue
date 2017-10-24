@@ -1,6 +1,8 @@
 <template>
-    <form @submit.prevent="submit" class="form form_login" v-bind:class="{ 'pending': pending }">
-        <div class="form__title">Регистрация</div>
+    <form @submit.prevent="submit" class="form form_login" v-bind:class="{ 'pending': pending, 'form_login_white': theme == 'white' }">
+
+        <div class="form__title" v-if="theme != 'white'">Регистрация</div>
+
         <div class="form__common-error" v-if="commonError">{{commonError}}</div>
         <div class="form__table form-table">
             <div class="form-table__row">
@@ -35,7 +37,7 @@
                 <div class="form-table__col_input">
                     <div class="form-submit-block form-submit-block_right">
                         <div class="form-submit-block__item">
-                            <button class="btn btn-normal btn-type-1"><i class="fa fa-sign-in"></i>Зарегистрироваться</button>
+                            <button class="btn btn-normal btn-type-1"><i class="fa fa-unlock" ></i>Зарегистрироваться</button>
                         </div>
                     </div>
                     <div class="form-under-submit-block agree-text">
@@ -48,6 +50,9 @@
             <div class="cssload-speeding-wheel"></div>
         </div>
     </form>
+
+
+
 </template>
 
 <script>
@@ -56,6 +61,8 @@
     import alertify from 'alertify.js'
 
     export default {
+
+        props: ['theme'],
 
         data(){
             return{

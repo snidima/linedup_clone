@@ -19,7 +19,7 @@ mix
     .setPublicPath('public_html')
     .js('resources/assets/js/app.js', 'public_html/js/')
     .js('resources/assets/js/admin.js', 'public_html/js/')
-    .mix.extract(['vue', 'vue-blu', 'vue-material','vue-router','axios','vuex','vuedraggable','daterangepicker','alertify.js','lodash','jquery','flatpickr'])
+    .mix.extract(['vue', 'vue-blu', 'vue-material','vue-router','axios','vuex','vuedraggable','daterangepicker','alertify.js','lodash','jquery','flatpickr','izimodal'])
     .version()
     .sourceMaps()
 

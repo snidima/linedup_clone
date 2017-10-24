@@ -16,6 +16,7 @@
 
 
 Route::get('/', 'IndexController@index')->name('main');
+Route::get('/buy', 'BuyCourseController@index')->name('buy');
 
 
 Route::group(['middleware' => 'guest'], function(){

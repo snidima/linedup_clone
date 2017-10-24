@@ -29,9 +29,3 @@
     </div>
 </section>
 
-<!-- Trigger to open Modal -->
-<a href="https://github.com/dolce/iziModal" class="trigger">Modal</a>
-<!-- Modal structure -->
-<div id="modal">
-    <!-- Page content -->
-</div>

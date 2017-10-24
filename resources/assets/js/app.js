@@ -1,5 +1,9 @@
 import '../img/photo.jpg'
 
+// import iziModal from 'izimodal/js/iziModal';
+// import 'izimodal/css/iziModal.css'
+
+
 
 
 import 'flipclock/compiled/flipclock';
@@ -12,8 +16,7 @@ import Login from './components/Login.vue';
 import Vue from 'vue';
 
 
-import 'izimodal/js/iziModal.min';
-import 'izimodal/css/iziModal.min.css'
+
 
 
 
@@ -48,8 +51,10 @@ let clock = clockEL.FlipClock(clockEL.attr('data-seconds'), {
 });
 
 
-$("#modal").iziModal();
-$(document).on('click', '.trigger', function (event) {
-    event.preventDefault();
-    $('#modal').iziModal('open');
-});
+
+// $.fn.iziModal = iziModal;
+// $("#modal").iziModal();
+// $(document).on('click', '.trigger', function (event) {
+//     event.preventDefault();
+//     $('#modal').iziModal('open');
+// });
