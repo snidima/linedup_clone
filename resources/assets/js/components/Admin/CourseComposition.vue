@@ -81,10 +81,7 @@
     import _ from 'lodash';
     import adminAPI from '../../admin-api';
 
-    import moment from 'moment'
 
-    import ru from 'moment/src/locale/ru';
-    moment.locale('ru');
 
     export default {
 
@@ -108,7 +105,7 @@
                 return _.sumBy( lessons, l => l.duration  );
             },
 
-            moment: moment,
+
 
             remove(course, lessonKey){
                 course.lessons.splice(lessonKey, 1);

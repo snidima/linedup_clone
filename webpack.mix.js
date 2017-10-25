@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 let ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 let webpack = require('webpack');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -41,19 +42,25 @@ mix
 
 
 mix.webpackConfig( {
+    module:{
+
+    },
+
     plugins: [
-        // new ImageminPlugin( {
-        //    disable: process.env.NODE_ENV !== 'production',
-        //     pngquant: {
-        //         quality: '95-100',
-        //     },
-        //     test: /\.(jpe?g|png|gif|svg)$/i,
-        // } ),
+        new ImageminPlugin( {
+           disable: process.env.NODE_ENV !== 'production',
+            pngquant: {
+                quality: '95-100',
+            },
+            test: /\.(jpe?g|png|gif|svg)$/i,
+        } ),
 
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+
+
     ],
 } )
 

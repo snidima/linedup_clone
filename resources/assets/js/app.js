@@ -1,7 +1,7 @@
 import '../img/photo.jpg'
 
-// import iziModal from 'izimodal/js/iziModal';
-// import 'izimodal/css/iziModal.css'
+
+
 
 
 

@@ -1,7 +1,14 @@
 .buy-course
+
+.buy-course-devider
+  width: 100%
+  height: 1px
+  background: $gray
+.buy-course-wrapper
   padding: 25px
   padding-top: 0
-  margin-top: -25px
+
+
 .course-thumb_buy
   width: 650px
   margin: auto
@@ -47,7 +54,7 @@
     display: inline-block
     padding: 0 10px
 .buy-course-top
-  font-size: 1rem
+  font-size: .85rem
   display: flex
   align-items: center
   justify-content: space-between
@@ -56,6 +63,48 @@
 
 
 
-.qwqwgewg
-  font-size: 3rem
-  color: $color-1
+
+.payment-methods
+  display: flex
+
+payment-methods__item
+.payment-methods__item
+  width: 25%
+  max-width: 25%
+  +nlt
+    margin-right: 25px
+
+.payment-methods-item
+
+.payment-methods-item__image
+  padding: 10%
+  padding-bottom: 0
+
+
+.payment-methods-item-wrapper-select
+  cursor: pointer
+  padding: 10px
+  +br()
+  &.active
+    background: $gray
+  &:hover
+    background: $gray
+
+.payment-methods-item__title
+  font-size: .75rem
+  color: $black-1
+  text-align: center
+  margin-top: 7px
+  line-height: 1.3
+
+.payment-btn
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  margin-top: 25px
+.payment-btn__summ
+  margin-right: 15px
+  font-size: 1rem
+  b
+    font-weight: bold
+    color: $color-1

@@ -25,9 +25,9 @@
                 <div class="form-table__col_label"></div>
                 <div class="form-table__col_input">
                     <div class="form-submit-block">
-                        <div class="form-submit-block__item">
-                            <input type="checkbox" id="remember" v-model="rawInputs.remember.value">
-                            <label for="remember">Оставаться в системе</label>
+                        <div class="form-submit-block__item" >
+                            <input type="checkbox" id="remember" v-model="rawInputs.remember.value" v-if="theme != 'white'">
+                            <label for="remember" v-if="theme != 'white'">Оставаться в системе</label>
                         </div>
                         <div class="form-submit-block__item">
                             <button class="btn btn-normal btn-type-1"><i class="fa fa-sign-in"></i>Войти</button>
