@@ -14,6 +14,11 @@ class PaymentReception extends Controller
     public function yandex( Request $request )
     {
 
+        Log::info('YANDEX REQUEST',[
+            'headers' => $request->header(),
+            'data' => $request->all(),
+        ] );
+
         $payOK = false;
         if( $payOK )
             return response(null, 200);
