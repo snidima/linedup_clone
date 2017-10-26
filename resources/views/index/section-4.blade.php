@@ -11,23 +11,29 @@
     <div class="container">
         <h3 class="h3">Цены на видеокурс</h3>
 
-
-
-
         <div class="course-thumbs">
-
+            @foreach( $courses as $course )
             <div class="course-thumbs__item course-thumb">
                 <div class="course-thumb__block course-thumb-block">
                     <div class="course-thumb-block__price">
-                        <span class="course-thumb-block__price_sale">2 000 руб.</span><br>
-                        <span>1750 руб.</span>
+                        @if( $course->newPriceF )
+                        <span class="course-thumb-block__price_sale">{{$course->priceF}} руб.</span>
+                        <br>
+                        <span>{{ $course->newPriceF  }} руб.</span>
+                        @else
+                            <span>{{ $course->priceF  }} руб.</span>
+                        @endif
                     </div>
                     <div class="course-thumb-block__header course-thumb-block-header">
-                        <div class="course-thumb-block-header__title">Adobe After Effect. Стандартный</div>
+                        <div class="course-thumb-block-header__title">{{$course->title}}</div>
                         <div class="course-thumb-block-header__info course-thumb-block-header-info">
-                            <div class="course-thumb-block-header-info__item">18 октября 2017 г. - 23 октября 2017 г.</div>
-                            <div class="course-thumb-block-header-info__item">Продолжительность: 64 дня</div>
-                            <div class="course-thumb-block-header-info__item">10 уроков</div>
+                            <div class="course-thumb-block-header-info__item">
+                                {{$course->regular->dateStartF->toDateString()}}
+                                -
+                                {{$course->dateEnd->toDateString()}}
+                            </div>
+                            <div class="course-thumb-block-header-info__item">Продолжительность: {{$course->duration}} дня</div>
+                            <div class="course-thumb-block-header-info__item">{{count($course->lessons)}} уроков</div>
                         </div>
                     </div>
                     <div class="course-thumb-block__content course-thumb-block-content">
@@ -35,53 +41,16 @@
                             Описание курса
                         </div>
                         <div class="course-thumb-block-content__text">
-                            Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
-                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
-                            В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
-                            используя Lorem Ipsum для распечатки образцов.
+                            {{$course->description}}
                         </div>
                     </div>
                 </div>
                 <div class="course-thumb__btn">
-                    <a href="{{route('buy')}}" class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</a>
+                    <a href="{{route('buy',['id' => $course->regular->id])}}" class="btn btn-big btn-type-1"><i class="fa fa-check-square-o" aria-hidden="true"></i>Записаться</a>
                 </div>
             </div>
-
-            <div class="course-thumbs__item course-thumb">
-                <div class="course-thumb__block course-thumb-block">
-                    <div class="course-thumb-block__price">
-                        4 000 руб.
-                    </div>
-                    <div class="course-thumb-block__header course-thumb-block-header">
-                        <div class="course-thumb-block-header__title">Adobe After Effect. Расширенный</div>
-                        <div class="course-thumb-block-header__info course-thumb-block-header-info">
-                            <div class="course-thumb-block-header-info__item">18 октября 2017 г. - 23 октября 2017 г.</div>
-                            <div class="course-thumb-block-header-info__item">Продолжительность: 64 дня</div>
-                            <div class="course-thumb-block-header-info__item">10 уроков</div>
-                        </div>
-                    </div>
-                    <div class="course-thumb-block__content course-thumb-block-content">
-                        <div class="course-thumb-block-content__title">
-                            Описание курса
-                        </div>
-                        <div class="course-thumb-block-content__text">
-                            Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне.
-                            Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
-                            В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов,
-                            используя Lorem Ipsum для распечатки образцов.
-                        </div>
-                    </div>
-                </div>
-                <div class="course-thumb__btn">
-                    <a href="{{route('buy')}}" class="btn btn-big btn-type-1"><i class="fa fa-cart-plus" aria-hidden="true"></i>Купить курс</a>
-                </div>
-            </div>
-
-
-
+            @endforeach
         </div>
-
-
 
     </div>
 </section>

@@ -1,11 +1,5 @@
 import '../img/photo.jpg'
 
-
-
-
-
-
-
 import 'flipclock/compiled/flipclock';
 import 'flipclock/compiled/flipclock.css';
 
@@ -13,7 +7,6 @@ import Register from './components/Register.vue';
 import Login from './components/Login.vue';
 import BuySwitcher from './components/Payment/BuySwitcher.vue';
 import Payment from './components/Payment/Payment.vue';
-
 
 import Vue from 'vue';
 

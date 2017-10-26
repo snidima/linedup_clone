@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-
-class CoursesTable extends Migration
+class BilingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +13,15 @@ class CoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('billings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->longText('description');
-            $table->decimal('price', 10, 2);
-            $table->decimal('new_price', 10, 2)->nullable();
-            $table->boolean('active')->default(false);
-            $table->softDeletes();
+            $table->integer('user_id');
+            $table->integer('course_id');
+            $table->decimal('amount', 5, 2);
+            $table->decimal('commission', 5, 2);
+            $table->string('information');
             $table->timestamps();
+
         });
     }
 
@@ -33,6 +32,6 @@ class CoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('billings');
     }
 }

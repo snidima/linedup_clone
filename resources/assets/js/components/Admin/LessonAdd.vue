@@ -21,19 +21,13 @@
                 <label>Ссылка на скачивание</label>
                 <md-input v-model="lesson.download_link"></md-input>
             </md-input-container>
-            <md-input-container>
-                <label>Ссылка на скачивание</label>
-                <md-input v-model="lesson.duration"></md-input>
-            </md-input-container>
-
-
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
-
-
             <md-input-container>
-                <label>Сортировка</label>
-                <md-input type="number" v-model="lesson.sort"></md-input>
+                <label>Продолжительость</label>
+                <md-input type="number" v-model="lesson.duration"></md-input>
             </md-input-container>
+
+
 
             <md-button @click="$router.go(-1)">Назад</md-button>
             <md-button @click="submit" class="md-raised md-primary">Сохранить</md-button>

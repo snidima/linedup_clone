@@ -16,7 +16,7 @@
 
         <div class="payment-btn">
             <div class="payment-btn__summ">
-                К оплате <b>2 000</b> руб.
+                К оплате <b>{{price}}</b> руб.
             </div>
             <div class="payment-btn__btn">
                 <button class="btn btn-normal btn-type-1" @click="submit()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Оплатить курс</button>
@@ -59,6 +59,7 @@
 
     export default {
 
+        props: ['price'],
         data(){
             return {
                 paymethods: [
@@ -102,6 +103,9 @@
                 $('#pay-form').submit();
             }
 
+        },
+        mounted(){
+            console.log( this.price );
         }
     }
 </script>

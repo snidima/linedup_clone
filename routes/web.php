@@ -16,7 +16,9 @@
 
 
 Route::get('/', 'IndexController@index')->name('main');
-Route::get('/buy', 'BuyCourseController@index')->name('buy');
+
+
+Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
 
 
