@@ -13,7 +13,7 @@
                     <span v-bind:class="{ 'active': regMethod === 'login' }" @click="regMethodHandler('login')"><i class="fa fa-sign-in"></i> Войти</span>
                 </div>
                 <div class="buy-course-reg-method-btn" v-if="step === 2">
-                    <span class="active">Способ оплаты</span>
+                    <span class="active"><i class="fa fa-money" aria-hidden="true"></i> Способ оплаты</span>
                 </div>
 
             </div>
