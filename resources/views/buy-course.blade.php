@@ -26,7 +26,7 @@
                                     -
                                     {{$regular->course->dateEnd->toDateString()}}
                                 </div>
-                                <div class="course-thumb-block-header-info__item">Продолжительность: {{$regular->course->duration}} дня</div>
+                                <div class="course-thumb-block-header-info__item">Продолжительность: {{$regular->course->duration}} {{str_plural('день', $regular->course->duration) }} </div>
                                 <div class="course-thumb-block-header-info__item">{{count($regular->course->lessons)}} уроков</div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                 {!! $regular->course->description !!}
                             </div>
                         </div>
-                        <buyswitcher price="{{$regular->course->priceF}}"></buyswitcher>
+                        <buyswitcher price="{{$regular->course->finalPrice}}"></buyswitcher>
                     </div>
                 </div>
             </div>

@@ -49,6 +49,14 @@ class Course extends Model
         return Carbon::parse($dateStart)->addDays( $days );
     }
 
+    public function getFinalPriceAttribute()
+    {
+        $price = $this->price;
+        $new_price = $this->new_price;
+
+        return ( $new_price ) ? $new_price : $price;
+    }
+
     public function getDurationAttribute()
     {
         $dateEnd = $this->dateEnd;

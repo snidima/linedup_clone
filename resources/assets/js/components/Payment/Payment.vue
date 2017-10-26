@@ -32,7 +32,7 @@
             <input type="hidden" name="label" value="123">
             <input type="hidden" name="quickpay-form" value="shop">
             <input type="hidden" name="targets" value="транзакция {order_id}">
-            <input type="hidden" name="sum" value="10.00" data-type="number">
+            <input type="hidden" name="sum"  data-type="number" v-model="price">
             <input type="hidden" name="comment" value="Оплата курса 'Основы Adobe After Effect'">
             <input type="hidden" name="need-fio" value="false">
             <input type="hidden" name="need-email" value="false">

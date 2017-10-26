@@ -52,7 +52,7 @@ class TestCommand extends Command
 
         foreach ($courses as $course) {
 
-            $course->regularCourses()->create([
+            $course->regular()->create([
                 'date_start' => $newxtMonday
             ]);
         }
