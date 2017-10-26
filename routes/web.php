@@ -26,6 +26,13 @@ Route::group(['prefix' => 'ajax'], function() {
 });
 
 
+Route::group(['prefix' => 'payment-reception'], function() {
+    Route::post('yandex', 'PaymentReception@yandex');
+});
+
+
+
+
 
 
 Route::group(['middleware' => 'guest'], function(){
@@ -68,6 +75,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
     Route::get('/', 'Admin\MainController@index');
 
