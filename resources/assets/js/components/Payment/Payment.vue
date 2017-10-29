@@ -38,9 +38,9 @@
             <input type="hidden" name="receiver" value="410012589431126">
             <input type="hidden" name="formcomment" value="Школа видеомонтажа LINEDUP">
             <input type="hidden" name="short-dest" value="Школа видеомонтажа LINEDUP">
-            <input type="hidden" name="label" v-model="orderId">
+            <input type="hidden" name="label" id="label">
             <input type="hidden" name="quickpay-form" value="shop">
-            <input type="hidden" name="targets" value="транзакция {order_id}">
+            <input type="hidden" name="targets" value="Adobe After Effect. Стандартный">
             <input type="hidden" name="sum"  data-type="number" v-model="priceM">
             <input type="hidden" name="comment" value="Оплата курса 'Основы Adobe After Effect'">
             <input type="hidden" name="need-fio" value="false">
@@ -74,8 +74,6 @@
                 promoCode: '',
                 priceAfterPromo: false,
 
-                orderId: false,
-
                 paymethods: [
                     {
                         title: 'Yandex.Деньги',
@@ -106,9 +104,6 @@
             priceM(){
                 return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
             },
-            label(){
-                return this.orderId
-            }
         },
 
 
@@ -126,12 +121,12 @@
                     }
                 })
                     .then(( res )=>{
-                        this.orderId = res.data;
-                        alert( this.orderId );
+                    if( !res.data ) return;
+                        $('#label').val(  res.data );
                         $('#pay-form').submit();
                     })
                     .catch((res) => {
-                        console.log( res.data );
+
                     });
 
             },
