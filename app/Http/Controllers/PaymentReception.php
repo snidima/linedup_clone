@@ -14,6 +14,10 @@ class PaymentReception extends Controller
 
     public function yandex( Request $request )
     {
+        Log::info('YANDEX REQUEST',[
+            'headers' => $request->header(),
+            'data' => $request->all(),
+        ] );
 
         $billing = Billing::find( json_decode( $request->input('label') )->orderId );
 
