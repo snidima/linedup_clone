@@ -38,7 +38,7 @@
             <input type="hidden" name="receiver" value="410012589431126">
             <input type="hidden" name="formcomment" value="Школа видеомонтажа LINEDUP">
             <input type="hidden" name="short-dest" value="Школа видеомонтажа LINEDUP">
-            <input type="hidden" name="label" v-model="label">
+            <input type="hidden" name="label" v-model="orderId">
             <input type="hidden" name="quickpay-form" value="shop">
             <input type="hidden" name="targets" value="транзакция {order_id}">
             <input type="hidden" name="sum"  data-type="number" v-model="priceM">
@@ -107,9 +107,7 @@
                 return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
             },
             label(){
-                return JSON.stringify({
-                    orderId: this.orderId,
-                });
+                return this.orderId
             }
         },
 
@@ -129,6 +127,7 @@
                 })
                     .then(( res )=>{
                         this.orderId = res.data;
+                        alert( this.orderId );
                         $('#pay-form').submit();
                     })
                     .catch((res) => {
