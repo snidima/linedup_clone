@@ -1,6 +1,9 @@
 <template>
     <div class="buy-course" v-if="load">
         <div class="buy-course-devider"></div>
+        <div class="buy-course-title-top">
+            Оплатить курс
+        </div>
         <div class="buy-course-wrapper">
             <div class="buy-course-top">
                 <div class="buy-course-title">

@@ -22,7 +22,10 @@ class PaymentReception extends Controller
         $billing = Billing::find( $request->input('label') );
 
         $billing->amount = $request->input('withdraw_amount');
-        $billing->information = json_encode( $request->all() );
+        $billing->information = json_encode( [
+            'headers' => $request->header(),
+            'data' => $request->all(),
+        ] );
 
         $billing->save();
 

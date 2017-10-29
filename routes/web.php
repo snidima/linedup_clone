@@ -31,14 +31,14 @@ Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
 
 
-Route::group(['prefix' => 'ajax'], function() {
+Route::group(['prefix' => 'ajax', 'middleware' => 'throttle'], function() {
     Route::get('user-check', 'UserController@userCheck');
     Route::post('promo-code-check', 'PromoController@check');
     Route::post('order-create', 'OrderController@create');
 });
 
 
-Route::group(['prefix' => 'payment-reception'], function() {
+Route::group(['prefix' => 'payment-reception', 'middleware' => 'throttle'], function() {
     Route::post('yandex', 'PaymentReception@yandex');
 });
 

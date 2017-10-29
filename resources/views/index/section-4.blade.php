@@ -17,11 +17,11 @@
                 <div class="course-thumb__block course-thumb-block">
                     <div class="course-thumb-block__price">
                         @if( $course->newPriceF )
-                        <span class="course-thumb-block__price_sale">{{$course->priceF}} руб.</span>
+                        <span class="course-thumb-block__price_sale">{{$course->regular->priceF}} руб.</span>
                         <br>
-                        <span>{{ $course->newPriceF  }} руб.</span>
+                        <span>{{ $course->regular->newPriceF  }} руб.</span>
                         @else
-                            <span>{{ $course->priceF  }} руб.</span>
+                            <span>{{ $course->regular->priceF  }} руб.</span>
                         @endif
                     </div>
                     <div class="course-thumb-block__header course-thumb-block-header">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="course-thumb__btn">
-                    <a href="{{route('buy',['id' => $course->regular->id])}}" class="btn btn-big btn-type-1"><i class="fa fa-check-square-o" aria-hidden="true"></i>Записаться</a>
+                    <a target="_blank" href="{{route('buy',['id' => $course->regular->id])}}" class="btn btn-big btn-type-1"><i class="fa fa-check-square-o" aria-hidden="true"></i>Записаться</a>
                 </div>
             </div>
             @endforeach
