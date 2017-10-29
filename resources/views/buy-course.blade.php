@@ -6,7 +6,7 @@
         <section class="main-center main-center_gray">
             <div class="container">
 
-                {{--<h1 class="course-thumb-title-top">Купить курс по видеомонтажу<br><b></b>"Adobe After Effect. Расширенный"</h1>--}}
+                <h1 class="course-thumb-title-top">Купить курс по видеомонтажу<br><b></b>"Adobe After Effect. Расширенный"</h1>
                 <div class="course-thumb course-thumb_buy">
                     <div class="course-thumb__block course-thumb-block">
                         <div class="course-thumb-block__price">
@@ -38,7 +38,7 @@
                                 {!! $regular->course->description !!}
                             </div>
                         </div>
-                        <buyswitcher price="{{$regular->course->finalPrice}}"></buyswitcher>
+                        <buyswitcher price="{{$regular->course->finalPrice}}" course="{{$regular->course->id}}"></buyswitcher>
                     </div>
                 </div>
             </div>

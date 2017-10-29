@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use App\Console\Commands\TestCommand;
+use App\Console\Commands\RegularsCoursesCreateCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        TestCommand::class
+        RegularsCoursesCreateCommand::class
     ];
 
     /**
@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(TestCommand::class)->everyMinute();
+        $schedule->command(RegularsCoursesCreateCommand::class)->everyMinute();
     }
 
     /**

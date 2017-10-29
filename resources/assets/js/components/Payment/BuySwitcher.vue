@@ -24,7 +24,7 @@
             </div>
 
             <div v-if="step === 2">
-                <payment :price="price"></payment>
+                <payment :price="price" :user="user" :course="course"></payment>
             </div>
 
         </div>
@@ -36,7 +36,7 @@
     import _ from 'lodash';
 
     export default {
-        props: ['price'],
+        props: ['price', 'course'],
 
         data(){
             return {

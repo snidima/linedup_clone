@@ -21,10 +21,26 @@ Route::get('/', 'IndexController@index')->name('main');
 Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
 
+Route::get('/yandex-emulate', function( \Illuminate\Http\Request $request ){
+
+
+    $billing = \App\Models\Billing::create([
+        'user_id' => json_decode( $request->input('label') )->user,
+        'course_id' => json_decode( $request->input('label') )->course,
+        'promo' => ( json_decode( $request->input('label') )->promoCode ) ? json_decode( $request->input('label') )->promoCode : null,
+        'amount' => $request->input('sum'),
+        'information' => json_encode( $request->all() ),
+    ]);
+
+});
+
+
 
 
 Route::group(['prefix' => 'ajax'], function() {
     Route::get('user-check', 'UserController@userCheck');
+    Route::post('promo-code-check', 'PromoController@check');
+    Route::post('order-create', 'OrderController@create');
 });
 
 

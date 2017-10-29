@@ -6,23 +6,23 @@ use App\Models\Course;
 use App\Models\RegularCourse;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 
-class TestCommand extends Command
+
+class RegularsCoursesCreateCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'test:run';
+    protected $signature = 'course:create';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'tet Command description';
+    protected $description = 'Создать курсы на новую дату';
 
     /**
      * Create a new command instance.
@@ -53,7 +53,9 @@ class TestCommand extends Command
         foreach ($courses as $course) {
 
             $course->regular()->create([
-                'date_start' => $newxtMonday
+                'date_start' => $newxtMonday,
+                'price' => $course->price,
+                'new_price' => $course->new_price,
             ]);
         }
     }

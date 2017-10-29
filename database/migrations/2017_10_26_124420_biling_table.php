@@ -17,9 +17,9 @@ class BilingTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('course_id');
-            $table->decimal('amount', 5, 2);
-            $table->decimal('commission', 5, 2);
-            $table->string('information');
+            $table->string('promo')->nullable();
+            $table->decimal('amount', 5, 2)->nullable();
+            $table->longText('information')->nullable();
             $table->timestamps();
 
         });

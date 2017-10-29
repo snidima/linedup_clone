@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
          $this->call(UsersTableSeeder::class);
          $this->call(LessonsSeeder::class);
          $this->call(CoursesSeeder::class);
+         $this->call(PromoCodesSeeder::class);
 
-         Artisan::call('test:run');
+         Artisan::call('course:create');
     }
 }

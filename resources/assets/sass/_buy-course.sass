@@ -102,10 +102,38 @@
   display: flex
   justify-content: flex-end
   align-items: center
-  margin-top: 25px
 .payment-btn__summ
   margin-right: 15px
   font-size: 1rem
   b
     font-weight: bold
     color: $color-1
+
+.buy-course-titletop
+  text-align: center
+  margin-top: 25px
+  font-weight: bold
+  color: $black-1
+  font-size: 1.125rem
+
+.payment-buy-wrapper
+  margin-top: 25px
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.payment-promo
+  display: flex
+  &:not(.promo-active)
+    opacity: 0
+    position: relative
+    z-index: -999
+
+input[type="text"].gray
+  background: $gray
+
+  padding: 11px
+  &.payment-promo__input
+    width: 110px
+    text-align: center
+    margin-right: 5px

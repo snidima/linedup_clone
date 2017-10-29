@@ -14,12 +14,21 @@
             </div>
         </div>
 
-        <div class="payment-btn">
-            <div class="payment-btn__summ">
-                К оплате <b>{{price}}</b> руб.
-            </div>
-            <div class="payment-btn__btn">
-                <button class="btn btn-normal btn-type-1" @click="submit()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Оплатить курс</button>
+        <div class="payment-buy-wrapper">
+            <form class="payment-promo form" v-on:submit.prevent="onPromoSubmit" v-bind:class="{ 'pending': promoPending, 'promo-active' : !priceAfterPromo}">
+                <input type="text" placeholder="Промо-код" class="gray payment-promo__input" v-model="promoCode">
+                <input type="submit" class="btn btn-type-1 btn-normal" value="Ок">
+                <div class="pending-block" v-if="promoPending">
+                    <div class="cssload-speeding-wheel"></div>
+                </div>
+            </form>
+            <div class="payment-btn">
+                <div class="payment-btn__summ">
+                    К оплате <b>{{priceM}}</b> руб.
+                </div>
+                <div class="payment-btn__btn">
+                    <button class="btn btn-normal btn-type-1" @click="submit()"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Оплатить курс</button>
+                </div>
             </div>
         </div>
 
@@ -29,17 +38,16 @@
             <input type="hidden" name="receiver" value="410012589431126">
             <input type="hidden" name="formcomment" value="Школа видеомонтажа LINEDUP">
             <input type="hidden" name="short-dest" value="Школа видеомонтажа LINEDUP">
-            <input type="hidden" name="label" value="123">
+            <input type="hidden" name="label" v-model="label">
             <input type="hidden" name="quickpay-form" value="shop">
             <input type="hidden" name="targets" value="транзакция {order_id}">
-            <input type="hidden" name="sum"  data-type="number" v-model="price">
+            <input type="hidden" name="sum"  data-type="number" v-model="priceM">
             <input type="hidden" name="comment" value="Оплата курса 'Основы Adobe After Effect'">
             <input type="hidden" name="need-fio" value="false">
             <input type="hidden" name="need-email" value="false">
             <input type="hidden" name="need-phone" value="false">
             <input type="hidden" name="need-address" value="false">
             <input type="hidden" name="paymentType"  v-model="paymethods[paymethodsActive].value">
-
         </form>
 
 
@@ -47,7 +55,7 @@
 </template>
 
 <script>
-    //    import api from '../api';
+    import api from '../../api';
     import _ from 'lodash';
     import '../../../svg/if_maestro_213735.svg'
     import '../../../svg/if_mastercard_213734.svg'
@@ -59,9 +67,15 @@
 
     export default {
 
-        props: ['price'],
+        props: ['price', 'user', 'course'],
         data(){
             return {
+                promoPending: false,
+                promoCode: '',
+                priceAfterPromo: false,
+
+                orderId: false,
+
                 paymethods: [
                     {
                         title: 'Yandex.Деньги',
@@ -89,23 +103,66 @@
         },
 
         computed:{
-
+            priceM(){
+                return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
+            },
+            label(){
+                return JSON.stringify({
+                    orderId: this.orderId,
+                });
+            }
         },
 
 
 
         methods: {
+            orderCreate(){
+
+                api({
+                    method: 'post',
+                    url: '/ajax/order-create',
+                    data: {
+                        promoCode: this.promoCode,
+                        user: this.user,
+                        course: this.course,
+                    }
+                })
+                    .then(( res )=>{
+                        this.orderId = res.data;
+                        $('#pay-form').submit();
+                    })
+                    .catch((res) => {
+                        console.log( res.data );
+                    });
+
+            },
+            onPromoSubmit(){
+                this.promoPending = true;
+                api({
+                    method: 'post',
+                    url: '/ajax/promo-code-check',
+                    data: {code: this.promoCode}
+                })
+                    .then(( res )=>{
+                        this.promoPending = false;
+                        this.priceAfterPromo = res.data;
+                    })
+                    .catch((res) => {
+                        this.promoPending = false;
+                    });
+            },
             methodClick( key ){
                 this.paymethodsActive = key;
             },
 
             submit(){
-                $('#pay-form').submit();
+                this.orderCreate();
+                return false;
             }
 
         },
         mounted(){
-            console.log( this.price );
+
         }
     }
 </script>

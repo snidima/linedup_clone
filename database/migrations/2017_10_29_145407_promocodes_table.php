@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RegularCoursesTable extends Migration
+class PromocodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class RegularCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('regular_courses', function (Blueprint $table) {
+        Schema::create('promo_codes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('course_id');
-            $table->timestamp('date_start')->useCurrent();
-            $table->decimal('price', 10, 2);
-            $table->decimal('new_price', 10, 2)->nullable();
+            $table->string('title');
+            $table->string('code');
+            $table->integer('value');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -31,6 +30,6 @@ class RegularCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('regular_courses');
+        Schema::dropIfExists('promo_codes');
     }
 }
