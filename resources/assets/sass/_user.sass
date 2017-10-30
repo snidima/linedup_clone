@@ -2,127 +2,226 @@
   font-size: 2rem
   font-weight: lighter
   text-align: right
-  padding: 20px 0
+  padding: 30px 0
 
 
-.course-info
-  background: $gray
-  padding: 30px
-  border: 1px solid $gray
-  +br()
+.course-thumb-block-content_padding0
+  padding: 0
+  .course-thumb-block-content__title
+    margin-top: 25px
+.course-thumb-block-content__text_padding
+  padding: 25px
 
-.course-info__field
-  +nlt
-    margin-bottom: 10px
-
-.course-info-field
+.user-course-lessons
   display: flex
+  justify-content: space-between
   align-items: center
-.course-info-field__title
-  white-space: pre
-  margin-right: 15px
-  min-width: 270px
-  font-size: .9rem
-
-.course-info-field__value
-  flex-grow: 1
-  width: 100%
-  font-size: .9rem
-
-.course-info-graph
-  width: 100%
-  height: 2px
-  background: lighten($black-1, 80%)
-  +br()
-.course-info-graph__complete
-  background: $color-1
-  height: 100%
-  +br()
   position: relative
-  display: flex
-  align-items: center
-  justify-content: flex-end
-.course-info-graph-complete__text
-  position: absolute
-  margin-top: -10px
-  font-size: .7rem
-
-
-
-
-
-
-
-
-
-
-.lessons
-  margin-top: 60px
-.lesson_disabled
-  position: relative
-  &:after
-    content: ''
-    display: block
-    width: 100%
-    height: 100%
-    top: 0
-    right: 0
-    bottom: 0
-    left: 0
-    background: rgba(#fff, .85)
-    position: absolute
-    z-index: 10
-.lessons__item
-  +nlt
-    margin-bottom: 20px
-  &:nth-child(even)
-    background: #f7f7f7
-.lesson
-  padding: 20px
-  +br()
-
-
-
-.lesson__title-num
-  padding: 5px 10px
-  +br()
-  background: $black-1
-  color: $white-1
-  display: inline-block
-.lesson__date
-  display: inline-block
-  font-size: 0.7rem
-  color: #aeaeae
-
-.lesson__title
-  margin-top: 5px
-  font-size: 1.2rem
-
-
-
-
-.lesson__homework
+  padding: 0 25px
   margin-top: 15px
+  &:before
+    position: absolute
+    content: ''
+    left: -25px
+    z-index: 0
+    width: calc(100% + 50px)
+    display: block
+    height: 4px
+    background: $gray
 
-.lesson-homework
+.user-course-lessons__item
 
-
-input[type="file"]
-  display: none
-
-.file-upload label
+  $radius: 45px
+  z-index: 1
   position: relative
-  overflow: hidden
-.file-upload label span
-  position: relative
-  z-index: 10
-.file-progress
+  width: $radius
+  height: $radius
+  border-radius: 50%
+  border: darken($gray, 5%) 4px solid
+  background: $color-1
+  text-align: center
+  font-weight: bold
+  font-size: 1.2rem
+  color: $white-1
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: all 0.1s ease
+  &.active
+    border: $color-1 4px solid
+  &:not(.active)
+    cursor: pointer
+    &:hover
+      border: $color-1 4px solid
+
+
+.user-course-lessons-current
+  background: $black-1
   position: absolute
-  content: ''
-  display: block
-  height: 100%
-  left: 0
-  top: 0
-  background: rgba(#000, 0.2)
-  z-index: 0
-    
+  color: $white-1
+  line-height: 1
+  font-size: .7rem
+  font-weight: normal
+  padding: 10px
+  +br()
+  white-space: nowrap
+  top: -45px
+  &:after
+    $w: 5px
+    content: ''
+    position: absolute
+    top: 100%
+    left: 50%
+    margin-left: -$w
+    width: 0
+    height: 0
+    border-top: solid $w $black-1
+    border-left: solid $w transparent
+    border-right: solid $w transparent
+
+.user-course-lessons-old
+  background: $gray
+  position: absolute
+  color: darken($gray, 50%)
+  line-height: 1
+  font-size: .7rem
+  font-weight: normal
+  padding: 10px
+  +br()
+  white-space: nowrap
+  top: -45px
+  &:after
+    $w: 5px
+    content: ''
+    position: absolute
+    top: 100%
+    left: 50%
+    margin-left: -$w
+    width: 0
+    height: 0
+    border-top: solid $w $gray
+    border-left: solid $w transparent
+    border-right: solid $w transparent
+
+//
+//.course-info
+//  background: $gray
+//  padding: 30px
+//  border: 1px solid $gray
+//  +br()
+//
+//.course-info__field
+//  +nlt
+//    margin-bottom: 10px
+//
+//.course-info-field
+//  display: flex
+//  align-items: center
+//.course-info-field__title
+//  white-space: pre
+//  margin-right: 15px
+//  min-width: 270px
+//  font-size: .9rem
+//
+//.course-info-field__value
+//  flex-grow: 1
+//  width: 100%
+//  font-size: .9rem
+//
+//.course-info-graph
+//  width: 100%
+//  height: 2px
+//  background: lighten($black-1, 80%)
+//  +br()
+//.course-info-graph__complete
+//  background: $color-1
+//  height: 100%
+//  +br()
+//  position: relative
+//  display: flex
+//  align-items: center
+//  justify-content: flex-end
+//.course-info-graph-complete__text
+//  position: absolute
+//  margin-top: -10px
+//  font-size: .7rem
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//.lessons
+//  margin-top: 60px
+//.lesson_disabled
+//  position: relative
+//  &:after
+//    content: ''
+//    display: block
+//    width: 100%
+//    height: 100%
+//    top: 0
+//    right: 0
+//    bottom: 0
+//    left: 0
+//    background: rgba(#fff, .85)
+//    position: absolute
+//    z-index: 10
+//.lessons__item
+//  +nlt
+//    margin-bottom: 20px
+//  &:nth-child(even)
+//    background: #f7f7f7
+//.lesson
+//  padding: 20px
+//  +br()
+//
+//
+//
+//.lesson__title-num
+//  padding: 5px 10px
+//  +br()
+//  background: $black-1
+//  color: $white-1
+//  display: inline-block
+//.lesson__date
+//  display: inline-block
+//  font-size: 0.7rem
+//  color: #aeaeae
+//
+//.lesson__title
+//  margin-top: 5px
+//  font-size: 1.2rem
+//
+//
+//
+//
+//.lesson__homework
+//  margin-top: 15px
+//
+//.lesson-homework
+//
+//
+//input[type="file"]
+//  display: none
+//
+//.file-upload label
+//  position: relative
+//  overflow: hidden
+//.file-upload label span
+//  position: relative
+//  z-index: 10
+//.file-progress
+//  position: absolute
+//  content: ''
+//  display: block
+//  height: 100%
+//  left: 0
+//  top: 0
+//  background: rgba(#000, 0.2)
+//  z-index: 0
+//

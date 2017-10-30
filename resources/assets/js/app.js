@@ -8,6 +8,8 @@ import Login from './components/Login.vue';
 import BuySwitcher from './components/Payment/BuySwitcher.vue';
 import Payment from './components/Payment/Payment.vue';
 
+import UserMain from './components/User/UserMain.vue';
+
 import Vue from 'vue';
 
 
@@ -21,6 +23,7 @@ Vue.component( 'register', Register );
 Vue.component( 'login', Login );
 Vue.component( 'buyswitcher', BuySwitcher );
 Vue.component( 'payment', Payment );
+Vue.component( 'usermain', UserMain );
 
 
 
