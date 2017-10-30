@@ -12,7 +12,7 @@ class RegularCourse extends Model
 {
     protected $table = "regular_courses";
 
-    protected $fillable = ['date_start'];
+    protected $fillable = ['date_start', 'price', 'new_price'];
 
 
     public function course()
