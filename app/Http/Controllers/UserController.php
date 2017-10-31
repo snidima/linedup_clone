@@ -20,10 +20,13 @@ class UserController extends Controller
 
     public function courseInfo()
     {
-        $billings = Auth::user()->billings()->where('amount', '>', 0)->with('course', 'promoCode', 'course.course', 'course.course.lessons')->get();
-
+        $billings = Auth::user()->billings()->where('amount', '>', 0)->with(['course', 'promoCode', 'course.course',
+            'course.course.lessons' => function($q){
+                $q->orderBy('id','asc');
+            }
+        ])->get();
         //Взять все оплаченные за раз курсы
-        $billings = $billings->filter(function( $billing ){
+        $courses = $billings->filter(function( $billing ){
             $amount = $billing->amount;
             $price = $billing->course->finalPrice;
             $needPrice = $price;
@@ -33,14 +36,23 @@ class UserController extends Controller
                 $needPrice = $price - ( $price * $sale / 100 );
             }
             return ( $amount>= $needPrice );
-        });
+        })->transform(function( $billing ){
+            $billing->course->course->lessons->transform(function($lesson, $key) use( $billing ){
+                $lessonSlice = $billing->course->course->lessons->slice( 0, $key )->sum('duration');
 
-        $courses = $billings->map(function( $billing ){
+                $date_end = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice + $lesson->duration );
+                $current = Carbon::now() > $date_end;
+                $lesson['was'] = $current;
+                $lesson['date_end'] = $date_end;
+                $lesson['date_start'] = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice );
+                $lesson['now'] = ( Carbon::now() <= $date_end ) && ( Carbon::now() >= Carbon::parse($billing->course->date_start)->addDays( $lessonSlice ) );
+                return $lesson;
+            });
             return $billing->course;
         });
 
-        if( !count($courses) ) return response('', 404);
 
+        if( !count($courses) ) return response('', 404);
         return $courses;
     }
 
