@@ -11,4 +11,13 @@ class Billing extends Model
 {
     protected $table = "billings";
     protected $fillable = ['user_id', 'course_id', 'promo', 'amount' ,'information'];
+
+    public function course()
+    {
+        return $this->belongsTo(RegularCourse::class, 'course_id');
+    }
+    public function promoCode()
+    {
+        return $this->belongsTo(PromoCodes::class, 'promo', 'code');
+    }
 }

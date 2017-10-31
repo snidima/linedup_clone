@@ -45,4 +45,9 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
+    public function billings()
+    {
+        return $this->hasMany(Billing::class, 'user_id' );
+    }
+
 }

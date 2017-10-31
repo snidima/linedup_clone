@@ -3,7 +3,9 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Course;
+use App\Models\PromoCodes;
 use App\Models\TmpFiles;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +20,27 @@ class UserController extends Controller
 
     public function courseInfo()
     {
-        $now = Carbon::now();
+        $billings = Auth::user()->billings()->where('amount', '>', 0)->with('course', 'promoCode', 'course.course', 'course.course.lessons')->get();
 
-        $courses = Course::
-            where('date_start', '<=', $now)
-            ->where('date_end', '>=', $now)
-            ->where('active', true)
-            ->with('lessons')->first();
+        //Взять все оплаченные за раз курсы
+        $billings = $billings->filter(function( $billing ){
+            $amount = $billing->amount;
+            $price = $billing->course->finalPrice;
+            $needPrice = $price;
+            if( $billing->promoCode ){
+                $sale = $billing->promoCode->value;
+
+                $needPrice = $price - ( $price * $sale / 100 );
+            }
+            return ( $amount>= $needPrice );
+        });
+
+        $courses = $billings->map(function( $billing ){
+            return $billing->course;
+        });
+
+        if( !count($courses) ) return response('', 404);
+
         return $courses;
     }
 

@@ -14,6 +14,9 @@ class Course extends Model
 
     protected $fillable = ['title', 'description', 'active'];
 
+    protected $appends  = ['dateEnd', 'duration'];
+
+
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class, 'course_lesson', 'course_id', 'lesson_id');
@@ -45,7 +48,6 @@ class Course extends Model
     {
         $days = $this->lessons->sum('duration');
         $dateStart = $this->regular->date_start;
-        //->toDateString();
         return Carbon::parse($dateStart)->addDays( $days );
     }
 
