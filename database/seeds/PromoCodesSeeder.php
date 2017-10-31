@@ -13,11 +13,15 @@ class PromoCodesSeeder extends Seeder
      */
     public function run()
     {
-        PromoCodes::create([
-            'title' => 'Тестовый промокод',
-            'code' => 'PRICE10',
-            'value' => '95'
-        ]);
+
+        for($i = 1; $i <= 100; $i++){
+            PromoCodes::create([
+                'title' => 'Тестовый промокод',
+                'code' => 'PRICE'.$i,
+                'value' => $i
+            ]);
+        }
+
 
     }
 }

@@ -18,8 +18,10 @@ class PromoController extends Controller
 
         $promo = PromoCodes::where( 'code', $code )->first();
 
+        $value = $promo->value;
+
         if( $promo )
-            return 3;
+            return $value;
         else return response()->json(false);
     }
 

@@ -139,7 +139,7 @@
                 })
                     .then(( res )=>{
                         this.promoPending = false;
-                        this.priceAfterPromo = res.data;
+                        this.priceAfterPromo = (this.price - ( res.data * this.price / 100 )).toFixed(2);
                     })
                     .catch((res) => {
                         this.promoPending = false;
