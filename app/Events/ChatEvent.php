@@ -9,9 +9,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class ChatEvent implements ShouldBroadcast
+class ChatEvent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -25,11 +25,10 @@ class ChatEvent implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct( User $to, User $from, $message )
+    public function __construct( $message )
     {
 
-        $this->to = $to;
-        $this->from = $from;
+
         $this->message = $message;
     }
 
