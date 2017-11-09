@@ -14,7 +14,7 @@ class Course extends Model
 
     protected $fillable = ['title', 'description', 'active'];
 
-    protected $appends  = ['dateEnd', 'duration'];
+    protected $appends  = ['duration'];
 
 
     public function lessons()
@@ -44,12 +44,7 @@ class Course extends Model
         return $priceF;
     }
 
-    public function getDateEndAttribute()
-    {
-        $days = $this->lessons->sum('duration');
-        $dateStart = $this->regular->date_start;
-        return Carbon::parse($dateStart)->addDays( $days );
-    }
+
 
     public function getFinalPriceAttribute()
     {
@@ -61,9 +56,7 @@ class Course extends Model
 
     public function getDurationAttribute()
     {
-        $dateEnd = $this->dateEnd;
-        $dateStart = Carbon::parse($this->regular->date_start);
-        return $dateStart->diffInDays( $dateEnd );
+        return $this->lessons->sum('duration');
     }
 
 }

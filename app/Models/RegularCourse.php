@@ -14,6 +14,7 @@ class RegularCourse extends Model
 
     protected $fillable = ['date_start', 'price', 'new_price'];
 
+    protected $appends  = ['date_end'];
 
 
 
@@ -27,6 +28,15 @@ class RegularCourse extends Model
     {
         $date = $this->date_start;
         return  Carbon::parse($date);
+    }
+
+    public function getDateEndAttribute()
+    {
+
+        $days = $this->course->lessons->sum('duration');
+        $dateStart = $this->dateStartF;
+
+        return Carbon::parse($dateStart)->addDays( $days );
     }
 
     public function getPriceFAttribute()

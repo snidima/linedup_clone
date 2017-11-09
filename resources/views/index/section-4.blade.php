@@ -28,12 +28,13 @@
                         <div class="course-thumb-block-header__title">{{$course->title}}</div>
                         <div class="course-thumb-block-header__info course-thumb-block-header-info">
                             <div class="course-thumb-block-header-info__item">
+                                Дата проведения:
                                 {{$course->regular->dateStartF->toDateString()}}
                                 -
-                                {{$course->dateEnd->toDateString()}}
+                                {{$course->regular->dateEnd->toDateString()}}
                             </div>
-                            <div class="course-thumb-block-header-info__item">Продолжительность: {{$course->duration}} дня</div>
-                            <div class="course-thumb-block-header-info__item">{{count($course->lessons)}} уроков</div>
+                            <div class="course-thumb-block-header-info__item">Продолжительность (дней): {{$course->lessons->sum('duration')}}</div>
+                            <div class="course-thumb-block-header-info__item">Уроков: {{count($course->lessons)}}</div>
                         </div>
                     </div>
                     <div class="course-thumb-block__content course-thumb-block-content">

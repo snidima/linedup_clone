@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Events\ChatEvent;
 use App\Models\Course;
 use App\Models\Lesson;
 
@@ -19,9 +20,12 @@ class TestController extends Controller
     public function index()
     {
 
+        $to = User::find(5);
+        $from = User::find(1);
+        $message = 'message message message';
+        $r = event( new ChatEvent($to, $from, $message) );
 
-
-
+        dd($r);
 
 
     }

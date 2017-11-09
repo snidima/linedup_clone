@@ -1,0 +1,128 @@
+.chat-wrapper
+  margin-top: 20px
+  //border: 1px solid darken($gray, 10%)
+
+.chat__body
+  margin-bottom: 10px
+
+
+.chat-input
+  //border: 1px solid darken($gray, 10%)
+  display: block
+  width: 100%
+  +font1
+  font-size: 0.9rem
+  padding: 8px
+  max-height: 136px
+  overflow: auto
+  line-height: 1.5
+  flex-grow: 1
+  min-height:  40px
+  +br()
+  //background: $white-1
+  background: $gray
+
+.chat-icon
+  font-size: 1.3rem
+  color: $color-2
+  cursor: pointer
+  line-height: 40px
+  width: 40px
+  text-align: center
+  +br()
+  &:hover
+    background: darken($gray, 5%)
+    color: $color-1
+.chat-bottom
+  display: flex
+  align-items: center
+  padding: 20px 0
+  //background: $gray
+  //border-top: 1px solid darken($gray, 10%)
+  > *
+    +nlt
+      margin-right: 15px
+
+
+
+
+
+
+
+.chat-line.chat-line_from-me
+  display: flex
+  justify-content: flex-end
+  +nlt
+    margin-bottom: 20px
+
+  .chat-line-talk
+    display: flex
+    align-items: flex-end
+  .chat-line-talk__message
+    line-height: 1.5
+    padding: 30px
+    +br()
+    background: $color-1
+    color: $white-1
+    position: relative
+    margin-right: 20px
+    &:after
+      content: ''
+      position: absolute
+      right: 0
+      bottom: 0
+      width: 0
+      height: 0
+      border: 13px solid transparent
+      border-left-color: $color-1
+      border-right: 0
+      border-top: 0
+      margin-bottom: 20px
+      margin-right: -13px
+  .chat-line-talk__author
+    margin-bottom: 23px
+    color: $black-1
+    font-size: .8rem
+    font-weight: bold
+
+.chat-line.chat-line_to-me
+  display: flex
+  justify-content: flex-start
+  +nlt
+      margin-bottom: 20px
+  .chat-line-talk
+    display: flex
+    align-items: flex-end
+  .chat-line-talk__message
+    line-height: 1.2
+    order: 2
+    padding: 30px
+    +br()
+    background: $gray
+    color: $black-1
+    position: relative
+    margin-left: 20px
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 0
+      height: 0
+      border: 13px solid transparent
+      border-right-color: $gray
+      border-left: 0
+      border-top: 0
+      margin-bottom: 20px
+      margin-left: -13px
+  .chat-line-talk__author
+    margin-bottom: 23px
+    color: $black-1
+    order: 1
+    font-size: .8rem
+    font-weight: bold
+
+.chat-line.new
+  padding: 10px
+  +br()
+  background: lighten($gray, 2%)

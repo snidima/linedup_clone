@@ -13,9 +13,10 @@ class BuyCourseController extends Controller
 
     public function index( $id )
     {
-        $course = RegularCourse::with(['course'=>function( $q ){
+        $course = RegularCourse::where('id',$id)->with(['course'=>function( $q ){
             $q->with('lessons');
-        }])->find($id);
+        }])->first();
+
 
         return view('buy-course', ['regular' => $course]);
     }

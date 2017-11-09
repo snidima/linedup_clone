@@ -19,7 +19,7 @@
                 <input type="text" placeholder="Промо-код" class="gray payment-promo__input" v-model="promoCode">
                 <input type="submit" class="btn btn-type-1 btn-normal" value="Ок">
                 <div class="pending-block" v-if="promoPending">
-                    <div class="cssload-speeding-wheel"></div>
+                    <div class="cssload-speeding-wheel cssload-speeding-wheel_small"></div>
                 </div>
             </form>
             <div class="payment-btn">
@@ -110,6 +110,8 @@
 
         methods: {
             orderCreate(){
+
+                alert(this.course);
 
                 api({
                     method: 'post',

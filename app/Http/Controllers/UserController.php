@@ -25,6 +25,7 @@ class UserController extends Controller
                 $q->orderBy('id','asc');
             }
         ])->get();
+
         //Взять все оплаченные за раз курсы
         $courses = $billings->filter(function( $billing ){
             $amount = $billing->amount;
@@ -56,30 +57,30 @@ class UserController extends Controller
         return $courses;
     }
 
-    public function fileUpload( Request $request )
-    {
-        $file = $request->file('file');
-        $title = $file->getClientOriginalName();
-        $ext = $file->getClientOriginalExtension();
-
-        $path = storage_path().'/tmp_files/';
-        $name = uniqid(rand(), true).".$ext";
-
-        $user_id = Auth::user()->id;
-        $tmp_file = new TmpFiles;
-
-        $tmp_file->user_id = $user_id;
-        $tmp_file->path = $name;
-        $tmp_file->title = $title;
-
-        $tmp_file->save();
-
-
-
-        if( $file->move($path, $name) )
-            return response()->json( $tmp_file->id );
-
-    }
+//    public function fileUpload( Request $request )
+//    {
+//        $file = $request->file('file');
+//        $title = $file->getClientOriginalName();
+//        $ext = $file->getClientOriginalExtension();
+//
+//        $path = storage_path().'/tmp_files/';
+//        $name = uniqid(rand(), true).".$ext";
+//
+//        $user_id = Auth::user()->id;
+//        $tmp_file = new TmpFiles;
+//
+//        $tmp_file->user_id = $user_id;
+//        $tmp_file->path = $name;
+//        $tmp_file->title = $title;
+//
+//        $tmp_file->save();
+//
+//
+//
+//        if( $file->move($path, $name) )
+//            return response()->json( $tmp_file->id );
+//
+//    }
 
     public function userCheck()
     {   $user = Auth::user();

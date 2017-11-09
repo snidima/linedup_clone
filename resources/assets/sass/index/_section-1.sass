@@ -1,28 +1,59 @@
+.section-1
+  $p: 80px
+  background-image: url('../../img/main-bg.jpg')
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: cover
+  flex-grow: 1
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  padding: $p 0
+  padding-bottom: $p + 25px
+  position: relative
+  overflow: hidden
 
+  &:before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    border-left:  50vw solid #fff
+    border-right: 50vw solid #fff
+    border-top:   70px solid transparent
 
 .section-1__texts
   text-align: right
 
 .section-1-texts__text-1
   text-align: center
-  font-size: 5rem
+  font-size: 4rem
   font-weight: bold
   color: $white-1
   line-height: 1.2
 .section-1-texts__text-2
   text-align: right
-  font-size: 1.1rem
+  font-weight: bold
+  font-size: 1.2rem
   display: inline-block
-  background: $black-1
+  background: $color-1
   margin-right: auto
   color: $white-1
   padding: 3px 5px
-  +br()
 
-
+.section-1-desc
+  max-width: 750px
+  margin: auto
+  color: darken($white-1, 35%)
+  font-style: italic
+  font-size: 1rem
+  text-align: center
+  margin-top: 65px
+  line-height: 1.5
 
 .section-1__btns
-  margin-top: 80px
+  margin-top: 65px
   text-align: center
 
 .section-1__menu .menu-icon

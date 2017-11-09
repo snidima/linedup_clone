@@ -1,13 +1,13 @@
 <header>
-    <div class="top">
-        <div class="container">
-            <div class="top-wrapper">
-                <div class="top__item">+795237193815</div>
-                <div class="top__item">info@mail.ru</div>
-                <div class="top__item">vk twitter youtube fb</div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="top">--}}
+        {{--<div class="container">--}}
+            {{--<div class="top-wrapper">--}}
+                {{--<div class="top__item">+795237193815</div>--}}
+                {{--<div class="top__item">info@mail.ru</div>--}}
+                {{--<div class="top__item">vk twitter youtube fb</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="menu">
         <div class="container">

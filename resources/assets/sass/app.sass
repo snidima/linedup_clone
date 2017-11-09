@@ -15,6 +15,7 @@
 @import "header"
 @import "form"
 @import "user"
+@import "chat"
 
 
 
@@ -59,9 +60,9 @@ a
   padding: 18px 35px
   .fa, .lnr
     margin-right: 10px
-  +br()
+  +br(50px)
 .btn-normal
-  +br()
+  +br(50px)
   font-size: 1rem
   padding: 12px 22px
   .fa, .lnr
@@ -80,8 +81,7 @@ a
   color: $color-1
   box-sizing: border-box
   background: transparent
-  border: 1px solid $color-1
-  font-weight: lighter
+  border: 2px solid $color-1
   &:hover
     background: $color-1
     color: $white-1

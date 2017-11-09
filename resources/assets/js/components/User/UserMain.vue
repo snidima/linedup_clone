@@ -11,9 +11,9 @@
 
             </div>
 
-            <div class="course-info" v-if="course" >
+            <div class="course-info" v-if="course" style="display: none;">
 
-                <div class="course-thumb-block">
+                <div class="course-thumb-block" >
                     <div class="course-thumb-block__header course-thumb-block-header">
                         <div class="course-thumb-block-header__title">{{course.course.title}}</div>
                         <div class="course-thumb-block-header__info course-thumb-block-header-info">
@@ -21,7 +21,7 @@
                                 Даты проведения:
                                 {{moment(course.date_start).format('LL')}}
                                 -
-                                {{moment(course.course.dateEnd.date).format('LL')}}
+                                {{moment(course.date_end.date).format('LL')}}
                             </div>
                             <div class="course-thumb-block-header-info__item">Продолжительность (дней): {{course.course.duration}} </div>
                             <div class="course-thumb-block-header-info__item">Уроков: {{course.course.lessons.length}}</div>
@@ -53,7 +53,7 @@
 
             <div class="course-theory-practice" v-if="course">
 
-                <div class="course-theory" >
+                <div class="course-theory" style="display: none;">
 
                     <div class="course-theory-header">
                         <div class="course-theory-header__left">Урок №{{active+1}} - Теория</div>
@@ -85,16 +85,17 @@
                 </div>
 
 
-                <div class="course-practice" v-bind:class="{'active' : !activeCourse.was}">
+                <div class="course-practice" v-if="!activeCourse.was">
 
                     <div class="course-practice-header">
                         <div class="course-practice-header__left">Урок №2 - Практика</div>
                         <div class="course-practice-header__right">Сдать домашнее задание нужно <b>{{moment(activeCourse.date_end.date).format('LL')}}</b></div>
                     </div>
 
-                    <div v-if="activeCourse.was">
-                        К сожалению, время сдачи домашнего задания вышло.
+                    <div class="chat-wrapper">
+                        <chat></chat>
                     </div>
+
 
                 </div>
             </div>
@@ -113,17 +114,12 @@
 
     import FileBtn from '../FileUploadBtn.vue'
 
-
-
-
-
-
-
     export default {
 
 
         components: {
-            FileBtn
+            FileBtn,
+
         },
 
 

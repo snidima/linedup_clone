@@ -17,6 +17,10 @@
 
 Route::get('/', 'IndexController@index')->name('main');
 
+Route::get('/chat', function(){
+    dd('!!');
+});
+
 
 Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
