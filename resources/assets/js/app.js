@@ -16,15 +16,15 @@ import Vue from 'vue';
 
 
 
-import Pusher from 'pusher-js';
-import Echo from "laravel-echo"
-
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: '56a9659c613c503938f8',
-    cluster: 'ap2',
-    encrypted: true
-});
+// import Pusher from 'pusher-js';
+// import Echo from "laravel-echo"
+//
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: '56a9659c613c503938f8',
+//     cluster: 'ap2',
+//     encrypted: true
+// });
 
 
 
