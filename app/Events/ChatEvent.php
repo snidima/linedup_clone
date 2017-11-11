@@ -18,6 +18,7 @@ class ChatEvent implements ShouldBroadcastNow
     public $to;
     public $from;
     public $message;
+    public $chanel;
 
 
     /**
@@ -25,11 +26,12 @@ class ChatEvent implements ShouldBroadcastNow
      *
      * @return void
      */
-    public function __construct( $message )
+    public function __construct( $from, $to,  $message, $chanel )
     {
-
-
+        $this->from = $from;
+        $this->to = $to;
         $this->message = $message;
+        $this->chanel = $chanel;
     }
 
     /**
@@ -39,6 +41,6 @@ class ChatEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chat');
+        return new PrivateChannel("chat.{$this->chanel}");
     }
 }

@@ -11,14 +11,14 @@
             </div>
 
             <!--<div class="chat-line chat-line_to-me new">-->
-                <!--<div class="chat-line-talk">-->
-                    <!--<div class="chat-line-talk__message">-->
-                        <!--Flush to the bottom right. Uses .btm-right only-->
-                    <!--</div>-->
-                    <!--<div class="chat-line-talk__author">-->
-                        <!--Куратор-->
-                    <!--</div>-->
-                <!--</div>-->
+            <!--<div class="chat-line-talk">-->
+            <!--<div class="chat-line-talk__message">-->
+            <!--Flush to the bottom right. Uses .btm-right only-->
+            <!--</div>-->
+            <!--<div class="chat-line-talk__author">-->
+            <!--Куратор-->
+            <!--</div>-->
+            <!--</div>-->
             <!--</div>-->
 
 
@@ -52,29 +52,13 @@
 
     export default {
 
-        props: ['userid'],
 
-        components: {
-            rows(){
-                return 2
-            }
-        },
 
 
         data(){
             return{
-                messages: [
-                    {
-                        from: 'me',
-                        message: 'Добрый день!',
-                        date: ''
-                    },
-                    {
-                        from: 'tome',
-                        message: 'Приветствую, Дмитрий!',
-                        date: ''
-                    }
-                ]
+                userid: 5,
+                messages: []
             }
         },
 
@@ -107,7 +91,7 @@
 
                 this.messages.push({
                     from: this.userid,
-                    chanel: this.userid,
+                    chanel: 1,
                     message: message
                 });
 
@@ -147,10 +131,9 @@
                     cluster: 'eu',
                     encrypted: true
                 });
-                echo.channel('private-chat.' + this.userid)
+                echo.channel('private-chat.' + 1)
                     .listen("ChatEvent", (e) => {
                         if( e.from == this.userid ) return;
-
                         this.messages.push( e );
                     });
             },

@@ -40,7 +40,6 @@ class UserController extends Controller
         })->transform(function( $billing ){
             $billing->course->course->lessons->transform(function($lesson, $key) use( $billing ){
                 $lessonSlice = $billing->course->course->lessons->slice( 0, $key )->sum('duration');
-
                 $date_end = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice + $lesson->duration );
                 $current = Carbon::now() > $date_end;
                 $lesson['was'] = $current;

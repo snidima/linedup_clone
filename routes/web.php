@@ -17,20 +17,16 @@
 
 Route::get('/', 'IndexController@index')->name('main');
 
-Route::get('/chat', function(){
-    dd('!!');
-});
+
 
 
 Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
-//
-//Route::get('/yandex-emulate', function( \Illuminate\Http\Request $request ){
-//
-//
-//    dd( $request->all() );
-//
-//});
+Route::group(['prefix' => 'chat'], function() {
+//    Route::post('auth', 'ChatController@auth');
+    Route::post('send-message', 'ChatController@sendMessage');
+    Route::post('get-message', 'ChatController@getMessages');
+});
 
 
 

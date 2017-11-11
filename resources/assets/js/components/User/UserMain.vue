@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="chat-wrapper">
-                        <chat></chat>
+                        <chat :userid="userid"></chat>
                     </div>
 
 
@@ -114,14 +114,19 @@
 
     import FileBtn from '../FileUploadBtn.vue'
 
+
+
+
     export default {
 
+        props: [
+            'userid'
+        ],
 
         components: {
             FileBtn,
 
         },
-
 
         data(){
             return{
