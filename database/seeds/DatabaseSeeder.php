@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
          $this->call(LessonsSeeder::class);
          $this->call(CoursesSeeder::class);
          $this->call(PromoCodesSeeder::class);
+         $this->call(BillingSeeder::class);
 
          Artisan::call('course:create');
     }

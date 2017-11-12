@@ -1,6 +1,6 @@
 <template>
     <div class="chat">
-        <div class="chat__body">
+        <div class="chat__body" id="chat-messages">
             <div class="chat-line" v-for="(message, key) in messages" v-bind:class="{'chat-line_from-me': (message.from == userid),'chat-line_to-me': (message.from != userid) }">
                 <div class="chat-line-talk">
                     <div class="chat-line-talk__message" v-html="messageF(message).message"></div>
@@ -95,6 +95,8 @@
                     message: message
                 });
 
+                this.scrollToBottom();
+
                 api({
                     method: 'POST',
                     url: '/chat/send-message',
@@ -118,6 +120,7 @@
                 })
                     .then(( res )=>{
                         this.messages = res.data;
+                        this.scrollToBottom();
                     })
                     .catch((res) => {
 
@@ -135,8 +138,18 @@
                     .listen("ChatEvent", (e) => {
                         if( e.from == this.userid ) return;
                         this.messages.push( e );
+                        this.scrollToBottom();
                     });
             },
+
+            scrollToBottom(){
+                setTimeout(function(){
+                    let el = document.getElementById("chat-messages");
+                    console.log( el.scrollHeight );
+                    el.scrollTop = el.scrollHeight;
+
+                }, 10);
+            }
 
 
 

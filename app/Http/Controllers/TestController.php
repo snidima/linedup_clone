@@ -22,11 +22,6 @@ class TestController extends Controller
     public function index()
     {
 
-        $from = User::find(1);
-        $to = User::find(2);
-        $message = 'message message message';
-        $r = event( new ChatEvent($from, $to, $message) );
-
 
     }
 }

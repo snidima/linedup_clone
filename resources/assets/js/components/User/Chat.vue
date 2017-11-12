@@ -1,6 +1,6 @@
 <template>
     <div class="chat">
-        <div class="chat__body">
+        <div class="chat__body" id="chat-messages">
             <div class="chat-line" v-for="(message, key) in messages" v-bind:class="{'chat-line_from-me': (message.from == userid),'chat-line_to-me': (message.from != userid) }">
                 <div class="chat-line-talk">
                     <div class="chat-line-talk__message" v-html="messageF(message).message"></div>
@@ -9,22 +9,9 @@
                     </div>
                 </div>
             </div>
-
-            <!--<div class="chat-line chat-line_to-me new">-->
-                <!--<div class="chat-line-talk">-->
-                    <!--<div class="chat-line-talk__message">-->
-                        <!--Flush to the bottom right. Uses .btm-right only-->
-                    <!--</div>-->
-                    <!--<div class="chat-line-talk__author">-->
-                        <!--Куратор-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-
         </div>
         <div class="chat__bottom chat-bottom">
-            <div class="chat-input" contenteditable="true" aria-multiline="true" @input="trigger" id="current-input"></div>
+            <div class="chat-input" contenteditable="true" aria-multiline="true" @keydown.13="trigger" id="current-input"></div>
             <div class="chat-icon">
                 <i class="fa fa-paperclip" aria-hidden="true"></i>
             </div>
@@ -94,7 +81,7 @@
             },
 
             trigger(e){
-
+                this.sendMessage();
             },
 
             sendMessage(){
@@ -110,6 +97,8 @@
                     chanel: this.userid,
                     message: message
                 });
+
+                this.scrollToBottom()
 
                 api({
                     method: 'POST',
@@ -134,6 +123,7 @@
                 })
                     .then(( res )=>{
                         this.messages = res.data;
+                        this.scrollToBottom();
                     })
                     .catch((res) => {
 
@@ -150,11 +140,19 @@
                 echo.channel('private-chat.' + this.userid)
                     .listen("ChatEvent", (e) => {
                         if( e.from == this.userid ) return;
-
                         this.messages.push( e );
+                        this.scrollToBottom();
                     });
             },
 
+            scrollToBottom(){
+                setTimeout(function(){
+                    let el = document.getElementById("chat-messages");
+                    console.log( el.scrollHeight );
+                    el.scrollTop = el.scrollHeight;
+
+                }, 10);
+            }
 
 
 

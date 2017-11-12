@@ -23,6 +23,7 @@
     "alertify.js": "^1.0.12",
     "axios": "^0.16.2",
     "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
     "daterangepicker": "^2.1.25",
     "flatpickr": "^3.0.7",
     "flipclock": "^0.7.8",

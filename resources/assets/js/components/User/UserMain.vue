@@ -11,7 +11,7 @@
 
             </div>
 
-            <div class="course-info" v-if="course" style="display: none;">
+            <div class="course-info" v-if="course">
 
                 <div class="course-thumb-block" >
                     <div class="course-thumb-block__header course-thumb-block-header">
@@ -53,7 +53,7 @@
 
             <div class="course-theory-practice" v-if="course">
 
-                <div class="course-theory" style="display: none;">
+                <div class="course-theory" >
 
                     <div class="course-theory-header">
                         <div class="course-theory-header__left">Урок №{{active+1}} - Теория</div>

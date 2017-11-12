@@ -50,4 +50,11 @@ class User extends Authenticatable
         return $this->hasMany(Billing::class, 'user_id' );
     }
 
+    public function isAdmin()
+    {
+        return false !== $this->roles->map(function( $i, $k ){
+            return $i->slug;
+        })->search('administrator');
+    }
+
 }
