@@ -126,7 +126,12 @@
                 </div>
                 <div class="course__right-helper">
                     <div class="course-price">
-                        456
+                        <div class="course-price__old-price">
+                            4 500 руб.
+                        </div>
+                        <div class="course-price__new-price">
+                            3 800 руб.
+                        </div>
                     </div>
                 </div>
             </div>

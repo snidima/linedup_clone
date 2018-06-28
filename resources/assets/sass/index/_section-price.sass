@@ -149,9 +149,16 @@
   position: relative
   z-index: 1
   text-align: center
+  left: -20px
 
-
-
+.course-price__old-price
+  color: rgba($black-1, .8)
+  font-size: 1.125rem
+  text-decoration: line-through
+.course-price__new-price
+  color: rgba($black-1, .8)
+  font-size: 2.25rem
+  font-weight: bold
 .course-info
   padding: 50px
 .course-info__title
@@ -177,7 +184,7 @@
   display: flex
   align-items: center
   +nlt
-    margin-bottom: 5px
+    margin-bottom: 6px
 
 .course-detail-item__icon
   margin-right: 10px
@@ -188,4 +195,4 @@
     padding: 0
 .course-detail-item__text
   color: $black-1
-  font-size: .9rem
+  font-size: 1rem
