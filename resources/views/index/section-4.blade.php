@@ -135,6 +135,7 @@
                     </div>
                 </div>
             </div>
+            <div class="course-thumb__btn"><a target="_blank" href="https://linedup.ru/buy/67" class="btn btn-big btn-type-1"><i aria-hidden="true" class="fa fa-check-square-o"></i>Записаться</a></div>
         </div>
     </div>
 </section>
