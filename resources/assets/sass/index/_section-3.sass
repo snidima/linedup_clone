@@ -1,5 +1,5 @@
 .steps
-
+  counter-reset: steps
 .step
   display: flex
 .steps__step:nth-of-type(even)
@@ -7,8 +7,10 @@
 .step__info, .step__time
   width: 50%
   position: relative
+
 .step__time:before
-  content: '1'
+  counter-increment: steps
+  content: counter(steps)
   height: 50px
   width: 50px
   +br(50%)
@@ -24,6 +26,7 @@
 
 .steps__step:nth-of-type(even) .step__time:before
   right: -25px
+  left: auto
 
 .step-time
   display: flex
@@ -32,17 +35,19 @@
 .steps__step:nth-of-type(even) .step-time
   flex-direction: row-reverse
 
+.steps__step:nth-of-type(even) .step-time-text
+  margin-left: 0
+  padding-left: 0
+  margin-right: 25px
+  padding-right: 25px
 .step-time-text
   margin-left: 25px
   padding-left: 25px
 
-.steps__step:nth-of-type(even)
-  margin-right: 25px
-  padding-right: 25px
 .step-info
   display: flex
-  overflow: hidden
   position: relative
+
 .step-info:after
   content: ''
   position: absolute
@@ -53,9 +58,41 @@
   right: 0
   bottom: 0
 
+.step-info:before
+  content: ''
+  position: absolute
+  display: block
+  width: 1px
+  height: calc( 50% - 25px )
+  background: $color-1
+  right: 0
+  top: 0
+
+
+.steps__step:nth-of-type(even) .step-info:after
+  left: -1px
+  right: auto
+  bottom: 0
+.steps__step:nth-of-type(even) .step-info:before
+  left: -1px
+  right: auto
+  top: 0
+
+
+.steps__step:first-of-type .step-info:before
+  display: none
+.steps__step:last-of-type .step-info:after
+  display: none
+
+.steps__step:nth-of-type(even) .step-info-text
+  text-align: left
+  margin-left: 50px
+  margin-right: 0
+
 .step-info-text
   text-align: right
   margin-right: 50px
+  padding: 15px 0
 .step-info-text__title
   font-weight: bold
   font-size: 1rem
@@ -69,8 +106,34 @@
     background: $gray-2
     margin: 10px 0 10px auto
 
+.steps__step:nth-of-type(even) .step-info-text__title:after
+  margin: 10px auto 10px 0
+
 .step-info-text__info
   line-height: 1.2
   font-size: .9rem
 .step-info-text__btn
   margin-top: 10px
+
+.step-time-text
+  display: flex
+  align-items: center
+
+.step-time-text__icon
+  margin-right: 5px
+  svg
+    width: 21px
+    height: 21px
+  path
+    fill: $gray-text
+
+.step-time-text__text
+  color: $gray-text
+  font-size: .75rem
+  font-weight: bold
+
+.steps__step:nth-of-type(even)
+  .step-time-text__icon
+    margin-left: 5px
+  .step-time-text
+    flex-direction: row-reverse

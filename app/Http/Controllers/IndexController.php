@@ -22,7 +22,6 @@ class IndexController extends Controller
             $q->orderBy( 'date_start', 'desc' );
         }])->with('lessons')->take($coursesCount)->get();
 
-
         return view('index', [ 'seconds' => $seconds, 'courses' => $courses ]);
     }
 
