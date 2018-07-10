@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="user-h1">Добро пожаловать, <span class="color-1">{{ \Illuminate\Support\Facades\Auth::user()->name  }}</span></h1>
+        <h1 class="user-h1">Добро пожаловать на курс, <span class="color-1">{{ \Illuminate\Support\Facades\Auth::user()->name  }}!</span></h1>
+        <usermain userid="{{\Illuminate\Support\Facades\Auth::user()->id}}"></usermain>
     </div>
-    <usermain userid="{{\Illuminate\Support\Facades\Auth::user()->id}}"></usermain>
 @endsection

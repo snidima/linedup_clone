@@ -20,6 +20,8 @@ import Vue from 'vue';
 
 
 
+
+
 Vue.component( 'register', Register );
 Vue.component( 'login', Login );
 Vue.component( 'buyswitcher', BuySwitcher );

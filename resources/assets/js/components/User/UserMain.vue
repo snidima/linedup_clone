@@ -1,17 +1,12 @@
 <template>
 
-
-
-
         <div class="container" >
 
             <div v-if="payed === false">
-
                 У вас нет оплаченных курсов
-
             </div>
 
-            <div class="course-info" v-if="course">
+            <div class="course-info-user" v-if="course">
 
                 <div class="course-thumb-block" >
                     <div class="course-thumb-block__header course-thumb-block-header">
@@ -52,11 +47,9 @@
             </div>
 
             <div class="course-theory-practice" v-if="course">
-
                 <div class="course-theory" >
-
                     <div class="course-theory-header">
-                        <div class="course-theory-header__left">Урок №{{active+1}} - Теория</div>
+                        <div class="course-theory-header__left">Урок №{{active+1}} - {{activeCourse.title}}</div>
                         <div class="course-theory-header__right">{{moment(activeCourse.date_start.date).format('LL')}} - {{moment(activeCourse.date_end.date).format('LL')}}</div>
                     </div>
 
@@ -75,30 +68,32 @@
                                 <div class="btn btn-normal btn-type-2">Скачать задание</div>
                             </div>
                         </div>
-
                     </div>
-
                     <div class="course-theory-description">
                         {{activeCourse.description}}
-                    </div>
 
+
+
+                        </div>
                 </div>
 
 
-                <div class="course-practice" v-if="!activeCourse.was">
-
-                    <div class="course-practice-header">
-                        <div class="course-practice-header__left">Урок №2 - Практика</div>
-                        <div class="course-practice-header__right">Сдать домашнее задание нужно <b>{{moment(activeCourse.date_end.date).format('LL')}}</b></div>
-                    </div>
-
-                    <div class="chat-wrapper">
-                        <chat :userid="userid"></chat>
-                    </div>
 
 
-                </div>
+                <!--<div class="course-practice" v-if="!activeCourse.was">-->
+
+                    <!--<div class="course-practice-header">-->
+                        <!--<div class="course-practice-header__left">Урок №2 - Практика</div>-->
+                        <!--<div class="course-practice-header__right">Сдать домашнее задание нужно <b>{{moment(activeCourse.date_end.date).format('LL')}}</b></div>-->
+                    <!--</div>-->
+                    <!--<div class="chat-wrapper">-->
+                        <!--<chat :userid="userid"></chat>-->
+                    <!--</div>-->
+                <!--</div>-->
+
             </div>
+
+            <video poster="/poster.jpg" src="/l1.mp4" id="player"  ></video>
 
         </div>
 
@@ -106,15 +101,16 @@
 </template>
 
 <script>
-    import api from '../../api';
-    import _ from 'lodash';
+    import api from '../../api'
+    import _ from 'lodash'
 
     import moment from 'moment'
-    import ru from 'moment/src/locale/ru';
+    import ru from 'moment/src/locale/ru'
 
     import FileBtn from '../FileUploadBtn.vue'
 
-
+    import Plyr from 'plyr'
+    import 'plyr/dist/plyr.css'
 
 
     export default {
@@ -184,6 +180,7 @@
 
         mounted(){
             this.fetchCourseInfo()
+            const player = new Plyr('#player');
         }
     }
 </script>

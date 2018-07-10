@@ -36,6 +36,7 @@
     "lodash": "^4.17.4",
     "moment": "^2.19.0",
     "moment-range": "^3.0.3",
+    "plyr": "^3.3.21",
     "pusher-js": "^4.2.1",
     "simple-vue-datepicker": "0.0.14",
     "socket.io-client": "^2.0.4",

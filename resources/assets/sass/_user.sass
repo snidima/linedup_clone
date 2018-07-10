@@ -37,7 +37,7 @@
   width: $radius
   height: $radius
   border-radius: 50%
-  border: darken($gray, 5%) 4px solid
+  //border: darken($gray, 5%) 4px solid
   background: $color-1
   text-align: center
   font-weight: bold
@@ -48,11 +48,11 @@
   justify-content: center
   transition: all 0.1s ease
   &.active
-    border: $color-1 4px solid
+    background: darken($color-1, 15%)
   &:not(.active)
     cursor: pointer
     &:hover
-      border: $color-1 4px solid
+      background: darken($color-1, 15%)
 
 
 .user-course-lessons-current
