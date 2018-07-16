@@ -71,9 +71,6 @@
                     </div>
                     <div class="course-theory-description">
                         {{activeCourse.description}}
-
-
-
                         </div>
                 </div>
 
@@ -93,7 +90,7 @@
 
             </div>
 
-            <video poster="/poster.jpg" src="/l1.mp4" id="player"  ></video>
+            <video poster="/poster.jpg" src="/l1.mp4" id="player"></video>
 
         </div>
 

@@ -8,6 +8,12 @@ import router from './components/Admin/routes';
 
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css';
+
+import 'froala-editor/css/froala_editor.pkgd.min.css'
+import 'froala-editor/css/froala_style.min.css'
+import 'froala-editor/css/themes/royal.min.css'
+import 'froala-editor/css/plugins/colors.min.css'
+import frola from 'froala-editor/js/froala_editor.pkgd.min'
 Vue.use(VueMaterial);
 
 
@@ -16,6 +22,7 @@ Vue.use(VueMaterial);
 // import 'vue-blu/dist/css/vue-blu.min.css'
 //
 // Vue.use(VueBlu)
+
 
 
 
@@ -31,3 +38,4 @@ const app = new Vue({
     router,
     store
 }).$mount('#admin-app');
+$(function() { $('textarea').froalaEditor() });
