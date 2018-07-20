@@ -9,10 +9,10 @@
                 <label>Название</label>
                 <md-input v-model="lesson.title"></md-input>
             </md-input-container>
-            <md-input-container>
+
                 <label>Описание</label>
-                <md-textarea v-model="lesson.description"></md-textarea>
-            </md-input-container>
+                <froala :tag="'textarea'"  v-model="lesson.description"></froala>
+
             <md-input-container>
                 <label>Ссылка на youtube</label>
                 <md-input v-model="lesson.online_player"></md-input>
@@ -21,7 +21,7 @@
                 <label>Ссылка на скачивание</label>
                 <md-input v-model="lesson.download_link"></md-input>
             </md-input-container>
-            <md-switch v-model="lesson.active" id="active">Активность</md-switch>
+            <md-switch v-model="lesson.active" >Активность</md-switch>
             <md-input-container>
                 <label>Продолжительость</label>
                 <md-input type="number" v-model="lesson.duration"></md-input>
@@ -70,9 +70,11 @@
                 url: adminAPI.lessonShow.link + this.$route.params.id
             })
                 .then(( res )=>{
+                    res.data.active = !!res.data.active
                     this.lesson = res.data;
                 })
                 .catch((res) => {});
-        }
+        },
+
     }
 </script>

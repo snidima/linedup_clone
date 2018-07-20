@@ -9,11 +9,25 @@ import router from './components/Admin/routes';
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css';
 
-import 'froala-editor/css/froala_editor.pkgd.min.css'
-import 'froala-editor/css/froala_style.min.css'
-import 'froala-editor/css/themes/royal.min.css'
-import 'froala-editor/css/plugins/colors.min.css'
+// import 'froala-editor/css/froala_editor.pkgd.min.css'
+// import 'froala-editor/css/froala_style.min.css'
+// import 'froala-editor/css/themes/royal.min.css'
+// import 'froala-editor/css/plugins/colors.min.css'
 import frola from 'froala-editor/js/froala_editor.pkgd.min'
+
+
+require('froala-editor/js/froala_editor.pkgd.min')
+
+// Require Froala Editor css files.
+require('froala-editor/css/froala_editor.pkgd.min.css')
+require('font-awesome/css/font-awesome.css')
+require('froala-editor/css/froala_style.min.css')
+
+// Import and use Vue Froala lib.
+import VueFroala from 'vue-froala-wysiwyg'
+Vue.use(VueFroala)
+
+
 Vue.use(VueMaterial);
 
 
@@ -38,4 +52,3 @@ const app = new Vue({
     router,
     store
 }).$mount('#admin-app');
-$(function() { $('textarea').froalaEditor() });

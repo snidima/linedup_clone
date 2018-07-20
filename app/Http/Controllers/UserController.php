@@ -26,6 +26,8 @@ class UserController extends Controller
             }
         ])->get();
 
+
+
         //Взять все оплаченные за раз курсы
         $courses = $billings->filter(function( $billing ){
             $amount = $billing->amount;
@@ -50,7 +52,6 @@ class UserController extends Controller
             });
             return $billing->course;
         });
-
 
         if( !count($courses) ) return response('', 404);
         return $courses;

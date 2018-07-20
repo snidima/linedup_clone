@@ -56,10 +56,10 @@
        </md-table-card>
 
        <md-dialog-confirm
-               md-title="Удалить?"
+               md-title="УДАЛЕНИЕ"
                md-ok-text="Удалить"
-               md-content=""
-               md-content-html=""
+               md-content="Точно удалить?*"
+               md-content-html=".."
                md-cancel-text="Отменить"
                @close="onClose"
                ref="delete">

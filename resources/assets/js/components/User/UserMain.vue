@@ -69,9 +69,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="course-theory-description">
-                        {{activeCourse.description}}
-                        </div>
+                    <div class="course-theory-description" v-html="activeCourse.description"></div>
                 </div>
 
 
@@ -90,7 +88,7 @@
 
             </div>
 
-            <video poster="/poster.jpg" src="/l1.mp4" id="player"></video>
+            <video id="player" v-bind:src="video" v-bind:poster="'/poster.jpg'"> </video>
 
         </div>
 
@@ -126,7 +124,8 @@
                 showUpload: true,
                 courses: [],
                 payed: null,
-                active: false
+                active: false,
+                video: ''
             }
         },
 
@@ -135,6 +134,7 @@
                 return this.courses[0];
             },
             activeCourse(){
+                console.log(this.course.course.lessons[this.active])
                 return this.course.course.lessons[this.active];
             }
         },
@@ -145,6 +145,8 @@
 
             changeLesson(key){
                 this.active = key;
+                this.video = this.activeCourse.online_player
+                const player = new Plyr('#player');
             },
 
             fetchCourseInfo(){
@@ -155,10 +157,13 @@
                     url: '/user/ajax/course-info',
                 })
                     .then(( res )=>{
+                    console.log( res.data );
                         this.courses = res.data;
                         this.active = 0;
                         _.each(res.data[0].course.lessons, function(e, key){
                             if( e.now )  self.active = key;
+                            this.video = this.activeCourse.online_player
+                            const player = new Plyr('#player');
                         });
                     })
                     .catch((res) => {
@@ -177,7 +182,6 @@
 
         mounted(){
             this.fetchCourseInfo()
-            const player = new Plyr('#player');
         }
     }
 </script>

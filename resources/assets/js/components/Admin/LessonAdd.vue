@@ -11,7 +11,7 @@
             </md-input-container>
             <md-input-container>
                 <label>Описание</label>
-                <md-textarea v-model="lesson.description"></md-textarea>
+                <froala :tag="'textarea'"  v-model="lesson.description"></froala>
             </md-input-container>
             <md-input-container>
                 <label>Ссылка на youtube</label>
@@ -21,7 +21,7 @@
                 <label>Ссылка на скачивание</label>
                 <md-input v-model="lesson.download_link"></md-input>
             </md-input-container>
-            <md-switch v-model="lesson.active" id="active">Активность</md-switch>
+            <md-switch v-model="lesson.active">Активность</md-switch>
             <md-input-container>
                 <label>Продолжительость</label>
                 <md-input type="number" v-model="lesson.duration"></md-input>
@@ -40,6 +40,8 @@
     import api from '../../api';
     import _ from 'lodash';
     import adminAPI from '../../admin-api';
+
+    import VueFroala from 'vue-froala-wysiwyg';
 
     export default {
 
