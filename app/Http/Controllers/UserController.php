@@ -18,6 +18,12 @@ class UserController extends Controller
         return view('user.main');
     }
 
+
+    public function course( $id )
+    {
+        return view('user.course');
+    }
+
     public function courseInfo()
     {
         $billings = Auth::user()->billings()->where('amount', '>', 0)->with(['course', 'promoCode', 'course.course',

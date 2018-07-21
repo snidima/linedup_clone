@@ -1,159 +1,356 @@
-.user-h1
-  font-size: 2rem
-  font-weight: lighter
-  text-align: right
-  padding: 30px 0
+//.user-h1
+//  font-size: 2rem
+//  font-weight: lighter
+//  text-align: right
+//  padding: 30px 0
+//
+//
+//.course-thumb-block-content_padding0
+//  padding: 0
+//  .course-thumb-block-content__title
+//    margin-top: 25px
+//.course-thumb-block-content__text_padding
+//  padding: 25px
+//
+//.user-course-lessons
+//  display: flex
+//  justify-content: space-between
+//  align-items: center
+//  position: relative
+//  padding: 0 25px
+//  margin-top: 15px
+//  &:before
+//    position: absolute
+//    content: ''
+//    left: -25px
+//    z-index: 0
+//    width: calc(100% + 50px)
+//    display: block
+//    height: 4px
+//    background: $gray
+//
+//.user-course-lessons__item
+//
+//  $radius: 45px
+//  z-index: 1
+//  position: relative
+//  width: $radius
+//  height: $radius
+//  border-radius: 50%
+//  //border: darken($gray, 5%) 4px solid
+//  background: $color-1
+//  text-align: center
+//  font-weight: bold
+//  font-size: 1.2rem
+//  color: $white-1
+//  display: flex
+//  align-items: center
+//  justify-content: center
+//  transition: all 0.1s ease
+//  &.active
+//    background: darken($color-1, 15%)
+//  &:not(.active)
+//    cursor: pointer
+//    &:hover
+//      background: darken($color-1, 15%)
+//
+//
+//.user-course-lessons-current
+//  background: $black-1
+//  position: absolute
+//  color: $white-1
+//  line-height: 1
+//  font-size: .7rem
+//  font-weight: normal
+//  padding: 10px
+//  +br($sbr)
+//  white-space: nowrap
+//  top: -45px
+//  &:after
+//    $w: 5px
+//    content: ''
+//    position: absolute
+//    top: 100%
+//    left: 50%
+//    margin-left: -$w
+//    width: 0
+//    height: 0
+//    border-top: solid $w $black-1
+//    border-left: solid $w transparent
+//    border-right: solid $w transparent
+//
+//.user-course-lessons-old
+//  background: $gray
+//  position: absolute
+//  color: darken($gray, 50%)
+//  line-height: 1
+//  font-size: .7rem
+//  font-weight: normal
+//  padding: 10px
+//  +br()
+//  white-space: nowrap
+//  top: -45px
+//  &:after
+//    $w: 5px
+//    content: ''
+//    position: absolute
+//    top: 100%
+//    left: 50%
+//    margin-left: -$w
+//    width: 0
+//    height: 0
+//    border-top: solid $w $gray
+//    border-left: solid $w transparent
+//    border-right: solid $w transparent
+//
+//
+//
+//.course-theory
+//  +white-block
+//  margin-top: 30px
+//  +br()
+//  padding: 50px
+//
+//
+//.course-theory-header,
+//.course-practice-header
+//  display: flex
+//  justify-content: space-between
+//  align-items: flex-end
+//  border-bottom: 1px solid $gray
+//  padding-bottom: 15px
+//
+//.course-theory-header__left,
+//.course-practice-header__left
+//  font-size: 1.375rem
+//  color: $black-1
+//
+//.course-theory-header__right,
+//.course-practice-header__right
+//  font-style: italic
+//  b
+//    font-weight: bold
+//
+//.course-theory-header2
+//  margin-top: 20px
+//  display: flex
+//  justify-content: space-between
+//  align-items: center
+//.course-theory-header2__left
+//  font-weight: bold
+//  font-size: 1.125rem
+//  color: $black-1
+//.course-theory-header2-right__btn
+//  display: inline-block
+//  +nlt
+//    margin-right: 10px
+//
+//.course-theory-description
+//  margin-top: 30px
+//  line-height: 1.7
+//  font-size: 1rem
+//
+//.course-practice
+//  +white-block
+//  margin-bottom: 30px
+//  margin-top: 30px
+//  +br()
+//  padding: 50px
+//
+//
+//
+//
+//
 
-
-.course-thumb-block-content_padding0
-  padding: 0
-  .course-thumb-block-content__title
-    margin-top: 25px
-.course-thumb-block-content__text_padding
-  padding: 25px
-
-.user-course-lessons
-  display: flex
-  justify-content: space-between
-  align-items: center
-  position: relative
-  padding: 0 25px
-  margin-top: 15px
-  &:before
-    position: absolute
-    content: ''
-    left: -25px
-    z-index: 0
-    width: calc(100% + 50px)
-    display: block
-    height: 4px
-    background: $gray
-
-.user-course-lessons__item
-
-  $radius: 45px
-  z-index: 1
-  position: relative
-  width: $radius
-  height: $radius
-  border-radius: 50%
-  //border: darken($gray, 5%) 4px solid
-  background: $color-1
-  text-align: center
-  font-weight: bold
-  font-size: 1.2rem
-  color: $white-1
-  display: flex
-  align-items: center
-  justify-content: center
-  transition: all 0.1s ease
-  &.active
-    background: darken($color-1, 15%)
-  &:not(.active)
-    cursor: pointer
-    &:hover
-      background: darken($color-1, 15%)
-
-
-.user-course-lessons-current
-  background: $black-1
-  position: absolute
-  color: $white-1
-  line-height: 1
-  font-size: .7rem
-  font-weight: normal
-  padding: 10px
-  +br($sbr)
-  white-space: nowrap
-  top: -45px
-  &:after
-    $w: 5px
-    content: ''
-    position: absolute
-    top: 100%
-    left: 50%
-    margin-left: -$w
-    width: 0
-    height: 0
-    border-top: solid $w $black-1
-    border-left: solid $w transparent
-    border-right: solid $w transparent
-
-.user-course-lessons-old
+.user-header-wrapper
   background: $gray
-  position: absolute
-  color: darken($gray, 50%)
-  line-height: 1
-  font-size: .7rem
-  font-weight: normal
-  padding: 10px
-  +br()
-  white-space: nowrap
-  top: -45px
-  &:after
-    $w: 5px
-    content: ''
-    position: absolute
-    top: 100%
-    left: 50%
-    margin-left: -$w
-    width: 0
-    height: 0
-    border-top: solid $w $gray
-    border-left: solid $w transparent
-    border-right: solid $w transparent
-
-
-
-.course-theory
-  +white-block
-  margin-top: 30px
-  +br()
-  padding: 50px
-
-
-.course-theory-header,
-.course-practice-header
+.user-header
   display: flex
-  justify-content: space-between
-  align-items: flex-end
-  border-bottom: 1px solid $gray
-  padding-bottom: 15px
-
-.course-theory-header__left,
-.course-practice-header__left
-  font-size: 1.375rem
+  justify-content: flex-end
+  width: 100%
+.user-header__item
+.user-header-item
+  display: flex
+  align-items: center
+  padding: 10px 12px
+  &.active
+    background: darken($gray, 3%)
+.user-header-item__icon
+  width:  20px
+  height: 20px
+  margin-right: 5px
+  svg
+    width: 100%
+    height: 100%
+    path
+      fill: $black-1
+.user-header-item__text
+  font-size: .9rem
   color: $black-1
 
-.course-theory-header__right,
-.course-practice-header__right
-  font-style: italic
-  b
-    font-weight: bold
 
-.course-theory-header2
+.h1
+  font-weight: lighter
+  font-size: 2rem
+  color: $black-1
+  text-align: right
+  &.mb
+    margin-bottom: 30px
+  &.mt
+    margin-top: 30px
+
+
+.course-detail, .course-teacher, .course-homework
+  background: $gray
+  padding: 20px
+  width: 300px
+  +br()
+  +nlt
+    margin-bottom: 15px
+
+.course-detail.course-detail_userpage
+  margin-top: 0
+.course-detail__title, .course-teacher__title, .course-homework__title
+  font-weight: lighter
+  font-size: 1.5rem
+  color: $black-1
+  margin-bottom: 20px
+.course-detail-texts
+  display: flex
+  +nlt
+    margin-bottom: 8px
+
+.course-detail-texts__left
+  width: 50%
+  font-style: italic
+  font-size: .85rem
+  color: $black-1
+.course-detail-texts__right
+  text-align: right
+  width: 50%
+  font-style: italic
+  font-size: .85rem
+  color: $black-1
+
+.course-teacher-items
+
+.course-teacher-item
+.course-teacher-items__item
+  +nlt
+    border-bottom: 1px dashed darken($gray, 10%)
+    margin-bottom: 20px
+    padding-bottom: 20px
+.course-teacher-item__photo
+  width:  100px
+  height: 100px
+  border-radius: 50%
+  margin: auto
+  background-size: cover
+  background-position: center center
+  background-repeat: no-repeat
+  margin-bottom: 10px
+.course-teacher-item__name
+  font-size: 1rem
+  text-align: center
+  margin-bottom: 10px
+  line-height: 1.5
+
+.course-teacher-item__desc
+  font-size: .75rem
+  color: darken($gray-text, 10%)
+  text-align: center
+  margin-bottom: 15px
+.course-teacher-item__btn
+  text-align: center
+
+.course-homework-file__icon
+  width:  32px
+  height: 32px
+  margin-bottom: 10px
+  svg
+    width: 100%
+    height: 100%
+    path
+      fill: $color-1
+.course-homework-file__text
+  color: $color-1
+  font-size: .9rem
+.course-homework-file
   margin-top: 20px
   display: flex
-  justify-content: space-between
+  flex-direction: column
   align-items: center
-.course-theory-header2__left
-  font-weight: bold
-  font-size: 1.125rem
-  color: $black-1
-.course-theory-header2-right__btn
-  display: inline-block
-  +nlt
-    margin-right: 10px
+  justify-content: center
 
-.course-theory-description
-  margin-top: 30px
-  line-height: 1.7
-  font-size: 1rem
 
-.course-practice
-  +white-block
-  margin-bottom: 30px
-  margin-top: 30px
+
+.user-course
+  display: flex
+.user-course__aside
+  min-width: 300px
+.user-course__content
+  flex-grow: 1
+  padding: 0 0 0 15px
+
+
+.user-course-content
+  background: $gray
   +br()
-  padding: 50px
+  padding: 30px
 
+.course-nav
+  display: flex
+  align-items: center
+  justify-content: space-between
+.course-nav-prev
+  display: flex
+  align-items: center
+.course-nav-prev__icon
+  width: 30px
+  margin-left: 15px
+  svg
+    width: 100%
+    height: 100%
+    path
+      fill: $color-1
+
+
+.course-nav-prev-texts
+  text-align: right
+.course-nav-prev-texts__time
+  color: $gray-text
+  font-size: .8rem
+.course-nav-prev-texts__title
+  color: $color-1
+
+
+
+
+.course-nav-next
+  display: flex
+  align-items: center
+.course-nav-next__icon
+  width: 30px
+  margin-right: 15px
+  svg
+    width: 100%
+    height: 100%
+    path
+      fill: $color-1
+
+.course-nav-next__texts
+  margin-right: 0
+.course-nav-next-texts
+  text-align: left
+.course-nav-next-texts__time
+  color: $gray-text
+  font-size: .8rem
+.course-nav-next-texts__title
+  color: $color-1
+
+.course-nav__current
+  padding: 0 20px
+  font-size: 1.5rem
+  font-weight: lighter
+  color: $black-1
+  text-align: center

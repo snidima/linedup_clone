@@ -70,6 +70,9 @@ Route::get('/user-quit', 'Auth\LoginController@quit')->name('user.quit');
 Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
     Route::get('/', 'UserController@index')->name('user.main');
+    Route::get('course/{id}', 'UserController@course')->name('user.course');
+
+
 
 
 

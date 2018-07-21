@@ -3,6 +3,8 @@
 
 @section('html')
     @include('partials/header')
+    @include('partials/user-header')
+    @include('partials/broadcrumbs')
     @yield('content')
 @endsection
 
