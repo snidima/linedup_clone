@@ -104,8 +104,7 @@
 
     import FileBtn from '../FileUploadBtn.vue'
 
-    import Plyr from 'plyr'
-    import 'plyr/dist/plyr.css'
+
 
 
     export default {

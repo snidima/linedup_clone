@@ -1,50 +1,33 @@
 <div class="course-detail course-detail_userpage">
-    <div class="course-detail__title">Детали курса</div>
+    <div class="course-detail__title">Детали урока</div>
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
-            Даты проведения
+            Дата:
         </div>
         <div class="course-detail-texts__right">
-            10.12.2019
+            1 июня - 5 июля
         </div>
     </div>
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
-            Продолжительность
+            Сложность:
         </div>
         <div class="course-detail-texts__right">
-            6 дней
+            1/5
         </div>
     </div>
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
-            Уроков
+            Домашнее задание:
         </div>
         <div class="course-detail-texts__right">
-            10
+            еще не загружено
         </div>
     </div>
 
-    <div class="course-detail__texts course-detail-texts">
-        <div class="course-detail-texts__left">
-            Домашних заданий
-        </div>
-        <div class="course-detail-texts__right">
-            10
-        </div>
-    </div>
-
-    <div class="course-detail__texts course-detail-texts">
-        <div class="course-detail-texts__left">
-            Сложность
-        </div>
-        <div class="course-detail-texts__right">
-            2 / 5
-        </div>
-    </div>
 </div>
 
 
@@ -78,15 +61,6 @@
     <div class="course-teacher__title">Вам будут помогать</div>
 
     <div class="course-teacher-items">
-
-        <div class="course-teacher-items__item course-teacher-item">
-            <div class="course-teacher-item__photo" style=" background-image: url(https://avatars.mds.yandex.net/get-pdb/231404/f0f38eba-ab66-41df-8485-414d239db2de/s1200);"></div>
-            <div class="course-teacher-item__name">Никита Литвенков<br>(читает курс)</div>
-            <div class="course-teacher-item__desc">Вопросы по курсу и домашним заданиям</div>
-            <div class="course-teacher-item__btn">
-                <div class="btn btn-small btn-type-2">Написать Никите</div>
-            </div>
-        </div>
 
         <div class="course-teacher-items__item course-teacher-item">
             <div class="course-teacher-item__photo" style=" background-image: url(https://avatars.mds.yandex.net/get-pdb/231404/f0f38eba-ab66-41df-8485-414d239db2de/s1200);"></div>

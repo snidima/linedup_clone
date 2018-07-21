@@ -1,7 +1,6 @@
 @extends('layouts/default')
 
 @section('html')
-
     @yield('content')
 @endsection
 
