@@ -199,14 +199,18 @@
   &.mt
     margin-top: 30px
 
+  &.with-line
+    margin-bottom: 30px
+    border-bottom: 1px dashed #b7b7b7
+    padding-bottom: 30px
+
 
 .course-detail, .course-teacher, .course-homework
   background: $gray
   padding: 20px
-  width: 300px
   +br()
   +nlt
-    margin-bottom: 15px
+    margin-bottom: 30px
 
 .course-detail.course-detail_userpage
   margin-top: 0
@@ -217,17 +221,16 @@
   margin-bottom: 20px
 .course-detail-texts
   display: flex
+  justify-content: space-between
   +nlt
-    margin-bottom: 8px
+    margin-bottom: 10px
 
 .course-detail-texts__left
-  width: 50%
   font-style: italic
   font-size: .85rem
   color: $black-1
 .course-detail-texts__right
   text-align: right
-  width: 50%
   font-style: italic
   font-size: .85rem
   color: $black-1
@@ -287,10 +290,10 @@
 .user-course
   display: flex
 .user-course__aside
-  min-width: 300px
+  min-width: 350px
 .user-course__content
   flex-grow: 1
-  padding: 0 0 0 15px
+  padding: 0 0 0 30px
 
 
 .user-course-content
@@ -371,6 +374,7 @@
   color: $black-1
   font-size: .95rem
   line-height: 1.5
+  text-align: justify
 
 .course-text-block__video
   max-width: 100%

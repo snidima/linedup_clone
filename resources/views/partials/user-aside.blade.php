@@ -3,12 +3,23 @@
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
+            Курс:
+        </div>
+        <div class="course-detail-texts__right">
+            Adobe After Effects - Базовый курс
+        </div>
+    </div>
+    
+    <div class="course-detail__texts course-detail-texts">
+        <div class="course-detail-texts__left">
             Дата:
         </div>
         <div class="course-detail-texts__right">
             1 июня - 5 июля
         </div>
     </div>
+
+
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">

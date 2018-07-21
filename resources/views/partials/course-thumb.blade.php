@@ -1,13 +1,14 @@
-<div class="course-wrapper {{$target == 'user-page' ? 'course-wrapper_full' : ''}}">
-    <div class="course">
-        <div class="course__left-helper">
-            <div class="course-info">
-                <div class="course-info__title">Базовый курс Adobe After Effect</div>
-                <div class="course-info__time">Начало через : 5 <small>дней</small>  20<small>часов</small></div>
-                <div class="course-info__detail course-detail">
+<div class="course-thumb-wrapper
+@foreach ($classes as $class) {{$class}} @endforeach">
+    <div class="course-thumb">
+        <div class="course-thumb__left-helper">
+            <div class="course-thumb-info">
+                <div class="course-thumb-info__title">Базовый курс Adobe After Effect - Демо</div>
+                <div class="course-thumb-info__time">Начало через : 5 <small>дней</small>  20<small>часов</small></div>
+                <div class="course-thumb-info__detail course-thumb-detail">
 
-                    <div class="course-detail__item course-detail-item">
-                        <div class="course-detail-item__icon">
+                    <div class="course-thumb-detail__item course-thumb-detail-item">
+                        <div class="course-thumb-detail-item__icon">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 56 60" style="enable-background:new 0 0 56 60;" xml:space="preserve">
                                     <g>
@@ -20,13 +21,13 @@
                                     </g>
                                     </svg>
                         </div>
-                        <div class="course-detail-item__text">
+                        <div class="course-thumb-detail-item__text">
                             23 октября (12:00 МСК) - 28 ноября
                         </div>
                     </div>
 
-                    <div class="course-detail__item course-detail-item">
-                        <div class="course-detail-item__icon">
+                    <div class="course-thumb-detail__item course-thumb-detail-item">
+                        <div class="course-thumb-detail-item__icon">
                             <svg viewBox="0 0 60 60">
                                 <path d="M30,0C13.5,0,0,13.5,0,30s13.5,30,30,30s30-13.5,30-30S46.5,0,30,0z M30,58C14.6,58,2,45.4,2,30S14.6,2,30,2s28,12.6,28,28
                                     S45.4,58,30,58z M31,26V15.9c0-0.6-0.4-1-1-1s-1,0.4-1,1V26c-1.4,0.4-2.5,1.5-2.9,2.9H19c-0.6,0-1,0.4-1,1s0.4,1,1,1h7.1
@@ -40,13 +41,13 @@
                                     s-0.4,1,0,1.4l0.7,0.7c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L15.2,13.6z"/>
                             </svg>
                         </div>
-                        <div class="course-detail-item__text">
+                        <div class="course-thumb-detail-item__text">
                             52 дня
                         </div>
                     </div>
 
-                    <div class="course-detail__item course-detail-item">
-                        <div class="course-detail-item__icon">
+                    <div class="course-thumb-detail__item course-thumb-detail-item">
+                        <div class="course-thumb-detail-item__icon">
                             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                  viewBox="0 0 47 60" style="enable-background:new 0 0 47 60;" xml:space="preserve">
                                         <path d="M32.4,0H0v60h47V14.6L32.4,0z M33,3.4L43.6,14H33V3.4z M2,58V2h29v14h14v42H2z M36,21H20c-0.6,0-1,0.4-1,1s0.4,1,1,1h16
@@ -58,7 +59,7 @@
                                         c0.2,0,0.4-0.1,0.6-0.2l5-4c0.4-0.3,0.5-1,0.2-1.4C17.4,39.9,16.8,39.9,16.4,40.2z"/>
                                     </svg>
                         </div>
-                        <div class="course-detail-item__text">
+                        <div class="course-thumb-detail-item__text">
                             0 уроков (теория + практика)
                         </div>
                     </div>
@@ -66,16 +67,32 @@
                 </div>
             </div>
         </div>
-        <div class="course__right-helper">
-            <div class="course-price">
-                <div class="course-price__old-price">
-                    4 500 руб.
-                </div>
-                <div class="course-price__new-price">
-                    3 800 руб.
-                </div>
+        <div class="course-thumb__right-helper">
+            <div class="course-thumb-price">
+
+                @if( !$isDemo )
+                    <div class="course-thumb-price__old-price">
+                        4 500 руб.
+                    </div>
+                    <div class="course-thumb-price__new-price">
+                        3 800 руб.
+                    </div>
+                @else
+                    <div class="course-thumb-price__new-price">
+                        Бесплатно
+                    </div>
+                @endif
             </div>
         </div>
     </div>
-    <div class="course-thumb__btn course-thumb__btn_right"><a target="_blank" href="https://linedup.ru/buy/67" class="btn btn-big btn-type-1"><i aria-hidden="true" class="fa fa-check-square-o"></i>Записаться</a></div>
+    <div class="course-thumb-thumb__btn course-thumb-thumb__btn_right">
+        <a href="{{$link}}" class="btn btn-medium btn-type-2">
+            @if( !$isDemo )
+                Перейти к оплате
+            @else
+                Перейти к курсу
+            @endif
+        </a>
+
+    </div>
 </div>
