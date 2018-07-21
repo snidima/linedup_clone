@@ -85,7 +85,7 @@
             </div>
         </div>
     </div>
-    <div class="course-thumb-thumb__btn course-thumb-thumb__btn_right">
+    <div class="course-thumb__btn">
         <a href="{{$link}}" class="btn btn-medium btn-type-2">
             @if( !$isDemo )
                 Перейти к оплате

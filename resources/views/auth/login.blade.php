@@ -1,4 +1,4 @@
-@extends('layouts/main')
+@extends('layouts/auth')
 @section('title','Войти')
 
 @section('full-screen-block')

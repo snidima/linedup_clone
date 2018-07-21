@@ -1,14 +1,17 @@
 .section_price
   background: $gray
 
+.course-buy-thumb
+  max-width: 650px
+  margin: auto
 
-.course-thumb-thumb-block
+.course-buy-thumb-block
   +white-block
   +br
   overflow: hidden
   position: relative
 
-.course-thumb-thumb-block__price
+.course-buy-thumb-block__price
   position: absolute
   top: 0
   right: 0
@@ -19,8 +22,10 @@
   font-size: 0.875rem
   transform: translate(calc(50% - 35px), calc(-50% + 35px)) rotate(45deg)
 
+.course-buy-thumb-title-wrapper
+  margin-bottom: 10px
 
-.course-thumb-thumb-block-header
+.course-buy-thumb-block-header
   background-image: url('../../img/main-bg.jpg')
   background-repeat: no-repeat
   background-position: center center
@@ -28,41 +33,38 @@
   padding: 40px
   text-align: center
 
-.course-thumb-thumb-block-header__title
+.course-buy-thumb-block-header__title
   color: $color-1
   font-weight: bold
   font-size: 1.5rem
   margin-bottom: 20px
-.course-thumb-thumb-block-header-info__item
+.course-buy-thumb-block-header-info__item
   color: $white-1
   font-style: italic
   font-size: 1rem
   +nlt
     margin-bottom: 7px
 
-.course-thumb-thumb-block-content
+.course-buy-thumb-block-content
   padding: 25px
-.course-thumb-thumb-block-content__title
+.course-buy-thumb-block-content__title
   color: $black-1
   font-weight: bold
   font-size: 1.125rem
   text-align: center
   margin-bottom: 16px
-.course-thumb-thumb-block-content__text
+.course-buy-thumb-block-content__text
   color: $black-1
   font-size: .9em
   line-height: 1.5
 
-.course-thumb-thumb__btn
-  margin-top: 15px
-  text-align: center
 
 
-.course-thumb-thumbs
+.course-buy-thumbs
   display: flex
   margin: auto
   max-width: 800px
-.course-thumb-thumbs__item
+.course-buy-thumbs__item
   width: 100%
 
 
@@ -102,7 +104,7 @@
     font-size: 3rem
     +font2
 
-.course-thumb-thumb-block__price_sale
+.course-buy-thumb-block__price_sale
   font-size: 0.65rem
   font-weight: normal
   text-align: left
@@ -144,7 +146,7 @@
 
 .demo .course-thumb__right-helper
   &:before
-    background: #ffa700
+    background: $color-3
 
 .course-thumb-price
   position: relative
@@ -166,7 +168,7 @@
   font-size: 1rem
   font-weight: bold
   color: $black-1
-  
+
 .course-thumb-info__time
   margin-top: 5px
   color: $gray-text
@@ -199,8 +201,16 @@
 
 .course-thumb-wrapper_full
   width: 100%
-.course-thumb-thumb__btn_right
+.course-thumb__btn
   text-align: right
+  margin-top: 15px
+
+.demo .course-thumb__btn .btn-type-2
+  border: 1px solid $color-3
+  color: $color-3
+  &:hover
+    background: $color-3
+    color: $white-1
 
 .course-thumb-wrapper.course-thumb-wrapper_full
   +nlt
@@ -208,9 +218,10 @@
 
 
 
-.courses-thumb--wrapper
+.courses-thumb-wrapper
   display: flex
   & > *
     flex-grow: 1
     +nlt
       margin-right: 30px
+

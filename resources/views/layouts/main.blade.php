@@ -1,16 +1,11 @@
 @extends('layouts/default')
+@section('title','Школа видеомонтажа - личный кабинет')
 
 @section('html')
-    <div class="top-full-screen">
-        @include('partials/header')
-        <section class="main-center">
-            @yield('full-screen-block')
-        </section>
-    </div>
+    @include('partials/header')
     @yield('content')
 @endsection
 
-
-
-
-@include('partials/footer')
+@section('assets')
+    @parent
+@endsection
