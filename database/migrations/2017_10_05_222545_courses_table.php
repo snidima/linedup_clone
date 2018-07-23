@@ -21,6 +21,7 @@ class CoursesTable extends Migration
             $table->decimal('price', 10, 2);
             $table->decimal('new_price', 10, 2)->nullable();
             $table->boolean('active')->default(false);
+            $table->boolean('isDemo')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

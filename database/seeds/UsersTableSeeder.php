@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name' => 'Снигур Дмитрий Александрович',
             'email' => 'snidima@mail.ru',
-            'password' => '555666',
+            'password' => '5783751907',
             'activated' => true
         ]);
 

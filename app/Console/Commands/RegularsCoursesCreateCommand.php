@@ -15,7 +15,7 @@ class RegularsCoursesCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'course:create';
+    protected $signature = 'course:create {--demo}';
 
     /**
      * The console command description.
@@ -43,11 +43,24 @@ class RegularsCoursesCreateCommand extends Command
     {
         $newxtMonday = Carbon::now()->startOfWeek()->addWeek(1);
 
+
         $reg = array_unique( array_map(function( $el ){
             return $el['course_id'];
-        }, RegularCourse::where( 'date_start', '>=', $newxtMonday )->select('course_id')->get()->toArray()) );
+        }, RegularCourse::where( 'date_start', '>=', $newxtMonday )
+            ->select('course_id')
+            ->get()
+            ->toArray())
+        );
 
-        $courses = Course::whereNotIn('id', $reg )->where(['active' => true])->get();
+        $demo = false;
+        if( $this->option('demo') )
+            $demo = true;
+        $courses = Course::whereNotIn('id', $reg )
+            ->where([
+                'active' => true,
+                'isDemo' => $demo
+            ])
+            ->get();
         if( !$courses ) return;
 
         foreach ($courses as $course) {

@@ -18,6 +18,7 @@ class LessonsTable extends Migration
             $table->integer('duration');
             $table->string('title');
             $table->longText('description');
+            $table->integer('complexity');
             $table->string('online_player');
             $table->string('download_link');
             $table->boolean('active')->default(false);

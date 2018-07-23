@@ -1,10 +1,16 @@
-<div class="course-thumb-wrapper
-@foreach ($classes as $class) {{$class}} @endforeach">
+<div class="course-thumb-wrapper @if($course->isDemo) demo @endif">
     <div class="course-thumb">
         <div class="course-thumb__left-helper">
             <div class="course-thumb-info">
-                <div class="course-thumb-info__title">Базовый курс Adobe After Effect - Демо</div>
-                <div class="course-thumb-info__time">Начало через : 5 <small>дней</small>  20<small>часов</small></div>
+
+                <div class="course-thumb-info__title">{{$course->title}}</div>
+                <div class="course-thumb-info__time">
+                    @if( $course->isDemo )
+                        Идет сейчас
+                    @else
+                        Начало через : {{$course->regular->dateCounter['days']}} <small>дней</small>  {{$course->regular->dateCounter['hours']}}<small> часов</small>
+                    @endif
+                </div>
                 <div class="course-thumb-info__detail course-thumb-detail">
 
                     <div class="course-thumb-detail__item course-thumb-detail-item">
@@ -22,7 +28,7 @@
                                     </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            23 октября (12:00 МСК) - 28 ноября
+                            {{$course->regular->dateStartF}} - {{$course->regular->dateEnd}}
                         </div>
                     </div>
 
@@ -42,7 +48,7 @@
                             </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            52 дня
+                            {{$course->duration}} дня
                         </div>
                     </div>
 
@@ -60,7 +66,7 @@
                                     </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            0 уроков (теория + практика)
+                            {{count( $course->lessons )}} уроков (теория + практика)
                         </div>
                     </div>
 
@@ -69,13 +75,12 @@
         </div>
         <div class="course-thumb__right-helper">
             <div class="course-thumb-price">
-
-                @if( !$isDemo )
+                @if( !$course->isDemo )
                     <div class="course-thumb-price__old-price">
-                        4 500 руб.
+                        {{$course->price}} руб.
                     </div>
                     <div class="course-thumb-price__new-price">
-                        3 800 руб.
+                        {{$course->new_price}} руб.
                     </div>
                 @else
                     <div class="course-thumb-price__new-price">
@@ -86,8 +91,8 @@
         </div>
     </div>
     <div class="course-thumb__btn">
-        <a href="{{$link}}" class="btn btn-medium btn-type-2">
-            @if( !$isDemo )
+        <a href="{{route('buy',$course->regular->id)}}" class="btn btn-medium btn-type-2">
+            @if( !$course->isDemo )
                 Перейти к оплате
             @else
                 Перейти к курсу

@@ -58,4 +58,18 @@ class RegularCourse extends Model
         return ( $new_price ) ? $new_price : $price;
     }
 
+    public function getDateCounterAttribute()
+    {
+        if( !$this->date_start ) return false;
+
+        $nextMonday = Carbon::now()->diffInHours(Carbon::parse($this->date_start), true);
+
+        $counter = [
+            'days' =>   round( $nextMonday / 24 ),
+            'hours' =>   $nextMonday - round( $nextMonday / 24 ) * 24
+        ];
+
+        return $counter;
+    }
+
 }

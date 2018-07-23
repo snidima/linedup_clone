@@ -55,19 +55,10 @@
 <section class="section">
     <div class="container">
         <h3 class="h3">Цены на видеокурс</h3>
-
         <div class="courses-thumb-wrapper">
-            @include('partials/course-thumb', [
-                'classes' => [],
-                'isDemo' => false,
-                'link' => route('buy', ['id' => 1])
-            ])
-
-            @include('partials/course-thumb', [
-                'classes' => ['demo'],
-                'isDemo' => true,
-                'link' => route('user.course', ['id' => 456])
-            ])
+            @foreach($courses as $course)
+                @include('partials/course-thumb', ['course' => $course])
+            @endforeach
         </div>
     </div>
 </section>
