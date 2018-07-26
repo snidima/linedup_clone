@@ -14,7 +14,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        $courses = RegularCourse::all();
+        $courses = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())->get();
 
         return view('index', [ 'courses' => $courses ]);
     }

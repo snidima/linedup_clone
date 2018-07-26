@@ -25,7 +25,7 @@ class Course extends Model
 
     public function regular()
     {
-        return $this->hasOne(RegularCourse::class, 'course_id');
+        return $this->hasMany(RegularCourse::class, 'course_id');
     }
 
 

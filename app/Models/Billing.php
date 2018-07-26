@@ -20,4 +20,9 @@ class Billing extends Model
     {
         return $this->belongsTo(PromoCodes::class, 'promo', 'code');
     }
+
+    public function regular()
+    {
+        return $this->hasOne(RegularCourse::class, 'course_id');
+    }
 }
