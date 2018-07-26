@@ -50,6 +50,14 @@ class User extends Authenticatable
         return $this->hasMany(Billing::class, 'user_id' );
     }
 
+
+    public function courses()
+    {
+        return $this->hasManyThrough(Billing::class,Course::class, 'user_id', 'course_id' );
+    }
+
+
+
     public function isAdmin()
     {
         return false !== $this->roles->map(function( $i, $k ){

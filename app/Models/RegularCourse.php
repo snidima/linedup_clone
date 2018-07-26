@@ -7,6 +7,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class RegularCourse extends Model
 {
@@ -22,6 +23,12 @@ class RegularCourse extends Model
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function billing()
+    {
+        return $this->hasOne(Billing::class, 'course_id')->where('user_id', Auth::id());
+    }
+
 
 
     public function getDateStartFAttribute()
@@ -71,5 +78,8 @@ class RegularCourse extends Model
 
         return $counter;
     }
+
+
+
 
 }

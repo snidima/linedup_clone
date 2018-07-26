@@ -48,10 +48,7 @@ class Course extends Model
 
     public function getFinalPriceAttribute()
     {
-        $price = $this->price;
-        $new_price = $this->new_price;
-
-        return ( $new_price ) ? $new_price : $price;
+        return ( $this->new_price ) ? $this->new_price : $this->price;
     }
 
     public function getDurationAttribute()

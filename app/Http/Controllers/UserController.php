@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\PromoCodes;
+use App\Models\RegularCourse;
 use App\Models\TmpFiles;
 use App\Models\User;
 use Carbon\Carbon;
@@ -15,7 +16,38 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.main');
+
+
+        $courses = RegularCourse::all();
+
+        //todo дописать логику при оплате. Проверить промокод, курс и т.д.
+        //todo считает, что в таблицу billing попадают полностью оплаченные заказы
+        //todo если не хватает средств, неичего не пишем в эту таблицу
+//        dd($courses);
+
+//        $courses->map(function($_course){
+//            $course = $_course;
+//
+//            if( !$course->regular->billing ) return $course;
+//
+//
+//            $amount = $course->regular->billing->amount;
+//            $price = $course->regular->finalPrice;
+//            $needPrice = $price;
+//            if( $course->regular->billing->promoCode ){
+//                $sale = ;
+//
+//                $needPrice = $price - ( $price * $sale / 100 );
+//            }
+//            if( $amount < $needPrice ) $course->regular->billing = null;
+//            return $course;
+//
+//        });
+
+
+
+
+        return view('user.main', ['courses'=>$courses]);
     }
 
 

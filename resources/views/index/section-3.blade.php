@@ -5,7 +5,7 @@
 
         <div class="steps">
 
-            @foreach( $courses[0]->lessons as $lesson )
+            @foreach( $courses[0]->course->lessons as $lesson )
             <div class="steps__step step">
                 <div class="step__info step-info">
                     <div class="step-info-text">

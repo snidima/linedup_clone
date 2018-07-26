@@ -1,14 +1,14 @@
-<div class="course-thumb-wrapper @if($course->isDemo) demo @endif">
+<div class="course-thumb-wrapper @if($course->course->isDemo) demo @endif">
     <div class="course-thumb">
         <div class="course-thumb__left-helper">
             <div class="course-thumb-info">
 
-                <div class="course-thumb-info__title">{{$course->title}}</div>
+                <div class="course-thumb-info__title">{{$course->course->title}}</div>
                 <div class="course-thumb-info__time">
-                    @if( $course->isDemo )
+                    @if( $course->course->isDemo )
                         Идет сейчас
                     @else
-                        Начало через : {{$course->regular->dateCounter['days']}} <small>дней</small>  {{$course->regular->dateCounter['hours']}}<small> часов</small>
+                        Начало через : {{$course->dateCounter['days']}} <small>дней</small>  {{$course->dateCounter['hours']}}<small> часов</small>
                     @endif
                 </div>
                 <div class="course-thumb-info__detail course-thumb-detail">
@@ -28,7 +28,7 @@
                                     </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            {{$course->regular->dateStartF}} - {{$course->regular->dateEnd}}
+                            {{$course->dateStartF}} - {{$course->dateEnd}}
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@
                             </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            {{$course->duration}} дня
+                            {{$course->course->duration}} дня
                         </div>
                     </div>
 
@@ -66,7 +66,11 @@
                                     </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            {{count( $course->lessons )}} уроков (теория + практика)
+                            @if( !$course->course->isDemo )
+                                {{count( $course->course->lessons )}} уроков (теория + практика)
+                            @else
+                                {{count( $course->course->lessons )}} урок
+                            @endif
                         </div>
                     </div>
 
@@ -75,7 +79,11 @@
         </div>
         <div class="course-thumb__right-helper">
             <div class="course-thumb-price">
-                @if( !$course->isDemo )
+                @if( $course->billing )
+                    <div class="course-thumb-price__new-price">
+                        Оплачен
+                    </div>
+                @elseif( !$course->course->isDemo )
                     <div class="course-thumb-price__old-price">
                         {{$course->price}} руб.
                     </div>
@@ -91,13 +99,14 @@
         </div>
     </div>
     <div class="course-thumb__btn">
-        <a href="{{route('buy',$course->regular->id)}}" class="btn btn-medium btn-type-2">
-            @if( !$course->isDemo )
-                Перейти к оплате
-            @else
+        @if( $course->course->isDemo || $course->billing )
+            <a href="{{route('user.course',$course->id)}}" class="btn btn-medium btn-type-2">
                 Перейти к курсу
-            @endif
-        </a>
-
+            </a>
+        @else
+            <a href="{{route('buy',$course->id)}}" class="btn btn-medium btn-type-2">
+                Перейти к оплате
+            </a>
+        @endif
     </div>
 </div>
