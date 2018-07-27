@@ -17,15 +17,31 @@ class UserController extends Controller
     public function index()
     {
 
-        $userCourse = Course::whereHas('regular', function($q){
-            $q->whereHas('billing', function($q){
-                $q->where('user_id', Auth::id());
-            });
-        })->get();
+        //Оплаченные регулярные и статические курсы
+        $payed = Auth::user()->billings()->with('regular')->get();
+        $payedCourses = $payed->pluck('regular.course_id')->toArray();
+        $payedRegulars = $payed->pluck('regular.id')->toArray();
 
-        dd( $userCourse );
 
-        $courses = RegularCourse::all();
+        //созданные курсы, не включающие купленные статические курсы
+        $new = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())
+            ->whereNotIn( 'course_id', $payedCourses )
+            ->get()->pluck('id')->toArray();
+
+        $payed = RegularCourse::whereIn('id', $payedRegulars)->get()->pluck('id')->toArray();
+
+        $demo = RegularCourse::whereHas('course', function($q){
+            $q->where('isDemo', true);
+        })->get()->pluck('id')->toArray();
+
+
+
+
+
+
+        $courses = RegularCourse::whereIn('id', array_unique(array_merge([],$new,$payed,$demo)))->get();
+
+
 
         //todo дописать логику при оплате. Проверить промокод, курс и т.д.
         //todo считает, что в таблицу billing попадают полностью оплаченные заказы

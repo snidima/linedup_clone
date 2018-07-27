@@ -64,7 +64,6 @@ class RegularsCoursesCreateCommand extends Command
         if( !$courses ) return;
 
         foreach ($courses as $course) {
-
             $course->regular()->create([
                 'date_start' => $newxtMonday,
                 'price' => $course->price,
