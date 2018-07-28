@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="h1 with-line">Adobe After Effects - Базовый курс</h1>
+        <h1 class="h1 with-line">{{$regular->course->title}}</h1>
 
         <div class="user-course">
             <div class="user-course__aside">

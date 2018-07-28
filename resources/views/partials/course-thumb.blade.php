@@ -28,7 +28,15 @@
                                     </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            {{$course->dateStartF}} - {{$course->dateEnd}}
+                            @if( !$course->course->isDemo )
+                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($course->date_start)->formatLocalized('%d %B'))}}
+                                -
+                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($course->date_end)->formatLocalized('%d %B'))}}
+                            @else
+                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::now()->formatLocalized('%d %B'))}}
+                                -
+                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::now()->addDay()->formatLocalized('%d %B'))}}
+                            @endif
                         </div>
                     </div>
 
@@ -100,7 +108,7 @@
     </div>
     <div class="course-thumb__btn">
         @if( $course->course->isDemo || $course->billing )
-            <a href="{{route('user.course',$course->id)}}" class="btn btn-medium btn-type-2">
+            <a href="{{route('user.lesson',[$course->id, $course->course->lessons[0]->id])}}" class="btn btn-medium btn-type-2">
                 Перейти к курсу
             </a>
         @else

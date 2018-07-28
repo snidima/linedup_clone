@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        setlocale(LC_TIME, 'ru');
         $this->app->bind('path.public', function() {
             return base_path() . DIRECTORY_SEPARATOR .'public_html';
         });

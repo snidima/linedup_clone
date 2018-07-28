@@ -128,4 +128,39 @@ class UserController extends Controller
         else
             return response()->json( false );
     }
+
+
+    public function lesson( $courseID, $lessonID )
+    {
+        $regular = RegularCourse::find($courseID)->with(['course', 'course.lessons' => function($q){
+            $q->orderBy('id','asc');
+        }])->first();
+
+        //начала и окончания каждого урока
+        $regular->course->lessons->transform(function ( $lesson, $key ) use( $regular ){
+            $lessonSlice = $regular->course->lessons->slice( 0, $key )->sum('duration');
+            $date_end = Carbon::parse($regular->date_start)->addDays( $lessonSlice + $lesson->duration );
+            $current = Carbon::now() > $date_end;
+            $lesson['was'] = $current;
+            $lesson['date_end'] = $date_end;
+            $lesson['date_start'] = Carbon::parse($regular->date_start)->addDays( $lessonSlice );
+            $lesson['now'] = ( Carbon::now() >= $lesson['date_start'] && Carbon::now() <= $lesson['date_end'] );
+            $lesson['indays'] =  Carbon::now()->diffInDays( $lesson['date_end'], false );
+            return $lesson;
+        });
+
+
+
+        return view('user.course', [
+            'regular' => $regular,
+            'lesson' => $regular->course->lessons->get( $lessonID-1 ),
+            'prevLesson' => $regular->course->lessons->get( $lessonID-2 ),
+            'nextLesson' => $regular->course->lessons->get( $lessonID ),
+            'lessonID' => $lessonID,
+            'courseID' => $courseID
+        ]);
+
+    }
+
+
 }

@@ -73,6 +73,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
     Route::get('course/{id}', 'UserController@course')->name('user.course');
+    Route::get('course-{id}/lesson-{id_lesson}', 'UserController@lesson')->name('user.lesson');
 
 
 

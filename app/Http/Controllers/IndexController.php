@@ -16,6 +16,8 @@ class IndexController extends Controller
     {
         $courses = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())->get();
 
+
+
         return view('index', [ 'courses' => $courses ]);
     }
 

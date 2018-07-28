@@ -3,19 +3,12 @@
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
-            Курс:
-        </div>
-        <div class="course-detail-texts__right">
-            Adobe After Effects - Базовый курс
-        </div>
-    </div>
-    
-    <div class="course-detail__texts course-detail-texts">
-        <div class="course-detail-texts__left">
             Дата:
         </div>
         <div class="course-detail-texts__right">
-            1 июня - 5 июля
+            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_start)->formatLocalized('%d %B %Y'))}}
+            -
+            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_end)->formatLocalized('%d %B %Y'))}}
         </div>
     </div>
 
@@ -26,7 +19,7 @@
             Сложность:
         </div>
         <div class="course-detail-texts__right">
-            1/5
+            {{$lesson->complexity}}/5
         </div>
     </div>
 
