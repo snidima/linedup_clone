@@ -422,8 +422,13 @@
 .homework-files-item
   display: flex
   justify-content: space-between
+  align-items: center
 .homework-files-item__action
-  color: red
+  width:  16px
+  height: 16px
   cursor: pointer
-  font-style: normal
-  font-weight: bold
+  svg
+    width: 100%
+    height: 100%
+    path
+      fill: $color-error2

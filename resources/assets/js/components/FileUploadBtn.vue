@@ -31,7 +31,7 @@
 
                 <div style="margin-top: 10px; text-align: right">
                     <div class="btn btn-small btn-type-2" style="margin-right: 5px" @click="upload">Сохранить</div>
-                    <div class="btn btn-small btn-type-2" @click="onDeleteAll">Отмена</div>
+                    <div class="btn btn-small btn-type-2 error" @click="onDeleteAll">Отмена</div>
                 </div>
             </div>
             <div class="pending-block pending-block_small" v-if="pending">
@@ -44,7 +44,19 @@
             <div class="homework-files">
                 <div class="homework-files-item">
                     <div class="homework-files-item__name">{{ fetchedFile.origin_name }}</div>
-                    <div class="homework-files-item__action" @click="deleteHomework">X</div>
+                    <div class="homework-files-item__action" @click="deleteHomework">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 432.6 486.4" style="enable-background:new 0 0 432.6 486.4;" xml:space="preserve">
+                        <path d="M419.1,70H317.9V53.5c0-29.5-24-53.5-53.5-53.5h-96.2c-29.5,0-53.5,24-53.5,53.5V70H13.5C6,70,0,76,0,83.5S6,97,13.5,97
+                            h24.4v317.2c0,39.8,32.4,72.2,72.2,72.2h212.4c39.8,0,72.2-32.4,72.2-72.2V97h24.4c7.5,0,13.5-6,13.5-13.5S426.6,70,419.1,70z
+                             M141.7,53.5c0-14.6,11.9-26.5,26.5-26.5h96.2c14.6,0,26.5,11.9,26.5,26.5V70H141.7V53.5z M367.7,414.2c0,24.9-20.3,45.2-45.2,45.2
+                            H110.1c-24.9,0-45.2-20.3-45.2-45.2V97h302.9v317.2H367.7z M216.3,411c7.5,0,13.5-6,13.5-13.5V158.9c0-7.5-6-13.5-13.5-13.5
+                            s-13.5,6-13.5,13.5v238.5C202.8,404.9,208.8,411,216.3,411z M128.2,396.1c7.5,0,13.5-6,13.5-13.5V173.7c0-7.5-6-13.5-13.5-13.5
+                            c-7.5,0-13.5,6-13.5,13.5v208.9C114.7,390.1,120.8,396.1,128.2,396.1z M304.4,396.1c7.5,0,13.5-6,13.5-13.5V173.7
+                            c0-7.5-6-13.5-13.5-13.5s-13.5,6-13.5,13.5v208.9C290.9,390.1,296.9,396.1,304.4,396.1z"/>
+                        </svg>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,6 +65,7 @@
 
 <script>
     import api from '../api';
+    import alertify from 'alertify.js';
 
     export default {
         props:['courseid', 'lessonid'],
@@ -105,6 +118,12 @@
                         this.pending = false;
                         this.fetchedFile = res.data.file;
                         this.fetched = true;
+
+                        alertify.alert('Домашнее задание успешно загружено', function () {
+                            alertify.success('Домашнее задание успешно загружено')
+                        })
+
+
                     });
 
             },
@@ -127,16 +146,27 @@
             },
 
             deleteHomework(){
-                api.post('/user/ajax/homeworks-delete', {
-                    id: this.fetchedFile.id
-                })
-                    .then( res => {
-                        this.fetched = false;
-                        this.fetchedFile = false;
-                        this.file = false;
+                let self = this;
+                alertify.confirm("Удалить домашнее задание?",
+                    function(){
+                        api.post('/user/ajax/homeworks-delete', {
+                            id: self.fetchedFile.id
+                        })
+                            .then( res => {
+                                self.fetched = false;
+                                self.fetchedFile = false;
+                                self.file = false;
+                                alertify.error('Домашнее задание удалено')
+                            })
+                            .catch (()=>{
+                            })
+
+                    },
+                    function(){
                     })
-                    .catch (()=>{
-                    })
+
+
+
             }
 
         },
