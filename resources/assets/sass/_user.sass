@@ -284,8 +284,12 @@
   flex-direction: column
   align-items: center
   justify-content: center
-
-
+  padding: 20px
+  border: 1px dashed $color-1
+  cursor: pointer
+  &:hover
+    border: 1px dashed darken($color-1, 15%)
+    background: rgba(#000, 0.04)
 
 .user-course
   display: flex
@@ -380,3 +384,46 @@
   max-width: 100%
   video
     max-width: 100%
+
+
+
+.homework-files
+    font-size: .8rem
+    font-style: italic
+    margin-bottom: 5px
+    padding: 10px
+    background: #ededed
+    color: #131313
+    +br()
+
+.block-with-pending.pending
+  position: relative
+  +transition()
+  &:before
+    +transition()
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background: rgba(white, 0.8)
+    z-index: 4
+
+.pending-block_small
+  +transition()
+  .cssload-speeding-wheel
+    +transition()
+    width: 30px
+    height: 30px
+    border-width: 2px
+
+.homework-files-item
+  display: flex
+  justify-content: space-between
+.homework-files-item__action
+  color: red
+  cursor: pointer
+  font-style: normal
+  font-weight: bold

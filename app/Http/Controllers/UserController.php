@@ -3,13 +3,18 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Course;
+use App\Models\Homework;
 use App\Models\PromoCodes;
 use App\Models\RegularCourse;
 use App\Models\TmpFiles;
 use App\Models\User;
 use Carbon\Carbon;
+use http\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -95,30 +100,66 @@ class UserController extends Controller
         return $courses;
     }
 
-//    public function fileUpload( Request $request )
-//    {
-//        $file = $request->file('file');
-//        $title = $file->getClientOriginalName();
-//        $ext = $file->getClientOriginalExtension();
-//
-//        $path = storage_path().'/tmp_files/';
-//        $name = uniqid(rand(), true).".$ext";
-//
-//        $user_id = Auth::user()->id;
-//        $tmp_file = new TmpFiles;
-//
-//        $tmp_file->user_id = $user_id;
-//        $tmp_file->path = $name;
-//        $tmp_file->title = $title;
-//
-//        $tmp_file->save();
-//
-//
-//
-//        if( $file->move($path, $name) )
-//            return response()->json( $tmp_file->id );
-//
-//    }
+
+    public function fileDownload( Request $request )
+    {
+
+        try {
+            $file = Homework::where('user_id', Auth::user()->id)
+                ->where('course_id', $request->input('courseID') )
+                ->where('lesson_id', $request->input('lessonID') )->first();
+
+            if( !$file ) throw new \Exception('404');
+
+            return $file;
+
+        } catch ( \Exception $e ) {
+            return response()->json(['error' => 'not founf'], 404);
+        }
+
+    }
+
+
+    public function fileDelete( Request $request )
+    {
+        $file = Homework::find( $request->input('id') );
+        $res = Storage::disk('homeworks')->delete($file->path);
+        if ( $res ) {
+            $file->delete();
+            response()->json(['success' => 'success'], 200);
+        }
+    }
+
+    public function fileUpload( Request $request )
+    {
+        $courseID = $request->input('courseID');
+        $lessonID = $request->input('lessonID');
+
+        $file = $request->file('homeworkFile');
+        $ext = $file->getClientOriginalExtension();
+        $originName = $file->getClientOriginalName();
+
+        $newName = Auth::user()->id . '_' . $courseID . '_' . $lessonID . '_' . uniqid().'.'.$ext;
+
+
+
+        $file = Homework::create([
+            'user_id' => Auth::user()->id,
+            'course_id' => $courseID,
+            'lesson_id' => $lessonID,
+            'path' => $newName,
+            'origin_name' => $originName,
+        ]);
+
+
+        if( $file ) {
+            Storage::disk('homeworks')->put($newName, 'awfawf');
+            return response()->json(['success' => 'success', 'file' => $file], 200);
+        }
+
+
+
+    }
 
     public function userCheck()
     {   $user = Auth::user();
@@ -132,9 +173,13 @@ class UserController extends Controller
 
     public function lesson( $courseID, $lessonID )
     {
-        $regular = RegularCourse::find($courseID)->with(['course', 'course.lessons' => function($q){
-            $q->orderBy('id','asc');
-        }])->first();
+        $regular = RegularCourse::where('id',$courseID)->with([
+            'course',
+            'course.lessons' => function($q){
+                $q->orderBy('id','asc');
+            }
+        ])->first();
+
 
         //начала и окончания каждого урока
         $regular->course->lessons->transform(function ( $lesson, $key ) use( $regular ){

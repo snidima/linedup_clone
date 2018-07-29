@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
          $this->call(BillingSeeder::class);
 
          Artisan::call('course:create');
+//         Artisan::call('course:create --demo');
     }
 }

@@ -52,13 +52,11 @@ class RegularsCoursesCreateCommand extends Command
             ->toArray())
         );
 
-        $demo = false;
-        if( $this->option('demo') )
-            $demo = true;
+
+
         $courses = Course::whereNotIn('id', $reg )
             ->where([
-                'active' => true,
-                'isDemo' => $demo
+                'active' => true
             ])
             ->get();
         if( !$courses ) return;

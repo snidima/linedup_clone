@@ -1,3 +1,5 @@
+@if( $courses->get(0) )
+
 <section class="section-2 section" id="section-3">
     <div class="container">
         <h3 class="h3">Краткое содержание видеокурса</h3>
@@ -51,3 +53,5 @@
 
     </div>
 </section>
+
+@endif

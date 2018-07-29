@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'homeworks' => [
+            'driver' => 'local',
+            'root' => storage_path().'/homeworks'
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

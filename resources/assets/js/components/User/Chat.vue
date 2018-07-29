@@ -28,8 +28,8 @@
     import api from '../../api';
     import _ from 'lodash';
 
-    import moment from 'moment'
-    import ru from 'moment/src/locale/ru';
+//    import moment from 'moment'
+//    import ru from 'moment/src/locale/ru';
 
     import Pusher from 'pusher-js';
     import Echo from "laravel-echo"
