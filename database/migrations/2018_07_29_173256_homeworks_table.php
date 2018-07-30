@@ -18,8 +18,9 @@ class HomeworksTable extends Migration
             $table->integer('user_id');
             $table->integer('course_id');
             $table->integer('lesson_id');
-            $table->string('path');
-            $table->string('origin_name');
+            $table->string('path')->nullable();
+            $table->string('origin_name')->nullable();
+            $table->longText('youtube_link')->nullable();
             $table->timestamps();
         });
     }

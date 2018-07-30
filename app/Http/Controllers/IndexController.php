@@ -46,7 +46,9 @@ class IndexController extends Controller
             $courses = RegularCourse::whereIn('id', array_unique(array_merge([],$new,$payed,$demo)))->get();
 
         } else {
-            $courses = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())->get();
+
+            $courses = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())
+                ->get();
         }
 
 

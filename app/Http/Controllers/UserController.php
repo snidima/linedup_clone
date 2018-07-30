@@ -28,6 +28,8 @@ class UserController extends Controller
         $payedRegulars = $payed->pluck('regular.id')->toArray();
 
 
+
+
         //созданные курсы, не включающие купленные статические курсы
         $new = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())
             ->whereNotIn( 'course_id', $payedCourses )
@@ -134,31 +136,65 @@ class UserController extends Controller
     {
         $courseID = $request->input('courseID');
         $lessonID = $request->input('lessonID');
+        $youtubeLink = $request->input('youtubeLink');
 
-        $file = $request->file('homeworkFile');
-        $ext = $file->getClientOriginalExtension();
-        $originName = $file->getClientOriginalName();
+        $homework = Homework::where('user_id', Auth::id())->where('course_id', $courseID)->where('lesson_id',$lessonID )->first();
 
-        $newName = Auth::user()->id . '_' . $courseID . '_' . $lessonID . '_' . uniqid().'.'.$ext;
-
-
-
-        $file = Homework::create([
+        $data = [
             'user_id' => Auth::user()->id,
             'course_id' => $courseID,
             'lesson_id' => $lessonID,
-            'path' => $newName,
-            'origin_name' => $originName,
-        ]);
+            'youtube_link' => $youtubeLink,
+        ];
 
-
-        if( $file ) {
-            Storage::disk('homeworks')->put($newName, 'awfawf');
-            return response()->json(['success' => 'success', 'file' => $file], 200);
+        if( $homework ){
+            $homework->update( $data );
+            return $homework;
+        } else {
+            return Homework::create( $data );
         }
 
 
 
+
+
+//        $file = $request->file('homeworkFile');
+//        $ext = $file->getClientOriginalExtension();
+//        $originName = $file->getClientOriginalName();
+//
+//        $newName = Auth::user()->id . '_' . $courseID . '_' . $lessonID . '_' . uniqid().'.'.$ext;
+//
+//
+//
+//        $file = Homework::create([
+//            'user_id' => Auth::user()->id,
+//            'course_id' => $courseID,
+//            'lesson_id' => $lessonID,
+//            'path' => $newName,
+//            'origin_name' => $originName,
+//        ]);
+//
+//
+//        if( $file ) {
+//            Storage::disk('homeworks')->put($newName, 'awfawf');
+//            return response()->json(['success' => 'success', 'file' => $file], 200);
+//        }
+
+
+
+    }
+
+    public function homeworkDownload( $idcourse, $idlesson )
+    {
+        $youtubeLink = Homework::where('user_id', Auth::id())->where('course_id', $idcourse)->where('lesson_id',$idlesson )->first();
+
+        if( $youtubeLink )
+            return response()->json([
+                'success' => 'success',
+                'youtubeLink' => $youtubeLink->youtube_link
+            ], 200);
+        else
+            return false;
     }
 
     public function userCheck()

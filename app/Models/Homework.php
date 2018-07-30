@@ -10,5 +10,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Homework extends Model
 {
     protected $table = "homeworks";
-    protected $fillable = ['user_id', 'course_id', 'lesson_id', 'path' ,'origin_name'];
+    protected $fillable = ['user_id', 'course_id', 'lesson_id', 'path' ,'origin_name','youtube_link'];
 }
