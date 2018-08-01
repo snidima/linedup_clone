@@ -11,7 +11,6 @@ import CourseAdd from './CourseAdd.vue'
 
 import CourseComposition from './CourseComposition.vue'
 
-import Chats from './Chat.vue'
 
 Vue.use(VueRouter);
 
@@ -24,7 +23,6 @@ const routes = [
     { path: '/course/:id', component: Course, name: 'course' },
     { path: '/courses-add', component: CourseAdd, name: 'course.add' },
     { path: '/courses-composition', component: CourseComposition, name: 'courses.composition' },
-    { path: '/chats', component: Chats, name: 'chats' },
 ];
 
 const router = new VueRouter({

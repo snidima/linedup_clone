@@ -18,6 +18,11 @@ class HomeworksTable extends Migration
             $table->integer('user_id');
             $table->integer('course_id');
             $table->integer('lesson_id');
+
+            $table->boolean('check')->nullable();
+            $table->integer('rate')->nullable();
+            $table->longText('comment')->nullable();
+
             $table->string('path')->nullable();
             $table->string('origin_name')->nullable();
             $table->longText('youtube_link')->nullable();

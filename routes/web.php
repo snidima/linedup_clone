@@ -99,6 +99,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
 
     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
+    Route::get('homeworks', 'Admin\HomeworkController@index')->name('admin.homeworks');
+    Route::get('homework/{id}', 'Admin\HomeworkController@get')->name('admin.homework.get');
+    Route::post('homework/{id}', 'Admin\HomeworkController@post')->name('admin.homework.post');
+
+
     Route::get('/', 'Admin\MainController@index');
 
     Route::group(['prefix' => 'ajax'], function(){
