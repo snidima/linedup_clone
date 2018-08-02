@@ -39,7 +39,23 @@
 
 <div class="course-homework">
     <div class="course-homework__title">Домашнее задание</div>
-    <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
+    @if( $homework )
+        @if( $homework->check )
+            <div class="course-homework-status course-homework-status_success">
+                Домашнее задание проверено.
+            </div>
+        @else
+            <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
+            <div class="course-homework-status course-homework-status_pending">
+                Домашнее задание проверяется.
+                <small>
+                    Пожалуйста, <b>не меняйте и не удаляйте ссылку на видео без необходимости</b> до тех пор, пока ваше задание не будет проверено!
+                </small>
+            </div>
+        @endif
+    @else
+        <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
+    @endif
 </div>
 
 

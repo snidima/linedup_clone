@@ -33,20 +33,30 @@ class UserController extends Controller
         //созданные курсы, не включающие купленные статические курсы
         $new = RegularCourse::where('date_start', '>', Carbon::now()->toDateTimeString())
             ->whereNotIn( 'course_id', $payedCourses )
+            ->whereHas('course', function ($q){
+                $q->where('isDemo', false);
+            })
             ->get()->pluck('id')->toArray();
 
         $payed = RegularCourse::whereIn('id', $payedRegulars)->get()->pluck('id')->toArray();
 
-        $demo = RegularCourse::whereHas('course', function($q){
-            $q->where('isDemo', true);
-        })->get()->pluck('id')->toArray();
+
+        $demoCourses = Course::where('isDemo', true)->groupBy('id')->get()->pluck('id')->toArray();
+
+
+        $demo = RegularCourse::where('date_start', '>',Carbon::now()->toDateTimeString())
+            ->whereIn('course_id', $demoCourses)->orderBy('date_start','DESC')->first()->id;
+
+
+//        $demo = RegularCourse::select(['id','course_id'])->where('date_start', '>',Carbon::now()->toDateTimeString())->whereHas('course', function($q){
+//            $q->where('isDemo', true);
+//        })->get()->pluck('id')->toArray();
 
 
 
 
 
-
-        $courses = RegularCourse::whereIn('id', array_unique(array_merge([],$new,$payed,$demo)))->get();
+        $courses = RegularCourse::whereIn('id', array_unique(array_merge([],$new,$payed,[$demo])))->get();
 
 
 
@@ -238,7 +248,8 @@ class UserController extends Controller
             'prevLesson' => $regular->course->lessons->get( $lessonID-2 ),
             'nextLesson' => $regular->course->lessons->get( $lessonID ),
             'lessonID' => $lessonID,
-            'courseID' => $courseID
+            'courseID' => $courseID,
+            'homework' => Homework::where('lesson_id', $lessonID )->where('course_id', $courseID)->first()
         ]);
 
     }
