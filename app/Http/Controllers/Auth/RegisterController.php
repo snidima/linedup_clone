@@ -34,7 +34,7 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ]);
-        $user->activated = true;
+//        $user->activated = true;
         $user ->save();
 
         Auth::login($user, true);
