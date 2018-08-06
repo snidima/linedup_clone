@@ -41,7 +41,7 @@ class RegularsCoursesCreateCommand extends Command
      */
     public function handle()
     {
-        $newxtMonday = Carbon::now()->addHours(2);
+        $newxtMonday = Carbon::now()->startOfWeek()->addWeek(1);
 
 
         $reg = array_unique( array_map(function( $el ){

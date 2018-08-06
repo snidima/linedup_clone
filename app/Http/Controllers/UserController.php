@@ -24,6 +24,7 @@ class UserController extends Controller
 
         //Оплаченные регулярные и статические курсы
         $payed = Auth::user()->billings()->with('regular')->get();
+
         $payedCourses = $payed->pluck('regular.course_id')->toArray();
         $payedRegulars = $payed->pluck('regular.id')->toArray();
 
@@ -249,7 +250,7 @@ class UserController extends Controller
             'nextLesson' => $regular->course->lessons->get( $lessonID ),
             'lessonID' => $lessonID,
             'courseID' => $courseID,
-            'homework' => Homework::where('lesson_id', $lessonID )->where('course_id', $courseID)->first()
+            'homework' => Homework::where('user_id', Auth::id())->where('lesson_id', $lessonID )->where('course_id', $courseID)->first()
         ]);
 
     }

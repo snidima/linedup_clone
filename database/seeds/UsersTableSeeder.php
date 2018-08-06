@@ -18,17 +18,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Снигур Дмитрий Александрович',
             'email' => 'snidima@mail.ru',
             'password' => '5783751907',
-            'activated' => true
+            'activated' => false
         ]);
-
-        for ($i = 1; $i <= 10; $i++){
-            User::create([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'password' => 555,
-                'activated' => true
-            ]);
-        }
 
     }
 }
