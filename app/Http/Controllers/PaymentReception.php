@@ -30,7 +30,7 @@ class PaymentReception extends Controller
 
         if( $promo ){
             $sale = $promo->value;
-            $need = $price * $sale / 100;
+            $need = $price - ( $price * $sale / 100 );
         }
 
         dd( $need );
