@@ -42,7 +42,7 @@
             <input type="hidden" name="quickpay-form" value="shop">
             <input type="hidden" name="targets" value="Adobe After Effect. Стандартный">
             <input type="hidden" name="sum"  data-type="number" v-model="priceM">
-            <input type="hidden" name="comment" value="Оплата курса Основы Adobe After Effect">
+            <input type="hidden" name="comment" value="Оплата курса 'Основы Adobe After Effect'">
             <input type="hidden" name="need-fio" value="false">
             <input type="hidden" name="need-email" value="false">
             <input type="hidden" name="need-phone" value="false">
@@ -74,6 +74,7 @@
                 promoCode: '',
                 priceAfterPromo: false,
 
+                //https://tech.yandex.ru/money/doc/payment-buttons/reference/forms-docpage/
                 paymethods: [
                     {
                         title: 'Yandex.Деньги',
@@ -122,6 +123,8 @@
                     .then(( res )=>{
                     if( !res.data ) return;
                         $('#label').val(  res.data );
+
+                        alert();
                         $('#pay-form').submit();
                     })
                     .catch((res) => {
