@@ -1,5 +1,5 @@
 @extends('layouts/default')
-
+@section('title','Купить курс видеомонтажа в Adobe After Effects от школы Linedup.ru')
 @section('html')
     <div class="top-full-screen">
         <section class="main-center main-center_gray">

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Billing;
 use App\Models\Course;
 use App\Models\Homework;
 use App\Models\PromoCodes;
@@ -220,6 +221,19 @@ class UserController extends Controller
 
     public function lesson( $courseID, $lessonID )
     {
+        $isDemo = RegularCourse::where('id',$courseID)->first();
+
+        if( $isDemo->finalPrice > 0 ){
+
+            $billings = Billing::where( 'user_id', Auth::id() )->where('course_id', $courseID)->first();
+
+            if( !$billings )
+                return view('user.course-access-deny');
+
+        }
+
+
+
         $regular = RegularCourse::where('id',$courseID)->with([
             'course',
             'course.lessons' => function($q){

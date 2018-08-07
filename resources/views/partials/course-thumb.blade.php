@@ -5,7 +5,7 @@
 
                 <div class="course-thumb-info__title">{{$course->course->title}}</div>
                 <div class="course-thumb-info__time">
-                    @if( $course->course->isDemo )
+                    @if( $course->course->isDemo || !$course->dateCounter)
                         Идет сейчас
                     @else
                         Начало через : {{$course->dateCounter['days']}} <small>дней</small>  {{$course->dateCounter['hours']}}<small> часов</small>

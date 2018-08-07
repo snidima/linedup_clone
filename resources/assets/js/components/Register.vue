@@ -109,7 +109,7 @@
         methods: {
 
             fromPaymentSubmit( data ){
-                this.$emit( 'onLoginSuccess', data )
+//                this.$emit( 'onRegisterSuccess', data )
             },
 
             submit(){
@@ -120,10 +120,11 @@
                     data: this.inputs
                 })
                     .then(( res )=>{
+
                         this.pending = false;
 
                         if( this.theme === 'white' ){
-                            this.fromPaymentSubmit( res.data );
+                            this.$emit( 'onRegisterSuccess')
                             return;
                         }
 
@@ -132,6 +133,7 @@
                             .alert('<b>Регистрация завершена.</b> На ваш email отправлено письмо с инструкциями для активации аккаунта.',()=>window.location.replace(res.data.redirect));
                     })
                     .catch((res) => {
+
                         this.pending = false;
                         let self = this;
                         if( res.response.data.commonError ){

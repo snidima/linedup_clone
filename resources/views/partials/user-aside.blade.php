@@ -23,12 +23,17 @@
         </div>
     </div>
 
+
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
             Домашнее задание:
         </div>
         <div class="course-detail-texts__right">
-            еще не загружено
+            @if( $regular->course->isDemo )
+                не доступно в демо
+            @else
+                еще не загружено
+            @endif
         </div>
     </div>
 
@@ -39,7 +44,11 @@
 
 <div class="course-homework">
     <div class="course-homework__title">Домашнее задание</div>
-    @if( $homework )
+    @if( $regular->course->isDemo )
+        <div class="course-homework-status course-homework-status_error">
+            Дамашние задания не доступны в демо курсах
+        </div>
+    @elseif( $homework )
         @if( $homework->check )
             <div class="course-homework-status course-homework-status_success">
                 Домашнее задание проверено.
@@ -71,7 +80,11 @@
             <div class="course-teacher-item__name">Никита Литвенков<br>(читает курс)</div>
             <div class="course-teacher-item__desc">Вопросы по курсу и домашним заданиям</div>
             <div class="course-teacher-item__btn">
-                <div class="btn btn-small btn-type-2">Написать Никите</div>
+                @if( $regular->course->isDemo )
+                    <div class="btn btn-small btn-type-2">Не доступно в демо</div>
+                @else
+                    <div class="btn btn-small btn-type-2">Написать Никите</div>
+                @endif
             </div>
         </div>
 
@@ -80,7 +93,11 @@
             <div class="course-teacher-item__name">Никита Литвенков<br>(читает курс)</div>
             <div class="course-teacher-item__desc">Вопросы по курсу и домашним заданиям</div>
             <div class="course-teacher-item__btn">
-                <div class="btn btn-small btn-type-2">Написать Никите</div>
+                @if( $regular->course->isDemo )
+                    <div class="btn btn-small btn-type-2">Не доступно в демо</div>
+                @else
+                    <div class="btn btn-small btn-type-2">Написать Никите</div>
+                @endif
             </div>
         </div>
 

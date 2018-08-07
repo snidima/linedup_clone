@@ -34,14 +34,13 @@ class RegisterController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ]);
-//        $user->activated = true;
         $user ->save();
 
-        Auth::login($user, true);
 
         return response()->json([
+            'success' => true,
             'redirect' => route('user.login')
-        ]);
+        ], 200);
     }
 
     public function confirm( $token, JWTInterface $jwt )

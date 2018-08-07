@@ -1,6 +1,6 @@
 @extends('layouts/main')
 
-@section('title','Главная')
+@section('title','Лучшие онлайн курсы видеомонтажа в Adobe After Effects от школы Linedup.ru')
 
 @section('content')
     @include('index/section-1')

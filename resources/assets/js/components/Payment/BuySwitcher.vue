@@ -22,7 +22,7 @@
             </div>
 
             <div v-if="step === 1">
-                <register @onLoginSuccess="onLoginSuccess" theme="white" v-if="regMethod === 'reg'"></register>
+                <register @onRegisterSuccess="onRegisterSuccess" theme="white" v-if="regMethod === 'reg'"></register>
                 <login @onLoginSuccess="onLoginSuccess" theme="white" v-if="regMethod === 'login'"></login>
             </div>
 
@@ -37,6 +37,7 @@
 <script>
     import api from '../../api';
     import _ from 'lodash';
+    import alertify from 'alertify.js'
 
     export default {
         props: ['price', 'course'],
@@ -66,8 +67,13 @@
                 this.regMethod = m;
             },
 
-            onLoginSuccess( data ){
-                console.log( data );
+            onRegisterSuccess(){
+                alertify
+                    .okBtn("Проверить email и войти")
+                    .alert('<b>Регистрация завершена.</b> На ваш email отправлено письмо с инструкциями для активации аккаунта.');
+                this.regMethod = 'login';
+            },
+            onLoginSuccess(){
                 this.userCheck();
             },
 

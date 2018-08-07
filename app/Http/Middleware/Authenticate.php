@@ -20,7 +20,7 @@ class Authenticate
         if ( !Auth::guard($guard)->check() ) {
 
             $request->session()->push('url.indented', $request->url());
-            return redirect(route('user.login'));
+            return redirect(route('user.register'));
 
         }
 

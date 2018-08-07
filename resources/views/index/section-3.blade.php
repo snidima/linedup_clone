@@ -1,4 +1,4 @@
-@if( $courses->get(0) )
+
 
 <section class="section-2 section" id="section-3">
     <div class="container">
@@ -7,7 +7,7 @@
 
         <div class="steps">
 
-            @foreach( $courses[0]->course->lessons as $lesson )
+            @foreach( \App\Models\Course::find(1)->lessons as $lesson )
             <div class="steps__step step">
                 <div class="step__info step-info">
                     <div class="step-info-text">
@@ -17,11 +17,13 @@
                         <div class="step-info-text__info">
                             Введение в After Effects. Знакомство с AE, его интерфейсом , базовыми инструментами и др.
                         </div>
-                        <div class="step-info-text__btn">
-                            <div class="btn btn-small btn-type-2">
-                                Смотреть демо
-                            </div>
-                        </div>
+
+                        {{--<div class="step-info-text__btn">--}}
+                            {{--<div class="btn btn-small btn-type-2">--}}
+                                {{--Смотреть демо--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+
                     </div>
                 </div>
                 <div class="step__time step-time">
@@ -54,4 +56,3 @@
     </div>
 </section>
 
-@endif
