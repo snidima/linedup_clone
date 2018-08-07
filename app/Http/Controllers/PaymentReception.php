@@ -36,6 +36,9 @@ class PaymentReception extends Controller
 
 
         $billing = Billing::create([
+            'user_id' => $billingTmp->user_id,
+            'course_id' => $billingTmp->course_id,
+            'promo' => $billingTmp->promo,
             'amount' => $request->input('withdraw_amount'),
             'information' => json_encode( [
                 'headers' => $request->header(),
@@ -48,7 +51,7 @@ class PaymentReception extends Controller
             return response(null, 200);
         else
             return response(null, 406);
-        
+
     }
 
 
