@@ -15,7 +15,7 @@ class OrderController extends Controller
     public function create( Request $request )
     {
 
-        $billing = Billing::create([
+        $billing = Billing::updateOrCreate([
             'user_id' => $request->input('user'),
             'course_id' => $request->input('course'),
             'promo' => $request->input('promoCode'),

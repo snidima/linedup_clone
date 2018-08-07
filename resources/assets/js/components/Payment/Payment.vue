@@ -42,7 +42,7 @@
             <input type="hidden" name="quickpay-form" value="shop">
             <input type="hidden" name="targets" value="Adobe After Effect. Стандартный">
             <input type="hidden" name="sum"  data-type="number" v-model="priceM">
-            <input type="hidden" name="comment" value="Оплата курса 'Основы Adobe After Effect'">
+            <input type="hidden" name="comment" value="Оплата курса Основы Adobe After Effect">
             <input type="hidden" name="need-fio" value="false">
             <input type="hidden" name="need-email" value="false">
             <input type="hidden" name="need-phone" value="false">
@@ -110,9 +110,6 @@
 
         methods: {
             orderCreate(){
-
-                alert(this.course);
-
                 api({
                     method: 'post',
                     url: '/ajax/order-create',
