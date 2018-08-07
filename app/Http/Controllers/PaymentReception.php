@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Billing;
+use App\Models\BillingTmp;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -19,7 +20,9 @@ class PaymentReception extends Controller
             'data' => $request->all(),
         ] );
 
-        $billing = Billing::find( $request->input('label') );
+        $billing = BillingTmp::find( $request->input('label') );
+
+        dd( $billing );
 
         $billing->amount = $request->input('withdraw_amount');
         $billing->information = json_encode( [
