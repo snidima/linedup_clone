@@ -21,40 +21,34 @@ class PaymentReception extends Controller
             'data' => $request->all(),
         ] );
 
-        $billing = BillingTmp::find( $request->input('label') );
-
-        $promo = PromoCodes::where('code', $billing->promo)->first();
-
-        $price  = $need = $billing->regular->finalPrice;
+        $billingTmp = BillingTmp::find( $request->input('label') );
+        $promo = PromoCodes::where('code', $billingTmp->promo)->first();
+        $price  = $need = $billingTmp->regular->finalPrice;
 
 
         if( $promo ){
             $sale = $promo->value;
-            $need = $price - ( $price * $sale / 100 );
+            $need = ( $price - ( $price * $sale / 100 ) ) * 1;
         }
 
-        dd( $need );
+        if( $request->input('withdraw_amount') * 1 <= $need )
+            return response(null, 406);
 
 
-        $billing->amount = $request->input('withdraw_amount');
-        $billing->information = json_encode( [
-            'headers' => $request->header(),
-            'data' => $request->all(),
-        ] );
+        $billing = Billing::create([
+            'amount' => $request->input('withdraw_amount'),
+            'information' => json_encode( [
+                'headers' => $request->header(),
+                'data' => $request->all(),
+            ] )
+        ]);
 
-        $billing->save();
 
-
-
-        return response(null, 200);
-
-//
-//
-//        $payOK = false;
-//        if( $payOK )
-//            return response(null, 200);
-//        else
-//            return response(null, 406);
+        if( $billing )
+            return response(null, 200);
+        else
+            return response(null, 406);
+        
     }
 
 
