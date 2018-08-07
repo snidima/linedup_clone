@@ -31,7 +31,7 @@ class PaymentReception extends Controller
             $need = ( $price - ( $price * $sale / 100 ) ) * 1;
         }
 
-        dd($request->input('withdraw_amount')*1, $need);
+        
 
         if( $request->input('withdraw_amount') * 1 < $need )
             return response(null, 406);
