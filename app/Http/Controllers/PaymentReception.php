@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Billing;
 use App\Models\BillingTmp;
+use App\Models\PromoCodes;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +23,21 @@ class PaymentReception extends Controller
 
         $billing = BillingTmp::find( $request->input('label') );
 
-        dd( $billing );
+        $promo = PromoCodes::where('code', $billing->promo)->first();
+
+        $success = false;
+        if( $promo ){
+
+            $sale = $promo->value;
+            $amount = $request->input('withdraw_amount');
+
+
+
+
+        }
+
+        dd($promo, $billing);
+
 
         $billing->amount = $request->input('withdraw_amount');
         $billing->information = json_encode( [
