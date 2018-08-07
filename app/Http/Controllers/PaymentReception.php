@@ -31,9 +31,26 @@ class PaymentReception extends Controller
             $need = ( $price - ( $price * $sale / 100 ) ) * 1;
         }
 
-
+     
 
         if( $request->input('withdraw_amount') * 1 < $need )
+            return response(null, 406);
+
+
+        $hashStringProccessed = implode( '&', [
+            $request->input('notification_type'),
+            $request->input('operation_id'),
+            $request->input('amount'),
+            $request->input('currency'),
+            $request->input('datetime'),
+            $request->input('sender'),
+            $request->input('codepro'),
+            env('YANDEXSECRET'),
+            $request->input('label'),
+        ] );
+        $hashStringProccessed = hash("SHA1", $hashStringProccessed);
+
+        if( $hashStringProccessed != $request->input('sha1_hash') )
             return response(null, 406);
 
 
