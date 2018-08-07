@@ -25,6 +25,8 @@ class PaymentReception extends Controller
 
         $promo = PromoCodes::where('code', $billing->promo)->first();
 
+        $price  = $billing->regular;
+
         $success = false;
         if( $promo ){
 
@@ -36,7 +38,7 @@ class PaymentReception extends Controller
 
         }
 
-        dd($promo, $billing);
+        dd( $price );
 
 
         $billing->amount = $request->input('withdraw_amount');
