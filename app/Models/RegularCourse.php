@@ -62,7 +62,7 @@ class RegularCourse extends Model
         $price = $this->price;
         $new_price = $this->new_price;
 
-        return ( $new_price ) ? $new_price : $price;
+        return ( $new_price ) ? $new_price*1 : $price*1;
     }
 
     public function getDateCounterAttribute()

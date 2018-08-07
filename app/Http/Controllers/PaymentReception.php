@@ -25,20 +25,15 @@ class PaymentReception extends Controller
 
         $promo = PromoCodes::where('code', $billing->promo)->first();
 
-        $price  = $billing->regular->finalPrice;
+        $price  = $need = $billing->regular->finalPrice;
 
-        $success = false;
+
         if( $promo ){
-
             $sale = $promo->value;
-            $amount = $request->input('withdraw_amount');
-
-
-
-
+            $need = $price * $sale / 100;
         }
 
-        dd( $price );
+        dd( $need );
 
 
         $billing->amount = $request->input('withdraw_amount');
