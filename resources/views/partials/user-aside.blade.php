@@ -13,6 +13,20 @@
     </div>
 
 
+    <div class="course-detail__texts course-detail-texts">
+        <div class="course-detail-texts__left">
+            Состояние:
+        </div>
+        <div class="course-detail-texts__right">
+            @if( $lesson->was )
+                прошел
+            @else
+                идет
+            @endif
+        </div>
+    </div>
+
+
 
     <div class="course-detail__texts course-detail-texts">
         <div class="course-detail-texts__left">
@@ -32,7 +46,15 @@
             @if( $regular->course->isDemo )
                 не доступно в демо
             @else
-                еще не загружено
+                @if( $homework )
+                    @if($homework->check)
+                        проверено
+                    @else
+                        проверяется
+                    @endif
+                @else
+                    еще не загружено
+                @endif
             @endif
         </div>
     </div>
@@ -51,7 +73,8 @@
     @elseif( $homework )
         @if( $homework->check )
             <div class="course-homework-status course-homework-status_success">
-                Домашнее задание проверено.
+                Домашнее задание выполнено.<br>
+                Оценка: <b>{{$homework->rate}}</b> из 5
             </div>
         @else
             <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
@@ -64,6 +87,12 @@
         @endif
     @else
         <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
+        <div class="course-homework-status course-homework-status_new">
+            Вставьте ссылку на youtube
+            <small>
+                Ссылку нужно вставлять в формате <b>https://www.youtube.com/watch?v=xxxxxxx</b>
+            </small>
+        </div>
     @endif
 </div>
 

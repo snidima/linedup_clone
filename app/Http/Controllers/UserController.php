@@ -255,7 +255,7 @@ class UserController extends Controller
             return $lesson;
         });
 
-
+//        dd($regular->course->lessons->get( $lessonID-1 ), $regular->course->lessons->get( $lessonID ));
 
         return view('user.course', [
             'regular' => $regular,

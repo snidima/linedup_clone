@@ -4,11 +4,11 @@
     @if( $prevLesson )
     <a class="course-nav__prev course-nav-prev" href="{{route('user.lesson',['course' => $courseID, 'lesson' => $lessonID-1])}}">
         <div class="course-nav-prev__texts course-nav-prev-texts">
-            <div class="course-nav-prev-texts__time">
-                @if( $prevLesson->was )
-                    Урок прошел
-                @endif
-            </div>
+            {{--<div class="course-nav-prev-texts__time">--}}
+                {{--@if( $prevLesson->was )--}}
+                    {{--Урок прошел--}}
+                {{--@endif--}}
+            {{--</div>--}}
             <div class="course-nav-prev-texts__title">
                 Урок №{{$lessonID-1}}. {{$prevLesson->title}}
             </div>
@@ -26,11 +26,11 @@
 
     <div class="course-nav__current">
         Урок №{{$lessonID}}.{{$lesson->title}}
-        @if( $lesson->now )
-            Урок идет
-        @elseif( $lesson->was )
-            Урок прошел
-        @endif
+        {{--@if( $lesson->now )--}}
+            {{--Урок идет--}}
+        {{--@elseif( $lesson->was )--}}
+            {{--Урок прошел--}}
+        {{--@endif--}}
     </div>
 
 
@@ -45,15 +45,15 @@
         </div>
         <div class="course-nav-next__texts course-nav-next-texts">
 
-            <div class="course-nav-next-texts__time">
-                @if( $nextLesson->indays > 0 )
-                    Начало через {{$nextLesson->indays}} дней
-                @elseif( $nextLesson->indays == 0 )
-                    Урок идет
-                @else
-                    Урок прошел
-                @endif
-            </div>
+            {{--<div class="course-nav-next-texts__time">--}}
+                {{--@if( $nextLesson->indays > 0 )--}}
+                    {{--Начало через {{$nextLesson->indays}} дней--}}
+                {{--@elseif( \Carbon\Carbon::now()->diffInDays( $nextLesson ) )--}}
+                    {{--Урок идет--}}
+                {{--@else--}}
+                    {{--Урок прошел--}}
+                {{--@endif--}}
+            {{--</div>--}}
 
             <div class="course-nav-next-texts__title">
                 Урок №{{$lessonID+1}}. {{$nextLesson->title}}
