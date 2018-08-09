@@ -34,8 +34,8 @@
                         </div>
                     </div>
                     <div class="form-under-submit-block"  v-if="theme != 'white'">
-                        <div class="form-under-submit-block__item"><a href="#">Регистрация</a></div>
-                        <div class="form-under-submit-block__item"><a href="#">Забыли пароль?</a></div>
+                        <div class="form-under-submit-block__item"><a href="/register">Регистрация</a></div>
+                        <div class="form-under-submit-block__item"><span @click="forget" class="a" >Забыли пароль?</span></div>
                     </div>
                 </div>
             </div>
@@ -49,6 +49,7 @@
 <script>
     import api from '../api';
     import _ from 'lodash';
+    import alertify from 'alertify.js'
 
     export default {
         props: ['theme'],
@@ -95,6 +96,21 @@
 
 
         methods: {
+
+            forget(){
+                alertify.prompt("Введите свой E-mail", function(v){
+                    alertify.success('На ваше email выслано пиьсмо с инструкцией по восстановлению пароля');
+
+                    api({
+                        method: 'post',
+                        url: '/login/forget',
+                        data: {email: v}
+                    })
+                        .then(( res )=>{
+                            console.log(res.data)
+                        });
+                }, false)
+            },
 
             fromPaymentSubmit( data ){
                 this.$emit( 'onLoginSuccess', data )

@@ -58,6 +58,10 @@ Route::group(['middleware' => 'guest'], function(){
 
     //USER CONFIRM
     Route::get('/register/confirm/{token}', 'Auth\RegisterController@confirm')->name('user.confirm');
+
+    //FORGET PASS
+    Route::post('/login/forget', 'Auth\ForgetController@sendToEmail');
+    Route::get('/login/forget/{token}', 'Auth\ForgetController@checkToken')->name('forget-pass');
 });
 //USER LOGOUT
 Route::get('/user-quit', 'Auth\LoginController@quit')->name('user.quit');

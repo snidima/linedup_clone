@@ -2,26 +2,27 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
 
-class ConfirmRegister extends Notification
+class ForgetPassNotify extends Notification
 {
     use Queueable;
 
-    private $url;
+    private $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct( $url )
+    public function __construct( $token )
     {
-        $this->url = $url;
+        $this->token = $token;
     }
 
     /**
@@ -44,8 +45,8 @@ class ConfirmRegister extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Подтвердите регистрацию')
-            ->view('email.confirm', [ 'url' => $this->url, 'user' => $notifiable ]);
+            ->subject('Восстановление пароля')
+            ->view('email.forget', [ 'token' => $this->token, 'user' => $notifiable ]);
     }
 
     /**
