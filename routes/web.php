@@ -78,6 +78,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
+    Route::get('account', 'UserController@account')->name('user.account');
+
+
+
 
 
     Route::group(['prefix' => 'ajax'], function() {

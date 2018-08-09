@@ -6,9 +6,9 @@
             Дата:
         </div>
         <div class="course-detail-texts__right">
-            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_start)->formatLocalized('%d %B %Y'))}}
+            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_start)->formatLocalized('%d %B'))}}
             -
-            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_end)->formatLocalized('%d %B %Y'))}}
+            {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($lesson->date_end)->formatLocalized('%d %B'))}}
         </div>
     </div>
 

@@ -62,8 +62,7 @@
                 {{--</div>--}}
             {{--</div>--}}
 
-
-            <a class="user-header__item user-header-item" href="#">
+            <a class="user-header__item user-header-item @if( in_array(\Illuminate\Support\Facades\Route::currentRouteName(), ['user.main', 'user.lesson']) ) active @endif" href="{{route('user.main')}}" >
                 <div class="user-header-item__icon">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 512 477.9" style="enable-background:new 0 0 512 477.9;" xml:space="preserve">
@@ -92,7 +91,7 @@
                 </div>
             </a>
 
-            <a class="user-header__item user-header-item" href="#">
+            <a class="user-header__item user-header-item @if( in_array(\Illuminate\Support\Facades\Route::currentRouteName(), ['user.account']) ) active @endif" href="{{route('user.account')}}">
                 <div class="user-header-item__icon">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          viewBox="0 0 54 54" style="enable-background:new 0 0 54 54;" xml:space="preserve">

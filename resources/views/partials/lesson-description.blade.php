@@ -3,7 +3,7 @@
         Описание урока
     </div>
     <div class="course-text-block__text">
-        {{$lesson->description}}
+        {!! $lesson->description !!}
     </div>
 </div>
 

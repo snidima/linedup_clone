@@ -269,5 +269,10 @@ class UserController extends Controller
 
     }
 
+    public function account()
+    {
+        return view('user.account');
+    }
+
 
 }
