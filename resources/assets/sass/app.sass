@@ -214,3 +214,40 @@ a
   text-decoration: underline
   &:hover
     text-decoration: none
+
+
+
+
+
+.account
+  .center
+    width: 600px
+    margin: auto
+  form
+    background: #f6f6f6
+    padding: 20px
+  h4
+    font-weight: lighter
+    font-size: 1.5rem
+    color: #131313
+    margin-bottom: 20px
+  label
+    font-weight: bold
+    font-size: 1rem
+    font-size: .8rem
+    margin-bottom: 10px
+    display: block
+    color: $black-1
+  input:not([type="submit"])
+    background: white !important
+    font-size: .8rem
+  .field
+    +nlt
+      margin-bottom: 20px
+    &.submit
+      text-align: right
+    .errors
+      margin-top: 3px
+      li
+        color: red
+        font-size: .7rem

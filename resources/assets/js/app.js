@@ -1,6 +1,8 @@
 import '../img/photo.jpg'
+import alertify from 'alertify.js'
 
-
+import Plyr from 'plyr'
+import 'plyr/dist/plyr.css'
 
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
@@ -25,6 +27,6 @@ if( $('#app').length ){
 }
 
 
-import Plyr from 'plyr'
-import 'plyr/dist/plyr.css'
+
 const player = new Plyr('#lesson-player');
+window.alertify = alertify;

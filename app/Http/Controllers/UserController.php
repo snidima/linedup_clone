@@ -14,8 +14,10 @@ use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -272,6 +274,40 @@ class UserController extends Controller
     public function account()
     {
         return view('user.account');
+    }
+
+    public function changePass(Request $request)
+    {
+
+
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'bail|required',
+            'new_password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.account'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if( $request->input('current_password') == $request->input('new_password') ){
+            $validator->getMessageBag()->add('current_password', 'Текущий пароль и новый пароль совпадают');
+            return redirect(route('user.account'))->withErrors($validator);
+        }
+
+         if( Hash::check($request->input('current_password'), Auth::user()->getAuthPassword()) ){
+
+             Auth::user()->password = $request->input('new_password');
+             Auth::user()->save();
+
+             return redirect(route('user.account'))->with('alert', 'Пароль успешно изменен');
+
+         } else {
+             $validator->getMessageBag()->add('current_password', 'Неверный пароль');
+             return redirect(route('user.account'))->withErrors($validator);
+         }
+
     }
 
 

@@ -19,6 +19,14 @@
 <script src="{{ mix('/js/manifest.js') }}"></script>
 <script src="{{ mix('/js/vendor.js') }}"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
+
+
+@if (\Illuminate\Support\Facades\Session::has('alert'))
+    <script>
+        alertify.alert("{{\Illuminate\Support\Facades\Session::get('alert')}}");
+    </script>
+@endif
+
 @show
 
 
