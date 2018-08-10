@@ -20,7 +20,7 @@ class ForgetController extends Controller
     public function sendToEmail( Request $request, JWTInterface $JWT )
     {
 
-        $user = User::where('email',$request->input('email'))->where('activatedphp', true)->first();
+        $user = User::where('email',$request->input('email'))->where('activated', true)->first();
 
 
 
