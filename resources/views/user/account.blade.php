@@ -9,18 +9,23 @@
 
 
 
-
         <div class="account">
 
+            @if($token)
+                <form action="{{route('user.change-password-with-token',['token' => $token])}}" method="POST">
+            @else
+                <form action="{{route('user.change-password')}}" method="POST">
+            @endif
 
-
-            <form action="{{route('user.change-password')}}" method="POST">
                 {{csrf_field()}}
                 <h4>Изменение пароля</h4>
 
+                @if( $token )
+                    <input type="hidden" value="{{$token}}" name="token">
+                @else
                 <div class="field">
                     <label for="">Текущий пароль</label>
-                    <input type="text" class="gray" name="current_password"/>
+                    <input type="password" class="gray" name="current_password"/>
                     @if ($errors->get('current_password'))
                         <ul class="errors">
                             @foreach ($errors->get('current_password') as $error)
@@ -29,10 +34,11 @@
                         </ul>
                     @endif
                 </div>
+                @endif
 
                 <div class="field">
                     <label for="">Новый пароль</label>
-                    <input type="text" class="gray" name="new_password"/>
+                    <input type="password" class="gray" name="new_password"/>
                     @if ($errors->get('new_password'))
                         <ul class="errors">
                             @foreach ($errors->get('new_password') as $error)
@@ -45,11 +51,7 @@
                 <div class="field submit">
                     <input type="submit" value="Сохранить" class="btn btn-medium btn-type-2">
                 </div>
-
             </form>
-
-
-
 
         </div>
 

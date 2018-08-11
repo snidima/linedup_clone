@@ -52,6 +52,8 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/register', 'Auth\RegisterController@register');
     Route::post('/register', 'Auth\RegisterController@registerPost')->name('user.register');
 
+    Route::get('/register/vk', 'Auth\RegisterController@registerVK')->name('user.registerVK');
+
     //USER LOGIN
     Route::get('/login', 'Auth\LoginController@index')->name('user.login');
     Route::post('/login', 'Auth\LoginController@loginPost');
@@ -82,11 +84,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-    Route::get('account', 'UserController@account')->name('user.account');
+    Route::get('account/{token?}', 'UserController@account')->name('user.account');
     Route::post('accountChangePass', 'UserController@changePass')->name('user.change-password');
-
-
-
+    Route::post('accountChangePassWithToken/{token}', 'UserController@changePassWithToken')->name('user.change-password-with-token');
 
 
     Route::group(['prefix' => 'ajax'], function() {
@@ -104,14 +104,17 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
-
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
+Route::group(['middleware' => ['teacher'], 'prefix' => 'teacher'], function(){
     Route::get('homeworks', 'Admin\HomeworkController@index')->name('admin.homeworks');
     Route::get('homework/{id}', 'Admin\HomeworkController@get')->name('admin.homework.get');
     Route::post('homework/{id}', 'Admin\HomeworkController@post')->name('admin.homework.post');
+});
 
+
+
+Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function(){
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
     Route::get('/', 'Admin\MainController@index');
 
@@ -138,12 +141,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function(){
 
     });
 
-
-
 });
 
 
 
-Route::get('test', 'TestController@index');
+Route::POST('awfawfawfawfawf', function( \Illuminate\Http\Request $request ){
+    dd($request->input('src'));
+    dd( file_get_contents());
+});
 
 

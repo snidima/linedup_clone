@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
-
+<div id="vk_like"></div>
 <div id="app" class="app">
 @yield('html')
 </div>
@@ -29,7 +29,6 @@
 
 @show
 
-
 @if( \Illuminate\Support\Facades\App::environment() == 'production' )
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript'>
@@ -37,6 +36,5 @@
         var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
 <!-- {/literal} END JIVOSITE CODE -->
 @endif
-
 </body>
 </html>

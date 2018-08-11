@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Providers\JWT\JWTInterface;
 
 class UserController extends Controller
 {
@@ -271,9 +273,32 @@ class UserController extends Controller
 
     }
 
-    public function account()
+    public function account($token = null, JWTInterface $jwt)
     {
-        return view('user.account');
+        if( !$token ) return view('user.account', ['token' => $token]);
+
+        try {
+            $credentials = $jwt->decode( $token );
+        } catch( JWTException $exception ){
+            return redirect( route('user.account', ['token' => null]) );
+        }
+
+        $ttl = env('FORGET_EMAIL_TTL');
+        $dateCreated = Carbon::parse( $credentials['created_at'] );
+        $dateNow = Carbon::now();
+        $diff = $dateNow->diffInMinutes( $dateCreated );
+
+        if( $diff > $ttl )
+            return redirect( route('user.account', ['token' => null]) );
+
+        $user = User::where(array_only( $credentials, ['email'] ))->first();
+
+        if( !$user )return redirect( route('user.account', ['token' => null]) );
+
+
+
+        return view('user.account', ['token' => $token]);
+
     }
 
     public function changePass(Request $request)
@@ -307,6 +332,43 @@ class UserController extends Controller
              $validator->getMessageBag()->add('current_password', 'Неверный пароль');
              return redirect(route('user.account'))->withErrors($validator);
          }
+
+    }
+
+    public function changePassWithToken( $token, Request $request, JWTInterface $jwt )
+    {
+        $validator = Validator::make($request->all(), [
+            'new_password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('user.account', ['token'=>$token]))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        try {
+            $credentials = $jwt->decode( $token );
+        } catch( JWTException $exception ){
+            return redirect( route('user.account', ['token' => null]) );
+        }
+
+        $ttl = env('FORGET_EMAIL_TTL');
+        $dateCreated = Carbon::parse( $credentials['created_at'] );
+        $dateNow = Carbon::now();
+        $diff = $dateNow->diffInMinutes( $dateCreated );
+
+        if( $diff > $ttl )
+            return redirect( route('user.account', ['token' => null]) );
+
+        $user = User::where(array_only( $credentials, ['email'] ))->first();
+
+        if( !$user )return redirect( route('user.account', ['token' => null]) );
+
+        Auth::user()->password = $request->input('new_password');
+        Auth::user()->save();
+
+        return redirect(route('user.account', ['token' => null]))->with('alert', 'Пароль успешно изменен');
 
     }
 

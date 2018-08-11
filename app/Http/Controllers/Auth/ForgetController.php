@@ -58,7 +58,7 @@ class ForgetController extends Controller
 
         Auth::login( $user );
 
-        return redirect(route('user.account'));
+        return redirect(route('user.account', ['token' => $token]));
 
     }
 

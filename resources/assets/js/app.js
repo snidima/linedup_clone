@@ -1,6 +1,8 @@
 import '../img/photo.jpg'
 import alertify from 'alertify.js'
 
+import api from './api.js'
+
 import Plyr from 'plyr'
 import 'plyr/dist/plyr.css'
 

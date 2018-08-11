@@ -43,6 +43,22 @@ class RegisterController extends Controller
         ], 200);
     }
 
+    public function registerVK(Request $request)
+    {
+
+        $q = http_build_query([
+            'client_id' => 6658848,
+            'client_secret' => 'hsItWC8jdrovy9TUgkTl',
+            'redirect_uri' => route('user.registerVK'),
+            'code' => $request->input('code'),
+        ]);
+
+        $res = file_get_contents( 'https://oauth.vk.com/access_token?'. $q);
+
+        dd( $res );
+
+    }
+
     public function confirm( $token, JWTInterface $jwt )
     {
         try {

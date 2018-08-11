@@ -226,6 +226,8 @@ a
   form
     background: #f6f6f6
     padding: 20px
+    +nlt
+      margin-bottom: 50px
   h4
     font-weight: lighter
     font-size: 1.5rem
@@ -241,6 +243,18 @@ a
   input:not([type="submit"])
     background: white !important
     font-size: .8rem
+  label.checkbox
+      display: flex
+      align-items: center
+      position: relative
+      color: #fff
+      font-size: .9rem
+      cursor: pointer
+      &:before
+        content: "\F10C"
+        margin-right: 10px
+        color: #bb64fe
+        font: normal normal normal 14px/1 FontAwesome
   .field
     +nlt
       margin-bottom: 20px
