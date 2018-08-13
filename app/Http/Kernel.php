@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\AdminOnly;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\Cors;
+use App\Http\Middleware\ManagerOnly;
 use App\Http\Middleware\TeacherOnly;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -23,7 +24,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-        Cors::class
+        Cors::class,
     ];
 
     /**
@@ -40,14 +41,14 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class
-
+            \Illuminate\Routing\Middleware\ThrottleRequests::class,
         ],
 
         'api' => [
             'throttle:60,1',
             'bindings',
         ],
+
     ];
 
     /**
@@ -64,7 +65,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin' => AdminOnly::class,
+
+        'administrator' => AdminOnly::class,
         'teacher' => TeacherOnly::class,
+        'manager' => ManagerOnly::class,
     ];
 }

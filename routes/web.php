@@ -52,7 +52,7 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/register', 'Auth\RegisterController@register');
     Route::post('/register', 'Auth\RegisterController@registerPost')->name('user.register');
 
-    Route::get('/register/vk', 'Auth\RegisterController@registerVK')->name('user.registerVK');
+//    Route::get('/register/vk', 'Auth\RegisterController@registerVK')->name('user.registerVK');
 
     //USER LOGIN
     Route::get('/login', 'Auth\LoginController@index')->name('user.login');
@@ -104,50 +104,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-Route::group(['middleware' => ['teacher'], 'prefix' => 'teacher'], function(){
-    Route::get('homeworks', 'Admin\HomeworkController@index')->name('admin.homeworks');
-    Route::get('homework/{id}', 'Admin\HomeworkController@get')->name('admin.homework.get');
-    Route::post('homework/{id}', 'Admin\HomeworkController@post')->name('admin.homework.post');
-});
 
 
-
-Route::group(['middleware' => ['admin'], 'prefix' => 'admin'], function(){
-
-    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-
-    Route::get('/', 'Admin\MainController@index');
-
-    Route::group(['prefix' => 'ajax'], function(){
-
-
-        Route::post('lessons', 'Admin\LessonController@index');
-        Route::get('lesson/{id}', 'Admin\LessonController@lesson');
-        Route::post('lesson/{id}', 'Admin\LessonController@lessonSave');
-        Route::post('lesson-insert', 'Admin\LessonController@lessonInsert');
-        Route::delete('lesson-delete/{id}', 'Admin\LessonController@lessonDelete');
-
-        Route::post('courses', 'Admin\CourseController@index');
-        Route::get('course/{id}', 'Admin\CourseController@lesson');
-        Route::post('course/{id}', 'Admin\CourseController@lessonSave');
-        Route::post('course-insert', 'Admin\CourseController@lessonInsert');
-        Route::delete('course-delete/{id}', 'Admin\CourseController@lessonDelete');
-
-
-
-        Route::get('course-composition', 'Admin\CourseCompositionController@index');
-        Route::post('course-composition-save', 'Admin\CourseCompositionController@save');
-
-
-    });
-
-});
-
-
-
-Route::POST('awfawfawfawfawf', function( \Illuminate\Http\Request $request ){
-    dd($request->input('src'));
-    dd( file_get_contents());
-});
 
 

@@ -28,5 +28,9 @@ class RolesTableSeeder extends Seeder
             'slug' => 'teacher',
             'name' => 'Учитель',
         ]);
+        Role::create([
+            'slug' => 'manager',
+            'name' => 'Менеджер',
+        ]);
     }
 }

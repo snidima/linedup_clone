@@ -1,57 +1,57 @@
 export default {
     lessons: {
         type: 'post',
-        link: '/admin/ajax/lessons'
+        link: '/administrator/ajax/lessons'
     },
     lessonShow: {
         type: 'get',
-        link: '/admin/ajax/lesson/'
+        link: '/administrator/ajax/lesson/'
     },
     lessonUpdate: {
         type: 'post',
-        link: '/admin/ajax/lesson/'
+        link: '/administrator/ajax/lesson/'
     },
     lessonInsert: {
         type: 'post',
-        link: '/admin/ajax/lesson-insert'
+        link: '/administrator/ajax/lesson-insert'
     },
     lessonDelete: {
         type: 'delete',
-        link: '/admin/ajax/lesson-delete/'
+        link: '/administrator/ajax/lesson-delete/'
     },
 
 
     courses: {
         type: 'post',
-        link: '/admin/ajax/courses'
+        link: '/administrator/ajax/courses'
     },
     courseShow: {
         type: 'get',
-        link: '/admin/ajax/course/'
+        link: '/administrator/ajax/course/'
     },
     courseUpdate: {
         type: 'post',
-        link: '/admin/ajax/course/'
+        link: '/administrator/ajax/course/'
     },
 
     courseInsert: {
         type: 'post',
-        link: '/admin/ajax/course-insert'
+        link: '/administrator/ajax/course-insert'
     },
 
     courseDelete: {
         type: 'delete',
-        link: '/admin/ajax/course-delete/'
+        link: '/administrator/ajax/course-delete/'
     },
 
 
     courseComposition:{
         type: 'get',
-        link: '/admin/ajax/course-composition',
+        link: '/administrator/ajax/course-composition',
     },
     courseCompositionSave:{
         type: 'post',
-        link: '/admin/ajax/course-composition-save',
+        link: '/administrator/ajax/course-composition-save',
     }
 
 }

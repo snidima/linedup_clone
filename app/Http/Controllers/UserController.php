@@ -47,6 +47,8 @@ class UserController extends Controller
         $payed = RegularCourse::whereIn('id', $payedRegulars)->get()->pluck('id')->toArray();
 
 
+
+
         $demoCourses = Course::where('isDemo', true)->groupBy('id')->get()->pluck('id')->toArray();
 
 

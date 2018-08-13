@@ -1,11 +1,9 @@
-@extends('layouts.admin.default')
+@extends('layouts.admin.teacher')
 
 @section('app')
     <div class="container-fluid">
 
         <h1 class="display-4 mb">Домашние задания №{{$homework->id}}</h1>
-
-
 
         <form action="{{route('admin.homework.post', ['id' =>$homework->id ])}}" method="POST">
             {{csrf_field()}}
