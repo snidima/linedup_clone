@@ -2,13 +2,8 @@
 namespace App\Http\Controllers\Admin\Teacher;
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Controller;
 use App\Models\Homework;
-use App\Models\Lesson;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 
 class HomeworksController extends AdminController
@@ -30,7 +25,7 @@ class HomeworksController extends AdminController
 
     public function detail( $id )
     {
+
         return view('admin.teacher.homework', ['homework' => Homework::where('id', $id)->with(['regular','regular.course','user','lesson'])->first() ]);
     }
-
 }

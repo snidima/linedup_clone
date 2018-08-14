@@ -1,4 +1,5 @@
 import '../img/photo.jpg'
+import '../img/section-bg.jpg'
 import alertify from 'alertify.js'
 
 import api from './api.js'

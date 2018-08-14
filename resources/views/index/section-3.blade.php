@@ -43,7 +43,7 @@
                             </svg>
                         </div>
                         <div class="step-time-text__text">
-                            {{$lesson->duration}} дней
+                            Дней: {{$lesson->duration}}
                         </div>
                     </div>
                 </div>

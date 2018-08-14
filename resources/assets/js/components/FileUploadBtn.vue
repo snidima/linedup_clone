@@ -99,9 +99,9 @@
                 return `/user/homework-download/course-${this.courseid}/lesson-${this.lessonid}`;
             },
             isYoutubelink(){
-                let regex1 = /^https:\/\/(?:www\.)?youtube.com\/watch\?v=\w+(&\S*)?$/;
-                return this.youtubeLink.match( regex1 );
-//                return true;
+//                let regex1 = /^https:\/\/(?:www\.)?youtube.com\/watch\?v=\w+(&\S*)?$/;
+//                return this.youtubeLink.match( regex1 );
+                return true;
             }
         },
 
