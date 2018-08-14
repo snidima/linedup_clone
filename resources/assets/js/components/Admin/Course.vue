@@ -9,14 +9,25 @@
                 <label>Название</label>
                 <md-input v-model="lesson.title"></md-input>
             </md-input-container>
+
             <md-input-container>
-                <label>Описание</label>
-                <md-textarea v-model="lesson.description"></md-textarea>
+                <label>Цена старая</label>
+                <md-input type="number" v-model="lesson.price"></md-input>
             </md-input-container>
+
+            <md-input-container>
+                <label>Цена новая</label>
+                <md-input type="number" v-model="lesson.new_price"></md-input>
+            </md-input-container>
+
+
+            <label>Описание</label>
+            <froala :tag="'textarea'"  v-model="lesson.description"></froala>
 
 
 
             <md-switch v-model="lesson.active" id="active">Активность</md-switch>
+            <md-switch v-model="lesson.isDemo" id="isDemo">Это демо курс</md-switch>
 
 
             <md-button @click="$router.go(-1)">Назад</md-button>

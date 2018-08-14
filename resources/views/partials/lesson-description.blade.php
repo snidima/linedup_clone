@@ -12,7 +12,7 @@
         Видео
     </div>
     <div class="course-text-block__video">
-        <video poster="/poster.jpg" id="lesson-player" playsinline controls>
+        <video id="lesson-player" playsinline controls>
             <source src="{{$lesson->online_player}}" type="video/mp4">
         </video>
     </div>

@@ -52,9 +52,11 @@ class IndexController extends Controller
         }
 
 
+        $lessons = Course::where('id',1)->with(['lessons'=>function($q){
+            $q->orderBy('course_lesson.id', 'asc');
+        }])->first()->lessons;
 
-
-        return view('index', [ 'courses' => $courses ]);
+        return view('index', [ 'courses' => $courses, 'lessons' => $lessons ]);
     }
 
 

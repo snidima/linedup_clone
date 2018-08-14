@@ -9,7 +9,7 @@
         работать ваш личный куратор курса.
     </div>
     <div class="section-1__btns section-1-btns">
-        <div class="section-1-btns__btn btn btn-big btn-type-2" id="qweqwe"><i class="fa fa-info" aria-hidden="true"></i>Узнать о курсе</div>
-        <div class="section-1-btns__btn btn btn-big btn-type-1"><i class="fa fa-rocket" aria-hidden="true"></i>Начать обучение</div>
+        <a href="#price" class="section-1-btns__btn btn btn-big btn-type-2"><i class="fa fa-info" aria-hidden="true"></i>Попробовать демо</a>
+        <a href="{{route('user.register')}}" class="section-1-btns__btn btn btn-big btn-type-1"><i class="fa fa-rocket" aria-hidden="true"></i>Начать обучение</a>
     </div>
 </section>

@@ -1,6 +1,6 @@
 <section class="section-2 section_white section target">
     <div class="container">
-        <h3 class="h3">Для кого этот видеокурс?</h3>
+        <h3 class="h3" id="target">Для кого этот видеокурс?</h3>
 
         <p class="p">
             Если вам нужен рекламный ролик, презентационный фильм, видеоклип, то вы попали по адресу.

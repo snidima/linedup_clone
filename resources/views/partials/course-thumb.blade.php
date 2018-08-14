@@ -93,10 +93,10 @@
                     </div>
                 @elseif( !$course->course->isDemo )
                     <div class="course-thumb-price__old-price">
-                        {{$course->price}} руб.
+                        {{$course->priceF}} руб.
                     </div>
                     <div class="course-thumb-price__new-price">
-                        {{$course->new_price}} руб.
+                        {{$course->newPriceF}} руб.
                     </div>
                 @else
                     <div class="course-thumb-price__new-price">

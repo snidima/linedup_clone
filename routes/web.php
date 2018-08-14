@@ -20,7 +20,7 @@ Route::get('/', 'IndexController@index')->name('main');
 
 Route::get('oferta', function(){
     return view('oferta');
-})->name('main');
+})->name('oferta');
 
 
 

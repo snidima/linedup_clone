@@ -27,7 +27,7 @@
                            <span  @click="$router.push({name: 'lesson', params: {id: row.id}})">{{ row.title }}</span>
                        </md-table-cell>
                        <md-table-cell>
-                           {{ row.description }}
+                           {{ row.short_description }}
                        </md-table-cell>
                        <md-table-cell>
                            {{ row.duration }}

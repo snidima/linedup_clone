@@ -69,11 +69,10 @@
                 </div>
                 <div class="menu__menus menus-wrapper">
                     <div class="menus-wrapper__items menus-items">
-                        <div class="menus-items__item"><a href="#">Главная</a></div>
-                        <div class="menus-items__item"><a href="#">Для кого этот курс?</a></div>
-                        <div class="menus-items__item"><a href="#">Составу курса</a></div>
-                        <div class="menus-items__item"><a href="#">Цены</a></div>
-                        <div class="menus-items__item"><a href="#">Демо курса</a></div>
+                        <div class="menus-items__item"><a href="/">Главная</a></div>
+                        <div class="menus-items__item"><a href="#target">Описание курса</a></div>
+                        <div class="menus-items__item"><a href="#lessons">Состав курса</a></div>
+                        <div class="menus-items__item"><a href="#price">Цены</a></div>
                     </div>
                     <div class="menus-wrapper__user menu-user">
                         <div class="menu-user-wrapper">

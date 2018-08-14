@@ -12,7 +12,7 @@ class Course extends Model
 {
     protected $table = "courses";
 
-    protected $fillable = ['title', 'description', 'active'];
+    protected $fillable = ['title', 'description', 'active','isDemo','price','new_price'];
 
     protected $appends  = ['duration'];
 

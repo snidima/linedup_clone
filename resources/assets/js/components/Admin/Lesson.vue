@@ -10,8 +10,12 @@
                 <md-input v-model="lesson.title"></md-input>
             </md-input-container>
 
-                <label>Описание</label>
-                <froala :tag="'textarea'"  v-model="lesson.description"></froala>
+
+            <label>Описание</label>
+            <froala :tag="'textarea'"  v-model="lesson.description"></froala>
+    <br><br>
+            <label>Краткое описание</label>
+            <froala :tag="'textarea'"  v-model="lesson.short_description"></froala>
 
             <md-input-container>
                 <label>Ссылка на youtube</label>
@@ -25,6 +29,10 @@
             <md-input-container>
                 <label>Продолжительость</label>
                 <md-input type="number" v-model="lesson.duration"></md-input>
+            </md-input-container>
+            <md-input-container>
+                <label>Сложность</label>
+                <md-input type="number" v-model="lesson.complexity"></md-input>
             </md-input-container>
 
             <md-button @click="$router.go(-1)">Назад</md-button>

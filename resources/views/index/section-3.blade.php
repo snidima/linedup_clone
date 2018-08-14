@@ -1,13 +1,13 @@
 
 
-<section class="section-2 section" id="section-3">
+<section class="section-2 section">
     <div class="container">
-        <h3 class="h3">Краткое содержание видеокурса</h3>
+        <h3 class="h3" id="lessons">Краткое содержание онлайн курса<br>Adobe After Effect - Базовый</h3>
 
 
         <div class="steps">
 
-            @foreach( \App\Models\Course::find(1)->lessons as $lesson )
+            @foreach( $lessons as $lesson )
             <div class="steps__step step">
                 <div class="step__info step-info">
                     <div class="step-info-text">
@@ -15,15 +15,13 @@
                             {{$lesson->title}}
                         </div>
                         <div class="step-info-text__info">
-                            Введение в After Effects. Знакомство с AE, его интерфейсом , базовыми инструментами и др.
+                            {!! $lesson->short_description !!}
                         </div>
-
                         {{--<div class="step-info-text__btn">--}}
                             {{--<div class="btn btn-small btn-type-2">--}}
                                 {{--Смотреть демо--}}
                             {{--</div>--}}
                         {{--</div>--}}
-
                     </div>
                 </div>
                 <div class="step__time step-time">
