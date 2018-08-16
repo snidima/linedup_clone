@@ -15,7 +15,7 @@ else
 			php7.0 artisan down
 			git pull atlas master
 			php7.0 ../.local/bin/composer install
-			php7.0 artisan migrate:refresh --seed --force
+
 
 			npm install
 			npm run prod
