@@ -56,7 +56,7 @@
                             </svg>
                         </div>
                         <div class="course-thumb-detail-item__text">
-                            {{$course->course->duration}} дня
+                            {{$course->course->duration}} {{\Illuminate\Support\Facades\Lang::choice('День|Дня|Дней', $course->course->duration, [], 'ru')}}
                         </div>
                     </div>
 
@@ -75,9 +75,9 @@
                         </div>
                         <div class="course-thumb-detail-item__text">
                             @if( !$course->course->isDemo )
-                                {{count( $course->course->lessons )}} уроков (теория + практика)
+                                {{count( $course->course->lessons )}} {{\Illuminate\Support\Facades\Lang::choice('Урок|Урока|Уроков', count( $course->course->lessons ), [], 'ru')}} + практика
                             @else
-                                {{count( $course->course->lessons )}} урок
+                                {{count( $course->course->lessons )}} {{\Illuminate\Support\Facades\Lang::choice('Урок|Урока|Уроков', count( $course->course->lessons ), [], 'ru')}}
                             @endif
                         </div>
                     </div>

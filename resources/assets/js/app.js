@@ -1,5 +1,7 @@
 import '../img/photo.jpg'
 import '../img/section-bg.jpg'
+import '../img/teacher01.jpg'
+import '../img/manager01.jpg'
 import alertify from 'alertify.js'
 
 import api from './api.js'

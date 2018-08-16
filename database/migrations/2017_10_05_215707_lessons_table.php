@@ -22,6 +22,7 @@ class LessonsTable extends Migration
             $table->integer('complexity');
             $table->string('online_player');
             $table->string('download_link');
+            $table->string('homework_link');
             $table->boolean('active')->default(false);
             $table->softDeletes();
             $table->timestamps();

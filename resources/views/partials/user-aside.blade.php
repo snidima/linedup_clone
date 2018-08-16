@@ -46,15 +46,7 @@
             @if( $regular->course->isDemo )
                 не доступно в демо
             @else
-                @if( $homework )
-                    @if($homework->check)
-                        проверено
-                    @else
-                        проверяется
-                    @endif
-                @else
-                    еще не загружено
-                @endif
+                <a href="{{$lesson->homework_link}}" target="_blank">Скачать</a>
             @endif
         </div>
     </div>
@@ -105,27 +97,27 @@
     <div class="course-teacher-items">
 
         <div class="course-teacher-items__item course-teacher-item">
-            <div class="course-teacher-item__photo" style=" background-image: url(https://avatars.mds.yandex.net/get-pdb/231404/f0f38eba-ab66-41df-8485-414d239db2de/s1200);"></div>
-            <div class="course-teacher-item__name">Никита Литвенков<br>(читает курс)</div>
+            <div class="course-teacher-item__photo" style=" background-image: url(/images/teacher01.jpg);"></div>
+            <div class="course-teacher-item__name">Никита<br>(куратор курса)</div>
             <div class="course-teacher-item__desc">Вопросы по курсу и домашним заданиям</div>
             <div class="course-teacher-item__btn">
                 @if( $regular->course->isDemo )
                     <div class="btn btn-small btn-type-2">Не доступно в демо</div>
                 @else
-                    <div class="btn btn-small btn-type-2">Написать Никите</div>
+                    <a class="btn btn-small btn-type-2" href="https://vk.com/gruppa27avgysta" target="_blank">Написать Никите</a>
                 @endif
             </div>
         </div>
 
         <div class="course-teacher-items__item course-teacher-item">
-            <div class="course-teacher-item__photo" style=" background-image: url(https://avatars.mds.yandex.net/get-pdb/231404/f0f38eba-ab66-41df-8485-414d239db2de/s1200);"></div>
-            <div class="course-teacher-item__name">Никита Литвенков<br>(читает курс)</div>
-            <div class="course-teacher-item__desc">Вопросы по курсу и домашним заданиям</div>
+            <div class="course-teacher-item__photo" style=" background-image: url(/images/manager01.jpg);"></div>
+            <div class="course-teacher-item__name">Валерия  <br>(менеджер проекта)</div>
+            <div class="course-teacher-item__desc">Все остальыне вопросы</div>
             <div class="course-teacher-item__btn">
                 @if( $regular->course->isDemo )
                     <div class="btn btn-small btn-type-2">Не доступно в демо</div>
                 @else
-                    <div class="btn btn-small btn-type-2">Написать Никите</div>
+                    <a class="btn btn-small btn-type-2" href="https://vk.com/linedup" target="_blank">Написать Валерии</a>
                 @endif
             </div>
         </div>

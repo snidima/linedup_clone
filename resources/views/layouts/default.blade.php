@@ -10,7 +10,6 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
 <body>
-<div id="vk_like"></div>
 <div id="app" class="app">
 @yield('html')
 </div>
@@ -30,7 +29,7 @@
 
 @show
 
-@if( \Illuminate\Support\Facades\App::environment() == 'production' )
+@if( \Illuminate\Support\Facades\App::environment() != 'production' )
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript' async>
     (function(){ var widget_id = 'KLJez83FBH';var d=document;var w=window;function l(){
