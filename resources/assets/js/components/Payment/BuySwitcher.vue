@@ -69,7 +69,7 @@
 
             onRegisterSuccess(){
                 alertify
-                    .okBtn("Проверить email и войти")
+                    .okBtn("Проверьте email и войдите")
                     .alert('<b>Регистрация завершена.</b> На ваш email отправлено письмо с инструкциями для активации аккаунта.');
                 this.regMethod = 'login';
             },

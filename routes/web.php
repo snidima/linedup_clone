@@ -96,7 +96,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
     Route::group(['prefix' => 'ajax'], function() {
 
-//        Route::post('course-info', 'UserController@courseInfo');
         Route::post('homeworks-upload', 'UserController@fileUpload');
         Route::post('homeworks-download', 'UserController@fileDownload');
         Route::post('homeworks-delete', 'UserController@fileDelete');

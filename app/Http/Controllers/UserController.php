@@ -81,44 +81,44 @@ class UserController extends Controller
         return view('user.course');
     }
 
-    public function courseInfo()
-    {
-        $billings = Auth::user()->billings()->where('amount', '>', 0)->with(['course', 'promoCode', 'course.course',
-            'course.course.lessons' => function($q){
-                $q->orderBy('id','asc');
-            }
-        ])->get();
-
-
-
-        //Взять все оплаченные за раз курсы
-        $courses = $billings->filter(function( $billing ){
-            $amount = $billing->amount;
-            $price = $billing->course->finalPrice;
-            $needPrice = $price;
-            if( $billing->promoCode ){
-                $sale = $billing->promoCode->value;
-
-                $needPrice = $price - ( $price * $sale / 100 );
-            }
-            return ( $amount>= $needPrice );
-        })->transform(function( $billing ){
-            $billing->course->course->lessons->transform(function($lesson, $key) use( $billing ){
-                $lessonSlice = $billing->course->course->lessons->slice( 0, $key )->sum('duration');
-                $date_end = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice + $lesson->duration );
-                $current = Carbon::now() > $date_end;
-                $lesson['was'] = $current;
-                $lesson['date_end'] = $date_end;
-                $lesson['date_start'] = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice );
-                $lesson['now'] = ( Carbon::now() <= $date_end ) && ( Carbon::now() >= Carbon::parse($billing->course->date_start)->addDays( $lessonSlice ) );
-                return $lesson;
-            });
-            return $billing->course;
-        });
-
-        if( !count($courses) ) return response('', 404);
-        return $courses;
-    }
+//    public function courseInfo()
+//    {
+//        $billings = Auth::user()->billings()->where('amount', '>', 0)->with(['course', 'promoCode', 'course.course',
+//            'course.course.lessons' => function($q){
+//                $q->orderBy('id','asc');
+//            }
+//        ])->get();
+//
+//
+//
+//        //Взять все оплаченные за раз курсы
+//        $courses = $billings->filter(function( $billing ){
+//            $amount = $billing->amount;
+//            $price = $billing->course->finalPrice;
+//            $needPrice = $price;
+//            if( $billing->promoCode ){
+//                $sale = $billing->promoCode->value;
+//
+//                $needPrice = $price - ( $price * $sale / 100 );
+//            }
+//            return ( $amount>= $needPrice );
+//        })->transform(function( $billing ){
+//            $billing->course->course->lessons->transform(function($lesson, $key) use( $billing ){
+//                $lessonSlice = $billing->course->course->lessons->slice( 0, $key )->sum('duration');
+//                $date_end = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice + $lesson->duration );
+//                $current = Carbon::now() > $date_end;
+//                $lesson['was'] = $current;
+//                $lesson['date_end'] = $date_end;
+//                $lesson['date_start'] = Carbon::parse($billing->course->date_start)->addDays( $lessonSlice );
+//                $lesson['now'] = ( Carbon::now() <= $date_end ) && ( Carbon::now() >= Carbon::parse($billing->course->date_start)->addDays( $lessonSlice ) );
+//                return $lesson;
+//            });
+//            return $billing->course;
+//        });
+//
+//        if( !count($courses) ) return response('', 404);
+//        return $courses;
+//    }
 
 
     public function fileDownload( Request $request )
@@ -243,7 +243,7 @@ class UserController extends Controller
         $regular = RegularCourse::where('id',$courseID)->with([
             'course',
             'course.lessons' => function($q){
-                $q->orderBy('id','asc');
+                $q->orderBy('course_lesson.id','asc');
             }
         ])->first();
 
