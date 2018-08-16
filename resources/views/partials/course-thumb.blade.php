@@ -8,7 +8,7 @@
                     @if( $course->course->isDemo || !$course->dateCounter)
                         Идет сейчас
                     @else
-                        Начало через : {{\Illuminate\Support\Facades\Lang::choice('День|Дня|Дней', abs($course->dateCounter['days']), [], 'ru')}} <small>дней</small> {{\Illuminate\Support\Facades\Lang::choice('Час|Часа|Часов', abs($course->dateCounter['hours']), [], 'ru')}}<small> часов</small>
+                        Начало через :  {{abs($course->dateCounter['days'])}} <small>{{\Illuminate\Support\Facades\Lang::choice('день|дня|дней', abs($course->dateCounter['days']), [], 'ru')}}</small> {{abs($course->dateCounter['hours'])}}<small> {{\Illuminate\Support\Facades\Lang::choice('час|часа|часов', abs($course->dateCounter['hours']), [], 'ru')}}</small>
                     @endif
                 </div>
                 <div class="course-thumb-info__detail course-thumb-detail">

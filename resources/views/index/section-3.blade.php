@@ -41,7 +41,7 @@
                             </svg>
                         </div>
                         <div class="step-time-text__text">
-                            Продолжительность: {{\Illuminate\Support\Facades\Lang::choice('День|Дня|Дней', $lesson->duration, [], 'ru')}}
+                            Продолжительность: {{$lesson->duration}} {{\Illuminate\Support\Facades\Lang::choice('день|дня|дней', $lesson->duration, [], 'ru')}}
                         </div>
                     </div>
                 </div>
