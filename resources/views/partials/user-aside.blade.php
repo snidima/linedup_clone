@@ -104,20 +104,20 @@
                 @if( $regular->course->isDemo )
                     <div class="btn btn-small btn-type-2">Не доступно в демо</div>
                 @else
-                    <a class="btn btn-small btn-type-2" href="https://vk.com/gruppa27avgysta" target="_blank">Написать Никите</a>
+                    <a class="btn btn-small btn-type-2" href="https://vk.com/im?media=&sel=-170162452" target="_blank">Написать Никите</a>
                 @endif
             </div>
         </div>
 
         <div class="course-teacher-items__item course-teacher-item">
             <div class="course-teacher-item__photo" style=" background-image: url(/images/manager01.jpg);"></div>
-            <div class="course-teacher-item__name">Валерия  <br>(менеджер проекта)</div>
+            <div class="course-teacher-item__name">Милена  <br>(менеджер проекта)</div>
             <div class="course-teacher-item__desc">Все остальыне вопросы</div>
             <div class="course-teacher-item__btn">
                 @if( $regular->course->isDemo )
                     <div class="btn btn-small btn-type-2">Не доступно в демо</div>
                 @else
-                    <a class="btn btn-small btn-type-2" href="https://vk.com/linedup" target="_blank">Написать Валерии</a>
+                    <a class="btn btn-small btn-type-2" href="https://vk.com/im?media=&sel=-136917696" target="_blank">Написать Валерии</a>
                 @endif
             </div>
         </div>
