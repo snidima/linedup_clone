@@ -25,7 +25,7 @@
 
 
     <div class="course-nav__current">
-        Урок № {{$lessonID}}.{{$lesson->title}}
+        Урок № {{$lessonID}}. {{$lesson->title}}
         {{--@if( $lesson->now )--}}
             {{--Урок идет--}}
         {{--@elseif( $lesson->was )--}}
