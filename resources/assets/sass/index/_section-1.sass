@@ -1,5 +1,5 @@
 .section-1
-  $p: 120px
+  $p: 75px
   background-image: url('../../img/main-bg.jpg')
   background-repeat: no-repeat
   background-position: center center
@@ -98,5 +98,24 @@
     margin-right: 10px
 
 
+.section-1-social
+  display: flex
+  margin-top: 65px
+  a
+    color: $color-2
+    text-decoration: none
+    width:  35px
+    height: 35px
+    background: $black-1
+    line-height: 25px
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    +nlt
+      margin-right: 15px
+      +transition
+    &:hover
+      color: $color-1
 
 

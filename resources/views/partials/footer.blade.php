@@ -58,20 +58,36 @@
                 </svg>
             </div>
 
+            <div class="footer__item footer-payments">
+                <div class="section-1-social section-1-social_footer">
+                    <a href="https://vk.com/linedup" target="_blank" class="fa fa-vk" aria-hidden="true"></a>
+                    <a href="#" target="_blank" class="fa fa-odnoklassniki" aria-hidden="true"></a>
+                    <a href="mailto:info@linedup.ru"  class="fa fa-envelope" aria-hidden="true"></a>
+                </div>
+            </div>
             <div class="footer__item footer-menu">
                 <div class="footer-menu__item">
                     <a href="{{route('main')}}">Главная</a>
                 </div>
+
+                @if( !\Illuminate\Support\Facades\Auth::check() )
                 <div class="footer-menu__item">
                     <a href="{{route('user.login')}}">Войти</a>
                 </div>
                 <div class="footer-menu__item">
                     <a href="{{route('user.register')}}">Регистрация</a>
                 </div>
+                @else
+                    <div class="footer-menu__item">
+                        <a href="{{route('user.main')}}">Личный кабинет</a>
+                    </div>
+                @endif
+
                 <div class="footer-menu__item">
                     <a href="/oferta">Договор оферты</a>
                 </div>
             </div>
+
 
             <div class="footer__item footer-payments">
                 <div class="footer-payments__item">
