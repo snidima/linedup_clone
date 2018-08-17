@@ -1,6 +1,6 @@
 @extends('layouts/main')
 
-@section('title','Онлайн курсы видеомонтажа в Adobe After Effects от школы Linedup.ru')
+@section('title','Онлайн курсы видеомонтажа в Adobe After Effects школы Linedup.ru')
 @section('description','На этом сайте вы можете купить и записаться на онлайн курс видеомонтажа в программе Adobe After Effects - школы LinedUp')
 
 @section('content')
