@@ -1,7 +1,7 @@
 <section class="section-1">
     <h1 class="section-1__texts section-1-texts">
         <div class="section-1-texts__text-1">Adobe After Effects</div>
-        <div class="section-1-texts__text-2">лучшие онлайн курсы видеомонтажа для новичков</div>
+        <div class="section-1-texts__text-2">лучшие онлайн курсы видео дизайна</div>
     </h1>
     <div class="section-1-desc">
         Курс рассчитан на новичков в области видео-дизайна<br>
