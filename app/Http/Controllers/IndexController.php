@@ -34,12 +34,15 @@ class IndexController extends Controller
             $demo = Course::where('isDemo', true)->with(
                 [
                     'regular' => function($q){
-                        $q->orderBy('date_start', 'DESC')->first();
-                    }
+                        $q->orderBy('date_start', 'DESC');
+                    },
+
                 ]
             )->get()->transform(function($el){
                 return $el->regular->get(0)->id;
             })->toArray();
+
+
 
 
 

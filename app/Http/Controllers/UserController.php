@@ -248,6 +248,7 @@ class UserController extends Controller
         ])->first();
 
 
+
         //начала и окончания каждого урока
         $regular->course->lessons->transform(function ( $lesson, $key ) use( $regular ){
             $lessonSlice = $regular->course->lessons->slice( 0, $key )->sum('duration');
@@ -262,6 +263,7 @@ class UserController extends Controller
         });
 
 //        dd($regular->course->lessons->get( $lessonID-1 ), $regular->course->lessons->get( $lessonID ));
+
 
         return view('user.course', [
             'regular' => $regular,

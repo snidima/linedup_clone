@@ -108,7 +108,7 @@
     </div>
     <div class="course-thumb__btn">
         @if( $course->course->isDemo || $course->billing )
-            <a href="{{route('user.lesson',[$course->id, $course->course->lessons[0]->id])}}" class="btn btn-medium btn-type-2">
+            <a href="{{route('user.lesson',[$course->id, 1])}}" class="btn btn-medium btn-type-2">
                 Перейти к курсу
             </a>
         @else
