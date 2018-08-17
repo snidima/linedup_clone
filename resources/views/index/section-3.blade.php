@@ -2,7 +2,7 @@
 
 <section class="section-2 section">
     <div class="container">
-        <h3 class="h3" id="lessons">Краткое содержание онлайн курса<br>Adobe After Effect - Базовый</h3>
+        <h3 class="h3" id="lessons">Краткое содержание онлайн курса<br>{{\App\Models\Course::find(1)->title}}</h3>
 
 
         <div class="steps">

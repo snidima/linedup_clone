@@ -1,6 +1,6 @@
 <section class="section-1">
     <div class="section-1__texts section-1-texts">
-        <div class="section-1-texts__text-1">Adobe After Effect</div>
+        <div class="section-1-texts__text-1">Adobe After Effects</div>
         <div class="section-1-texts__text-2">лучшие курсы видеомонтажа</div>
     </div>
     <div class="section-1-desc">
