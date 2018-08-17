@@ -15,7 +15,7 @@
 
     <div class="section-1-social">
         <a href="https://vk.com/linedup" target="_blank" class="fa fa-vk" aria-hidden="true"></a>
-        <a href="#" target="_blank" class="fa fa-odnoklassniki" aria-hidden="true"></a>
+        <a href="https://ok.ru/group/54124989513945" target="_blank" class="fa fa-odnoklassniki" aria-hidden="true"></a>
         <a href="mailto:info@linedup.ru"  class="fa fa-envelope" aria-hidden="true"></a>
     </div>
 </section>
