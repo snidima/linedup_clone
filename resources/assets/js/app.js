@@ -35,3 +35,10 @@ if( $('#app').length ){
 
 const player = new Plyr('#lesson-player');
 window.alertify = alertify;
+
+$('.js-menu .js-menu-open-btn').click(()=>{
+    $('.js-menu').addClass('opened')
+})
+$('.js-menu .js-menu-close-btn').click(()=>{
+    $('.js-menu').removeClass('opened')
+})

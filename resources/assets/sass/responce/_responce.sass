@@ -1,0 +1,210 @@
+@media (max-width: 768px)
+
+  .menu-wrapper
+    align-items: center
+    flex-wrap: wrap
+  .menus-wrapper
+    display: none
+    flex-grow: 1
+    flex-basis: 100%
+  .js-menu-close-btn
+    display: none
+  .opened
+    .menus-wrapper
+      display: flex
+      flex-direction: column
+    .js-menu-open-btn
+      display: none
+    .js-menu-close-btn
+      display: block
+    .menus-items
+      display: block
+      padding-right: 0
+      width: 100%
+    .menus-items__item,.menu-user__item
+      display: block
+      padding: 10px 0
+      text-align: center
+      +nlt
+        margin: 0
+
+    .menu-user
+      display: block
+      width: 100%
+      padding-left: 0
+
+
+  .menu-user:before
+    display: none
+  .menu_mobile-btn
+    svg
+      width: 32px
+      height: 32px
+      display: block
+      path
+        fill: $color-1
+  .menu_mobile-btn_close
+    svg
+      width:  25px
+      height: 25px
+  .section-1-texts__text-1
+    font-size: 2rem
+  .section-1-texts__text-2
+    font-size: .85rem
+  .section-1-desc
+    display: none
+
+  .btn-big
+    font-size: 1rem
+    padding: 15px 20px
+    border-radius: 3px
+  .section-1-btns__btn
+    +nlt
+      margin-right: 0
+      margin-bottom: 20px
+  .section-1__btns, .section-1-social
+    margin-top: 40px
+  .section-1
+    padding: 50px 0
+  .section-1-btns__btn
+    display: block
+
+  .section
+    padding-top: 40px
+    padding-bottom: 40px
+  .h3
+    font-size: 2rem
+    padding: 40px 0
+  .p
+    font-size: 1rem
+
+
+  .step
+    flex-direction: column-reverse
+  .step__info, .step__time
+    width: 100%
+    display: block
+  .step-info:after
+    display: none
+  .step__time:before
+    position: static
+    margin: auto
+  .step-info-text
+    text-align: center
+    margin-right: 0
+    padding: 0
+  .step-time-text
+    margin-left: 0
+    padding-left: 0
+    justify-content: center
+    margin: 10px 0
+  .step-info-text__title:after
+    margin: 10px 0 10px auto
+    width: 100%
+  .step-info:before
+    display: none
+
+  .steps__step:nth-of-type(even)
+    flex-direction: column-reverse
+    .step__info, .step__time
+      width: 100%
+      display: block
+    .step-info:after
+      display: none
+    .step__time:before
+      position: static
+      margin: auto
+    .step-info-text
+      text-align: center
+      margin-left: 0
+      padding: 0
+    .step-time-text
+      margin-right: 0
+      padding-right: 0
+      justify-content: center
+      margin: 10px 0
+      flex-direction: row
+    .step-info-text__title:after
+      margin: 10px 0 10px auto
+      width: 100%
+    .step-info:before
+      display: none
+
+
+  .steps__step
+    +nlt
+      margin-bottom: 50px
+
+  .footer
+    .section-1-social
+      margin-top: 0
+
+  .courses-thumb-wrapper
+    display: block
+    margin: 0
+  .course-thumb
+    display: block
+  .courses-thumb-wrapper > *, .courses-thumb-wrapper > *:last-of-type
+    width: 100%
+    margin: 0
+  .course-thumb__left-helper
+    width: 100%
+
+  .course-thumb-info
+    padding: 30px
+  .course-thumb__right-helper:before
+    display: none
+  .course-thumb-price
+    left: 0
+
+  .course-thumb__right-helper
+    background: $color-1
+    padding: 10px 0
+  .demo .course-thumb__right-helper
+    background: $color-3
+  .course-thumb-price__new-price
+    font-size: 1rem
+
+  .courses-thumb-wrapper > *
+    margin: 0
+    +nlt
+      margin-bottom: 40px
+  .course-thumb__btn
+    a
+      display: block
+      text-align: center
+
+  .buy-course-top
+    display: block
+  .buy-course-title
+    margin-bottom: 20px
+
+  .form-table__row
+    flex-direction: column
+
+  .form-table__col
+    margin: 0
+    width: 100%
+    min-width: 100%
+    margin-bottom: 5px
+
+
+  .payment-methods__item:not(:last-of-type)
+    margin-right: 0
+  .payment-methods-item__title
+    display: none
+  .payment-methods-item__image
+    padding: 0
+  .payment-methods__item
+    width: 25%
+  .payment-buy-wrapper
+    flex-direction: column
+  .payment-promo
+    width: 100%
+  input[type="text"].gray.payment-promo__input
+    flex-grow: 1
+  .payment-promo
+    margin-bottom: 20px
+  .payment-btn
+    width: 100%
+    justify-content: space-between

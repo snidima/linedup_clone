@@ -2,7 +2,7 @@
 
 <section class="section-2 section">
     <div class="container">
-        <h2 class="h3" id="lessons">Краткое содержание онлайн курса<br>{{\App\Models\Course::find(1)->title}}</h2>
+        <h2 class="h3" id="lessons">Краткое содержание онлайн-курса<br>«{{\App\Models\Course::find(1)->title}}»</h2>
 
 
         <div class="steps">

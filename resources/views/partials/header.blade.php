@@ -9,7 +9,7 @@
         {{--</div>--}}
     {{--</div>--}}
 
-    <div class="menu">
+    <div class="menu js-menu">
         <div class="container">
             <div class="menu-wrapper">
                 <div class="menu__logo">
@@ -66,6 +66,22 @@
 	C72.3,135.2,75.4,132.3,75.4,128.5z M123.5,108.3c0.2,0.5,0.3,0.8,0.4,1.2c22.5-5.3,44.8-10.5,67.3-15.8c-1.7,8.3-3.4,16.3-5,24.4
 	c0.5,0.1,0.9,0.2,1.5,0.3c1.8-8.8,3.7-17.5,5.5-26.5C169.9,97.4,146.8,102.8,123.5,108.3z"/>
                     </svg></a>
+                </div>
+                <div class="menu_mobile-btn menu_mobile-btn_open js-menu-open-btn">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 28 20" style="enable-background:new 0 0 28 20;" xml:space="preserve">
+                    <path d="M2,4h24c1.1,0,2-0.9,2-2s-0.9-2-2-2H2C0.9,0,0,0.9,0,2S0.9,4,2,4z M26,8H2c-1.1,0-2,0.9-2,2s0.9,2,2,2h24c1.1,0,2-0.9,2-2
+                        S27.1,8,26,8z M26,16H2c-1.1,0-2,0.9-2,2s0.9,2,2,2h24c1.1,0,2-0.9,2-2S27.1,16,26,16z"/>
+                    </svg>
+                </div>
+
+                <div class="menu_mobile-btn menu_mobile-btn_close js-menu-close-btn">
+                    <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 384.1 384.2" style="enable-background:new 0 0 384.1 384.2;" xml:space="preserve">
+                    <path d="M373.6,322.7L243,192.1L373.6,61.5c14.1-14.1,14.1-36.8,0-50.9s-36.8-14.1-50.9,0L192.1,141.2L61.5,10.6
+                        c-14.1-14.1-36.8-14.1-50.9,0s-14.1,36.8,0,50.9l130.6,130.6L10.6,322.7c-14.1,14.1-14.1,36.8,0,50.9s36.8,14.1,50.9,0L192.1,243
+                        l130.6,130.6c14.1,14.1,36.8,14.1,50.9,0C387.6,359.5,387.6,336.7,373.6,322.7z"/>
+                    </svg>
                 </div>
                 <div class="menu__menus menus-wrapper">
                     <div class="menus-wrapper__items menus-items">
