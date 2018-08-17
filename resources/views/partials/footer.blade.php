@@ -91,16 +91,16 @@
 
             <div class="footer__item footer-payments">
                 <div class="footer-payments__item">
-                    <img src="/fonts/if_yandex_213718.svg" />
+                    <img src="/fonts/if_yandex_213718.svg" alt="Оплата через Yandex.Кассу" title="Оплата через Yandex.Кассу"/>
                 </div>
                 <div class="footer-payments__item">
-                    <img src="/fonts/if_visa_213724.svg" />
+                    <img src="/fonts/if_visa_213724.svg" alt="Оплата через Visa" title="Оплата через Visa"/>
                 </div>
                 <div class="footer-payments__item">
-                    <img src="/fonts/if_mastercard_213734.svg" />
+                    <img src="/fonts/if_mastercard_213734.svg" alt="Оплата через MaterCard" title="Оплата через MaterCard"/>
                 </div>
                 <div class="footer-payments__item">
-                    <img src="/fonts/if_maestro_213735.svg" />
+                    <img src="/fonts/if_maestro_213735.svg" alt="Оплата через Masestro" title="Оплата через Masestro"/>
                 </div>
             </div>
 

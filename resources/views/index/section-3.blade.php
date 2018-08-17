@@ -2,7 +2,7 @@
 
 <section class="section-2 section">
     <div class="container">
-        <h3 class="h3" id="lessons">Краткое содержание онлайн курса<br>{{\App\Models\Course::find(1)->title}}</h3>
+        <h2 class="h3" id="lessons">Краткое содержание онлайн курса<br>{{\App\Models\Course::find(1)->title}}</h2>
 
 
         <div class="steps">
@@ -12,7 +12,7 @@
                 <div class="step__info step-info">
                     <div class="step-info-text">
                         <div class="step-info-text__title">
-                            {{$lesson->title}}
+                            <h4>{{$lesson->title}}</h4>
                         </div>
                         <div class="step-info-text__info">
                             {!! $lesson->short_description !!}

@@ -1,8 +1,8 @@
 <section class="section-1">
-    <div class="section-1__texts section-1-texts">
+    <h1 class="section-1__texts section-1-texts">
         <div class="section-1-texts__text-1">Adobe After Effects</div>
-        <div class="section-1-texts__text-2">лучшие курсы видеомонтажа</div>
-    </div>
+        <div class="section-1-texts__text-2">лучшие онлайн курсы видеомонтажа для новичков</div>
+    </h1>
     <div class="section-1-desc">
         Курс расчитан на новыичков в оласти видеомонтажа. Каждый урок состоит из теоритической и практической части. После регистрации и оплаты курса
         вы получаете доступ к видеоматериалам курса и с вами начинает
