@@ -18,7 +18,7 @@ class IndexController extends AdminController
 {
     public function clients(Request $request)
     {
-        $users = User::orderBy('created_at', 'ASC')->get();
+        $users = User::orderBy('created_at', 'ASC')->paginate(10);
 
         return view('admin.manager.index', ['users' => $users] );
     }

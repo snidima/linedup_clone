@@ -36,6 +36,12 @@
             </tbody>
         </table>
 
+        <div style="display: flex; justify-content: flex-end">
+            {{$users->links()}}
+        </div>
+
     </div>
+
+
 
 @endsection
