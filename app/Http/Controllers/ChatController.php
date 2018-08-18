@@ -23,7 +23,7 @@ class ChatController extends Controller
     public function sendMessage( Request $request )
     {
 
-        if( Auth::user()->id == 5 ) {
+        if( Auth::user()->id == 1 ) {
             $chat = new Chat;
             $chat->from = 5;
             $chat->to = $chat->chanel = 1;

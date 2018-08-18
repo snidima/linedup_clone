@@ -45,17 +45,108 @@ class RegisterController extends Controller
 
     public function registerVK(Request $request)
     {
+        $scope = [
+            'notify' => 1,
+            'status' => 1024,
+            'email' => 4194304,
+        ];
 
-        $q = http_build_query([
-            'client_id' => 6658848,
-            'client_secret' => 'hsItWC8jdrovy9TUgkTl',
-            'redirect_uri' => route('user.registerVK'),
-            'code' => $request->input('code'),
-        ]);
+        $selectedScope = [
+            $scope['notify'],
+            $scope['status'],
+            $scope['email'],
+        ];
 
-        $res = file_get_contents( 'https://oauth.vk.com/access_token?'. $q);
+        if( $request->input('code') ){
 
-        dd( $res );
+            $q = http_build_query([
+                'client_id' => 6658848,
+                'client_secret' => 'hsItWC8jdrovy9TUgkTl',
+                'redirect_uri' => route('user.registerVK'),
+                'code' => $request->input('code')
+            ]);
+            $url = 'https://oauth.vk.com/access_token?'. $q;
+
+            try{
+
+                $res = json_decode( file_get_contents( $url ) );
+
+
+
+
+                $q = http_build_query([
+                    'user_ids' => $res->user_id,
+                    'access_token' => $res->access_token,
+                    'v' => 5.80,
+                    'fields' => implode(',',[
+                        'about',
+                        'activities',
+                        'bdate',
+                        'blacklisted',
+                        'blacklisted_by_me',
+                        'books',
+                        'can_post',
+                        'can_see_all_posts',
+                        'can_see_audio',
+                        'can_send_friend_request',
+                        'can_write_private_message',
+                        'career',
+                        'city',
+                        'common_count',
+                        'connections',
+                        'contacts',
+                        'counters',
+                        'country',
+                        'crop_photo',
+                        'domain',
+                        'education',
+                        'exports',
+                        'followers_count',
+                        'friend_status',
+                        'games',
+                        'has_mobile',
+                        'has_photo',
+                        'home_town',
+                        'interests',
+                        'is_favorite',
+                        'is_friend',
+                        'is_hidden_from_feed',
+                        'last_seen',
+                        'lists',
+                    ])
+                ]);
+
+                $url = "https://api.vk.com/method/users.get?$q";
+
+                $res = json_decode( file_get_contents( $url ) );
+
+                dd( $res );
+
+            } catch ( \Exception $e ) {
+                return redirect(route('user.registerVK'));
+            }
+
+
+
+
+
+
+        } else {
+            $q = http_build_query([
+                'client_id' => 6658848,
+                'redirect_uri' => route('user.registerVK'),
+                'response_type' => 'code',
+                'display' =>'page',
+                'v' => '5.80',
+                'revoke' => 1,
+                'scope' => array_sum( $selectedScope )
+            ]);
+
+            $url = 'https://oauth.vk.com/authorize?'. $q;
+            return "<a href='$url'>enter</a>";
+        }
+
+
 
     }
 

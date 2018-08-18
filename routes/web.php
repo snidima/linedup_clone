@@ -12,7 +12,7 @@
 */
 
 
-
+//Route::get('/register/vk', 'Auth\RegisterController@registerVK')->name('user.registerVK');
 
 
 Route::get('/', 'IndexController@index')->name('main');
@@ -28,7 +28,7 @@ Route::get('oferta', function(){
 Route::get('/buy/{id}', 'BuyCourseController@index')->name('buy');
 
 //Route::group(['prefix' => 'chat'], function() {
-////    Route::post('auth', 'ChatController@auth');
+//    Route::post('auth', 'ChatController@auth');
 //    Route::post('send-message', 'ChatController@sendMessage');
 //    Route::post('get-message', 'ChatController@getMessages');
 //});
@@ -57,7 +57,11 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/register', 'Auth\RegisterController@register');
     Route::post('/register', 'Auth\RegisterController@registerPost')->name('user.register');
 
-//    Route::get('/register/vk', 'Auth\RegisterController@registerVK')->name('user.registerVK');
+
+
+
+
+
 
     //USER LOGIN
     Route::get('/login', 'Auth\LoginController@index')->name('user.login');

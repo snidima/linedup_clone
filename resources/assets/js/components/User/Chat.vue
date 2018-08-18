@@ -27,6 +27,7 @@
 <script>
     import api from '../../api';
     import _ from 'lodash';
+    import moment from 'moment'
 
 //    import moment from 'moment'
 //    import ru from 'moment/src/locale/ru';
