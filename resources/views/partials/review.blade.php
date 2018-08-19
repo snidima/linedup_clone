@@ -25,7 +25,7 @@
         {{$review['videoTitle']}}
     </div>
     <div class="review__video">
-        <video playsinline controls poster="{{$review['poster']}}">
+        <video class="js-player" playsinline controls poster="{{$review['poster']}}">
             <source src="{{$review['video']}}" type="video/mp4">
         </video>
     </div>

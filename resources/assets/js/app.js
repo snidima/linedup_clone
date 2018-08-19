@@ -3,6 +3,8 @@ import '../img/section-bg.jpg'
 import '../img/teacher01.jpg'
 import '../img/manager01.jpg'
 import '../img/rev1.jpg'
+import '../img/rev2.jpg'
+import '../img/rev3.jpg'
 
 
 import alertify from 'alertify.js'
@@ -37,7 +39,7 @@ if( $('#app').length ){
 
 
 const player = new Plyr('#lesson-player');
-const players = new Plyr(document.querySelectorAll('video'));
+const players = Array.from(document.querySelectorAll('.js-player')).map(p => new Plyr(p));
 
 
 window.alertify = alertify;
