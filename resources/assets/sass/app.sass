@@ -294,4 +294,29 @@ a
         font-size: .7rem
 .plyr__poster
   background-color: transparent
+.scroll-to-top
+  position: fixed
+  right: 20px
+  bottom: 20px
+  height: 40px
+  padding: 0 15px
+  background: $color-1
+  color: $white-1
+  z-index: 999
+  cursor: pointer
+  display: flex
+  justify-content: center
+  align-items: center
+  +br()
+  opacity: .5
+  transition: all .1s linear
+  &:hover
+    opacity: 1
+.scroll-to-top__icon
+  width: 15px
+  height: 15px
+  margin-right: 10px
+  path
+    fill: $white-1
+
 @import "responce/responce"

@@ -89,6 +89,7 @@
                         <div class="menus-items__item"><a href="#target">Описание курса</a></div>
                         <div class="menus-items__item"><a href="#lessons">Состав курса</a></div>
                         <div class="menus-items__item"><a href="#price">Цены</a></div>
+                        <div class="menus-items__item"><a href="#reviews">Отзывы</a></div>
                     </div>
                     <div class="menus-wrapper__user menu-user">
                         <div class="menu-user-wrapper">

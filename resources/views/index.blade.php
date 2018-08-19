@@ -4,11 +4,23 @@
 @section('description','На этом сайте вы можете купить и записаться на онлайн курс видеомонтажа в программе Adobe After Effects - школы LinedUp')
 
 @section('content')
+    <div class="scroll-to-top js-scrollToTop">
+        <div class="scroll-to-top__icon">
+            <svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 20 11" style="enable-background:new 0 0 20 11;" xml:space="preserve">
+                <path class="st0" d="M10.7,0.3c-0.4-0.4-1-0.4-1.4,0l-9,9c-0.4,0.4-0.4,1,0,1.4c0.4,0.4,1,0.4,1.4,0L10,2.4l8.3,8.3
+                    c0.4,0.4,1,0.4,1.4,0c0.4-0.4,0.4-1,0-1.4L10.7,0.3z"/>
+            </svg>
+        </div>
+        <div class="scroll-to-top__caption">
+            Наверх
+        </div>
+    </div>
     @include('index/section-1')
     @include('index/section-2')
     @include('index/section-3')
     @include('index/section-4')
-    <section class="section_black section">
+    <section class="section_black section" id="reviews">
         <h3 class="h3" id="reviews">Отзывы наших учеников</h3>
 
         <div class="container">
