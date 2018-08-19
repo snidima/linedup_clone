@@ -39,7 +39,7 @@
                      Выражаю большую благодарность всей команде \"LinedUp\" за оперативные ответы и помощь в толковании многих моментов",
                     'videoTitle' => 'Одна из работ Анны:',
                     'poster' => '/images/rev1.jpg',
-                    'video' => 'http://zerocdn.com/61449013/Anna%20Besaraba%20Slide%20Show.mp4',
+                    'video' => 'https://zerocdn.com/61449013/Anna%20Besaraba%20Slide%20Show.mp4',
                 ]])
 
 
@@ -56,7 +56,7 @@
                     а так же овладела базами цветокорекции. Спасибо всей команде за предоставленный курс, всем мир!",
                     'videoTitle' => 'Одна из работ Эвелины:',
                     'poster' => '/images/rev2.jpg',
-                    'video' => 'http://zerocdn.com/61449016/Evelina%20Churilova%20Paralax.mp4',
+                    'video' => 'https://zerocdn.com/61449016/Evelina%20Churilova%20Paralax.mp4',
                 ]])
 
                 {{--@include('partials.review',['review' => [--}}
@@ -82,7 +82,7 @@
                      Цель прохождения курса было научиться анимировать инфографику, я получила то что хотела, спасибо команде \"LinedUp\"!",
                     'videoTitle' => 'Одна из работ Анны:',
                     'poster' => '/images/rev3.jpg',
-                    'video' => 'http://zerocdn.com/61449017/Kovaleva%20Anna%20infographics.mp4',
+                    'video' => 'https://zerocdn.com/61449017/Kovaleva%20Anna%20infographics.mp4',
                 ]])
 
             </div>
