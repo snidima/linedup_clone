@@ -2,6 +2,9 @@ import '../img/photo.jpg'
 import '../img/section-bg.jpg'
 import '../img/teacher01.jpg'
 import '../img/manager01.jpg'
+import '../img/rev1.jpg'
+
+
 import alertify from 'alertify.js'
 
 import api from './api.js'
@@ -34,6 +37,9 @@ if( $('#app').length ){
 
 
 const player = new Plyr('#lesson-player');
+const players = new Plyr(document.querySelectorAll('video'));
+
+
 window.alertify = alertify;
 
 $('.js-menu .js-menu-open-btn').click(()=>{
