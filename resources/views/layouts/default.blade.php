@@ -30,7 +30,7 @@
 
 @show
 
-@if( \Illuminate\Support\Facades\App::environment() == 'production' )
+@if( \Illuminate\Support\Facades\App::environment() != 'production' )
 <!-- BEGIN JIVOSITE CODE -->
 <script type='text/javascript' async>
 (function(){ var widget_id = 'KLJez83FBH';var d=document;var w=window;function l(){
@@ -76,6 +76,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
     gtag('js', new Date());
     gtag('config', 'UA-68464550-3');
 </script>
+@stack('afterScripts')
 @endif
 </body>
 </html>
