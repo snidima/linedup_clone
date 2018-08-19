@@ -46,14 +46,14 @@ class RegularsCoursesCreateCommand extends Command
 
         $reg = RegularCourse::where( 'date_start', '>=', Carbon::now())->get();
 
-        if( $reg ) return 'Все курсы( '.count($reg).' ) уже созданы на '.$newxtMonday->toDateString();
+        if( count( $reg ) ) return 'Все курсы( '.count($reg).' ) уже созданы на '.$newxtMonday->toDateString();
 
         $courses = Course::where([
                 'active' => true
             ])
             ->get();
 
-        if( !$courses ) return 'Нет курсов для создания!';
+        if( !count( $courses ) ) return 'Нет курсов для создания!';
 
         foreach ($courses as $course) {
             $course->regular()->create([
