@@ -30,7 +30,7 @@
 
 @show
 
-@if( \Illuminate\Support\Facades\App::environment() != 'production' )
+@if( \Illuminate\Support\Facades\App::environment() == 'production' )
 <!-- BEGIN JIVOSITE CODE -->
 <script type='text/javascript' async>
 (function(){ var widget_id = 'KLJez83FBH';var d=document;var w=window;function l(){
