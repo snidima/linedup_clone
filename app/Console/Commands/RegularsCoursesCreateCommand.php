@@ -52,7 +52,8 @@ class RegularsCoursesCreateCommand extends Command
             ->toArray())
         );
 
-
+        print_r($reg);
+        die();
 
         $courses = Course::whereNotIn('id', $reg )
             ->where([
