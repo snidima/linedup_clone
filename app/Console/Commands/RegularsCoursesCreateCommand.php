@@ -44,23 +44,16 @@ class RegularsCoursesCreateCommand extends Command
         $newxtMonday = Carbon::now()->startOfWeek()->addWeek(1);
 
 
-        $reg = array_unique( array_map(function( $el ){
-            return $el['course_id'];
-        }, RegularCourse::where( 'date_start', '>=', $newxtMonday )
-            ->select('course_id')
-            ->get()
-            ->toArray())
-        );
+        $reg = RegularCourse::where( 'date_start', '>=', Carbon::now())->get();
 
-        print_r($reg);
-        die();
+        if( $reg ) return 'Все курсы( '.count($reg).' ) уже созданы на '.$newxtMonday->toDateString();
 
-        $courses = Course::whereNotIn('id', $reg )
-            ->where([
+        $courses = Course::where([
                 'active' => true
             ])
             ->get();
-        if( !$courses ) return;
+
+        if( !$courses ) return 'Нет курсов для создания!';
 
         foreach ($courses as $course) {
             $course->regular()->create([
