@@ -23,7 +23,7 @@
                     <td>{{$billing->amount}}</td>
                     <td>
                         @if( $billing->promo )
-                            $billing->promo
+                            {{$billing->promo}}
                         @else
                             Нет
                         @endif
@@ -54,7 +54,7 @@
                     <td>{{$billing->amount}}</td>
                     <td>
                         @if( $billing->promo )
-                            $billing->promo
+                            {{$billing->promo}}
                         @else
                             Нет
                         @endif
