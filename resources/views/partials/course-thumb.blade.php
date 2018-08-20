@@ -89,7 +89,12 @@
             <div class="course-thumb-price">
                 @if( $course->billing )
                     <div class="course-thumb-price__new-price">
-                        Оплачен
+                        @if($course->billingPercent > 0 && $course->billingPercent < 100 )
+                            Оплачен на {{floor($course->billingPercent)}}%
+                        @else
+                            Оплачен
+                        @endif
+
                     </div>
                 @elseif( !$course->course->isDemo )
                     <div class="course-thumb-price__old-price">
@@ -107,12 +112,18 @@
         </div>
     </div>
     <div class="course-thumb__btn">
+
         @if( $course->course->isDemo || $course->billing )
             <a href="{{route('user.lesson',[$course->id, 1])}}" class="btn btn-medium btn-type-2">
                 Перейти к курсу
             </a>
+            @if( $course->billingPercent < 100 && $course->billingPercent > 0 )
+                <a href="{{route('buy',$course->id)}}" target="_blank" class="btn btn-medium btn-type-2">
+                    Завершить оплату
+                </a>
+            @endif
         @else
-            <a href="{{route('buy',$course->id)}}" class="btn btn-medium btn-type-2">
+            <a href="{{route('buy',$course->id)}}" target="_blank" class="btn btn-medium btn-type-2">
                 Перейти к оплате
             </a>
         @endif

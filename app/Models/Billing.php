@@ -22,4 +22,19 @@ class Billing extends Model
     {
         return $this->belongsTo(RegularCourse::class, 'course_id');
     }
+
+    public function getCalculatedAmountAttribute()
+    {
+        $promo = PromoCodes::where('code', $this->promo)->first();
+
+        if( $promo ){
+
+            $need = $promo->value * $this->regular->finalPrice / 100;
+            return $this->amount  + $need;
+
+        }
+
+
+        return $this->amount;
+    }
 }

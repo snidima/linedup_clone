@@ -14,8 +14,14 @@
             </div>
         </div>
 
+        <div class="payment-strategy">
+            <div  v-if="!strat.disabled" class="payment-strategy__item payment-strategy-item" v-bind:class="{ 'active': paystrategyActive == key }" @click="strategyClick(key)" v-for="(strat, key) in paystrategy">
+                {{strat.title}}
+            </div>
+        </div>
+
         <div class="payment-buy-wrapper">
-            <form class="payment-promo form" v-on:submit.prevent="onPromoSubmit" v-bind:class="{ 'pending': promoPending, 'promo-active' : !priceAfterPromo}">
+            <form class="payment-promo form" v-on:submit.prevent="onPromoSubmit" v-bind:class="{ 'pending': promoPending, 'promo-active' : !priceAfterPromo, 'disabled' : paystrategyActive != 0}">
                 <input type="text" placeholder="Промо-код" class="gray payment-promo__input" v-model="promoCode">
                 <input type="submit" class="btn btn-type-1 btn-normal" value="Ок">
                 <div class="pending-block" v-if="promoPending">
@@ -31,6 +37,7 @@
                 </div>
             </div>
         </div>
+
 
 
 
@@ -67,7 +74,7 @@
 
     export default {
 
-        props: ['price', 'user', 'course'],
+        props: ['price', 'user', 'course', 'half'],
         data(){
             return {
                 promoPending: false,
@@ -75,6 +82,10 @@
                 priceAfterPromo: false,
 
                 //https://tech.yandex.ru/money/doc/payment-buttons/reference/forms-docpage/
+
+
+                paystrategyActive: 0,
+
                 paymethods: [
                     {
                         title: 'Yandex.Деньги',
@@ -103,8 +114,46 @@
 
         computed:{
             priceM(){
-                return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
+                if( this.paystrategyActive === 0 ){
+                    return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
+                } else {
+                    return this.price / 2
+                }
+//                return ( this.priceAfterPromo ) ? this.priceAfterPromo : this.price
             },
+
+            paystrategy(){
+                if( this.half )
+                {
+                    this.paystrategyActive = 1
+                    return [
+                        {
+                            title: 'Оплатить курс полностью',
+                            value: '1',
+                            disabled: true
+                        },
+                        {
+                            title: 'Оплатить половину курса',
+                            value: '2',
+                            disabled: false
+                        },
+                    ]
+
+                } else {
+                    return [
+                        {
+                            title: 'Оплатить курс полностью',
+                            value: '1',
+                            disabled: false
+                        },
+                        {
+                            title: 'Оплатить половину курса',
+                            value: '2',
+                            disabled: false
+                        },
+                    ]
+                }
+            }
         },
 
 
@@ -124,7 +173,7 @@
                     if( !res.data ) return;
                         $('#label').val(  res.data );
 
-                        alert();
+
                         $('#pay-form').submit();
                     })
                     .catch((res) => {
@@ -149,6 +198,10 @@
             },
             methodClick( key ){
                 this.paymethodsActive = key;
+            },
+
+            strategyClick( key ){
+                this.paystrategyActive = key;
             },
 
             submit(){

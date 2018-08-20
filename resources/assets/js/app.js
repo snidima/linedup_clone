@@ -22,6 +22,7 @@ import Login from './components/Login.vue';
 import BuySwitcher from './components/Payment/BuySwitcher.vue';
 import Payment from './components/Payment/Payment.vue';
 import Upload from './components/FileUploadBtn.vue';
+import PaymentHistory from './components/Payment/PaymentHistory.vue';
 import Vue from 'vue';
 
 
@@ -30,6 +31,7 @@ Vue.component( 'upload', Upload );
 Vue.component( 'login', Login );
 Vue.component( 'buyswitcher', BuySwitcher );
 Vue.component( 'payment', Payment );
+Vue.component( 'payment-history', PaymentHistory );
 
 
 

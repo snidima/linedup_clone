@@ -227,18 +227,15 @@ class UserController extends Controller
 
     public function lesson( $courseID, $lessonID )
     {
-        $isDemo = RegularCourse::where('id',$courseID)->first();
+        $isDemo = RegularCourse::find($courseID);
+
+        $access = true;
 
         if( $isDemo->finalPrice > 0 ){
-
-            $billings = Billing::where( 'user_id', Auth::id() )->where('course_id', $courseID)->first();
-
-            if( !$billings )
-                return view('user.course-access-deny');
-
+            $lessonPrice = count($isDemo->course->lessons);
+            $lessonPrice = $isDemo->finalPrice / $lessonPrice;
+            $access = $isDemo->amount >= $lessonID * $lessonPrice;
         }
-
-
 
         $regular = RegularCourse::where('id',$courseID)->with([
             'course',
@@ -262,18 +259,24 @@ class UserController extends Controller
             return $lesson;
         });
 
-//        dd($regular->course->lessons->get( $lessonID-1 ), $regular->course->lessons->get( $lessonID ));
+        if( $access == false ){
 
+            return view('user.course-access-deny', ['regular' => $isDemo]);
 
-        return view('user.course', [
-            'regular' => $regular,
-            'lesson' => $regular->course->lessons->get( $lessonID-1 ),
-            'prevLesson' => $regular->course->lessons->get( $lessonID-2 ),
-            'nextLesson' => $regular->course->lessons->get( $lessonID ),
-            'lessonID' => $lessonID,
-            'courseID' => $courseID,
-            'homework' => Homework::where('user_id', Auth::id())->where('lesson_id', $lessonID )->where('course_id', $courseID)->first()
-        ]);
+        } else {
+
+            return view('user.course', [
+                'regular' => $regular,
+                'lesson' => $regular->course->lessons->get( $lessonID-1 ),
+                'prevLesson' => $regular->course->lessons->get( $lessonID-2 ),
+                'nextLesson' => $regular->course->lessons->get( $lessonID ),
+                'lessonID' => $lessonID,
+                'courseID' => $courseID,
+                'homework' => Homework::where('user_id', Auth::id())->where('lesson_id', $lessonID )->where('course_id', $courseID)->first()
+            ]);
+
+        }
+
 
     }
 
@@ -374,6 +377,23 @@ class UserController extends Controller
 
         return redirect(route('user.account', ['token' => null]))->with('alert', 'Пароль успешно изменен');
 
+    }
+
+    public function billingHistory( Request $request )
+    {
+        $billings = Billing::where(['user_id' => Auth::id(), 'course_id' => $request->input('course')])->select(['amount','promo','created_at'])->get();
+
+
+        if( count( $billings ) > 0  ){
+
+            $billings->map(function($el){
+                return $el->sale = PromoCodes::where('code', $el->promo)->select('value')->first();
+            });
+            return response()->json( $billings ) ;
+        }
+
+        else
+            return response('','404');
     }
 
 

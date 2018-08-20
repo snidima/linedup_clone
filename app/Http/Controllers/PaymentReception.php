@@ -22,19 +22,6 @@ class PaymentReception extends Controller
         ] );
 
         $billingTmp = BillingTmp::find( $request->input('label') );
-        $promo = PromoCodes::where('code', $billingTmp->promo)->first();
-        $price  = $need = $billingTmp->regular->finalPrice;
-
-
-        if( $promo ){
-            $sale = $promo->value;
-            $need = ( $price - ( $price * $sale / 100 ) ) * 1;
-        }
-
-
-        if( $request->input('withdraw_amount') * 1 < $need )
-            return response(null, 406);
-
 
         $hashStringProccessed = implode( '&', [
             $request->input('notification_type'),
@@ -63,7 +50,6 @@ class PaymentReception extends Controller
                 'data' => $request->all(),
             ] )
         ]);
-
 
         if( $billing )
             return response(null, 200);

@@ -104,7 +104,11 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
         Route::post('homeworks-download', 'UserController@fileDownload');
         Route::post('homeworks-delete', 'UserController@fileDelete');
 
+        Route::post('billing-history', 'UserController@billingHistory');
+
     });
+
+
 
 
 });

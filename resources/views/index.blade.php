@@ -73,7 +73,7 @@
                      делать, чтобы в дальнейшем таких ошибок не повторялось. Это был один из самых важных моментов.",
                     'videoTitle' => 'Одна из работ Эдуарда:',
                     'poster' => '/images/rev4.jpg',
-                    'video' => 'http://zerocdn.com/61513522/Enward%20Wolf%20Shapes.mp4',
+                    'video' => 'https://zerocdn.com/61513522/Enward%20Wolf%20Shapes.mp4',
                 ]])
 
                 @include('partials.review',['review' => [
@@ -101,7 +101,7 @@
                     Спасибо команде linedUp, с вашей помощью ухожу от монтажа в моушн дизайн!",
                     'videoTitle' => 'Одна из работ Анны:',
                     'poster' => '/images/rev5.jpg',
-                    'video' => 'http://zerocdn.com/61449018/SlideShow%20Fominsky.mp4',
+                    'video' => 'https://zerocdn.com/61449018/SlideShow%20Fominsky.mp4',
                 ]])
 
                 @include('partials.review',['review' => [
@@ -115,7 +115,7 @@
                     спасибо всей команде \"LinedUp\" за поддержку и помощь в изучении!",
                     'videoTitle' => 'Одна из работ Анастасии:',
                     'poster' => '/images/rev6.jpg',
-                    'video' => 'http://zerocdn.com/61513979/Anastasia%20Zaytseva%20Slideshow.mp4',
+                    'video' => 'https://zerocdn.com/61513979/Anastasia%20Zaytseva%20Slideshow.mp4',
                 ]])
 
             </div>

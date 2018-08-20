@@ -90,6 +90,33 @@ class RegularCourse extends Model
     }
 
 
+    public function getAmountAttribute()
+    {
+        if( !Auth::check() ) return null;
+
+        $billings = Billing::where( 'user_id', Auth::id() )->where('course_id', $this->id)->get();
+
+
+        $billings = $billings->map(function($el){
+            return $el->calculatedAmount;
+        })->toArray();
+
+        return array_sum( $billings );
+    }
+
+    public function getBillingPercentAttribute()
+    {
+        if( !$this->finalPrice ) return null;
+
+        $amount = $this->amount;
+        $price = $this->finalPrice;
+
+        $res = $amount * 100 / $price;
+
+        return $res;
+
+    }
+
 
 
 }

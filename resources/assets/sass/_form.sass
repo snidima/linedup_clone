@@ -233,3 +233,49 @@ input[type="checkbox"]
 
 input[type="text"].gray
   background: $gray
+
+.payment-strategy
+  margin-top: 20px
+
+
+.payment-strategy-item
+  cursor: pointer
+  padding: 15px
+  color: $black-1
+  +br($sbr)
+  &.active
+    background: #f5f5f5
+
+.payment-promo.disabled
+  position: relative
+  &:after
+    display: block
+    content: ''
+    left: 0
+    right: 0
+    bottom: 0
+    top: 0
+    background: white
+    opacity: .5
+    cursor: not-allowed
+    position: absolute
+
+
+.buy-history
+  padding: 20px
+  +br()
+  background: #f5f5f5
+.buy-history-item
+  display: flex
+  +nlt
+    .buy-history-item__amount, .buy-history-item__promo, .buy-history-item__date
+      border-bottom: 1px solid #e5e5e5
+
+.buy-history-item__amount, .buy-history-item__promo, .buy-history-item__date
+  width: 33.333333%
+  flex-grow: 1
+  flex-basis: 33.33333333333%
+  padding: 7px 0
+  text-align: right
+  font-size: .9rem
+  color: $black-1

@@ -27,7 +27,8 @@
             </div>
 
             <div v-if="step === 2">
-                <payment :price="price" :user="user" :course="course"></payment>
+                <payment :price="price" :user="user" :course="course" :half="half"></payment>
+                <payment-history @onHalfpay="onHalfpay()"  :course="course"></payment-history>
             </div>
 
         </div>
@@ -50,7 +51,8 @@
                 stepDesc:{
                     1: 'Подтвердите акканут',
                     2: 'Оплата',
-                }
+                },
+                half: false,
             }
         },
 
@@ -63,6 +65,11 @@
 
 
         methods: {
+
+            onHalfpay(){
+                this.half = true
+            },
+
             regMethodHandler( m ){
                 this.regMethod = m;
             },
