@@ -5,6 +5,9 @@ import '../img/manager01.jpg'
 import '../img/rev1.jpg'
 import '../img/rev2.jpg'
 import '../img/rev3.jpg'
+import '../img/rev4.jpg'
+import '../img/rev5.jpg'
+import '../img/rev6.jpg'
 
 
 import alertify from 'alertify.js'
