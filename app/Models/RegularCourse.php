@@ -69,14 +69,20 @@ class RegularCourse extends Model
     {
         if( !$this->date_start ) return false;
 
-        $nextMonday = Carbon::now()->diffInHours(Carbon::parse($this->date_start), false);
+        $nextMonday = Carbon::now()->diffInHours(Carbon::parse($this->date_start), true);
+
+
 
         if( $nextMonday <= 0 ) return false;
 
+        $days = floor( $nextMonday / 24 );
+        $hours = $nextMonday - ($days * 24);
+
         $counter = [
-            'days' =>   round( $nextMonday / 24 ),
-            'hours' =>   $nextMonday - round( $nextMonday / 24 ) * 24
+            'days' =>   $days,
+            'hours' =>   $hours
         ];
+
 
         return $counter;
     }
