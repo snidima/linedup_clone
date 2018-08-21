@@ -51,6 +51,17 @@
         </div>
     </div>
 
+    @if( $lesson->stuff_link )
+    <div class="course-detail__texts course-detail-texts">
+        <div class="course-detail-texts__left">
+            Материалы к уроку:
+        </div>
+        <div class="course-detail-texts__right">
+            <a target="_blank" href="{{$lesson->stuff_link}}">Скачать</a>
+        </div>
+    </div>
+    @endif
+
 </div>
 
 
