@@ -39,6 +39,10 @@
                 <label>Ссылка на домашнее задание</label>
                 <md-input v-model="lesson.homework_link"></md-input>
             </md-input-container>
+            <md-input-container>
+                <label>Ссылка на материалы</label>
+                <md-input v-model="lesson.stuff_link"></md-input>
+            </md-input-container>
 
             <md-button @click="$router.go(-1)">Назад</md-button>
             <md-button @click="submit" class="md-raised md-primary">Сохранить</md-button>
