@@ -319,4 +319,31 @@ a
   path
     fill: $white-1
 
+
+
+.message
+  background: $gray
+  padding: 40px
+  position: relative
+  &:before
+    content: ''
+    display: block
+    width: 5px
+    background: $color-5
+    position: absolute
+    left: 0
+    bottom: 0
+    top: 0
+.message__title
+  font-weight: lighter
+  margin-bottom: 30px
+  font-size: 1.5rem
+  color: $black-1
+.message__message
+  line-height: 1.5
+  color: $black-1
+
+.tippy
+  cursor: help
+
 @import "responce/responce"

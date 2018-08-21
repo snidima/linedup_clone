@@ -17,6 +17,8 @@ import api from './api.js'
 import Plyr from 'plyr'
 import 'plyr/dist/plyr.css'
 
+import tippy from 'tippy.js'
+
 import Register from './components/Register.vue';
 import Login from './components/Login.vue';
 import BuySwitcher from './components/Payment/BuySwitcher.vue';
@@ -108,3 +110,12 @@ $('.js-scrollToTop').click(function(){
     $('html, body').animate({scrollTop : 0},500);
     return false;
 });
+
+
+
+tippy('.tippy', {
+    arrow: true,
+    arrowType: 'round',
+    duration: 100,
+    animation: 'scale'
+})
