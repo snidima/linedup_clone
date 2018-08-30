@@ -17,10 +17,10 @@
             </thead>
             <tbody>
             @foreach($homeworks as $homework)
-                <tr>
+                <tr @if($homework->check) class="bg-success" @endif>
                     <td>{{$homework->user->name}}</td>
                     <td>{{$homework->regular->course->title}}</td>
-                    <td>{{$homework->lesson->title}}</td>
+                    <td>{{$homework->lesson->id}}</td>
                     <td>{{$homework->created_at}}</td>
                     <td><a href="{{route('admin.homework.get',['id' => $homework->id])}}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Редактировать</a></td>
                 </tr>

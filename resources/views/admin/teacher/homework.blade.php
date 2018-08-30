@@ -3,8 +3,11 @@
 @section('app')
     <div class="container-fluid">
 
-        <h1 class="display-4 mb">Домашние задания №{{$homework->id}}</h1>
 
+
+        <div class="container">
+            <h1 class="display-4 mb">Домашние задания №{{$homework->id}}</h1>
+            
         <form action="{{route('admin.homework.post', ['id' =>$homework->id ])}}" method="POST">
             {{csrf_field()}}
 
@@ -32,7 +35,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label"><b>Урок</b></label>
                 <div class="col-sm-10">
-                    {{$homework->lesson->title}}
+                    {{$homework->lesson->id}}
                 </div>
             </div>
 
@@ -41,9 +44,9 @@
             <div class="form-group row">
                 <label for="comment" class="col-sm-2 col-form-label"><b>Видео</b></label>
                 <div class="col-sm-10">
-                    <div class="video-container">
-                        <iframe src="{{$homework->videoFrame}}" frameborder="0" allowfullscreen></iframe>
-                    </div>
+
+                        <a href="{{$homework->youtube_link}}" target="_blank">Ссылка</a>
+
                 </div>
             </div>
 
@@ -74,6 +77,7 @@
 
             <button type="submit" class="btn btn-primary">Сохранить</button>
         </form>
+        </div>
 
     </div>
 @endsection
