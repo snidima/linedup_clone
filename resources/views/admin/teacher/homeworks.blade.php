@@ -3,6 +3,7 @@
 @section('app')
     <div class="container-fluid">
 
+        <div class="container">
         <h1 class="display-4 mb">Домашние задания</h1>
 
         <table class="table table-striped">
@@ -27,6 +28,7 @@
             @endforeach
             </tbody>
         </table>
+        </div>
 
 
     </div>
