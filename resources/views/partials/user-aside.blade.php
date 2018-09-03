@@ -115,7 +115,7 @@
                 @if( $regular->course->isDemo )
                     <div class="btn btn-small btn-type-2">Не доступно в демо</div>
                 @else
-                    <a class="btn btn-small btn-type-2" href="https://vk.com/im?media=&sel=-170162452" target="_blank">Написать Никите</a>
+                    <a class="btn btn-small btn-type-2" href="{{$regular->vk_group_link}}" target="_blank">Написать Никите</a>
                 @endif
             </div>
         </div>
