@@ -8,6 +8,7 @@ import '../img/rev3.jpg'
 import '../img/rev4.jpg'
 import '../img/rev5.jpg'
 import '../img/rev6.jpg'
+import '../img/preview.jpg'
 
 
 import alertify from 'alertify.js'
@@ -118,4 +119,24 @@ tippy('.tippy', {
     arrowType: 'round',
     duration: 100,
     animation: 'scale'
+})
+
+
+$('.js-accordions .accordion__text').hide();
+$('.accordion').addClass('accordion_closed');
+
+$('.js-accordions .accordion:first-of-type .accordion__text').show();
+$('.js-accordions .accordion:first-of-type').removeClass('accordion_closed');
+
+$('.accordion__title, .accordion__handler').click(function(){
+    if( $(this).closest('.accordion').hasClass('accordion_closed') )
+    {
+        $(this).closest('.accordion').removeClass('accordion_closed');
+        $(this).find('~ .accordion__text').slideDown();
+
+    } else {
+        $(this).closest('.accordion').addClass('accordion_closed');
+        $(this).find('~ .accordion__text').slideUp();
+    }
+
 })
