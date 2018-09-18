@@ -38,7 +38,7 @@
                     <a class="nav-link" href="{{route('admin.manager.clients')}}">Пользователи<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Оплата</a>
+                    <a class="nav-link" href="{{route('admin.manager.billings')}}">Оплата</a>
                 </li>
             </ul>
         </div>

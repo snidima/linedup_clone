@@ -23,6 +23,11 @@ class Billing extends Model
         return $this->belongsTo(RegularCourse::class, 'course_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function getCalculatedAmountAttribute()
     {
         $promo = PromoCodes::where('code', $this->promo)->first();
@@ -37,4 +42,23 @@ class Billing extends Model
 
         return $this->amount;
     }
+
+
+    public function getInformationJSONAttribute()
+    {
+
+        $res = json_decode($this->information);
+
+        $valid = json_last_error() == JSON_ERROR_NONE;
+
+        if( !$valid )
+            $res = $this->information;
+        else{
+            $res = array('data' => $res->data);
+        }
+
+        return $res;
+    }
+
+
 }
