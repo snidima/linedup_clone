@@ -97,7 +97,10 @@
                 </small>
             </div>
             @if( $homework->comment )
-            <div class="course-homework-status course-homework-status_success" style="font-style: italic; margin-top: 5px; font-size: .9rem; line-height: 1.5">
+            <br>
+            Комментарий Никиты:
+            <br><br>
+            <div class="course-homework-status course-homework-status_pending" style="font-style: italic; margin-top: 5px; font-size: .9rem; line-height: 1.5">
                 {{$homework->comment}}
             </div>
             @endif
