@@ -9,8 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Billing extends Model
 {
+    use SoftDeletes;
+
     protected $table = "billings";
     protected $fillable = ['user_id', 'course_id', 'promo', 'amount' ,'information'];
+    protected $dates = ['deleted_at'];
 
 
     public function promoCode()

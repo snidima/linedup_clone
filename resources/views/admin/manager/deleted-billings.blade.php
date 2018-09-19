@@ -2,12 +2,11 @@
 
 @section('app')
     <div class="container">
-        <h1 class="mb">Платежи</h1>
+        <h1 class="mb">Удаленные платежи</h1>
 
 
         <p>
-            <a href="{{route('admin.manager.billing.add')}}" class="btn btn-medium btn-success">Добавить платеж</a>
-            <a href="{{route('admin.manager.billings.deleted')}}" class="btn btn-medium">Удаленные платежи</a>
+            <a href="{{route('admin.manager.billings')}}" class="btn btn-medium">Вернуться к списку платежей</a>
         </p>
 
         <table class="table table-striped ">
@@ -18,7 +17,7 @@
                 <th scope="col">Курс</th>
                 <th scope="col">Сумма</th>
                 <th scope="col">Детали платежа</th>
-                <th scope="col">Подробности</th>
+                <th scope="col">Восстановить</th>
             </tr>
             </thead>
             <tbody>
@@ -28,9 +27,9 @@
                     <th scope="row">{{$billing->id}}</th>
                     <td>{{$billing->user->name}}<br>{{$billing->user->email}} ( {{$billing->user->id}} )</td>
                     <td>{{\Carbon\Carbon::parse($billing->regular->date_start)->format('d F')}} ( {{$billing->regular->id}} )</td>
-                    <td>{{$billing->amount}}<br>{{$billing->promo}}</td>
+                    <td>{{$billing->amount}}</td>
                     <td>{{dump($billing->InformationJSON)}}</td>
-                    <td><a href="{{route('admin.manager.billing', ['id' => $billing->id])}}" class="btn btn-sm btn-primary">Подробности</a></td>
+                    <td><a href="{{route('admin.manager.billing.restore', ['id' => $billing->id])}}" class="btn btn-sm btn-success">Восстановить</a></td>
                 </tr>
             @endforeach
             </tbody>

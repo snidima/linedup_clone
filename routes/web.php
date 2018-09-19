@@ -115,7 +115,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'user'], function(){
 
 
 
-
+Route::get('loginby/{token}', 'Admin\Manager\IndexController@loginby')->name('admin.manager.loginby');
 
 
 

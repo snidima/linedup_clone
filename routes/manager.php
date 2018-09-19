@@ -9,3 +9,7 @@ Route::post('/billing/{id}', 'Admin\Manager\IndexController@billingPost')->name(
 
 Route::get('/newbilling', 'Admin\Manager\IndexController@billingAdd')->name('admin.manager.billing.add');
 Route::post('/newbilling', 'Admin\Manager\IndexController@billingAddPost')->name('admin.manager.billing.add.post');
+
+Route::get('/deletebillings', 'Admin\Manager\IndexController@billingDeletedList')->name('admin.manager.billings.deleted');
+Route::get('/deletebilling/{id}', 'Admin\Manager\IndexController@billingDelete')->name('admin.manager.billing.delete');
+Route::get('/restorebilling/{id}', 'Admin\Manager\IndexController@billingRestore')->name('admin.manager.billing.restore');

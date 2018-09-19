@@ -29,28 +29,38 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Дата создания</b></label>
                     <div class="col-sm-10">
-                        {{$billing->created_at->format('d F, H:m')}}
+                        {{$billing->created_at->format('d F, H:i')}}
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Дата изменения</b></label>
                     <div class="col-sm-10">
-                        {{$billing->updated_at->format('d F, H:m')}}
+                        {{$billing->updated_at->format('d F, H:i')}}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"><b>Информация</b></label>
+                    <div class="col-sm-10">
+                        @if( $billing->InformationJSON == 'Manual pay' )
+                            Платеж создан вручную
+                        @else
+                            {{dump($billing->InformationJSON)}}
+                        @endif
+
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Сумма</b></label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" value="{{$billing->amount}}" name="amount">
+                        <input type="number" class="form-control" value="{{$billing->amount}}" name="amount" step="0.01">
                     </div>
                 </div>
 
-
-
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="regular"><b>Курс</b></label>
+                    <label class="col-sm-2 col-form-label" for="regular"><b>Промокод</b></label>
                     <div class="col-sm-10">
                         <select name="regular" id="regular" class="form-control">
                             @foreach($regulars as $regular)
@@ -68,23 +78,29 @@
                     </div>
                 </div>
 
-
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label"><b>Информация</b></label>
+                    <label class="col-sm-2 col-form-label" for="regular"><b>Промокод</b></label>
                     <div class="col-sm-10">
-                        @if( $billing->InformationJSON == 'Manual pay' )
-                            Платеж создан вручную
-                        @else
-                            {{dump($billing->InformationJSON)}}
-                        @endif
-
+                        <select name="promo" id="promo" class="form-control">
+                            <option value="">Без промокода</option>
+                            @foreach($promos as $promo)
+                                @if( $promo->code == $billing->promo )
+                                    <option value="{{$promo->code}}" selected="selected">{{$promo->code}} - {{$promo->value}}%</option>
+                                @else
+                                    <option value="{{$promo->code}}">{{$promo->code}} - {{$promo->value}}%</option>
+                                @endif
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
 
 
+
                 <button type="submit" class="btn btn-primary">Сохранить</button>
-                <input type="reset" class="btn btn-secondary" value="Отменить">
+                <input type="reset" class="btn btn-secondary" value="Сбросить значения">
+                <a href="{{route('admin.manager.billings')}}" class="btn btn-medium btn-warning">Отмена</a>
+                <a href="{{route('admin.manager.billing.delete',  ['id' =>$billing->id ])}}" class="btn btn-medium btn-danger">Удалить платеж</a>
             </form>
         </div>
 

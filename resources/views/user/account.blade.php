@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container">
-        <h1 class="h1 with-line">Настройки аккаунта:</h1>
+        <h1 class="h1 with-line">Настройки аккаунта ( {{\Illuminate\Support\Facades\Auth::user()->email}} ):</h1>
 
 
 

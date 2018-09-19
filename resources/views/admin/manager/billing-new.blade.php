@@ -43,7 +43,19 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Сумма</b></label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" value="0" name="amount">
+                        <input type="number" class="form-control" value="0" name="amount" step="0.01">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="regular"><b>Промокод</b></label>
+                    <div class="col-sm-10">
+                        <select name="promo" id="promo" class="form-control">
+                            <option value="">Без промокода</option>
+                            @foreach($promos as $promo)
+                                <option value="{{$promo->code}}">{{$promo->code}} - {{$promo->value}}%</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
