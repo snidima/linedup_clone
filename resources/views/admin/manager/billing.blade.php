@@ -29,14 +29,14 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Дата создания</b></label>
                     <div class="col-sm-10">
-                        {{$billing->created_at->format('d F, H:i')}}
+                        {{$billing->created_at->formatLocalized('%d %B,')}} {{$billing->created_at->format('H:i')}}
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"><b>Дата изменения</b></label>
                     <div class="col-sm-10">
-                        {{$billing->updated_at->format('d F, H:i')}}
+                        {{$billing->updated_at->formatLocalized('%d %B,')}} {{$billing->updated_at->format('H:i')}}
                     </div>
                 </div>
 
@@ -67,9 +67,9 @@
                                 @if(!$regular->course->isDemo)
 
                                     @if( $regular->id == $billing->course_id )
-                                        <option value="{{$regular->id}}" selected="selected">{{\Carbon\Carbon::parse($regular->date_start)->format('d F')}} ( {{$regular->id}} )</option>
+                                        <option value="{{$regular->id}}" selected="selected">{{\Carbon\Carbon::parse($regular->date_start)->formatLocalized('%d %B')}} ( {{$regular->id}} )</option>
                                     @else
-                                        <option value="{{$regular->id}}">{{\Carbon\Carbon::parse($regular->date_start)->format('d F')}} ( {{$regular->id}} )</option>
+                                        <option value="{{$regular->id}}">{{\Carbon\Carbon::parse($regular->date_start)->formatLocalized('%d %B')}} ( {{$regular->id}} )</option>
                                     @endif
 
                                 @endif

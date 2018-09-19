@@ -27,7 +27,7 @@
                 <tr>
                     <th scope="row">{{$billing->id}}</th>
                     <td>{{$billing->user->name}}<br>{{$billing->user->email}} ( {{$billing->user->id}} )</td>
-                    <td>{{\Carbon\Carbon::parse($billing->regular->date_start)->format('d F')}} ( {{$billing->regular->id}} )</td>
+                    <td>{{\Carbon\Carbon::parse($billing->regular->date_start)->formatLocalized('%d %B')}} ( {{$billing->regular->id}} )</td>
                     <td>{{$billing->amount}}<br>{{$billing->promo}}</td>
                     <td>{{dump($billing->InformationJSON)}}</td>
                     <td><a href="{{route('admin.manager.billing', ['id' => $billing->id])}}" class="btn btn-sm btn-primary">Подробности</a></td>

@@ -30,13 +30,13 @@
                         <div class="course-thumb-detail-item__text">
                             <span class="tippy" title="Начало - конец курса">
                             @if( !$course->course->isDemo )
-                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($course->date_start)->formatLocalized('%d %B'))}}
+                                {{\Carbon\Carbon::parse($course->date_start)->formatLocalized('%d %B')}}
                                 -
-                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::parse($course->date_end)->formatLocalized('%d %B'))}}
+                                {{\Carbon\Carbon::parse($course->date_end)->formatLocalized('%d %B')}}
                             @else
-                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::now()->formatLocalized('%d %B'))}}
+                                {{\Carbon\Carbon::now()->formatLocalized('%d %B')}}
                                 -
-                                {{iconv("cp1251", "UTF-8", \Carbon\Carbon::now()->addDay()->formatLocalized('%d %B'))}}
+                                {{\Carbon\Carbon::now()->addDay()->formatLocalized('%d %B')}}
                             @endif
                             </span>
                         </div>

@@ -5,6 +5,7 @@ namespace App\Providers;
 
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        setlocale(LC_TIME, 'ru');
+        setlocale(LC_TIME, 'ru_RU.UTF-8');
+        Carbon::setLocale('ru');
+
         $this->app->bind('path.public', function() {
             return base_path() . DIRECTORY_SEPARATOR .'public_html';
         });

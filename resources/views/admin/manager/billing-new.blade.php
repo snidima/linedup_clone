@@ -33,7 +33,7 @@
                         <select name="course_id" id="regular" class="form-control">
                             @foreach($regulars as $regular)
                                 @if(!$regular->course->isDemo)
-                                    <option value="{{$regular->id}}">{{\Carbon\Carbon::parse($regular->date_start)->format('d F')}} ( {{$regular->id}} )</option>
+                                    <option value="{{$regular->id}}">{{\Carbon\Carbon::parse($regular->date_start)->formatLocalized('%d %B')}} ( {{$regular->id}} )</option>
                                 @endif
                             @endforeach
                         </select>
