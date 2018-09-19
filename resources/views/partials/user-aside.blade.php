@@ -96,6 +96,11 @@
                     Пожалуйста, <b>не меняйте и не удаляйте ссылку на видео без необходимости</b> до тех пор, пока ваше задание не будет проверено!
                 </small>
             </div>
+            @if( $homework->comment )
+            <div class="course-homework-status course-homework-status_success" style="font-style: italic; margin-top: 5px; font-size: .9rem; line-height: 1.5">
+                {{$homework->comment}}
+            </div>
+            @endif
         @endif
     @else
         <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
