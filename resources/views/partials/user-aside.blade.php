@@ -77,8 +77,17 @@
         @if( $homework->check )
             <div class="course-homework-status course-homework-status_success">
                 Домашнее задание выполнено.<br>
-                Оценка: <b>{{$homework->rate}}</b> из 5
+                Оценка: <b style="font-weight: bold">{{$homework->rate}}</b> из 5
             </div>
+
+            <br>
+            Комментарий Никиты:
+            <br><br>
+
+            <div class="course-homework-status course-homework-status_success" style="font-style: italic; margin-top: 5px; font-size: .9rem; line-height: 1.5">
+                {{$homework->comment}}
+            </div>
+
         @else
             <upload lessonid="{{$lessonID}}" courseid="{{$courseID}}"></upload>
             <div class="course-homework-status course-homework-status_pending">
