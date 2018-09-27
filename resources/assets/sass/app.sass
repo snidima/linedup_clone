@@ -48,10 +48,14 @@ a
   color: $color-1
   &:hover
     text-decoration: none
+b
+  font-weight: bold
 
 .app
   position: relative
   height: 100%
+
+
 
 
 
@@ -136,11 +140,19 @@ a
   .h3
     color: $black-1
 .h3
-  font-size: 2.5rem
+  font-size: 2.75rem
   text-transform: uppercase
   text-align: center
   padding: 60px 0
   font-weight: lighter
+  line-height: 1.5
+  &:first-of-type
+    padding-top: 0
+.h4
+  font-size: 1.75rem
+  text-align: center
+  padding: 60px 0
+  font-weight: bold
   line-height: 1.5
   &:first-of-type
     padding-top: 0
@@ -151,6 +163,11 @@ a
     margin-bottom: 20px
   b
     font-weight: bold
+
+.np
+  padding: 0
+
+
 .p.center
   text-align: center
 .ul
@@ -293,7 +310,7 @@ a
         color: red
         font-size: .7rem
 .plyr__poster
-  background-color: transparent
+  background-size: cover
 .scroll-to-top
   position: fixed
   right: 32px
@@ -350,4 +367,136 @@ a
 .menu_mobile-btn
   display: none
 
+
+.section_colors1
+  background: linear-gradient(45deg, #2c94ff -100%, $color-1 100%)
+  .h3, .h4
+    color: $white-1
+
+
+
+
+.warning-block-wrapper
+  padding: 90px 0px
+  overflow-x: hidden
+.warning-block
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  padding: 20px 0
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    width: 150%
+    height: 100%
+    background: #fff680
+    transform: rotate(-1deg)
+
+.warning-block__content
+  font-size: 1.125rem
+  line-height: 1.5
+  padding: 20px 0
+  color: $black-1
+  position: relative
+
+.warning-block-wrapper_inverse
+  .warning-block
+    &:before
+      transform: rotate(1deg)
+.features
+  display: flex
+  justify-content: center
+  
+.features-item
+  width: 33.3333333333333%
+  position: relative
+  &:not(:last-of-type):before
+    content: ''
+    display: block
+    height: 2px
+    background: rgba($white-1, .4)
+    left: calc( 50% + 50px )
+    right: calc( -50% + 50px )
+    position: absolute
+    top: 32px
+
+
+.features-item__helper
+  width: 64px
+  text-align: center
+  border-radius: 50%
+  margin: auto
+  background: $black-1
+  &:after
+    content: '+'
+    color: $color-1
+    line-height: 64px
+    font-size: 1.625rem
+
+.features-item__text
+  padding-top: 20px
+  padding-left:  50px
+  padding-right: 50px
+  text-align: center
+  font-size: 1.125rem
+  color: $white-1
+  font-weight: lighter
+  line-height: 1.7
+
+
+
+
+
+
+
+.accordions .accordion
+  +nlt
+  margin-bottom: 10px
+
+.accordion
+  background: $white-1
+  display: flex
+  flex-wrap: wrap
+  padding: 30px
+
+.accordion__title
+  flex-grow: 1
+  font-size: 1.375rem
+  color: $black-1
+  width: calc( 100% - 32px )
+  line-height: 1.5
+  cursor: pointer
+  transition: all .1s linear
+  &:hover
+    color: $color-1
+
+
+
+.accordion__handler
+  width:  26px
+  height: 26px
+  line-height: 1.5
+  cursor: pointer
+  transform: rotate(0deg)
+  transition: all .3s linear
+  svg:hover
+    polygon
+      fill: $color-1
+.accordion_closed
+  .accordion__handler
+    transform: rotate(-180deg)
+.accordion__text
+  width: 100%
+  font-size: 1rem
+  color: $black-1
+  padding-top: 30px
+  padding-left: 30px
+  line-height: 1.5
+
+.flex-row
+  display: flex
+.flex-col
+  width: 50%
 @import "responce/responce"
